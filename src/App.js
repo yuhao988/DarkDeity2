@@ -4,6 +4,8 @@ import Modal from "react-modal"; // Import the Modal component
 import "./App.css";
 import Error from "./Error";
 import Home from "./Home";
+import CharMain from "./Components/Characters/CharMain";
+
 
 function App() {
   // Set the app element when the component mounts
@@ -15,7 +17,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
-        
+        <Route path="/characters" element={<CharMain />} />
         <Route path="/*" element={<Error />} />
       </Routes>
       
