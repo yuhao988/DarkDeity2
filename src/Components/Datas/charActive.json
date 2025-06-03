@@ -1,5 +1,6 @@
 {
    "1": {
+      "ID":1,
       "Name": "Gwyn",
       "activeSkill": "Brutal Strike",
       "activeEff": "Attacks, dealing 4+50% additional damage",
@@ -12,6 +13,7 @@
       "activeBuff4": "Caster healed by 50% damage"
    },
    "2": {
+      "ID":2,
       "Name": "Riordan",
       "activeSkill": "Command Wolf",
       "activeEff": "Attacks with your pet, dealing additional 1+100% damage\n\nRemoving up to 5+20% Def from enemy",
@@ -24,6 +26,7 @@
       "activeBuff4": "Defense reduction +5"
    },
    "3": {
+      "ID":3,
       "Name": "Arthur",
       "activeSkill": "Lunar Reave",
       "activeEff": "Send a bolt of Magic at an enemy dealing 8+100% damage\n\nIncreases by mana spent this chapter",
@@ -36,6 +39,7 @@
       "activeBuff4": "Range +1"
    },
    "4": {
+      "ID":4,
       "Name": "Cassandra",
       "activeSkill": "Healing Touch",
       "activeEff": "Heal an ally for 14+100%",
@@ -48,6 +52,7 @@
       "activeBuff4": "Healing Mastery scaling +40%"
    },
    "5": {
+      "ID":5,
       "Name": "Saxon",
       "activeSkill": "Call the Storm",
       "activeEff": "Deal up to 3+130% lightning damage spread equally to all enemies within 2 tiles\n\nMaximum 12+55% each",
@@ -60,6 +65,7 @@
       "activeBuff4": "Damage Mastery scaling +50%"
    },
    "6": {
+      "ID":6,
       "Name": "Alden",
       "activeSkill": "Aura Wave",
       "activeEff": "Apply 7+35% Heavy Weak stacks\n\n3+30% Heavy Vulnerable stacks to an enemy",
@@ -72,6 +78,7 @@
       "activeBuff4": "Weak stacks Mastery scaling +20%"
    },
    "7": {
+      "ID":7,
       "Name": "Valeria",
       "activeSkill": "First Aid",
       "activeEff": "Heal an ally for 12+100%",
@@ -84,6 +91,7 @@
       "activeBuff4": "Healing Mastery scaling +40%"
    },
    "8": {
+      "ID":8,
       "Name": "Benji",
       "activeSkill": "Second Wind",
       "activeEff": "Heal for 5+50% damage, increased by damage done this chapter",
@@ -96,6 +104,7 @@
       "activeBuff4": "Clears Debuffs from target"
    },
    "9": {
+      "ID":9,
       "Name": "Zanele",
       "activeSkill": "Command Capuchin",
       "activeEff": "Attacks with your pet, dealing additional 1+100% damage\n\nStealing 80+200% gold if enemy is killed",
@@ -108,6 +117,7 @@
       "activeBuff4": "Golds stolen +80"
    },
    "10": {
+      "ID":10,
       "Name": "Khamari",
       "activeSkill": "Quick Stitching",
       "activeEff": "Heal up to 3 allies in a line for 18+80%\n\nApplies 2+20% Light Bleed stacks if heal isn't to full HP",
@@ -120,6 +130,7 @@
       "activeBuff4": "Mana cost -10"
    },
    "11": {
+      "ID":11,
       "Name": "Zuhair",
       "activeSkill": "Spin Partner",
       "activeEff": "Swap place with a unit, apply 2+20% Light Weak stacks if they are an enemy",
@@ -132,6 +143,7 @@
       "activeBuff4": "Range +1"
    },
    "12": {
+      "ID":12,
       "Name": "Eve",
       "activeSkill": "Command Cobra",
       "activeEff": "Attacks with your pet, dealing additional 1+100% damage\n\nRemove up to 5+20% Fortitude from your enemy",
@@ -144,6 +156,7 @@
       "activeBuff4": "Fortitude reduction +5"
    },
    "13": {
+      "ID":13,
       "Name": "Haoran",
       "activeSkill": "Mist of Renewal",
       "activeEff": "Wrap an ally in mist, healing them for 6+60% every turn for 2 turns",
@@ -156,6 +169,7 @@
       "activeBuff4": "Range +1"
    },
    "14": {
+      "ID":14,
       "Name": "Mashal",
       "activeSkill": "Flame Infusion",
       "activeEff": "Gain 18+50% Crit, depletes 15 Mana when critting, deactivates when depleted or cast again",
@@ -168,6 +182,7 @@
       "activeBuff4": "Mana reduction -5"
    },
    "15": {
+      "ID":15,
       "Name": "Aya",
       "activeSkill": "Demonic Call",
       "activeEff": "Absorb all Bleed and Poison stacks from allies within 3 tiles, add 5+25% Light stacks of each",
@@ -180,6 +195,7 @@
       "activeBuff4": "Mana cost -10"
    },
    "16": {
+      "ID":16,
       "Name": "Tusk",
       "activeSkill": "Command Crocodile",
       "activeEff": "Attacks with your pet, dealing additional 10+175% damage",
@@ -192,6 +208,7 @@
       "activeBuff4": "Damage +5"
    },
    "17": {
+      "ID":17,
       "Name": "Laurai",
       "activeSkill": "Empowering Edict",
       "activeEff": "Heal an ally for 10+80%, applies 5+60% Light Block stacks if heal isn't to full HP",
@@ -204,6 +221,7 @@
       "activeBuff4": "Range +1"
    },
    "18": {
+      "ID":18,
       "Name": "Tal'Dera",
       "activeSkill": "Steal the Stage",
       "activeEff": "Reduce the Speed of every enemy within 2 tiles by 3+30% for 1 tuen",
@@ -216,6 +234,7 @@
       "activeBuff4": "Mana cost and Speed reduction +100%"
    },
    "19": {
+      "ID":19,
       "Name": "Vissarion",
       "activeSkill": "Command!",
       "activeEff": "Grant an ally 5+30% Def and Frt for 1 turn",
@@ -228,6 +247,7 @@
       "activeBuff4": "Def&Frt scaling +20%"
    },
    "20": {
+      "ID":20,
       "Name": "Calith",
       "activeSkill": "Crystal Refraction",
       "activeEff": "Apply 2+50% stacks of Heavy Blind to 2+10% random enemies within 2 tiles",

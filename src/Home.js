@@ -6,8 +6,12 @@ function Home() {
     <div className="App">
       <header className="App-header">
         <h1>Dark Deity 2 pages</h1>
-        <Link to="/characters">Character Information</Link>{" "}
       </header>
+
+      <body className="App-body">
+        <h3>Menu</h3>
+        <Link to="/characters">Character Information</Link>{" "}
+      </body>
     </div>
   );
 }

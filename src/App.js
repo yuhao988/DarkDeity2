@@ -5,7 +5,7 @@ import "./App.css";
 import Error from "./Error";
 import Home from "./Home";
 import CharMain from "./Components/Characters/CharMain";
-
+import CharDetail from "./Components/Characters/CharDetail";
 
 function App() {
   // Set the app element when the component mounts
@@ -18,9 +18,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/characters" element={<CharMain />} />
+        <Route path="/characters/:name" element={<CharDetail />} />
+
         <Route path="/*" element={<Error />} />
       </Routes>
-      
     </div>
   );
 }
