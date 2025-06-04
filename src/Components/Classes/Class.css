@@ -1,0 +1,15 @@
+.class-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1vw;
+  width: 200px;
+  height: 100px;
+  background: #f9f9f9;
+}
+
+.class-image {
+  padding: 10px;
+  width: 180px;
+  height: 140px; /* Maintains aspect ratio */
+  aspect-ratio: 1; /* Optional: Force square (1:1) or set like 16/9 */
+}

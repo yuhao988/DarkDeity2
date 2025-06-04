@@ -6,6 +6,8 @@ import Error from "./Error";
 import Home from "./Home";
 import CharMain from "./Components/Characters/CharMain";
 import CharDetail from "./Components/Characters/CharDetail";
+import ClassMain from "./Components/Classes/ClassInfo";
+import ClassDetail from "./Components/Classes/ClassDetail";
 
 function App() {
   // Set the app element when the component mounts
@@ -19,6 +21,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/characters" element={<CharMain />} />
         <Route path="/characters/:name" element={<CharDetail />} />
+        <Route path="/classes" element={<ClassMain />} />
+        <Route path="/classes/:name" element={<ClassDetail />} />
 
         <Route path="/*" element={<Error />} />
       </Routes>

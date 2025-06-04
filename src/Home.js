@@ -8,10 +8,11 @@ function Home() {
         <h1>Dark Deity 2 pages</h1>
       </header>
 
-      <body className="App-body">
+      <div className="App-body">
         <h3>Menu</h3>
         <Link to="/characters">Character Information</Link>{" "}
-      </body>
+        <Link to="/classes">Class Information</Link>{" "}
+      </div>
     </div>
   );
 }
