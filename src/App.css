@@ -1,5 +1,13 @@
 .App {
-  text-align: center;
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  width: calc(100% - 200px); /* Ensure full width minus menu */
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -13,26 +21,31 @@
   }
 }
 
-.App-header {
+/* Header styles */
+.page-header {
   background-color: #282c34;
-  min-height: 0vh;
+  height: 10vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
-.App-body {
+/* Body styles */
+.page-body {
   background-color: #83a8f1;
-  min-height: 90vh;
+  flex: 1;
+  padding: 20px;
+  color: rgb(65, 2, 2);
+  min-height: calc(90vh - 20px); /* Adjust for padding */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: rgb(65, 2, 2);
 }
 
 .App-link {
@@ -48,15 +61,13 @@
   }
 }
 
-
-.box-holder{
+.box-holder {
   display: flex;
   justify-content: space-between;
-  
 }
-.info-box{
+.info-box {
   border: 2px solid black;
-width:40%;
+  width: 40%;
 }
 .info-box:first-child {
   margin-right: auto; /* Push the first box to the left */
@@ -69,10 +80,46 @@ width:40%;
   display: flex;
   justify-content: space-around;
 }
-/* .battle-result{
-  position: absolute;
 
-} */
 .unit-info {
   margin-right: 10px; /* Adjust the margin as needed */
+}
+
+.menu-bar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 100vh;
+  background-color: #282c34;
+  color: white;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.menu-title {
+  color: #83a8f1;
+  border-bottom: 1px solid #83a8f1;
+  padding-bottom: 10px;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-list li {
+  margin: 15px 0;
+}
+
+.menu-list a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+.menu-list a:hover {
+  color: #83a8f1;
 }

@@ -66,11 +66,11 @@ function CharDetail() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+      <header className="page-header">
         <h1>{character1.Name}</h1>
       </header>
-      <div className="App-body">
+      <div className="page-body">
         <img
           src={images[name.toLowerCase()]}
           alt={name}

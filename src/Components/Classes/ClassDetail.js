@@ -12,9 +12,9 @@ function ClassDetail() {
 
   if (!class1) return <div>Class not found</div>;
   return (
-    <div className="App">
-      <header className="App-header">{class1.name}</header>
-      <div className="App-body">
+    <div>
+      <header className="page-header">{class1.name}</header>
+      <div className="page-body">
         <Link to="/classes">Back</Link>{" "}
       </div>
     </div>

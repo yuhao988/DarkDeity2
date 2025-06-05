@@ -18,11 +18,11 @@ function CharMain() {
   }, {});
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+      <header className="page-header">
         <h1>Characters</h1>
       </header>
-      <div className="App-body">
+      <div className="page-body">
         <div className="character-list">
           {Object.values(charActive).map((character, index) => (
             <div key={index} className="character-card">
