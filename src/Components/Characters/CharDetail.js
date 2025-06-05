@@ -19,27 +19,22 @@ function CharDetail() {
   if (!character1) return <div>Character not found</div>;
 
   const displayedRng = (rng) => {
-    
-
     if (rng === "Attack") {
-     
       return "Same as attack range";
-    } else if (rng==="Self"){
+    } else if (rng === "Self") {
       rngMax = 0;
       rngMin = 0;
       return `${rngMin}~${rngMax}(Self)`;
     }
 
     const matches = rng.match(/(\d+)/g);
-   
 
     if (matches && matches.length >= 2) {
       [rngMin, rngMax] = matches.map(Number);
-      
+
       return `${rngMin}~${rngMax}`;
     }
 
-    
     return "Invalid range format";
   };
 
@@ -100,6 +95,7 @@ function CharDetail() {
               <tr>
                 <th>Name</th>
                 <td
+                  colSpan="4"
                   style={{
                     backgroundColor: getSkillColor(character1.activeType),
                     color: "#FFFFFF",
@@ -110,23 +106,25 @@ function CharDetail() {
               </tr>
               <tr>
                 <th>Cost</th>
-                <td>{character1.activeMana}</td>
+                <td colSpan="4">{character1.activeMana}</td>
               </tr>
               <tr>
                 <th>Range</th>
-                <td>{displayedRng(character1.activeRng)}</td>
+                <td colSpan="4">{displayedRng(character1.activeRng)}</td>
               </tr>
               <tr>
                 <th>Effect</th>
-                <td>{character1.activeEff}</td>
+                <td colSpan="4">{character1.activeEff}</td>
+              </tr>
+              <tr>
+                <th>Upgrades</th>
+                <td className="upgrade-box">{character1.activeBuff1}</td>
+                <td className="upgrade-box">{character1.activeBuff2}</td>
+                <td className="upgrade-box">{character1.activeBuff3}</td>
+                <td className="upgrade-box">{character1.activeBuff4}</td>
               </tr>
             </tbody>
           </table>
-
-          <p>Skill Upgrade 1: {character1.activeBuff1}</p>
-          <p>Skill Upgrade 2: {character1.activeBuff2}</p>
-          <p>Skill Upgrade 3: {character1.activeBuff3}</p>
-          <p>Skill Upgrade 4: {character1.activeBuff4}</p>
         </div>
         <Link to="/characters">Back</Link>{" "}
       </div>

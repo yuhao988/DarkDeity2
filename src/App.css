@@ -39,6 +39,7 @@
   background-color: #83a8f1;
   flex: 1;
   padding: 20px;
+  padding-left: 200px;
   color: rgb(65, 2, 2);
   min-height: calc(90vh - 20px); /* Adjust for padding */
   display: flex;
