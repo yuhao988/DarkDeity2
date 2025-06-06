@@ -5,6 +5,8 @@
   width: 200px;
   height: 100px;
   background: #f9f9f9;
+  
+  
 }
 
 .class-image {
@@ -12,4 +14,28 @@
   width: 180px;
   height: 140px; /* Maintains aspect ratio */
   aspect-ratio: 1; /* Optional: Force square (1:1) or set like 16/9 */
+}
+
+.class-table {
+  border-collapse: collapse;
+ 
+  border: 2px solid rgb(65, 2, 2);
+  background-color: rgb(184, 182, 182);
+  margin-bottom: 10px;
+}
+
+.class-table th {
+  /* Header cell styling */
+  background-color: #282c34;
+  color: white;
+  text-align: center;
+  width: 100px;
+  border-bottom: 1px solid rgb(248, 247, 247); /* Horizontal divider */
+  /*border-right: 2px solid #83a8f1;  Vertical divider */
+}
+
+.class-table td{
+  width: 12vw;
+ text-align: center;
+ border: 1px solid rgb(65, 2, 2);
 }

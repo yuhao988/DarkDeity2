@@ -24,10 +24,10 @@ function ClassMain() {
         <h1>Classes</h1>
       </header>
       <div className="page-body">
-        <table>
-          <tbody>
+        <table className="class-table">
+          <tbody >
             <tr>
-              <th colSpan="5">
+              <th colSpan="5" style={{backgroundColor:"rgb(92, 17, 17)"}}>
                 <h2>Vanguard</h2>
               </th>
             </tr>
@@ -81,10 +81,10 @@ function ClassMain() {
             </tr>
           </tbody>
         </table>
-        <table>
+        <table className="class-table">
           <tbody>
             <tr>
-              <th colSpan="5">
+              <th colSpan="5" style={{backgroundColor:"rgb(100, 2, 100)"}}>
                 <h2>Hunter</h2>
               </th>
             </tr>
@@ -138,10 +138,10 @@ function ClassMain() {
             </tr>
           </tbody>
         </table>
-        <table>
+        <table className="class-table">
           <tbody>
             <tr>
-              <th colSpan="5">
+              <th colSpan="5" style={{backgroundColor:"rgb(4, 4, 126)"}}>
                 <h2>Summoner</h2>
               </th>
             </tr>
@@ -195,10 +195,10 @@ function ClassMain() {
             </tr>
           </tbody>
         </table>
-        <table>
+        <table className="class-table">
           <tbody>
             <tr>
-              <th colSpan="5">
+              <th colSpan="5" style={{backgroundColor:"rgb(4, 73, 4)"}}>
                 <h2>Shaman</h2>
               </th>
             </tr>
@@ -252,10 +252,10 @@ function ClassMain() {
             </tr>
           </tbody>
         </table>
-        <table>
+        <table className="class-table">
           <tbody>
             <tr>
-              <th colSpan="5">
+              <th colSpan="5" style={{backgroundColor:"rgb(102, 87, 0)"}}>
                 <h2>Adept</h2>
               </th>
             </tr>
