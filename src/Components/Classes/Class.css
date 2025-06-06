@@ -4,7 +4,7 @@
   padding: 1vw;
   width: 200px;
   height: 100px;
-  background: #f9f9f9;
+  background: rgb(175, 175, 175);
   
   
 }
@@ -38,4 +38,45 @@
   width: 12vw;
  text-align: center;
  border: 1px solid rgb(65, 2, 2);
+}
+
+.stat-table {
+  border: 3px solid rgb(65, 2, 2); /* Dark red outer border */
+  background-color: rgb(184, 182, 182);
+  text-align: center;
+  width: 70vw;
+  border-collapse: collapse; /* Crucial for consistent borders */
+}
+
+/* Header styling */
+.stat-table thead {
+  background-color: #282c34;
+  color: white;
+}
+
+/* Dark red border for ALL cells */
+.stat-table th,
+.stat-table td {
+  border: 2px solid rgb(65, 2, 2);
+  padding: 8px;
+  width: 8vw;
+}
+
+/* White borders between header cells only */
+.stat-table thead th {
+  border-right: 2px solid white;
+}
+
+/* Remove right border from last header cell */
+.stat-table thead th:last-child {
+  border-right: 2px solid rgb(65, 2, 2); /* Reverts to dark red */
+}
+
+/* Row styling */
+.stat-table tr {
+  border: 3px solid rgb(65, 2, 2);
+}
+
+.text-paragraph{
+  width: 70vw;
 }

@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import charActive from "../Datas/charActive.json";
 import charGrowth from "../Datas/charStatPass.json";
+import charBase from "../Datas/charBase.json";
+import { charIntro } from "./CharMisc";
 import "../../App.css";
 import "./Char.css";
 
@@ -60,6 +62,15 @@ function CharDetail() {
     return colorMap[skillType] || colorMap.default;
   };
 
+  const turnCap = (key) => {
+    if (key === "hp") {
+      key = key.toUpperCase();
+    } else {
+      key = key.charAt(0).toUpperCase() + key.slice(1);
+    }
+    return key;
+  };
+
   return (
     <div>
       <header className="page-header">
@@ -72,10 +83,102 @@ function CharDetail() {
           className="character-image"
         />
         <div className="character-detail">
+          {charIntro()}
           <h3>Base stats:</h3>
-          <table className="stat-table"></table>
+          <table className="stat-table">
+            <thead>
+              <tr>
+                {Object.keys(charBase[0])
+                  .filter((key) => !["ID", "Name"].includes(key)) // Exclude these keys
+                  .map((key) => (
+                    <th key={key}>{turnCap(key)}</th>
+                  ))}
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {(() => {
+                  let total = 0;
+                  return (
+                    <>
+                      {Object.entries(
+                        charBase.find((char) => char.Name === character1.Name)
+                      )
+                        .filter(([key]) => !["ID", "Name"].includes(key))
+                        .map(([key, value]) => {
+                          const numValue = Number(value) || 0;
+                          total += numValue;
+                          return <td key={key}>{value}</td>;
+                        })}
+                      <td>{total}</td>
+                    </>
+                  );
+                })()}
+              </tr>
+            </tbody>
+          </table>
           <h3>Personal growth:</h3>
-          <table className="stat-table"></table>
+          <table className="stat-table">
+            <thead>
+              <tr>
+                {Object.keys(charGrowth[0])
+                  .filter(
+                    (key) =>
+                      ![
+                        "ID",
+                        "Name",
+                        "classLine",
+                        "passive",
+                        "passiveEff",
+                      ].includes(key)
+                  ) // Exclude these keys
+                  .map((key) => (
+                    <th key={key}>{turnCap(key)}</th>
+                  ))}
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {(() => {
+                  const character = charGrowth.find(
+                    (char) => char.Name === character1.Name
+                  );
+                  let total = 0;
+                  return (
+                    <>
+                      {Object.entries(character)
+                        .filter(
+                          ([key]) =>
+                            ![
+                              "ID",
+                              "Name",
+                              "classLine",
+                              "passive",
+                              "passiveEff",
+                            ].includes(key)
+                        )
+                        .map(([key, value]) => {
+                          let numValue;
+                          if (
+                            typeof value === "string" &&
+                            value.includes("%")
+                          ) {
+                            numValue = parseFloat(value);
+                          } else {
+                            numValue = Number(value) || 0;
+                          }
+                          total += numValue;
+                          return <td key={key}>{value}</td>;
+                        })}
+                      <td>{`${total}%`}</td>
+                    </>
+                  );
+                })()}
+              </tr>
+            </tbody>
+          </table>
           <h3>Passive:</h3>
           <table className="passive-table">
             <tbody>
@@ -118,10 +221,40 @@ function CharDetail() {
               </tr>
               <tr>
                 <th>Upgrades</th>
-                <td className="upgrade-box">{character1.activeBuff1}</td>
-                <td className="upgrade-box">{character1.activeBuff2}</td>
-                <td className="upgrade-box">{character1.activeBuff3}</td>
-                <td className="upgrade-box">{character1.activeBuff4}</td>
+                <td className="upgrade-box">
+                  {character1.activeBuff1}
+                  <br />
+                  <button>Upgrade</button>
+                </td>
+                <td className="upgrade-box">
+                  {character1.activeBuff2}
+                  <br />
+                  <button>Upgrade</button>
+                </td>
+                <td className="upgrade-box">
+                  {character1.activeBuff3}
+                  <br />
+                  <button>Upgrade</button>
+                </td>
+                <td className="upgrade-box">
+                  {character1.activeBuff4}
+                  <br />
+                  <button>Upgrade</button>
+                </td>
+              </tr>
+              <tr>
+                <th></th>
+                <td colSpan={4} style={{ textAlign: "center" }}>
+                  <button
+                    style={{
+                      width: "200px",
+                      height: "50px",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    Reset
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>

@@ -38,19 +38,19 @@ function ClassMain() {
               {Object.values(classStat)
                 .filter(
                   (class1) =>
-                    class1.classLine === "Vanguard" && // Example condition
-                    class1.tier === 2 // Additional conditions
+                    class1.Classline === "Vanguard" && // Example condition
+                    class1.Tier === 2 // Additional conditions
                 )
                 .map((class1, index) => (
                   <td key={index} className="class-card">
                     <img
-                      src={images[class1.name.replace(/\s+/g, "").toLowerCase()]}
-                      alt={class1.name}
+                      src={images[class1.Name.replace(/\s+/g, "").toLowerCase()]}
+                      alt={class1.Name}
                       className="class-image"
                     />
 
-                    <Link to={`/classes/${(class1.name.replace(/\s+/g, "").toLowerCase())}`}>
-                      <h3>{class1.name}</h3>
+                    <Link to={`/classes/${(class1.Name.replace(/\s+/g, "").toLowerCase())}`}>
+                      <h3>{class1.Name}</h3>
                     </Link>
                   </td>
                 ))}
@@ -62,19 +62,19 @@ function ClassMain() {
               {Object.values(classStat)
                 .filter(
                   (class1) =>
-                    class1.classLine === "Vanguard" && // Example condition
-                    class1.tier === 3 // Additional conditions
+                    class1.Classline === "Vanguard" && // Example condition
+                    class1.Tier === 3 // Additional conditions
                 )
                 .map((class1, index) => (
                   <td key={index} className="class-card">
                     <img
-                      src={images[(class1.name.replace(/\s+/g, "").toLowerCase())]}
-                      alt={class1.name}
+                      src={images[(class1.Name.replace(/\s+/g, "").toLowerCase())]}
+                      alt={class1.Name}
                       className="class-image"
                     />
 
-                    <Link to={`/classes/${(class1.name.replace(/\s+/g, "").toLowerCase())}`}>
-                      <h3>{class1.name}</h3>
+                    <Link to={`/classes/${(class1.Name.replace(/\s+/g, "").toLowerCase())}`}>
+                      <h3>{class1.Name}</h3>
                     </Link>
                   </td>
                 ))}
@@ -95,19 +95,19 @@ function ClassMain() {
               {Object.values(classStat)
                 .filter(
                   (class1) =>
-                    class1.classLine === "Hunter" && // Example condition
-                    class1.tier === 2 // Additional conditions
+                    class1.Classline === "Hunter" && // Example condition
+                    class1.Tier === 2 // Additional conditions
                 )
                 .map((class1, index) => (
                   <td key={index} className="class-card">
                     <img
-                      src={images[(class1.name.replace(/\s+/g, "").toLowerCase())]}
-                      alt={class1.name}
+                      src={images[(class1.Name.replace(/\s+/g, "").toLowerCase())]}
+                      alt={class1.Name}
                       className="class-image"
                     />
 
-                    <Link to={`/classes/${(class1.name.replace(/\s+/g, "").toLowerCase())}`}>
-                      <h3>{class1.name}</h3>
+                    <Link to={`/classes/${(class1.Name.replace(/\s+/g, "").toLowerCase())}`}>
+                      <h3>{class1.Name}</h3>
                     </Link>
                   </td>
                 ))}
@@ -119,19 +119,19 @@ function ClassMain() {
               {Object.values(classStat)
                 .filter(
                   (class1) =>
-                    class1.classLine === "Hunter" && // Example condition
-                    class1.tier === 3 // Additional conditions
+                    class1.Classline === "Hunter" && // Example condition
+                    class1.Tier === 3 // Additional conditions
                 )
                 .map((class1, index) => (
                   <td key={index} className="class-card">
                     <img
-                      src={images[(class1.name.replace(/\s+/g, "").toLowerCase())]}
-                      alt={class1.name}
+                      src={images[(class1.Name.replace(/\s+/g, "").toLowerCase())]}
+                      alt={class1.Name}
                       className="class-image"
                     />
 
-                    <Link to={`/classes/${(class1.name.replace(/\s+/g, "").toLowerCase())}`}>
-                      <h3>{class1.name}</h3>
+                    <Link to={`/classes/${(class1.Name.replace(/\s+/g, "").toLowerCase())}`}>
+                      <h3>{class1.Name}</h3>
                     </Link>
                   </td>
                 ))}
@@ -152,19 +152,19 @@ function ClassMain() {
               {Object.values(classStat)
                 .filter(
                   (class1) =>
-                    class1.classLine === "Summoner" && // Example condition
-                    class1.tier === 2 // Additional conditions
+                    class1.Classline === "Summoner" && // Example condition
+                    class1.Tier === 2 // Additional conditions
                 )
                 .map((class1, index) => (
                   <td key={index} className="class-card">
                     <img
-                      src={images[(class1.name.replace(/\s+/g, "").toLowerCase())]}
-                      alt={class1.name}
+                      src={images[(class1.Name.replace(/\s+/g, "").toLowerCase())]}
+                      alt={class1.Name}
                       className="class-image"
                     />
 
-                    <Link to={`/classes/${(class1.name.replace(/\s+/g, "").toLowerCase())}`}>
-                      <h3>{class1.name}</h3>
+                    <Link to={`/classes/${(class1.Name.replace(/\s+/g, "").toLowerCase())}`}>
+                      <h3>{class1.Name}</h3>
                     </Link>
                   </td>
                 ))}
@@ -176,19 +176,19 @@ function ClassMain() {
               {Object.values(classStat)
                 .filter(
                   (class1) =>
-                    class1.classLine === "Summoner" && // Example condition
-                    class1.tier === 3 // Additional conditions
+                    class1.Classline === "Summoner" && // Example condition
+                    class1.Tier === 3 // Additional conditions
                 )
                 .map((class1, index) => (
                   <td key={index} className="class-card">
                     <img
-                      src={images[(class1.name.replace(/\s+/g, "").toLowerCase())]}
-                      alt={class1.name}
+                      src={images[(class1.Name.replace(/\s+/g, "").toLowerCase())]}
+                      alt={class1.Name}
                       className="class-image"
                     />
 
-                    <Link to={`/classes/${(class1.name.replace(/\s+/g, "").toLowerCase())}`}>
-                      <h3>{class1.name}</h3>
+                    <Link to={`/classes/${(class1.Name.replace(/\s+/g, "").toLowerCase())}`}>
+                      <h3>{class1.Name}</h3>
                     </Link>
                   </td>
                 ))}
@@ -209,19 +209,19 @@ function ClassMain() {
               {Object.values(classStat)
                 .filter(
                   (class1) =>
-                    class1.classLine === "Shaman" && // Example condition
-                    class1.tier === 2 // Additional conditions
+                    class1.Classline === "Shaman" && // Example condition
+                    class1.Tier === 2 // Additional conditions
                 )
                 .map((class1, index) => (
                   <td key={index} className="class-card">
                     <img
-                      src={images[(class1.name.replace(/\s+/g, "").toLowerCase())]}
-                      alt={class1.name}
+                      src={images[(class1.Name.replace(/\s+/g, "").toLowerCase())]}
+                      alt={class1.Name}
                       className="class-image"
                     />
 
-                    <Link to={`/classes/${(class1.name.replace(/\s+/g, "").toLowerCase())}`}>
-                      <h3>{class1.name}</h3>
+                    <Link to={`/classes/${(class1.Name.replace(/\s+/g, "").toLowerCase())}`}>
+                      <h3>{class1.Name}</h3>
                     </Link>
                   </td>
                 ))}
@@ -233,19 +233,19 @@ function ClassMain() {
               {Object.values(classStat)
                 .filter(
                   (class1) =>
-                    class1.classLine === "Shaman" && // Example condition
-                    class1.tier === 3 // Additional conditions
+                    class1.Classline === "Shaman" && // Example condition
+                    class1.Tier === 3 // Additional conditions
                 )
                 .map((class1, index) => (
                   <td key={index} className="class-card">
                     <img
-                      src={images[(class1.name.replace(/\s+/g, "").toLowerCase())]}
-                      alt={class1.name}
+                      src={images[(class1.Name.replace(/\s+/g, "").toLowerCase())]}
+                      alt={class1.Name}
                       className="class-image"
                     />
 
-                    <Link to={`/classes/${(class1.name.replace(/\s+/g, "").toLowerCase())}`}>
-                      <h3>{class1.name}</h3>
+                    <Link to={`/classes/${(class1.Name.replace(/\s+/g, "").toLowerCase())}`}>
+                      <h3>{class1.Name}</h3>
                     </Link>
                   </td>
                 ))}
@@ -266,19 +266,19 @@ function ClassMain() {
               {Object.values(classStat)
                 .filter(
                   (class1) =>
-                    class1.classLine === "Adept" && // Example condition
-                    class1.tier === 2 // Additional conditions
+                    class1.Classline === "Adept" && // Example condition
+                    class1.Tier === 2 // Additional conditions
                 )
                 .map((class1, index) => (
                   <td key={index} className="class-card">
                     <img
-                      src={images[(class1.name.replace(/\s+/g, "").toLowerCase())]}
-                      alt={class1.name}
+                      src={images[(class1.Name.replace(/\s+/g, "").toLowerCase())]}
+                      alt={class1.Name}
                       className="class-image"
                     />
 
-                    <Link to={`/classes/${(class1.name.replace(/\s+/g, "").toLowerCase())}`}>
-                      <h3>{class1.name}</h3>
+                    <Link to={`/classes/${(class1.Name.replace(/\s+/g, "").toLowerCase())}`}>
+                      <h3>{class1.Name}</h3>
                     </Link>
                   </td>
                 ))}
@@ -290,19 +290,19 @@ function ClassMain() {
               {Object.values(classStat)
                 .filter(
                   (class1) =>
-                    class1.classLine === "Adept" && // Example condition
-                    class1.tier === 3 // Additional conditions
+                    class1.Classline === "Adept" && // Example condition
+                    class1.Tier === 3 // Additional conditions
                 )
                 .map((class1, index) => (
                   <td key={index} className="class-card">
                     <img
-                      src={images[(class1.name.replace(/\s+/g, "").toLowerCase())]}
-                      alt={class1.name}
+                      src={images[(class1.Name.replace(/\s+/g, "").toLowerCase())]}
+                      alt={class1.Name}
                       className="class-image"
                     />
 
-                    <Link to={`/classes/${(class1.name.replace(/\s+/g, "").toLowerCase())}`}>
-                      <h3>{class1.name}</h3>
+                    <Link to={`/classes/${(class1.Name.replace(/\s+/g, "").toLowerCase())}`}>
+                      <h3>{class1.Name}</h3>
                     </Link>
                   </td>
                 ))}
