@@ -1,44 +1,53 @@
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useState } from "react";
 import charActive from "../Datas/charActive.json";
 import charGrowth from "../Datas/charStatPass.json";
 import charBase from "../Datas/charBase.json";
-import { charIntro } from "./CharMisc";
+import {
+  charIntro,
+  charSkillDes,
+  charSkillCost,
+  charSkillRng,
+} from "./CharMisc";
 import "../../App.css";
 import "./Char.css";
 
 function CharDetail() {
-  let rngMin = 0;
-  let rngMax = 0;
+  const [activeUpgrades, setActiveUpgrades] = useState({
+    upgrade1: false,
+    upgrade2: false,
+    upgrade3: false,
+    upgrade4: false,
+  });
+
+  const toggleUpgrade = (upgradeKey) => {
+    let cnt = 0;
+    for (const key in activeUpgrades) {
+      if (key !== upgradeKey && activeUpgrades[key] === true) {
+        cnt++;
+      }
+    }
+    if (cnt < 2) {
+      setActiveUpgrades((prev) => ({
+        ...prev,
+        [upgradeKey]: !prev[upgradeKey],
+      }));
+    }
+  };
+
   const { name } = useParams(); // Gets the URL parameter (e.g., "gwyn")
   const character1 = Object.values(charActive).find(
     (char) => char.Name.toLowerCase() === name
   );
+ const charName = character1.Name.replace(/'/g, "")
   const character2 = Object.values(charGrowth).find(
     (char) => char.Name.toLowerCase() === name
   );
 
   if (!character1) return <div>Character not found</div>;
 
-  const displayedRng = (rng) => {
-    if (rng === "Attack") {
-      return "Same as attack range";
-    } else if (rng === "Self") {
-      rngMax = 0;
-      rngMin = 0;
-      return `${rngMin}~${rngMax}(Self)`;
-    }
-
-    const matches = rng.match(/(\d+)/g);
-
-    if (matches && matches.length >= 2) {
-      [rngMin, rngMax] = matches.map(Number);
-
-      return `${rngMin}~${rngMax}`;
-    }
-
-    return "Invalid range format";
-  };
+  let baseValue = character1.skillBase;
+  let scaleValue = character1.skillScale;
 
   const imageContext = require.context(
     "./Pictures", // Folder path
@@ -69,6 +78,17 @@ function CharDetail() {
       key = key.charAt(0).toUpperCase() + key.slice(1);
     }
     return key;
+  };
+
+  const resetUpgrades = () => {
+    setActiveUpgrades({
+      upgrade1: false,
+      upgrade2: false,
+      upgrade3: false,
+      upgrade4: false,
+    });
+    baseValue = character1.skillBase;
+    scaleValue = character1.skillScale;
   };
 
   return (
@@ -209,37 +229,80 @@ function CharDetail() {
               </tr>
               <tr>
                 <th>Cost</th>
-                <td colSpan="4">{character1.activeMana}</td>
+                <td colSpan="4">
+                  {charSkillCost(
+                    character1.Name,
+                    character1.activeMana,
+                    activeUpgrades
+                  )}
+                </td>
               </tr>
               <tr>
                 <th>Range</th>
-                <td colSpan="4">{displayedRng(character1.activeRng)}</td>
+                <td colSpan="4">
+                  {charSkillRng(
+                    character1.Name,
+                    character1.activeRng,
+                    activeUpgrades
+                  )}
+                </td>
               </tr>
               <tr>
                 <th>Effect</th>
-                <td colSpan="4">{character1.activeEff}</td>
+                <td colSpan="4">
+                  {charSkillDes(
+                    charName,
+                    baseValue,
+                    scaleValue,
+                    activeUpgrades
+                  )}
+                </td>
               </tr>
               <tr>
                 <th>Upgrades</th>
-                <td className="upgrade-box">
+                <td
+                  className={`upgrade-box ${
+                    activeUpgrades.upgrade1 ? "active" : ""
+                  }`}
+                >
                   {character1.activeBuff1}
                   <br />
-                  <button>Upgrade</button>
+                  <button onClick={() => toggleUpgrade("upgrade1")}>
+                    Upgrade
+                  </button>
                 </td>
-                <td className="upgrade-box">
+                <td
+                  className={`upgrade-box ${
+                    activeUpgrades.upgrade2 ? "active" : ""
+                  }`}
+                >
                   {character1.activeBuff2}
                   <br />
-                  <button>Upgrade</button>
+                  <button onClick={() => toggleUpgrade("upgrade2")}>
+                    Upgrade
+                  </button>
                 </td>
-                <td className="upgrade-box">
+                <td
+                  className={`upgrade-box ${
+                    activeUpgrades.upgrade3 ? "active" : ""
+                  }`}
+                >
                   {character1.activeBuff3}
                   <br />
-                  <button>Upgrade</button>
+                  <button onClick={() => toggleUpgrade("upgrade3")}>
+                    Upgrade
+                  </button>
                 </td>
-                <td className="upgrade-box">
+                <td
+                  className={`upgrade-box ${
+                    activeUpgrades.upgrade4 ? "active" : ""
+                  }`}
+                >
                   {character1.activeBuff4}
                   <br />
-                  <button>Upgrade</button>
+                  <button onClick={() => toggleUpgrade("upgrade4")}>
+                    Upgrade
+                  </button>
                 </td>
               </tr>
               <tr>
@@ -251,6 +314,7 @@ function CharDetail() {
                       height: "50px",
                       borderRadius: "10px",
                     }}
+                    onClick={() => resetUpgrades()}
                   >
                     Reset
                   </button>

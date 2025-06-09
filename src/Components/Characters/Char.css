@@ -78,6 +78,24 @@
   height: 50px;
   border-right: 1px solid black;
   text-align: center;
+  position: relative; /* Needed for the pseudo-element */
+  padding: 4px; /* Creates space for inner border */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.upgrade-box.active {
+  border: none; /* Remove default border */
+}
+
+.upgrade-box.active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 4px solid white; /* Thick white inner border */
+  pointer-events: none; /* Allows clicks through the pseudo-element */
 }
 
 .stat-table {
