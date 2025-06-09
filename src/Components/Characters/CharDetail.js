@@ -103,7 +103,7 @@ function CharDetail() {
           className="character-image"
         />
         <div className="character-detail">
-          {charIntro()}
+          {charIntro(name)}
           <h3>Base stats:</h3>
           <table className="stat-table">
             <thead>

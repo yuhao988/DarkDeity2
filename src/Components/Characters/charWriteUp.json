@@ -1,0 +1,82 @@
+{
+  "gwyn": {
+    "introduction": "Gwyn's introduction",
+    "gameplay": "Gwyn's gameplay"
+  },
+  "riordan": {
+    "introduction": "riordan's introduction",
+    "gameplay": "riordan's gameplay"
+  },
+  "arthur": {
+    "introduction": "arthur's introduction",
+    "gameplay": "arthur's gameplay"
+  },
+  "cassandra": {
+    "introduction": "cassandra's introduction",
+    "gameplay": "cassandra's gameplay"
+  },
+  "saxon": {
+    "introduction": "saxon's introduction",
+    "gameplay": "saxon's gameplay"
+  },
+  "alden": {
+    "introduction": "alden's introduction",
+    "gameplay": "alden's gameplay"
+  },
+  "valeria": {
+    "introduction": "valeria's introduction",
+    "gameplay": "valeria's gameplay"
+  },
+  "benji": {
+    "introduction": "benji's introduction",
+    "gameplay": "benji's gameplay"
+  },
+  "khamari": {
+    "introduction": "khamari's introduction",
+    "gameplay": "khamari's gameplay"
+  },
+  "zanele": {
+    "introduction": "zanele's introduction",
+    "gameplay": "zanele's gameplay"
+  },
+  "zuhair": {
+    "introduction": "zuhair's introduction",
+    "gameplay": "zuhair's gameplay"
+  },
+  "eve": {
+    "introduction": "eve's introduction",
+    "gameplay": "eve's gameplay"
+  },
+  "haoran": {
+    "introduction": "haoran's introduction",
+    "gameplay": "haoran's gameplay"
+  },
+  "mashal": {
+    "introduction": "mashal's introduction",
+    "gameplay": "mashal's gameplay"
+  },
+  "aya": {
+    "introduction": "aya's introduction",
+    "gameplay": "aya's gameplay"
+  },
+  "tusk": {
+    "introduction": "tusk's introduction",
+    "gameplay": "tusk's gameplay"
+  },
+  "laurai": {
+    "introduction": "laurai's introduction",
+    "gameplay": "laurai's gameplay"
+  },
+  "taldera": {
+    "introduction": "taldera's introduction",
+    "gameplay": "taldera's gameplay"
+  },
+  "vissarion": {
+    "introduction": "vissarion's introduction",
+    "gameplay": "vissarion's gameplay"
+  },
+  "calith": {
+    "introduction": "calith's introduction",
+    "gameplay": "calith's gameplay"
+  }
+}
