@@ -29,6 +29,22 @@ function ClassDetail() {
     (class2) => class2.Name.replace(/\s+/g, "").toLowerCase() === name
   );
   const Name1 = nameClass.Name;
+  const line = nameClass.Classline;
+  const baseValue1 = skillClass.S1Base;
+  const scaleValue1 = skillClass.S1Scale;
+  const baseValue2 = skillClass.S2Base;
+  const scaleValue2 = skillClass.S2Scale;
+
+  const growths = [
+    "HP_Grow",
+    "Mgt_Grow",
+    "Spd_Grow",
+    "Dex_Grow",
+    "Def_Grow",
+    "Frt_Grow",
+    "Mas_Grow",
+    "Lck_Grow",
+  ].map((stat) => nameClass[stat]);
 
   const imageContext = require.context(
     "./Pictures", // Folder path
@@ -96,6 +112,9 @@ function ClassDetail() {
           upgrade3: false,
           upgrade4: false,
         });
+        baseValue1 = skillClass.S1Base;
+        scaleValue1 = skillClass.S1Scale;
+
         break;
       case activeUpgrades2:
         setActiveUpgrades2({
@@ -104,6 +123,8 @@ function ClassDetail() {
           upgrade3: false,
           upgrade4: false,
         });
+        baseValue2 = skillClass.S2Base;
+        scaleValue2 = skillClass.S2Scale;
         break;
       default:
         break;
@@ -187,6 +208,74 @@ function ClassDetail() {
                   );
                 })()}
               </tr>
+            </tbody>
+          </table>
+          <h4>Individual Character growth in {nameClass.Name}</h4>
+          <table className="stat-table">
+            <thead>
+              <tr>
+                <th>Character</th>
+                {Object.keys(classStat[0])
+                  .filter((key) =>
+                    [
+                      "HP_Grow",
+                      "Mgt_Grow",
+                      "Spd_Grow",
+                      "Dex_Grow",
+                      "Def_Grow",
+                      "Frt_Grow",
+                      "Mas_Grow",
+                      "Lck_Grow",
+                    ].includes(key)
+                  ) // Exclude these keys
+                  .map((key) => (
+                    <th key={key}>{modHeader(key)}</th>
+                  ))}
+
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.values(charStat)
+                .filter((entry) => entry.classLine === line)
+                .map((entry) => {
+                  let total = 0;
+                  let i = 0;
+                  return (
+                    <tr key={entry.Name}>
+                      {Object.entries(entry)
+                        .filter(([key]) =>
+                          [
+                            "Name",
+                            "hp",
+                            "mgt",
+                            "spd",
+                            "dex",
+                            "def",
+                            "frt",
+                            "mas",
+                            "lck",
+                          ].includes(key)
+                        )
+                        .map(([key, value]) => {
+                          let numValue;
+
+                          if (key === "Name") {
+                            return <td key={key}>{value}</td>;
+                          } else {
+                            const charGrow = parseFloat(value);
+
+                            numValue = growths[i] * 100 + charGrow;
+
+                            total += numValue;
+                            i++;
+                            return <td key={key}>{`${numValue}%`}</td>;
+                          }
+                        })}
+                      <td>{`${total}%`}</td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </table>
           <h3>Class Stats Modifier:</h3>
