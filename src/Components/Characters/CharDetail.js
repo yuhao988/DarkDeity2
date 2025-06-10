@@ -39,11 +39,13 @@ function CharDetail() {
   const character1 = Object.values(charActive).find(
     (char) => char.Name.toLowerCase() === name
   );
- const charName = character1.Name.replace(/'/g, "")
+  const nameNoMark = character1.Name.replace(/'/g, "");
+
   const character2 = Object.values(charGrowth).find(
     (char) => char.Name.toLowerCase() === name
   );
-
+ 
+  if (!character2) console.log("charcater2 not found");
   if (!character1) return <div>Character not found</div>;
 
   let baseValue = character1.skillBase;
@@ -97,13 +99,10 @@ function CharDetail() {
         <h1>{character1.Name}</h1>
       </header>
       <div className="page-body">
-        <img
-          src={images[name.toLowerCase()]}
-          alt={name}
-          className="character-image"
-        />
+        <img src={images[name]} alt={name} className="character-image" />
         <div className="character-detail">
-          {charIntro(name)}
+          {charIntro(nameNoMark)}
+          
           <h3>Base stats:</h3>
           <table className="stat-table">
             <thead>
@@ -166,6 +165,7 @@ function CharDetail() {
                     (char) => char.Name === character1.Name
                   );
                   let total = 0;
+
                   return (
                     <>
                       {Object.entries(character)
@@ -231,7 +231,7 @@ function CharDetail() {
                 <th>Cost</th>
                 <td colSpan="4">
                   {charSkillCost(
-                    character1.Name,
+                    nameNoMark,
                     character1.activeMana,
                     activeUpgrades
                   )}
@@ -241,7 +241,7 @@ function CharDetail() {
                 <th>Range</th>
                 <td colSpan="4">
                   {charSkillRng(
-                    character1.Name,
+                    nameNoMark,
                     character1.activeRng,
                     activeUpgrades
                   )}
@@ -251,7 +251,7 @@ function CharDetail() {
                 <th>Effect</th>
                 <td colSpan="4">
                   {charSkillDes(
-                    charName,
+                    nameNoMark,
                     baseValue,
                     scaleValue,
                     activeUpgrades

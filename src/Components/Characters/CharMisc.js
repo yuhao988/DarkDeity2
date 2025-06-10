@@ -2,14 +2,14 @@ import charActive from "../Datas/charActive.json";
 import charWrite from "./charWriteUp.json";
 
 export function charIntro(charName) {
+  const charname = charName.toLowerCase();
   const writeUp = Object.entries(charWrite).find(
-    ([key, value]) => key === charName
+    ([key, value]) => key === charname
   )?.[1];
   return <p>{writeUp.introduction} </p>;
 }
 
 export function charSkillDes(charName, base, scale, upgrade) {
-  console.log(charName.replace(/'/g, ""));
   const character = Object.values(charActive).find(
     (char) => char.Name.replace(/'/g, "") === charName.replace(/'/g, "")
   );
@@ -290,6 +290,72 @@ export function charSkillCost(charName, mana, upgrade) {
       break;
     case "Arthur":
       if (upgrade.upgrade2) cost -= 10;
+      break;
+    case "Cassandra":
+      if (upgrade.upgrade2) cost -= 5;
+      if (upgrade.upgrade1) cost *= 1.5;
+      break;
+    case "Saxon":
+      if (upgrade.upgrade2) cost -= 10;
+      if (upgrade.upgrade1) cost *= 0.5;
+      break;
+    case "Alden":
+      if (upgrade.upgrade1) cost -= 10;
+      break;
+    case "Valeria":
+      if (upgrade.upgrade3) cost -= 10;
+      if (upgrade.upgrade1) cost *= 1.5;
+      break;
+    case "Benji":
+      if (upgrade.upgrade2) cost -= 10;
+      if (upgrade.upgrade1) cost *= 1.5;
+      break;
+    case "Zanele":
+      if (upgrade.upgrade3) cost -= 10;
+      if (upgrade.upgrade1) cost *= 1.5;
+      break;
+    case "Khamari":
+      if (upgrade.upgrade3) cost -= 10;
+      if (upgrade.upgrade4) cost -= 10;
+      if (upgrade.upgrade1) cost *= 1.5;
+      break;
+    case "Zuhair":
+      if (upgrade.upgrade2) cost -= 5;
+      if (upgrade.upgrade1) cost -= 5;
+      break;
+    case "Eve":
+      if (upgrade.upgrade3) cost -= 10;
+      if (upgrade.upgrade1) cost *= 1.5;
+      break;
+    case "Haoran":
+      if (upgrade.upgrade2) cost -= 10;
+      if (upgrade.upgrade1) cost *= 1.5;
+      break;
+    case "Mashal":
+      if (upgrade.upgrade4) cost -= 5;
+      break;
+    case "Aya":
+      if (upgrade.upgrade1) cost -= 10;
+      if (upgrade.upgrade4) cost -= 10;
+      break;
+    case "Tusk":
+      if (upgrade.upgrade3) cost -= 10;
+      if (upgrade.upgrade1) cost *= 1.5;
+      break;
+    case "Laurai":
+      if (upgrade.upgrade2) cost -= 10;
+      if (upgrade.upgrade1) cost *= 1.5;
+      break;
+    case "TalDera":
+      if (upgrade.upgrade2) cost -= 10;
+      if (upgrade.upgrade4) cost *= 2;
+      break;
+    case "Vissarion":
+      if (upgrade.upgrade2) cost -= 10;
+      if (upgrade.upgrade1) cost *= 1.5;
+      break;
+    case "Calith":
+      if (upgrade.upgrade2) cost -= 15;
       break;
     default:
       cost = 999;
