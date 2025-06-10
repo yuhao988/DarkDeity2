@@ -9,6 +9,7 @@ import {
   charSkillCost,
   charSkillRng,
 } from "./CharMisc";
+import classGrowth from "../Datas/classStats.json";
 import "../../App.css";
 import "./Char.css";
 
@@ -44,12 +45,27 @@ function CharDetail() {
   const character2 = Object.values(charGrowth).find(
     (char) => char.Name.toLowerCase() === name
   );
- 
+
   if (!character2) console.log("charcater2 not found");
   if (!character1) return <div>Character not found</div>;
 
   let baseValue = character1.skillBase;
   let scaleValue = character1.skillScale;
+  const line = character2.classLine;
+  const growths = [];
+
+  Object.values(charGrowth).filter(([key]) =>
+    [
+      "hp",
+      "mgt",
+      "spd",
+      "dex",
+      "def",
+      "frt",
+      "mas",
+      "lck",
+    ].includes(key)
+  );
 
   const imageContext = require.context(
     "./Pictures", // Folder path
@@ -102,7 +118,7 @@ function CharDetail() {
         <img src={images[name]} alt={name} className="character-image" />
         <div className="character-detail">
           {charIntro(nameNoMark)}
-          
+
           <h3>Base stats:</h3>
           <table className="stat-table">
             <thead>
@@ -197,6 +213,76 @@ function CharDetail() {
                   );
                 })()}
               </tr>
+            </tbody>
+          </table>
+          <h4>Class based growths:</h4>
+          <h5>Tier 2:</h5>
+          <table className="stat-table">
+            <thead>
+              <tr>
+                <th>Class</th>
+                {Object.keys(charGrowth[0])
+                  .filter(
+                    (key) =>
+                      ![
+                        "ID",
+                        "Name",
+                        "classLine",
+                        "passive",
+                        "passiveEff",
+                      ].includes(key)
+                  ) // Exclude these keys
+                  .map((key) => (
+                    <th key={key}>{turnCap(key)}</th>
+                  ))}
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.values(classGrowth)
+                .filter((entry) => entry.Classline === line && entry.Tier === 2)
+                .map((entry) => {
+                  let total = 0;
+
+                  return (
+                    <tr key={entry.Name}>
+                      {Object.entries(entry)
+                        .filter(([key]) =>
+                          [
+                            "Name",
+                            "HP_Grow",
+                            "Mgt_Grow",
+                            "Spd_Grow",
+                            "Dex_Grow",
+                            "Def_Grow",
+                            "Frt_Grow",
+                            "Mas_Grow",
+                            "Lck_Grow",
+                          ].includes(key)
+                        )
+                        .map(([key, value]) => {
+                          let numValue;
+                          if (key === "Name") {
+                            return <td key={key}>{value}</td>;
+                          } else {
+                            let i = 0;
+                            if (
+                              typeof value === "string" &&
+                              value.includes("%")
+                            ) {
+                              numValue = parseFloat(value);
+                            } else {
+                              numValue = Number(value) || 0;
+                            }
+                            total += numValue;
+                            i++;
+                            return <td key={key}>{value}</td>;
+                          }
+                        })}
+                      <td>{`${total}%`}</td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </table>
           <h3>Passive:</h3>
