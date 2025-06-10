@@ -196,6 +196,9 @@ export function charSkillDes(charName, base, scale, upgrade) {
       skillText = skillText.replace(
         "18+50%",
         `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+      ).replace(
+        "15 Mana",
+        `${finalBase[1]} Mana`
       );
       if (upgrade.upgrade3) skillText += ` and clears target's debuffs`;
       break;
@@ -249,7 +252,7 @@ export function charSkillDes(charName, base, scale, upgrade) {
       break;
     case "Vissarion":
       if (upgrade.upgrade3) finalBase[1] += 1;
-      if (upgrade.upgrade4) finalScale[1] += 20;
+      if (upgrade.upgrade4) finalScale[0] += 20;
       if (upgrade.upgrade1) {
         finalBase[0] = Math.floor(finalBase[0] * 1.5);
         finalScale[0] = Math.floor(finalScale[0] * 1.5);
@@ -332,7 +335,6 @@ export function charSkillCost(charName, mana, upgrade) {
       if (upgrade.upgrade1) cost *= 1.5;
       break;
     case "Mashal":
-      if (upgrade.upgrade4) cost -= 5;
       break;
     case "Aya":
       if (upgrade.upgrade1) cost -= 10;
@@ -368,16 +370,18 @@ export function charSkillRng(charName, rng, upgrade) {
   let range;
   let rngMin = 0;
   let rngMax = 0;
+
   if (rng === "Attack") {
     range = "Same as attack range";
   } else if (rng === "Self" && rngMin === 0 && rngMax === 0) {
     range = `${rngMin}~${rngMax}(Self)`;
   }
-  const matches = rng.match(/(\d+)/g);
 
+  const matches = rng.match(/(\d+)/g);
   if (matches && matches.length >= 2) {
     [rngMin, rngMax] = matches.map(Number);
   }
+
   switch (charName) {
     case "Gwyn":
       range = "Same as attack range";
@@ -389,7 +393,60 @@ export function charSkillRng(charName, rng, upgrade) {
       if (upgrade.upgrade4) rngMax += 1;
       range = `${rngMin}~${rngMax}`;
       break;
+    case "Cassandra":
+      range = `${rngMin}~${rngMax}`;
+      break;
     case "Saxon":
+      range = `${rngMin}~${rngMax}(Self)`;
+      break;
+    case "Alden":
+      if (upgrade.upgrade2) rngMax += 1;
+      range = `${rngMin}~${rngMax}`;
+      break;
+    case "Valeria":
+      range = `${rngMin}~${rngMax}`;
+      break;
+    case "Benji":
+      range = `${rngMin}~${rngMax}(Self)`;
+      break;
+    case "Khamari":
+      range = `${rngMin}~${rngMax}`;
+      break;
+    case "Zanele":
+      range = `Same as attack range`;
+      break;
+    case "Zuhair":
+      if (upgrade.upgrade3) rngMax += 1;
+      if (upgrade.upgrade4) rngMax += 1;
+      range = `${rngMin}~${rngMax}`;
+      break;
+    case "Eve":
+      range = `Same as attack range`;
+      break;
+    case "Haoran":
+      if (upgrade.upgrade4) rngMax += 1;
+      range = `${rngMin}~${rngMax}`;
+      break;
+    case "Mashal":
+      range = `${rngMin}~${rngMax}(Self)`;
+      break;
+    case "Aya":
+      range = `${rngMin}~${rngMax}(Self)`;
+      break;
+    case "Tusk":
+      range = `Same as attack range`;
+      break;
+    case "Laurai":
+      if (upgrade.upgrade4) rngMax += 1;
+      range = `${rngMin}~${rngMax}`;
+      break;
+    case "TalDera":
+      range = `${rngMin}~${rngMax}(Self)`;
+      break;
+    case "Vissarion":
+      range = `${rngMin}~${rngMax}`;
+      break;
+    case "Calith":
       range = `${rngMin}~${rngMax}(Self)`;
       break;
     default:
