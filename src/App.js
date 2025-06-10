@@ -9,6 +9,9 @@ import CharDetail from "./Components/Characters/CharDetail";
 import ClassMain from "./Components/Classes/ClassInfo";
 import ClassDetail from "./Components/Classes/ClassDetail";
 import MenuBar from "./MenuBar";
+import RingDetail from "./Components/Rings/RingDetail";
+import RingMain from "./Components/Rings/RingMain";
+
 
 function App() {
   // Set the app element when the component mounts
@@ -26,6 +29,8 @@ function App() {
           <Route path="/characters/:name" element={<CharDetail />} />
           <Route path="/classes" element={<ClassMain />} />
           <Route path="/classes/:name" element={<ClassDetail />} />
+          <Route path="/rings" element={<RingMain />} />
+          <Route path="/rings/:name" element={<RingDetail />} />
 
           <Route path="/*" element={<Error />} />
         </Routes>

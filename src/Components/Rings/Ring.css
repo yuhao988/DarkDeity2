@@ -1,0 +1,35 @@
+/*.ring-list {
+ 
+}*/
+
+.ring-table {
+  border-collapse: collapse;
+  width: 95%;
+  border: 2px solid rgb(65, 2, 2);
+  margin-left: 4vw;
+}
+
+.ring-table th {
+  /* Header cell styling */
+  background-color: #282c34;
+  color: white;
+  text-align: center;
+  padding: 8px 16px;
+  width: 20px;
+  border-bottom: 1px solid rgb(248, 247, 247); /* Horizontal divider */
+  /*border-right: 2px solid #83a8f1;  Vertical divider */
+}
+.ring-table td {
+  /* Data cell styling */
+  padding: 8px 16px;
+  text-align: left;
+  border-bottom: 1px solid rgb(65, 2, 2); /* Horizontal divider */
+  background-color: #a0aeca;
+}
+
+.ring-image {
+  padding: 10px;
+  width: 3vw;
+  height: auto; /* Maintains aspect ratio */
+  aspect-ratio: 1; /* Optional: Force square (1:1) or set like 16/9 */
+}

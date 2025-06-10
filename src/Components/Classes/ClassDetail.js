@@ -1,17 +1,34 @@
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useState } from "react";
 import classStat from "../Datas/classStats.json";
+import charStat from "../Datas/charStatPass.json";
+import classSkills from "../Datas/classSkills.json";
 import { ClassIntro } from "./ClassMisc";
 import "../../App.css";
 import "./Class.css";
 
 function ClassDetail() {
-  const { name } = useParams(); // Gets the URL parameter (e.g., "gwyn")
+  const { name } = useParams();
+  const [activeUpgrades1, setActiveUpgrades1] = useState({
+    upgrade1: false,
+    upgrade2: false,
+    upgrade3: false,
+    upgrade4: false,
+  });
+  const [activeUpgrades2, setActiveUpgrades2] = useState({
+    upgrade1: false,
+    upgrade2: false,
+    upgrade3: false,
+    upgrade4: false,
+  });
 
-  const class1 = Object.values(classStat).find(
+  const nameClass = Object.values(classStat).find(
     (class2) => class2.Name.replace(/\s+/g, "").toLowerCase() === name
   );
-  const Name1 = class1.Name;
+  const skillClass = Object.values(classSkills).find(
+    (class2) => class2.Name.replace(/\s+/g, "").toLowerCase() === name
+  );
+  const Name1 = nameClass.Name;
 
   const imageContext = require.context(
     "./Pictures", // Folder path
@@ -26,16 +43,79 @@ function ClassDetail() {
     return acc;
   }, {});
 
-  if (!class1) return <div>Class not found</div>;
+  if (!nameClass) return <div>Class not found</div>;
 
   const modHeader = (key) => {
     const trimmed = key.replace(/_(Grow|Mod)$/, "");
     return trimmed;
   };
 
+  const getSkillColor = (skillType) => {
+    const colorMap = {
+      Red: "rgb(160, 3, 3)",
+      Blue: "rgb(36, 3, 156)",
+      Green: "rgb(3, 128, 50)",
+      default: "#f5f6fa", // Fallback
+    };
+    return colorMap[skillType] || colorMap.default;
+  };
+
+  const toggleUpgrade = (skillNum, upgradeKey) => {
+    let cnt = 0;
+    for (const key in skillNum) {
+      if (key !== upgradeKey && skillNum[key] === true) {
+        cnt++;
+      }
+    }
+    if (cnt < 2) {
+      switch (skillNum) {
+        case activeUpgrades1:
+          setActiveUpgrades1((prev) => ({
+            ...prev,
+            [upgradeKey]: !prev[upgradeKey],
+          }));
+          break;
+        case activeUpgrades2:
+          setActiveUpgrades2((prev) => ({
+            ...prev,
+            [upgradeKey]: !prev[upgradeKey],
+          }));
+          break;
+        default:
+          break;
+      }
+    }
+  };
+
+  const resetUpgrades = (skillNum) => {
+    switch (skillNum) {
+      case activeUpgrades1:
+        setActiveUpgrades1({
+          upgrade1: false,
+          upgrade2: false,
+          upgrade3: false,
+          upgrade4: false,
+        });
+        break;
+      case activeUpgrades2:
+        setActiveUpgrades2({
+          upgrade1: false,
+          upgrade2: false,
+          upgrade3: false,
+          upgrade4: false,
+        });
+        break;
+      default:
+        break;
+    }
+
+    //baseValue = character1.skillBase;
+    //scaleValue = character1.skillScale;
+  };
+
   return (
     <div>
-      <header className="page-header">{class1.Name}</header>
+      <header className="page-header">{nameClass.Name}</header>
       <div className="page-body">
         <img
           src={images[name.toLowerCase()]}
@@ -44,6 +124,15 @@ function ClassDetail() {
         />
         <div>
           {ClassIntro(Name1)}
+          <br />
+          <p>
+            Characters that can be made into the {nameClass.Name} includes:{" "}
+            {Object.values(charStat)
+              .filter((charName) => charName.classLine === nameClass.Classline)
+              .map((char) => (
+                <div>{char.Name}</div>
+              ))}
+          </p>
           <h3>Class Growth Modifier:</h3>
           <table className="stat-table">
             <thead>
@@ -74,7 +163,7 @@ function ClassDetail() {
                   return (
                     <>
                       {Object.entries(
-                        classStat.find((clas) => clas.Name === class1.Name)
+                        classStat.find((clas) => clas.Name === nameClass.Name)
                       )
                         .filter(([key]) =>
                           [
@@ -127,7 +216,7 @@ function ClassDetail() {
               <tr>
                 {(() => {
                   const character = classStat.find(
-                    (clas) => clas.Name === class1.Name
+                    (clas) => clas.Name === nameClass.Name
                   );
                   let total = 0;
                   return (
@@ -159,7 +248,260 @@ function ClassDetail() {
             </tbody>
           </table>
           <h3>Class Passive:</h3>
+          <table className="passive-table">
+            <tbody>
+              <tr>
+                <th>Name</th>
+                <td>{nameClass.Passive}</td>
+              </tr>
+              <tr>
+                <th>Effect</th>
+                <td>{skillClass.Passive}</td>
+              </tr>
+            </tbody>
+          </table>
           <h3>Class Skills:</h3>
+          <table className="active-table">
+            <tbody>
+              <tr>
+                <th>Name</th>
+                <td
+                  colSpan="4"
+                  style={{
+                    backgroundColor: getSkillColor(skillClass.S1Type),
+                    color: "#FFFFFF",
+                  }}
+                >
+                  {nameClass.Skill1}
+                </td>
+              </tr>
+              <tr>
+                <th>Cost</th>
+                <td colSpan="4">
+                  {/*charSkillCost(
+                    nameNoMark,
+                    character1.activeMana,
+                    activeUpgrades
+                  )*/}
+                  {skillClass.S1Cost}
+                </td>
+              </tr>
+              <tr>
+                <th>Range</th>
+                <td colSpan="4">
+                  {/*charSkillRng(
+                    nameNoMark,
+                    character1.activeRng,
+                    activeUpgrades
+                  )*/}
+                  {skillClass.S1Rng}
+                </td>
+              </tr>
+              <tr>
+                <th>Effect</th>
+                <td colSpan="4">
+                  {/*charSkillDes(
+                    nameNoMark,
+                    baseValue,
+                    scaleValue,
+                    activeUpgrades
+                  )*/}
+                  {skillClass.Skill1}
+                </td>
+              </tr>
+              <tr>
+                <th>Upgrades</th>
+                <td
+                  className={`upgrade-box ${
+                    activeUpgrades1.upgrade1 ? "active" : ""
+                  }`}
+                >
+                  {skillClass.S1Buff1}
+                  <br />
+                  <button
+                    onClick={() => toggleUpgrade(activeUpgrades1, "upgrade1")}
+                  >
+                    Upgrade
+                  </button>
+                </td>
+                <td
+                  className={`upgrade-box ${
+                    activeUpgrades1.upgrade2 ? "active" : ""
+                  }`}
+                >
+                  {skillClass.S1Buff2}
+                  <br />
+                  <button
+                    onClick={() => toggleUpgrade(activeUpgrades1, "upgrade2")}
+                  >
+                    Upgrade
+                  </button>
+                </td>
+                <td
+                  className={`upgrade-box ${
+                    activeUpgrades1.upgrade3 ? "active" : ""
+                  }`}
+                >
+                  {skillClass.S1Buff3}
+                  <br />
+                  <button
+                    onClick={() => toggleUpgrade(activeUpgrades1, "upgrade3")}
+                  >
+                    Upgrade
+                  </button>
+                </td>
+                <td
+                  className={`upgrade-box ${
+                    activeUpgrades1.upgrade4 ? "active" : ""
+                  }`}
+                >
+                  {skillClass.S1Buff4}
+                  <br />
+                  <button
+                    onClick={() => toggleUpgrade(activeUpgrades1, "upgrade4")}
+                  >
+                    Upgrade
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <th></th>
+                <td colSpan={4} style={{ textAlign: "center" }}>
+                  <button
+                    style={{
+                      width: "200px",
+                      height: "50px",
+                      borderRadius: "10px",
+                    }}
+                    onClick={() => resetUpgrades(activeUpgrades1)}
+                  >
+                    Reset
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+          <table className="active-table">
+            <tbody>
+              <tr>
+                <th>Name</th>
+                <td
+                  colSpan="4"
+                  style={{
+                    backgroundColor: getSkillColor(skillClass.S2Type),
+                    color: "#FFFFFF",
+                  }}
+                >
+                  {nameClass.Skill2}
+                </td>
+              </tr>
+              <tr>
+                <th>Cost</th>
+                <td colSpan="4">
+                  {/*charSkillCost(
+                    nameNoMark,
+                    character1.activeMana,
+                    activeUpgrades
+                  )*/}
+                  {skillClass.S2Cost}
+                </td>
+              </tr>
+              <tr>
+                <th>Range</th>
+                <td colSpan="4">
+                  {/*charSkillRng(
+                    nameNoMark,
+                    character1.activeRng,
+                    activeUpgrades
+                  )*/}
+                  {skillClass.S2Rng}
+                </td>
+              </tr>
+              <tr>
+                <th>Effect</th>
+                <td colSpan="4">
+                  {/*charSkillDes(
+                    nameNoMark,
+                    baseValue,
+                    scaleValue,
+                    activeUpgrades
+                  )*/}
+                  {skillClass.Skill2}
+                </td>
+              </tr>
+              <tr>
+                <th>Upgrades</th>
+                <td
+                  className={`upgrade-box ${
+                    activeUpgrades2.upgrade1 ? "active" : ""
+                  }`}
+                >
+                  {skillClass.S2Buff1}
+                  <br />
+                  <button
+                    onClick={() => toggleUpgrade(activeUpgrades2, "upgrade1")}
+                  >
+                    Upgrade
+                  </button>
+                </td>
+                <td
+                  className={`upgrade-box ${
+                    activeUpgrades2.upgrade2 ? "active" : ""
+                  }`}
+                >
+                  {skillClass.S2Buff2}
+                  <br />
+                  <button
+                    onClick={() => toggleUpgrade(activeUpgrades2, "upgrade2")}
+                  >
+                    Upgrade
+                  </button>
+                </td>
+                <td
+                  className={`upgrade-box ${
+                    activeUpgrades2.upgrade3 ? "active" : ""
+                  }`}
+                >
+                  {skillClass.S2Buff3}
+                  <br />
+                  <button
+                    onClick={() => toggleUpgrade(activeUpgrades2, "upgrade3")}
+                  >
+                    Upgrade
+                  </button>
+                </td>
+                <td
+                  className={`upgrade-box ${
+                    activeUpgrades2.upgrade4 ? "active" : ""
+                  }`}
+                >
+                  {skillClass.S2Buff4}
+                  <br />
+                  <button
+                    onClick={() => toggleUpgrade(activeUpgrades2, "upgrade4")}
+                  >
+                    Upgrade
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <th></th>
+                <td colSpan={4} style={{ textAlign: "center" }}>
+                  <button
+                    style={{
+                      width: "200px",
+                      height: "50px",
+                      borderRadius: "10px",
+                    }}
+                    onClick={() => resetUpgrades(activeUpgrades2)}
+                  >
+                    Reset
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <Link to="/classes">Back</Link>{" "}
       </div>

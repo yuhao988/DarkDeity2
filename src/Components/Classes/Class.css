@@ -80,3 +80,67 @@
 .text-paragraph{
   width: 70vw;
 }
+
+.passive-table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 2px solid rgb(65, 2, 2);
+  background-color: rgb(184, 182, 182);
+}
+
+.passive-table th {
+  /* Header cell styling */
+  background-color: #282c34;
+  color: white;
+  text-align: right;
+  padding: 8px 16px;
+  width: 60px;
+  border-bottom: 1px solid rgb(248, 247, 247); /* Horizontal divider */
+  /*border-right: 2px solid #83a8f1;  Vertical divider */
+}
+
+.passive-table td {
+  /* Data cell styling */
+  padding: 8px 16px;
+  text-align: left;
+  border-bottom: 1px solid rgb(65, 2, 2); /* Horizontal divider */
+}
+
+.active-table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 2px solid rgb(65, 2, 2);
+  background-color: rgb(184, 182, 182);
+}
+
+.active-table th {
+  /* Header cell styling */
+  background-color: #282c34;
+  color: white;
+  text-align: right;
+  padding: 8px 16px;
+  width: 60px;
+  border-bottom: 1px solid rgb(248, 247, 247); /* Horizontal divider */
+  /*border-right: 2px solid #83a8f1;  Vertical divider */
+}
+
+.active-table td {
+  /* Data cell styling */
+  padding: 8px 16px;
+  /*text-align: left;*/
+  border-bottom: 1px solid rgb(65, 2, 2); /* Horizontal divider */
+}
+
+.upgrade-box {
+  width: 150px;
+  height: 50px;
+  border-right: 1px solid black;
+  text-align: center;
+  position: relative; /* Needed for the pseudo-element */
+  padding: 4px; /* Creates space for inner border */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.upgrade-box.active {
+  border: none; /* Remove default border */
+}

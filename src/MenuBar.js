@@ -10,7 +10,7 @@ function MenuBar() {
           <li><Link to="/">Home</Link></li>
           <li><Link to="/characters">Characters</Link></li>
           <li><Link to="/classes">Classes</Link></li>
-          <li>Rings</li>
+          <li><Link to="/rings">Rings</Link></li>
           <li>Weapons</li>
           <li>Shop items</li>
           <li>Calculations & Terminologies</li>
