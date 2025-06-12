@@ -3,7 +3,7 @@ import { useState } from "react";
 import classStat from "../Datas/classStats.json";
 import charStat from "../Datas/charStatPass.json";
 import classSkills from "../Datas/classSkills.json";
-import { ClassIntro } from "./ClassMisc";
+import { ClassIntro, classSkillDes } from "./ClassMisc";
 import "../../App.css";
 import "./Class.css";
 
@@ -30,10 +30,11 @@ function ClassDetail() {
   );
   const Name1 = nameClass.Name;
   const line = nameClass.Classline;
-  const baseValue1 = skillClass.S1Base;
-  const scaleValue1 = skillClass.S1Scale;
-  const baseValue2 = skillClass.S2Base;
-  const scaleValue2 = skillClass.S2Scale;
+  let baseValue1 = skillClass.S1Base;
+  let scaleValue1 = skillClass.S1Scale;
+  let baseValue2 = skillClass.S2Base;
+  let scaleValue2 = skillClass.S2Scale;
+  console.log(Name1);
 
   const growths = [
     "HP_Grow",
@@ -389,13 +390,14 @@ function ClassDetail() {
               <tr>
                 <th>Effect</th>
                 <td colSpan="4">
-                  {/*charSkillDes(
-                    nameNoMark,
-                    baseValue,
-                    scaleValue,
-                    activeUpgrades
-                  )*/}
-                  {skillClass.Skill1}
+                  {classSkillDes(
+                    Name1,
+                    baseValue1,
+                    scaleValue1,
+                    1,
+                    activeUpgrades1
+                  )}
+                  
                 </td>
               </tr>
               <tr>
@@ -510,13 +512,14 @@ function ClassDetail() {
               <tr>
                 <th>Effect</th>
                 <td colSpan="4">
-                  {/*charSkillDes(
-                    nameNoMark,
-                    baseValue,
-                    scaleValue,
-                    activeUpgrades
-                  )*/}
-                  {skillClass.Skill2}
+                  {classSkillDes(
+                    Name1,
+                    baseValue2,
+                    scaleValue2,
+                    2,
+                    activeUpgrades2
+                  )}
+                  
                 </td>
               </tr>
               <tr>
