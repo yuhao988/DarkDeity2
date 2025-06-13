@@ -980,7 +980,7 @@
     "Passive": "Gains 25 Dodge, Accuracy or Crit, cycling with each attack",
     "Skill1": "Attack with ki energy in a 5 tile line, dealing 27+75% damage to any enemies",
     "S1Base": [27],
-    "S1Scale": [75  ],
+    "S1Scale": [75],
     "S1Type": "Red",
     "S1Cost": 60,
     "S1Rng": "1~1",
