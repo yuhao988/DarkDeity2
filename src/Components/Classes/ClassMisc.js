@@ -868,166 +868,139 @@ export function classSkillDes(className, base, scale, skillNum, upgrade) {
         if (upgrade.upgrade4) skillText += ` and heals caster by 50% damage`;
         break;
       case "Geomancer":
-        if (upgrade.upgrade2) finalScale[0] += 20;
-        if (upgrade.upgrade1) {
-          finalBase[0] = Math.floor(finalBase[0] * 1.5);
-          finalScale[0] = Math.floor(finalScale[0] * 1.5);
-        }
+        if (upgrade.upgrade3) finalBase[0] += 1;
         skillText = skillText
           .replace(
-            "18+80%",
+            "2+10%",
             `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
           )
           .replace(
-            "2+20%",
+            "10+75%",
             `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
           );
+        if (upgrade.upgrade2) skillText += ` and grants target 10 mana`;
+        if (upgrade.upgrade4) skillText += ` and clears Debuffs from target`;
         break;
       case "Warlock":
-        if (upgrade.upgrade2) finalScale[0] += 20;
-        if (upgrade.upgrade4) finalBase[1] += 80;
-        if (upgrade.upgrade1) {
-          finalBase[0] = Math.floor(finalBase[0] * 1.5);
-          finalScale[0] = Math.floor(finalScale[0] * 1.5);
+        if (upgrade.upgrade1) finalBase[0] += 3;
+        if (upgrade.upgrade2) finalBase[1] += 1;
+        if (upgrade.upgrade4) {
+          finalScale[0] += 25;
         }
         skillText = skillText
           .replace(
-            "1+100%",
+            "4+20%",
             `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
           )
-          .replace(
-            "80+200%",
-            `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
-          );
+          .replace("2 tiles", `${finalBase[1]} tiles`);
         break;
       case "Aegis":
-        skillText = skillText.replace(
-          "2+20%",
-          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-        );
+        if (upgrade.upgrade2) finalBase[0] += 1;
+        skillText = skillText
+          .replace(
+            "6+40%",
+            `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
+          )
+          .replace("3 turns", `${finalBase[0]} turns`);
+        if (upgrade.upgrade3) skillText += ` and grants target 10 mana`;
+        if (upgrade.upgrade4) skillText += ` and clears Debuffs from target`;
         break;
       case "Scholar":
-        if (upgrade.upgrade2) finalScale[0] += 20;
-        if (upgrade.upgrade4) finalBase[1] += 5;
-        if (upgrade.upgrade1) {
+        if (upgrade.upgrade3) finalScale[0] += 30;
+        if (upgrade.upgrade2) {
           finalBase[0] = Math.floor(finalBase[0] * 1.5);
           finalScale[0] = Math.floor(finalScale[0] * 1.5);
         }
+        skillText = skillText.replace(
+          "20+100%",
+          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+        );
+        if (upgrade.upgrade4) skillText += ` and clears Debuffs from target`;
+        break;
+      case "Juggernaut":
+        if (upgrade.upgrade1) finalBase[0] += 1;
+        if (upgrade.upgrade3) finalBase[0] += 1;
+        if (upgrade.upgrade4) finalScale[1] += 40;
         skillText = skillText
           .replace(
-            "1+100%",
+            "2+10%",
             `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
           )
           .replace(
-            "5+20%",
+            "6+40%",
             `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
           );
         break;
-      case "Juggernaut":
-        if (upgrade.upgrade3) finalBase[1] += 1;
-        if (upgrade.upgrade1) {
-          finalBase[0] = Math.floor(finalBase[0] * 1.5);
-          finalScale[0] = Math.floor(finalScale[0] * 1.5);
-        }
-        skillText = skillText
-          .replace(
-            "6+60%",
-            `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-          )
-          .replace("2 turns", `${finalBase[1]} turns`);
-        break;
       case "Waveseer":
-        if (upgrade.upgrade1) finalBase[0] += 5;
-        if (upgrade.upgrade2) finalScale[0] += 25;
-        if (upgrade.upgrade4) finalBase[1] -= 5;
-        skillText = skillText
-          .replace(
-            "18+50%",
-            `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-          )
-          .replace("15 Mana", `${finalBase[1]} Mana`);
-        if (upgrade.upgrade3) skillText += ` and clears target's debuffs`;
+        if (upgrade.upgrade4) finalBase[0] += 1;
+        skillText = skillText.replace("1 turn", `${finalBase[0]} turn`);
+        if (finalBase[0] > 1) skillText += `s`;
         break;
       case "Elementalist":
-        if (upgrade.upgrade2) finalBase[0] += 2;
-        if (upgrade.upgrade3) finalScale[0] += 15;
+        if (upgrade.upgrade4) finalScale[0] += 40;
+        if (upgrade.upgrade1) {
+          finalBase[0] = Math.floor(finalBase[0] * 0.5);
+          finalScale[0] = Math.floor(finalScale[0] * 0.5);
+        }
         skillText = skillText.replace(
-          "5+25%",
+          "15+75%",
           `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
         );
         break;
       case "Ritualist":
-        if (upgrade.upgrade2) finalScale[0] += 20;
-        if (upgrade.upgrade4) finalBase[0] += 5;
+        if (upgrade.upgrade4) finalScale[0] += 15;
         if (upgrade.upgrade1) {
-          finalBase[0] = Math.floor(finalBase[0] * 1.5);
-          finalScale[0] = Math.floor(finalScale[0] * 1.5);
+          finalBase[0] = Math.floor(finalBase[0] * 2);
+          finalScale[0] = Math.floor(finalScale[0] * 2);
         }
         skillText = skillText.replace(
-          "10+175%",
+          "6+40%",
           `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
         );
         break;
       case "Gale":
-        if (upgrade.upgrade3) finalScale[0] += 50;
-        if (upgrade.upgrade1) {
-          finalBase[0] = Math.floor(finalBase[0] * 1.5);
-          finalScale[0] = Math.floor(finalScale[0] * 1.5);
-        }
+        if (upgrade.upgrade4) skillText += ` and heals user for 5`;
+        if (upgrade.upgrade3) skillText += ` and clears Debuffs from target`;
+        break;
+      case "Conduit":
+        if (upgrade.upgrade2) finalScale[0] += 30;
         skillText = skillText
           .replace(
-            "10+80%",
+            "25+130%",
             `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
           )
           .replace(
             "5+60%",
             `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
           );
+        if (upgrade.upgrade2) skillText += ` and grants target 10 mana`;
         break;
-      case "Conduit":
-        if (upgrade.upgrade1) finalBase[1] += 1;
-        if (upgrade.upgrade3) finalScale[0] += 20;
-        if (upgrade.upgrade4) {
+      case "Frigillan":
+        if (upgrade.upgrade2) finalBase[0] += 4;
+        skillText = skillText.replace(
+          "3+20%",
+          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+        );
+        if (upgrade.upgrade4) skillText += ` and clears Debuffs from target`;
+        break;
+      case "Monk":
+        if (upgrade.upgrade2) finalBase[0] += 1;
+        if (upgrade.upgrade1) {
           finalBase[0] = Math.floor(finalBase[0] * 2);
           finalScale[0] = Math.floor(finalScale[0] * 2);
         }
         skillText = skillText
           .replace(
-            "3+30%",
-            `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-          )
-          .replace("1 turn", `${finalBase[1]} turn`);
-        if (finalBase[1] > 1) skillText += `s`;
-        break;
-      case "Frigillan":
-        if (upgrade.upgrade3) finalBase[1] += 1;
-        if (upgrade.upgrade4) finalScale[0] += 20;
-        if (upgrade.upgrade1) {
-          finalBase[0] = Math.floor(finalBase[0] * 1.5);
-          finalScale[0] = Math.floor(finalScale[0] * 1.5);
-        }
-        skillText = skillText
-          .replace(
-            "5+30%",
-            `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-          )
-          .replace("1 turn", `${finalBase[1]} turn`);
-        if (finalBase[1] > 1) skillText += `s`;
-        break;
-      case "Monk":
-        if (upgrade.upgrade3) finalBase[1] += 1;
-        if (upgrade.upgrade4) finalBase[0] += 12;
-        if (upgrade.upgrade1) finalBase[1] += 1;
-        skillText = skillText
-          .replace(
-            "2+50%",
+            "3+8%",
             `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
           )
           .replace(
-            "2+10%",
+            "8+100%",
             `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
           );
+        if (upgrade.upgrade4) skillText += ` and heals caster by 60% damage`;
         break;
+
       case "Reaper":
         if (upgrade.upgrade4) finalScale[0] += 35;
         if (upgrade.upgrade2) {
