@@ -518,15 +518,17 @@ export function classSkillDes(className, base, scale, skillNum, upgrade) {
       case "Conduit":
         if (upgrade.upgrade2) finalBase[1] += 1;
         if (upgrade.upgrade3) finalBase[1] += 1;
-        skillText = skillText.replace(
-          "9+80%",
-          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-        );
+        skillText = skillText
+          .replace(
+            "9+80%",
+            `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+          )
+          .replace("3 enemies", `${finalBase[1]} enemies`);
         break;
       case "Frigillan":
         if (upgrade.upgrade1) finalBase[0] += 1;
         skillText = skillText.replace("1 turn", `${finalBase[0]} turn`);
-        if (finalBase[1] > 1) skillText.replace("turn", "turns");
+        if (finalBase[0] > 1) skillText = skillText.replace("turn", "turns");
         break;
       case "Monk":
         if (upgrade.upgrade4) {
@@ -564,7 +566,7 @@ export function classSkillDes(className, base, scale, skillNum, upgrade) {
             "3+20%",
             `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
           );
-        if (upgrade.upgrade3)
+        if (upgrade.upgrade4)
           skillText = skillText.replace(
             "to up to",
             ` and 2 Light Poison stacks to up to`
@@ -576,16 +578,18 @@ export function classSkillDes(className, base, scale, skillNum, upgrade) {
         if (upgrade.upgrade3) {
           finalBase[0] = Math.floor(finalBase[0] * 1.5);
         }
-        skillText = skillText.replace(
-          "20+75%",
-          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-        );
+        skillText = skillText
+          .replace("3 tiles", `${finalBase[0]} tiles`)
+          .replace(
+            "20+75%",
+            `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
+          );
         break;
       case "Champion":
         if (upgrade.upgrade3) finalBase[0] += 10;
         if (upgrade.upgrade4) finalScale[0] += 50;
         skillText = skillText.replace(
-          "45+100%",
+          "(45+100%)",
           `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
         );
         break;
@@ -609,10 +613,7 @@ export function classSkillDes(className, base, scale, skillNum, upgrade) {
           )
           .replace("3 Severe", `${finalBase[0]} Severe`);
         if (upgrade.upgrade3)
-          skillText = skillText.replace(
-            "stacks",
-            `stacks and 4 Light Poison stacks`
-          );
+          skillText = skillText.replace("stacks", `and 4 Light Poison stacks`);
         break;
       case "Deadeye":
         break;
@@ -648,11 +649,13 @@ export function classSkillDes(className, base, scale, skillNum, upgrade) {
         if (upgrade.upgrade1) {
           finalBase[0] = Math.floor(finalBase[0] * 2);
         }
-        if (upgrade.upgrade3) finalScale[0] -= 20;
-        skillText = skillText.replace(
-          "60-70%",
-          `(${finalBase[0]}+(${finalScale[0]}% Mastery-scaling))%`
-        );
+        if (upgrade.upgrade3) finalScale[1] -= 20;
+        skillText = skillText
+          .replace(
+            "60-70%",
+            `(${finalBase[1]}(${finalScale[1]}% Mastery-scaling))%`
+          )
+          .replace("3 times", `${finalBase[0]} times`);
         if (upgrade.upgrade4) skillText += ` and heals caster by 50% damage`;
         break;
       case "Loremaster":
@@ -661,10 +664,12 @@ export function classSkillDes(className, base, scale, skillNum, upgrade) {
           finalBase[0] = Math.floor(finalBase[0] * 0.5);
           finalScale[0] = Math.floor(finalScale[0] * 0.5);
         }
-        skillText = skillText.replace(
-          "12+80%",
-          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-        );
+        skillText = skillText
+          .replace(
+            "12+80%",
+            `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+          )
+          .replace("2 tiles", `${finalBase[1]} tiles`);
         if (upgrade.upgrade4)
           skillText = skillText.replace(
             "damage",
@@ -676,30 +681,24 @@ export function classSkillDes(className, base, scale, skillNum, upgrade) {
           "15+60%",
           `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
         );
-        if (upgrade.upgrade1) skillText += `and grants target 10 mana`;
-        if (upgrade.upgrade3) skillText += `and clears Debuffs from target`;
+        if (upgrade.upgrade1) skillText += ` and grants target 10 mana`;
+        if (upgrade.upgrade3) skillText += ` and clears Debuffs from target`;
         break;
       case "Tidecaller":
         if (upgrade.upgrade1) finalBase[0] += 1;
         if (upgrade.upgrade3) finalBase[0] += 1;
         if (upgrade.upgrade2) {
-          finalBase[0] = Math.floor(finalBase[0] * 1.5);
-          finalScale[0] = Math.floor(finalScale[0] * 1.5);
+          finalBase[1] = Math.floor(finalBase[1] * 1.5);
+          finalScale[1] = Math.floor(finalScale[1] * 1.5);
         }
-        skillText = skillText.replace(
-          "10+50%",
-          `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
-        );
+        skillText = skillText
+          .replace(
+            "10+50%",
+            `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
+          )
+          .replace("3 ally", `${finalBase[0]} ally`);
         break;
       case "Spirit Keeper":
-        if (upgrade.upgrade1) finalBase[0] += 3;
-        if (upgrade.upgrade4) finalScale[0] += 10;
-        skillText = skillText.replace(
-          "7+30%",
-          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-        );
-        break;
-      case "Hemomancer":
         if (upgrade.upgrade1) finalBase[0] += 5;
         if (upgrade.upgrade3) finalBase[0] += 5;
         skillText = skillText
@@ -711,6 +710,14 @@ export function classSkillDes(className, base, scale, skillNum, upgrade) {
             "25+100%",
             `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
           );
+        break;
+      case "Hemomancer":
+        if (upgrade.upgrade1) finalBase[0] += 3;
+        if (upgrade.upgrade4) finalScale[0] += 10;
+        skillText = skillText.replace(
+          "7+30%",
+          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+        );
         break;
       case "Tempest":
         if (upgrade.upgrade1) finalBase[1] += 1;
@@ -724,7 +731,7 @@ export function classSkillDes(className, base, scale, skillNum, upgrade) {
           .replace("2 attacks", `${finalBase[1]} attacks`);
         break;
       case "Stormkeeper":
-        if (upgrade.upgrade1) finalBase[1] += 1;
+        if (upgrade.upgrade1) finalBase[0] += 1;
 
         skillText = skillText
           .replace(
@@ -796,8 +803,8 @@ export function classSkillDes(className, base, scale, skillNum, upgrade) {
       case "Seeker":
         if (upgrade.upgrade3) finalBase[0] += 1;
         if (upgrade.upgrade2) {
-          finalBase[0] = Math.floor(finalBase[0] * 2);
-          finalScale[0] = Math.floor(finalScale[0] * 2);
+          finalBase[1] = Math.floor(finalBase[1] * 2);
+          finalScale[1] = Math.floor(finalScale[1] * 2);
         }
         skillText = skillText
           .replace(
@@ -808,7 +815,7 @@ export function classSkillDes(className, base, scale, skillNum, upgrade) {
         if (upgrade.upgrade4) skillText += ` and clears target's debuffs`;
         break;
       case "Gallant":
-        if (upgrade.upgrade1) {
+        if (upgrade.upgrade3) {
           finalBase[0] = Math.floor(finalBase[0] * 1.3);
           finalScale[0] = Math.floor(finalScale[0] * 1.3);
         }
@@ -949,7 +956,7 @@ export function classSkillDes(className, base, scale, skillNum, upgrade) {
         break;
       case "Ritualist":
         if (upgrade.upgrade4) finalScale[0] += 15;
-        if (upgrade.upgrade1) {
+        if (upgrade.upgrade3) {
           finalBase[0] = Math.floor(finalBase[0] * 2);
           finalScale[0] = Math.floor(finalScale[0] * 2);
         }
@@ -973,7 +980,7 @@ export function classSkillDes(className, base, scale, skillNum, upgrade) {
             "5+60%",
             `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
           );
-        if (upgrade.upgrade2) skillText += ` and grants target 10 mana`;
+        if (upgrade.upgrade3) skillText += ` and grants target 10 mana`;
         break;
       case "Frigillan":
         if (upgrade.upgrade2) finalBase[0] += 4;
@@ -986,8 +993,8 @@ export function classSkillDes(className, base, scale, skillNum, upgrade) {
       case "Monk":
         if (upgrade.upgrade2) finalBase[0] += 1;
         if (upgrade.upgrade1) {
-          finalBase[0] = Math.floor(finalBase[0] * 2);
-          finalScale[0] = Math.floor(finalScale[0] * 2);
+          finalBase[1] = Math.floor(finalBase[1] * 2);
+          finalScale[1] = Math.floor(finalScale[1] * 2);
         }
         skillText = skillText
           .replace(
@@ -1002,272 +1009,222 @@ export function classSkillDes(className, base, scale, skillNum, upgrade) {
         break;
 
       case "Reaper":
-        if (upgrade.upgrade4) finalScale[0] += 35;
-        if (upgrade.upgrade2) {
-          finalBase[0] = Math.floor(finalBase[0] * 1.5);
-          finalScale[0] = Math.floor(finalScale[0] * 1.5);
-        }
+        if (upgrade.upgrade1) finalBase[0] += 1;
+        if (upgrade.upgrade2) finalScale[0] += 10;
         skillText = skillText.replace(
-          "8+65%",
+          "3+20%",
           `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
         );
+        if (upgrade.upgrade3) skillText += ` and clears Debuffs from target`;
         break;
       case "Ancarant":
-        if (upgrade.upgrade3) finalScale[0] += 20;
         if (upgrade.upgrade1) {
           finalBase[0] = Math.floor(finalBase[0] * 1.5);
           finalScale[0] = Math.floor(finalScale[0] * 1.5);
         }
-        if (upgrade.upgrade4) finalBase[1] += 5;
+        if (upgrade.upgrade3) finalBase[1] += 1;
         skillText = skillText
           .replace(
-            "1+100%",
+            "12+110%",
             `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
           )
           .replace(
-            "5+20%",
+            "3+10%",
             `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
           );
+        if (upgrade.upgrade4) skillText += ` and heals caster by 50% damage`;
         break;
       case "Ellisant":
-        if (upgrade.upgrade1) finalBase[0] += 4;
-        if (upgrade.upgrade3) finalScale[0] += 40;
-        skillText = skillText.replace(
-          "8+100%",
-          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-        );
-        break;
-      case "Champion":
-        if (upgrade.upgrade4) finalScale[0] += 40;
-        if (upgrade.upgrade3) finalScale[0] += 40;
-        if (upgrade.upgrade1) {
-          finalBase[0] = Math.floor(finalBase[0] * 1.5);
-          finalScale[0] = Math.floor(finalScale[0] * 1.5);
-        }
-        skillText = skillText.replace(
-          "14+100%",
-          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-        );
-        break;
-      case "Warden":
-        if (upgrade.upgrade3) finalScale[0] += 50;
-        if (upgrade.upgrade4) finalScale[1] += 50;
+        if (upgrade.upgrade2) finalBase[0] += 1;
+        if (upgrade.upgrade4) finalScale[0] += 10;
         if (upgrade.upgrade1) {
           finalBase[0] = Math.floor(finalBase[0] * 0.5);
           finalScale[0] = Math.floor(finalScale[0] * 0.5);
         }
+        skillText = skillText.replace(
+          "3+20%",
+          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+        );
+        if (upgrade.upgrade3) skillText += ` and heals caster by 20% damage`;
+        break;
+      case "Champion":
+        if (upgrade.upgrade3) finalBase[0] += 10;
+        if (upgrade.upgrade4) finalScale[0] += 50;
+        skillText = skillText.replace(
+          "(45+100%)",
+          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+        );
+        break;
+      case "Warden":
+        if (upgrade.upgrade3) finalBase[1] += 1;
         skillText = skillText
           .replace(
-            "3+130%",
+            "15+25%",
             `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
           )
-          .replace(
-            "12+55%",
-            `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
-          );
+          .replace("1 Heavy Stun", `${finalBase[1]} Heavy Stun`);
+        if (finalBase[1] > 1) skillText = skillText.replace("Stun", "Stuns");
+        if (upgrade.upgrade4) skillText += ` and heals caster by 50% damage`;
         break;
       case "Slayer":
-        if (upgrade.upgrade4) finalScale[0] += 20;
-
+        if (upgrade.upgrade3) finalBase[1] += 5;
         skillText = skillText
           .replace(
-            "7+35%",
-            `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-          )
-          .replace(
-            "3+30%",
-            `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
-          );
-        if (upgrade.upgrade3)
-          skillText = skillText.replace(
-            "to an enemy",
-            "and 3 Light Poison stacks to an enemy"
-          );
-        break;
-      case "Beastmaster":
-        if (upgrade.upgrade2) finalScale[0] += 40;
-        if (upgrade.upgrade4) finalScale[0] += 40;
-        if (upgrade.upgrade1) {
-          finalBase[0] = Math.floor(finalBase[0] * 1.5);
-          finalScale[0] = Math.floor(finalScale[0] * 1.5);
-        }
-        skillText = skillText.replace(
-          "12+100%",
-          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-        );
-        break;
-      case "Deadeye":
-        if (upgrade.upgrade3) finalScale[0] += 30;
-        if (upgrade.upgrade1) {
-          finalBase[0] = Math.floor(finalBase[0] * 1.5);
-          finalScale[0] = Math.floor(finalScale[0] * 1.5);
-        }
-        skillText = skillText.replace(
-          "5+50%",
-          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-        );
-        if (upgrade.upgrade4) skillText += ` and clears target's debuffs`;
-        break;
-      case "Cosmician":
-        if (upgrade.upgrade2) finalScale[0] += 20;
-        if (upgrade.upgrade1) {
-          finalBase[0] = Math.floor(finalBase[0] * 1.5);
-          finalScale[0] = Math.floor(finalScale[0] * 1.5);
-        }
-        skillText = skillText
-          .replace(
-            "18+80%",
+            "8+50%",
             `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
           )
           .replace(
             "2+20%",
             `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
           );
+        if (upgrade.upgrade4) skillText += ` and heals caster by 50% damage`;
+        break;
+      case "Beastmaster":
+        if (upgrade.upgrade3) finalBase[1] += 5;
+        skillText = skillText
+          .replace(
+            "1+100%",
+            `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+          )
+          .replace(
+            "5+30%",
+            `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
+          );
+        if (upgrade.upgrade4) skillText += ` and heals caster by 50% damage`;
+        break;
+      case "Deadeye":
+        if (upgrade.upgrade1) finalBase[0] += 5;
+        if (upgrade.upgrade2) finalScale[0] += 20;
+        if (upgrade.upgrade4) finalBase[1] += 12;
+        skillText = skillText
+          .replace(
+            "5+100%",
+            `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+          )
+          .replace(
+            "25+20%",
+            `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
+          );
+        break;
+      case "Cosmician":
+        if (upgrade.upgrade2) finalScale[0] += 50;
+        skillText = skillText.replace(
+          "20+120%",
+          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+        );
+        if (upgrade.upgrade4) skillText += ` and heals caster by 33% damage`;
         break;
       case "Necromancer":
-        if (upgrade.upgrade2) finalScale[0] += 20;
-        if (upgrade.upgrade4) finalBase[1] += 80;
-        if (upgrade.upgrade1) {
-          finalBase[0] = Math.floor(finalBase[0] * 1.5);
-          finalScale[0] = Math.floor(finalScale[0] * 1.5);
-        }
-        skillText = skillText
-          .replace(
-            "1+100%",
-            `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-          )
-          .replace(
-            "80+200%",
-            `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
-          );
-        break;
-      case "Relic Knight":
-        skillText = skillText.replace(
-          "2+20%",
-          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-        );
-        break;
-      case "Loremaster":
-        if (upgrade.upgrade2) finalScale[0] += 20;
-        if (upgrade.upgrade4) finalBase[1] += 5;
-        if (upgrade.upgrade1) {
-          finalBase[0] = Math.floor(finalBase[0] * 1.5);
-          finalScale[0] = Math.floor(finalScale[0] * 1.5);
-        }
-        skillText = skillText
-          .replace(
-            "1+100%",
-            `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-          )
-          .replace(
-            "5+20%",
-            `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
-          );
-        break;
-      case "Dreadnought":
-        if (upgrade.upgrade3) finalBase[1] += 1;
-        if (upgrade.upgrade1) {
-          finalBase[0] = Math.floor(finalBase[0] * 1.5);
-          finalScale[0] = Math.floor(finalScale[0] * 1.5);
-        }
-        skillText = skillText
-          .replace(
-            "6+60%",
-            `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-          )
-          .replace("2 turns", `${finalBase[1]} turns`);
-        break;
-      case "Tidecaller":
-        if (upgrade.upgrade1) finalBase[0] += 5;
-        if (upgrade.upgrade2) finalScale[0] += 25;
-        if (upgrade.upgrade4) finalBase[1] -= 5;
-        skillText = skillText
-          .replace(
-            "18+50%",
-            `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-          )
-          .replace("15 Mana", `${finalBase[1]} Mana`);
-        if (upgrade.upgrade3) skillText += ` and clears target's debuffs`;
-        break;
-      case "Spirit Keeper":
-        if (upgrade.upgrade2) finalBase[0] += 2;
-        if (upgrade.upgrade3) finalScale[0] += 15;
-        skillText = skillText.replace(
-          "5+25%",
-          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-        );
-        break;
-      case "Hemomancer":
-        if (upgrade.upgrade2) finalScale[0] += 20;
-        if (upgrade.upgrade4) finalBase[0] += 5;
-        if (upgrade.upgrade1) {
-          finalBase[0] = Math.floor(finalBase[0] * 1.5);
-          finalScale[0] = Math.floor(finalScale[0] * 1.5);
-        }
-        skillText = skillText.replace(
-          "10+175%",
-          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-        );
-        break;
-      case "Tempest":
-        if (upgrade.upgrade3) finalScale[0] += 50;
-        if (upgrade.upgrade1) {
-          finalBase[0] = Math.floor(finalBase[0] * 1.5);
-          finalScale[0] = Math.floor(finalScale[0] * 1.5);
-        }
-        skillText = skillText
-          .replace(
-            "10+80%",
-            `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-          )
-          .replace(
-            "5+60%",
-            `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
-          );
-        break;
-      case "Stormkeeper":
-        if (upgrade.upgrade1) finalBase[1] += 1;
-        if (upgrade.upgrade3) finalScale[0] += 20;
-        if (upgrade.upgrade4) {
+        if (upgrade.upgrade4) finalScale[0] += 15;
+        if (upgrade.upgrade2) {
           finalBase[0] = Math.floor(finalBase[0] * 2);
           finalScale[0] = Math.floor(finalScale[0] * 2);
         }
+        skillText = skillText.replace(
+          "10+100%",
+          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+        );
+        break;
+      case "Relic Knight":
+        if (upgrade.upgrade1) finalBase[1] += 1;
+        if (upgrade.upgrade2) {
+          finalBase[2] = Math.floor(finalBase[2] * 1.5);
+          finalScale[2] = Math.floor(finalScale[2] * 1.5);
+        }
+        if (upgrade.upgrade4) finalScale[2] += 50;
         skillText = skillText
           .replace(
-            "3+30%",
+            "2+10%",
+            `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+          )
+          .replace("4 turns", `${finalBase[1]} turns`)
+          .replace(
+            "7+100%",
+            `${finalBase[2]}+(${finalScale[2]}% Mastery-scaling)`
+          );
+        break;
+      case "Loremaster":
+        if (upgrade.upgrade1) finalScale[0] += 20;
+        if (upgrade.upgrade2) finalBase[1] += 1;
+        if (upgrade.upgrade3) finalBase[0] += 1;
+        skillText = skillText
+          .replace(
+            "8+40%",
+            `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+          )
+          .replace(
+            "3+10%",
+            `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
+          );
+        if (upgrade.upgrade4)
+          skillText = skillText.replace(
+            "to up",
+            "and 2 Light Poison stack to up"
+          );
+        break;
+      case "Dreadnought":
+        if (upgrade.upgrade2) finalScale[0] += 20;
+        if (upgrade.upgrade3) finalBase[1] -= 1;
+        if (upgrade.upgrade4) finalBase[1] -= 1;
+        skillText = skillText
+          .replace(
+            "5+25%",
+            `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+          )
+          .replace("5 missing HP", `${finalBase[1]} missing HP`);
+        break;
+      case "Tidecaller":
+        break;
+      case "Spirit Keeper":
+        skillText = skillText.replace(
+          "16+70%",
+          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+        );
+        if (upgrade.upgrade1) skillText += ` and heals caster by 50% damage`;
+        if (upgrade.upgrade4) skillText += ` and heals allies in AOE`;
+        break;
+      case "Hemomancer":
+        if (upgrade.upgrade3) finalScale[0] += 50;
+        skillText = skillText.replace(
+          "(70+100%)%",
+          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)%`
+        );
+        break;
+      case "Tempest":
+        if (upgrade.upgrade1) finalBase[0] += 1;
+        if (upgrade.upgrade4) finalBase[1] += 1;
+        skillText = skillText
+          .replace(
+            "1+5%",
+            `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+          )
+          .replace("1 turn", `${finalBase[1]} turn`);
+        if (finalBase[1] > 1) skillText += `s`;
+        break;
+      case "Stormkeeper":
+        if (upgrade.upgrade1) finalBase[0] += 1;
+        if (upgrade.upgrade2) finalBase[0] += 1;
+        if (upgrade.upgrade4) finalBase[1] += 1;
+        skillText = skillText
+          .replace(
+            "4+10%",
             `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
           )
           .replace("1 turn", `${finalBase[1]} turn`);
         if (finalBase[1] > 1) skillText += `s`;
         break;
       case "Godfrost":
-        if (upgrade.upgrade3) finalBase[1] += 1;
-        if (upgrade.upgrade4) finalScale[0] += 20;
-        if (upgrade.upgrade1) {
-          finalBase[0] = Math.floor(finalBase[0] * 1.5);
-          finalScale[0] = Math.floor(finalScale[0] * 1.5);
-        }
-        skillText = skillText
-          .replace(
-            "5+30%",
-            `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-          )
-          .replace("1 turn", `${finalBase[1]} turn`);
-        if (finalBase[1] > 1) skillText += `s`;
         break;
       case "Ascendant":
-        if (upgrade.upgrade3) finalBase[1] += 1;
-        if (upgrade.upgrade4) finalBase[0] += 12;
-        if (upgrade.upgrade1) finalBase[1] += 1;
-        skillText = skillText
-          .replace(
-            "2+50%",
-            `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-          )
-          .replace(
-            "2+10%",
-            `${finalBase[1]}+(${finalScale[1]}% Mastery-scaling)`
-          );
+        if (upgrade.upgrade3) finalScale[0] += 30;
+        if (upgrade.upgrade2) {
+          finalBase[0] = Math.floor(finalBase[0] * 0.5);
+          finalScale[0] = Math.floor(finalScale[0] * 0.5);
+        }
+        skillText = skillText.replace(
+          "1+20%",
+          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+        );
         break;
       default:
         skillText = skillText.toLowerCase();
@@ -1277,169 +1234,315 @@ export function classSkillDes(className, base, scale, skillNum, upgrade) {
   }
 }
 
-/*export function charSkillCost(className, mana, upgrade) {
+export function classSkillCost(className, mana, skillNum, upgrade) {
   let cost = Number(mana); // Ensure it's a number
-  switch (className) {
-    case "Devoted":
-      if (upgrade.upgrade2) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Nightblade":
-      if (upgrade.upgrade2) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Seeker":
-      if (upgrade.upgrade2) cost -= 10;
-      break;
-    case "Gallant":
-      if (upgrade.upgrade2) cost -= 5;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Ranger":
-      if (upgrade.upgrade2) cost -= 10;
-      if (upgrade.upgrade1) cost *= 0.5;
-      break;
-    case "Cutthroat":
-      if (upgrade.upgrade1) cost -= 10;
-      break;
-    case "Tamer":
-      if (upgrade.upgrade3) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Quickdraw":
-      if (upgrade.upgrade2) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Warlock":
-      if (upgrade.upgrade3) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Geomancer":
-      if (upgrade.upgrade3) cost -= 10;
-      if (upgrade.upgrade4) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Aegis":
-      if (upgrade.upgrade2) cost -= 5;
-      if (upgrade.upgrade1) cost -= 5;
-      break;
-    case "Scholar":
-      if (upgrade.upgrade3) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Juggernaut":
-      if (upgrade.upgrade2) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Waveseer":
-      break;
-    case "Elementalist":
-      if (upgrade.upgrade1) cost -= 10;
-      if (upgrade.upgrade4) cost -= 10;
-      break;
-    case "Ritualist":
-      if (upgrade.upgrade3) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Gale":
-      if (upgrade.upgrade2) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Conduit":
-      if (upgrade.upgrade2) cost -= 10;
-      if (upgrade.upgrade4) cost *= 2;
-      break;
-    case "Frigillan":
-      if (upgrade.upgrade2) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Monk":
-      if (upgrade.upgrade2) cost -= 15;
-      break;
+  if (skillNum === 1) {
+    switch (className) {
+      case "Devoted":
+        if (upgrade.upgrade1) cost -= 10;
+        break;
+      case "Nightblade":
+        if (upgrade.upgrade2) cost -= 10;
+        if (upgrade.upgrade3) cost *= 2;
+        break;
+      case "Seeker":
+        if (upgrade.upgrade4) cost *= 1.5;
+        break;
+      case "Gallant":
+        if (upgrade.upgrade2) cost -= 15;
+        break;
+      case "Ranger":
+        if (upgrade.upgrade2) cost -= 10;
+        if (upgrade.upgrade1) cost -= 10;
+        break;
+      case "Cutthroat":
+        if (upgrade.upgrade2) cost -= 10;
+        if (upgrade.upgrade4) cost -= 10;
+        break;
+      case "Tamer":
+        if (upgrade.upgrade2) cost -= 10;
+        if (upgrade.upgrade1) cost -= 10;
+        break;
+      case "Quickdraw":
+        if (upgrade.upgrade2) cost -= 10;
+        break;
+      case "Warlock":
+        if (upgrade.upgrade3) cost *= 0.5;
+        break;
+      case "Geomancer":
+        if (upgrade.upgrade1) cost -= 15;
+        if (upgrade.upgrade2) cost *= 0.5;
+        break;
+      case "Aegis":
+        if (upgrade.upgrade4) cost -= 10;
+        break;
+      case "Scholar":
+        if (upgrade.upgrade1) cost -= 10;
+        break;
+      case "Juggernaut":
+        if (upgrade.upgrade3) cost -= 10;
+        if (upgrade.upgrade1) cost *= 1.5;
+        break;
+      case "Waveseer":
+        if (upgrade.upgrade1) cost -= 10;
+        break;
+      case "Elementalist":
+        if (upgrade.upgrade2) cost -= 10;
+        break;
+      case "Ritualist":
+        if (upgrade.upgrade3) cost -= 10;
+        if (upgrade.upgrade1) cost *= 0.5;
+        break;
+      case "Gale":
+        if (upgrade.upgrade1) cost -= 10;
+        break;
+      case "Conduit":
+        if (upgrade.upgrade1) cost -= 10;
+        break;
+      case "Frigillan":
+        if (upgrade.upgrade2) cost -= 10;
+        if (upgrade.upgrade4) cost -= 10;
+        break;
+      case "Monk":
+        if (upgrade.upgrade1) cost -= 10;
+        if (upgrade.upgrade4) cost *= 0.5;
+        break;
       case "Reaper":
-      if (upgrade.upgrade2) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Ancarant":
-      if (upgrade.upgrade2) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Ellisant":
-      if (upgrade.upgrade2) cost -= 10;
-      break;
-    case "Champion":
-      if (upgrade.upgrade2) cost -= 5;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Warden":
-      if (upgrade.upgrade2) cost -= 10;
-      if (upgrade.upgrade1) cost *= 0.5;
-      break;
-    case "Slayer":
-      if (upgrade.upgrade1) cost -= 10;
-      break;
-    case "Beastmaster":
-      if (upgrade.upgrade3) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Deadeye":
-      if (upgrade.upgrade2) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Necromancer":
-      if (upgrade.upgrade3) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Cosmician":
-      if (upgrade.upgrade3) cost -= 10;
-      if (upgrade.upgrade4) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Relic Knight":
-      if (upgrade.upgrade2) cost -= 5;
-      if (upgrade.upgrade1) cost -= 5;
-      break;
-    case "Loremaster":
-      if (upgrade.upgrade3) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Dreadnought":
-      if (upgrade.upgrade2) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Tidecaller":
-      break;
-    case "Spirit Keeper":
-      if (upgrade.upgrade1) cost -= 10;
-      if (upgrade.upgrade4) cost -= 10;
-      break;
-    case "Hemomancer":
-      if (upgrade.upgrade3) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Tempest":
-      if (upgrade.upgrade2) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Stormkeeper":
-      if (upgrade.upgrade2) cost -= 10;
-      if (upgrade.upgrade4) cost *= 2;
-      break;
-    case "Godfrost":
-      if (upgrade.upgrade2) cost -= 10;
-      if (upgrade.upgrade1) cost *= 1.5;
-      break;
-    case "Ascendant":
-      if (upgrade.upgrade2) cost -= 15;
-      break;
-    default:
-      cost = 999;
-      break;
+        if (upgrade.upgrade3) cost -= 10;
+        break;
+      case "Ancarant":
+        if (upgrade.upgrade1) cost -= 15;
+        break;
+      case "Ellisant":
+        if (upgrade.upgrade4) cost -= 10;
+        if (upgrade.upgrade3) cost *= 1.5;
+        break;
+      case "Champion":
+        if (upgrade.upgrade2) cost -= 10;
+        if (upgrade.upgrade1) cost -= 10;
+        break;
+      case "Warden":
+        if (upgrade.upgrade3) cost -= 10;
+        if (upgrade.upgrade1) cost -= 10;
+        break;
+      case "Slayer":
+        if (upgrade.upgrade1) cost -= 10;
+        if (upgrade.upgrade2) cost -= 10;
+        break;
+      case "Beastmaster":
+        if (upgrade.upgrade4) cost -= 10;
+        break;
+      case "Deadeye":
+        if (upgrade.upgrade1) cost -= 10;
+        if (upgrade.upgrade2) cost -= 10;
+        break;
+      case "Necromancer":
+        if (upgrade.upgrade3) cost -= 15;
+        if (upgrade.upgrade1) cost *= 0.5;
+        if (upgrade.upgrade2) cost -= 15;
+        break;
+      case "Cosmician":
+        if (upgrade.upgrade1) cost *= 0.5;
+        break;
+      case "Relic Knight":
+        if (upgrade.upgrade2) cost -= 10;
+        if (upgrade.upgrade1) cost *= 2;
+        break;
+      case "Loremaster":
+        if (upgrade.upgrade2) cost -= 20;
+        if (upgrade.upgrade1) cost *= 0.5;
+        break;
+      case "Dreadnought":
+        break;
+      case "Tidecaller":
+        if (upgrade.upgrade4) cost -= 15;
+        if (upgrade.upgrade2) cost *= 1.5;
+        break;
+      case "Spirit Keeper":
+        if (upgrade.upgrade2) cost -= 10;
+        if (upgrade.upgrade4) cost -= 10;
+        break;
+      case "Hemomancer":
+        if (upgrade.upgrade2) cost -= 10;
+        if (upgrade.upgrade3) cost -= 10;
+        break;
+      case "Tempest":
+        if (upgrade.upgrade2) cost -= 10;
+        break;
+      case "Stormkeeper":
+        if (upgrade.upgrade3) cost -= 15;
+        break;
+      case "Godfrost":
+        if (upgrade.upgrade2) cost -= 15;
+        if (upgrade.upgrade1) cost -= 15;
+        break;
+      case "Ascendant":
+        if (upgrade.upgrade1) cost -= 10;
+        if (upgrade.upgrade2) cost *= 0.5;
+        break;
+      default:
+        cost = 999;
+        break;
+    }
+    return Math.floor(cost); // Return integer value
+  } else if (skillNum === 2) {
+    switch (className) {
+      case "Devoted":
+        if (upgrade.upgrade1) cost -= 10;
+        if (upgrade.upgrade2) cost *= 1.5;
+        break;
+      case "Nightblade":
+        if (upgrade.upgrade1) cost *= 2;
+        break;
+      case "Seeker":
+        if (upgrade.upgrade1) cost -= 10;
+        if (upgrade.upgrade2) cost *= 2;
+        break;
+      case "Gallant":
+        if (upgrade.upgrade1) cost -= 10;
+        if (upgrade.upgrade3) cost *= 1.3;
+        break;
+      case "Ranger":
+        if (upgrade.upgrade1) cost -= 10;
+        if (upgrade.upgrade2) cost -= 10;
+        break;
+      case "Cutthroat":
+        if (upgrade.upgrade1) cost -= 10;
+        if (upgrade.upgrade2) cost -= 10;
+        break;
+      case "Tamer":
+        if (upgrade.upgrade1) cost -= 10;
+        if (upgrade.upgrade2) cost -= 10;
+        break;
+      case "Quickdraw":
+        if (upgrade.upgrade1) cost -= 10;
+        if (upgrade.upgrade2) cost -= 10;
+        break;
+      case "Warlock":
+        if (upgrade.upgrade3) cost -= 10;
+        break;
+      case "Geomancer":
+        if (upgrade.upgrade1) cost -= 10;
+        break;
+      case "Aegis":
+        if (upgrade.upgrade1) cost -= 10;
+        break;
+      case "Scholar":
+        if (upgrade.upgrade1) cost -= 10;
+        if (upgrade.upgrade2) cost *= 1.5;
+        break;
+      case "Juggernaut":
+        if (upgrade.upgrade2) cost -= 10;
+        break;
+      case "Waveseer":
+        if (upgrade.upgrade1) cost -= 10;
+        if (upgrade.upgrade2) cost -= 10;
+        break;
+      case "Elementalist":
+        if (upgrade.upgrade1) cost *= 0.5;
+        if (upgrade.upgrade2) cost -= 15;
+        break;
+      case "Ritualist":
+        if (upgrade.upgrade1) cost -= 10;
+        if (upgrade.upgrade3) cost *= 2;
+        break;
+      case "Gale":
+        if (upgrade.upgrade1) cost -= 10;
+        if (upgrade.upgrade2) cost -= 10;
+        break;
+      case "Conduit":
+        if (upgrade.upgrade1) cost -= 10;
+        break;
+      case "Frigillan":
+        if (upgrade.upgrade1) cost -= 10;
+        if (upgrade.upgrade3) cost -= 10;
+        break;
+      case "Monk":
+        if (upgrade.upgrade1) cost *= 2;
+        if (upgrade.upgrade3) cost -= 5;
+        break;
+      case "Reaper":
+        if (upgrade.upgrade4) cost -= 10;
+        break;
+      case "Ancarant":
+        if (upgrade.upgrade2) cost -= 10;
+        if (upgrade.upgrade1) cost *= 1.5;
+        break;
+      case "Ellisant":
+        if (upgrade.upgrade1) cost *= 0.5;
+        break;
+      case "Champion":
+        if (upgrade.upgrade1) cost -= 10;
+        if (upgrade.upgrade2) cost -= 10;
+        break;
+      case "Warden":
+        if (upgrade.upgrade1) cost -= 10;
+        if (upgrade.upgrade2) cost -= 10;
+        break;
+      case "Slayer":
+        if (upgrade.upgrade1) cost -= 10;
+        if (upgrade.upgrade2) cost -= 10;
+        break;
+      case "Beastmaster":
+        if (upgrade.upgrade1) cost -= 10;
+        if (upgrade.upgrade2) cost -= 10;
+        break;
+      case "Deadeye":
+        if (upgrade.upgrade3) cost -= 10;
+        break;
+      case "Necromancer":
+        if (upgrade.upgrade1) cost -= 5;
+        if (upgrade.upgrade3) cost -= 5;
+        if (upgrade.upgrade2) cost *= 2;
+        break;
+      case "Cosmician":
+        if (upgrade.upgrade3) cost -= 10;
+        break;
+      case "Relic Knight":
+        if (upgrade.upgrade3) cost -= 15;
+        if (upgrade.upgrade2) cost *= 1.5;
+        break;
+      case "Loremaster":
+        break;
+      case "Dreadnought":
+        if (upgrade.upgrade1) cost -= 10;
+        break;
+      case "Tidecaller":
+        if (upgrade.upgrade1) cost -= 15;
+        if (upgrade.upgrade3) cost -= 15;
+        break;
+      case "Spirit Keeper":
+        if (upgrade.upgrade2) cost -= 25;
+        break;
+      case "Hemomancer":
+        if (upgrade.upgrade2) cost -= 10;
+        if (upgrade.upgrade4) cost -= 10;
+        break;
+      case "Tempest":
+        if (upgrade.upgrade2) cost -= 10;
+        if (upgrade.upgrade3) cost -= 10;
+        break;
+      case "Stormkeeper":
+        if (upgrade.upgrade3) cost -= 15;
+        break;
+      case "Godfrost":
+        if (upgrade.upgrade2) cost -= 10;
+        if (upgrade.upgrade1) cost -= 10;
+        break;
+      case "Ascendant":
+        if (upgrade.upgrade1) cost -= 15;
+        if (upgrade.upgrade2) cost *= 0.5;
+        if (upgrade.upgrade4) cost -= 15;
+        break;
+      default:
+        cost = 999;
+        break;
+    }
+    return Math.floor(cost); // Return integer value
   }
-  return Math.floor(cost); // Return integer value
 }
 
-export function charSkillRng(className, rng, upgrade) {
+export function classSkillRng(className, rng, skillNum, upgrade) {
   let range;
   let rngMin = 0;
   let rngMax = 0;
@@ -1454,144 +1557,305 @@ export function charSkillRng(className, rng, upgrade) {
   if (matches && matches.length >= 2) {
     [rngMin, rngMax] = matches.map(Number);
   }
-
-  switch (className) {
-    case "Devoted":
-      range = "Same as attack range";
-      break;
-    case "Nightblade":
-      range = "Same as attack range";
-      break;
-    case "Seeker":
-      if (upgrade.upgrade4) rngMax += 1;
-      range = `${rngMin}~${rngMax}`;
-      break;
-    case "Gallant":
-      range = `${rngMin}~${rngMax}`;
-      break;
-    case "Ranger":
-      range = `${rngMin}~${rngMax}(Self)`;
-      break;
-    case "Cutthroat":
-      if (upgrade.upgrade2) rngMax += 1;
-      range = `${rngMin}~${rngMax}`;
-      break;
-    case "Tamer":
-      range = `${rngMin}~${rngMax}`;
-      break;
-    case "Quickdraw":
-      range = `${rngMin}~${rngMax}(Self)`;
-      break;
-    case "Geomancer":
-      range = `${rngMin}~${rngMax}`;
-      break;
-    case "Warlock":
-      range = `Same as attack range`;
-      break;
-    case "Aegis":
-      if (upgrade.upgrade3) rngMax += 1;
-      if (upgrade.upgrade4) rngMax += 1;
-      range = `${rngMin}~${rngMax}`;
-      break;
-    case "Scholar":
-      range = `Same as attack range`;
-      break;
-    case "Juggernaut":
-      if (upgrade.upgrade4) rngMax += 1;
-      range = `${rngMin}~${rngMax}`;
-      break;
-    case "Waveseer":
-      range = `${rngMin}~${rngMax}(Self)`;
-      break;
-    case "Elementalist":
-      range = `${rngMin}~${rngMax}(Self)`;
-      break;
-    case "Ritualist":
-      range = `Same as attack range`;
-      break;
-    case "Gale":
-      if (upgrade.upgrade4) rngMax += 1;
-      range = `${rngMin}~${rngMax}`;
-      break;
-    case "Conduit":
-      range = `${rngMin}~${rngMax}(Self)`;
-      break;
-    case "Frigillan":
-      range = `${rngMin}~${rngMax}`;
-      break;
-    case "Monk":
-      range = `${rngMin}~${rngMax}(Self)`;
-      break;
+  if (skillNum === 1) {
+    switch (className) {
+      case "Devoted":
+        range = `${rngMin}~${rngMax}(Self)`;
+        break;
+      case "Nightblade":
+        if (upgrade.upgrade1) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Seeker":
+        if (upgrade.upgrade1) rngMin -= 1;
+        if (upgrade.upgrade2) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Gallant":
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Ranger":
+        if (upgrade.upgrade3) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Cutthroat":
+        if (upgrade.upgrade1) rngMax += 1;
+        if (upgrade.upgrade3) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Tamer":
+        range = `${rngMin}~${rngMax}(Self)`;
+        break;
+      case "Quickdraw":
+        range = `${rngMin}~${rngMax}(Self)`;
+        break;
+      case "Geomancer":
+        if (upgrade.upgrade4) rngMax += 1;
+        if (upgrade.upgrade2) rngMax = Math.floor(rngMax * 0.5);
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Warlock":
+        if (upgrade.upgrade2) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Aegis":
+        if (upgrade.upgrade2) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Scholar":
+        if (upgrade.upgrade3) rngMin -= 1;
+        if (upgrade.upgrade4) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Juggernaut":
+        if (upgrade.upgrade2) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Waveseer":
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Elementalist":
+        if (upgrade.upgrade1) rngMin -= 1;
+        if (upgrade.upgrade3) rngMax += 1;
+        if (upgrade.upgrade4) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Ritualist":
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Gale":
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Conduit":
+        if (upgrade.upgrade4) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Frigillan":
+        if (upgrade.upgrade3) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Monk":
+        range = `${rngMin}~${rngMax}`;
+        break;
       case "Reaper":
-      range = "Same as attack range";
-      break;
-    case "Ancarant":
-      range = "Same as attack range";
-      break;
-    case "Ellisant":
-      if (upgrade.upgrade4) rngMax += 1;
-      range = `${rngMin}~${rngMax}`;
-      break;
-    case "Champion":
-      range = `${rngMin}~${rngMax}`;
-      break;
-    case "Warden":
-      range = `${rngMin}~${rngMax}(Self)`;
-      break;
-    case "Slayer":
-      if (upgrade.upgrade2) rngMax += 1;
-      range = `${rngMin}~${rngMax}`;
-      break;
-    case "Beastmaster":
-      range = `${rngMin}~${rngMax}`;
-      break;
-    case "Deadeye":
-      range = `${rngMin}~${rngMax}(Self)`;
-      break;
-    case "Cosmician":
-      range = `${rngMin}~${rngMax}`;
-      break;
-    case "Necromancer":
-      range = `Same as attack range`;
-      break;
-    case "Relic Knight":
-      if (upgrade.upgrade3) rngMax += 1;
-      if (upgrade.upgrade4) rngMax += 1;
-      range = `${rngMin}~${rngMax}`;
-      break;
-    case "Loremaster":
-      range = `Same as attack range`;
-      break;
-    case "Dreadnought":
-      if (upgrade.upgrade4) rngMax += 1;
-      range = `${rngMin}~${rngMax}`;
-      break;
-    case "Tidecaller":
-      range = `${rngMin}~${rngMax}(Self)`;
-      break;
-    case "Spirit Keeper":
-      range = `${rngMin}~${rngMax}(Self)`;
-      break;
-    case "Hemomancer":
-      range = `Same as attack range`;
-      break;
-    case "Tempest":
-      if (upgrade.upgrade4) rngMax += 1;
-      range = `${rngMin}~${rngMax}`;
-      break;
-    case "Stormkeeper":
-      range = `${rngMin}~${rngMax}(Self)`;
-      break;
-    case "Godfrost":
-      range = `${rngMin}~${rngMax}`;
-      break;
-    case "Ascendant":
-      range = `${rngMin}~${rngMax}(Self)`;
-      break;
-    default:
-      range = `${rngMin}~${rngMax}`;
-      break;
+        if (upgrade.upgrade1) rngMin -= 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Ancarant":
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Ellisant":
+        range = `${rngMin}~${rngMax}(Self)`;
+        break;
+      case "Champion":
+        range = `Same as attack range`;
+        break;
+      case "Warden":
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Slayer":
+        if (upgrade.upgrade3) rngMax += 1;
+        if (upgrade.upgrade4) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Beastmaster":
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Deadeye":
+        if (upgrade.upgrade3) rngMax += 1;
+        if (upgrade.upgrade4) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Cosmician":
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Necromancer":
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Relic Knight":
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Loremaster":
+        range = `${rngMin}~${rngMax}(Self)`;
+        break;
+      case "Dreadnought":
+        if (upgrade.upgrade2) rngMin -= 1;
+        if (upgrade.upgrade4) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Tidecaller":
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Spirit Keeper":
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Hemomancer":
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Tempest":
+        range = `${rngMin}~${rngMax}(Self)`;
+        break;
+      case "Stormkeeper":
+        if (upgrade.upgrade1) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Godfrost":
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Ascendant":
+        range = `${rngMin}~${rngMax}`;
+        break;
+      default:
+        range = `${rngMin}~${rngMax} undefined`;
+        break;
+    }
+    return range;
+  } else if (skillNum === 2) {
+    switch (className) {
+      case "Devoted":
+        if (upgrade.upgrade3) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Nightblade":
+        if (upgrade.upgrade4) rngMin -= 1;
+        if (upgrade.upgrade2) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Seeker":
+        range = `${rngMin}~${rngMax}(Self)`;
+        break;
+      case "Gallant":
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Ranger":
+        range = `Same as attack range`;
+        break;
+      case "Cutthroat":
+        range = `Same as attack range`;
+        break;
+      case "Tamer":
+        range = `Same as attack range`;
+        break;
+      case "Quickdraw":
+        range = `Same as attack range`;
+        break;
+      case "Geomancer":
+        if (upgrade.upgrade3) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Warlock":
+        range = `${rngMin}~${rngMax}(Self)`;
+        break;
+      case "Aegis":
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Scholar":
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Juggernaut":
+        range = `${rngMin}~${rngMax}(Self)`;
+        break;
+      case "Waveseer":
+        if (upgrade.upgrade3) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Elementalist":
+        if (upgrade.upgrade3) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Ritualist":
+        if (upgrade.upgrade2) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Gale":
+        range = `${rngMin}~${rngMax}(Self)`;
+        break;
+      case "Conduit":
+        if (upgrade.upgrade4) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Frigillan":
+        range = `${rngMin}~${rngMax}(Self)`;
+        break;
+      case "Monk":
+        if (upgrade.upgrade2) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Reaper":
+        if (upgrade.upgrade1) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Ancarant":
+        if (upgrade.upgrade3) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Ellisant":
+        if (upgrade.upgrade1) rngMax -= 1;
+        if (upgrade.upgrade2) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Champion":
+        range = `Same as attack range`;
+        break;
+      case "Warden":
+        range = `Same as attack range`;
+        break;
+      case "Slayer":
+        range = `Same as attack range`;
+        break;
+      case "Beastmaster":
+        range = `Same as attack range`;
+        break;
+      case "Deadeye":
+        range = `Same as attack range`;
+        break;
+      case "Cosmician":
+        if (upgrade.upgrade1) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Necromancer":
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Relic Knight":
+        range = `${rngMin}~${rngMax}(Self)`;
+        break;
+      case "Loremaster":
+        range = `${rngMin}~${rngMax}(Self)`;
+        break;
+      case "Dreadnought":
+        range = `Same as attack range`;
+        break;
+      case "Tidecaller":
+        if (upgrade.upgrade2) rngMax += 1;
+        if (upgrade.upgrade4) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Spirit Keeper":
+        if (upgrade.upgrade3) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Hemomancer":
+        if (upgrade.upgrade1) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Tempest":
+        range = `${rngMin}~${rngMax}(Self)`;
+        break;
+      case "Stormkeeper":
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Godfrost":
+        if (upgrade.upgrade3) rngMax += 1;
+        if (upgrade.upgrade4) rngMax += 1;
+        range = `${rngMin}~${rngMax}`;
+        break;
+      case "Ascendant":
+        range = `${rngMin}~${rngMax}(Self)`;
+        break;
+      default:
+        range = `${rngMin}~${rngMax} undefined`;
+        break;
+    }
+    return range;
   }
-
-  return range;
-}*/
+}

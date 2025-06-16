@@ -3,7 +3,12 @@ import { useState } from "react";
 import classStat from "../Datas/classStats.json";
 import charStat from "../Datas/charStatPass.json";
 import classSkills from "../Datas/classSkills.json";
-import { ClassIntro, classSkillDes } from "./ClassMisc";
+import {
+  ClassIntro,
+  classSkillDes,
+  classSkillCost,
+  classSkillRng,
+} from "./ClassMisc";
 import "../../App.css";
 import "./Class.css";
 
@@ -34,7 +39,6 @@ function ClassDetail() {
   let scaleValue1 = skillClass.S1Scale;
   let baseValue2 = skillClass.S2Base;
   let scaleValue2 = skillClass.S2Scale;
-  console.log(Name1);
 
   const growths = [
     "HP_Grow",
@@ -368,23 +372,13 @@ function ClassDetail() {
               <tr>
                 <th>Cost</th>
                 <td colSpan="4">
-                  {/*charSkillCost(
-                    nameNoMark,
-                    character1.activeMana,
-                    activeUpgrades
-                  )*/}
-                  {skillClass.S1Cost}
+                  {classSkillCost(Name1, skillClass.S1Cost, 1, activeUpgrades1)}
                 </td>
               </tr>
               <tr>
                 <th>Range</th>
                 <td colSpan="4">
-                  {/*charSkillRng(
-                    nameNoMark,
-                    character1.activeRng,
-                    activeUpgrades
-                  )*/}
-                  {skillClass.S1Rng}
+                  {classSkillRng(Name1, skillClass.S1Rng, 1, activeUpgrades1)}
                 </td>
               </tr>
               <tr>
@@ -397,7 +391,6 @@ function ClassDetail() {
                     1,
                     activeUpgrades1
                   )}
-                  
                 </td>
               </tr>
               <tr>
@@ -490,23 +483,13 @@ function ClassDetail() {
               <tr>
                 <th>Cost</th>
                 <td colSpan="4">
-                  {/*charSkillCost(
-                    nameNoMark,
-                    character1.activeMana,
-                    activeUpgrades
-                  )*/}
-                  {skillClass.S2Cost}
+                  {classSkillCost(Name1, skillClass.S2Cost, 2, activeUpgrades2)}
                 </td>
               </tr>
               <tr>
                 <th>Range</th>
                 <td colSpan="4">
-                  {/*charSkillRng(
-                    nameNoMark,
-                    character1.activeRng,
-                    activeUpgrades
-                  )*/}
-                  {skillClass.S2Rng}
+                  {classSkillRng(Name1, skillClass.S2Rng, 2, activeUpgrades2)}
                 </td>
               </tr>
               <tr>
@@ -519,7 +502,6 @@ function ClassDetail() {
                     2,
                     activeUpgrades2
                   )}
-                  
                 </td>
               </tr>
               <tr>

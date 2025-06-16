@@ -56,7 +56,6 @@ function CharDetail() {
     (stat) => character2[stat]
   );
 
-  console.log(growths);
   const imageContext = require.context(
     "./Pictures", // Folder path
     false, // Don't look in subdirectories
