@@ -1,12 +1,23 @@
 import charActive from "../Datas/charActive.json";
 import charWrite from "./charWriteUp.json";
 
-export function charIntro(charName) {
+export function charIntro(charName, part) {
   const charname = charName.toLowerCase();
   const writeUp = Object.entries(charWrite).find(
-    ([key, value]) => key === charname
+    ([key]) => key === charname
   )?.[1];
-  return <p>{writeUp.introduction} </p>;
+  switch (part) {
+    case "intro":
+      return <p>{writeUp.introduction} </p>;
+    case "base":
+      return <p>{writeUp.base}</p>;
+    case "class":
+      return <p>{writeUp.classes}</p>;
+    case "gameplay":
+      return <div><p>{writeUp.gameplayBoon}</p><p>{writeUp.gameplayBane}</p></div>;
+    default:
+      return <p>placeholder</p>;
+  }
 }
 
 export function charSkillDes(charName, base, scale, upgrade) {
@@ -193,13 +204,12 @@ export function charSkillDes(charName, base, scale, upgrade) {
       if (upgrade.upgrade1) finalBase[0] += 5;
       if (upgrade.upgrade2) finalScale[0] += 25;
       if (upgrade.upgrade4) finalBase[1] -= 5;
-      skillText = skillText.replace(
-        "18+50%",
-        `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
-      ).replace(
-        "15 Mana",
-        `${finalBase[1]} Mana`
-      );
+      skillText = skillText
+        .replace(
+          "18+50%",
+          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+        )
+        .replace("15 Mana", `${finalBase[1]} Mana`);
       if (upgrade.upgrade3) skillText += ` and clears target's debuffs`;
       break;
     case "Aya":

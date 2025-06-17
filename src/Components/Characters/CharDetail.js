@@ -106,7 +106,7 @@ function CharDetail() {
       <div className="page-body">
         <img src={images[name]} alt={name} className="character-image" />
         <div className="character-detail">
-          {charIntro(nameNoMark)}
+          <div>{charIntro(nameNoMark, "intro")}</div>
 
           <h3>Base stats:</h3>
           <table className="stat-table">
@@ -204,6 +204,7 @@ function CharDetail() {
               </tr>
             </tbody>
           </table>
+          <div>{charIntro(nameNoMark, "base")}</div>
           <h4>Class based growths:</h4>
           <h5>Tier 2:</h5>
           <table className="stat-table">
@@ -335,6 +336,7 @@ function CharDetail() {
                 })}
             </tbody>
           </table>
+          <div>{charIntro(nameNoMark, "class")}</div>
           <h3>Passive:</h3>
           <table className="passive-table">
             <tbody>
@@ -458,6 +460,7 @@ function CharDetail() {
               </tr>
             </tbody>
           </table>
+          <div>{charIntro(nameNoMark, "gameplay")}</div>
         </div>
         <Link to="/characters">Back</Link>{" "}
       </div>

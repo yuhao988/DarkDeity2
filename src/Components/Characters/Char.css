@@ -23,6 +23,10 @@
   aspect-ratio: 1; /* Optional: Force square (1:1) or set like 16/9 */
 }
 
+.character-detail{
+  width: 70vw;
+}
+
 .passive-table {
   border-collapse: collapse;
   width: 100%;

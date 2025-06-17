@@ -1,82 +1,142 @@
 {
   "gwyn": {
-    "introduction": "Gwyn's introduction",
-    "gameplay": "Gwyn's gameplay"
+    "introduction": "Gwyn is the main character of Dark Deity 2. She joins your party as a Lv.1 Vanguard in Chapter 1.",
+    "base": "Gwyn has decent spread of growth across all area. Her starting Fortitude is on the lower side, and she will have trouble doubling enemies, but she has decent physical bulk and power to be a good frontline tanker and damage dealer when she first joins.",
+    "classes": "Gwyn's average growth makes her a decent unit in any class. Devoted/Reaper line gives her good Might, Mastery and Luck for higher damage dealt with crits, as well as the highest total growth. Nightblade/Ancarant line gives her good speed for doubling, while also patches up her lower Fortitude stat. Seeker/Ellisant line gives her good Might, Mastery and Dexterity, which couples with the class's skills, result in accurate and powerful hits. Gallant/Champion line gives her the highest Might, Defense and HP, allowing her to hit really hard and take physical hits pretty well.",
+    "gameplayBoon": "Gwyn's personal passive gives Gwyn effectively up to 15 defenses on both side of the spectrum, making her even better at tanking. On lower difficulties, this skill is powerful enough to make her virtually unkillable if you can keep up with the kills. Reaper is a decent choice for her in this case as it is a close range class with very high kill threshold, which is the best class to make use of her passive. On higher difficulties, Gwyn can use Ellisant as it has te range to damage enemies from a safe range. Her personal active skill can also add damage in addition to the bonus damage Seeker provides with Enchant Weapon",
+    "gameplayBane": "Gwyn's personal active skill is rather mediocre. It is decent in the early game to secure a kill, but it provides little in addition to this utility. It is quite mana heavy for a simple skill and pales in comparison to Enchant Weapon from Seeker."
   },
   "riordan": {
     "introduction": "riordan's introduction",
-    "gameplay": "riordan's gameplay"
+    "base": "",
+    "classes": "",
+    "gameplayBoon": "riordan's gameplayBoon",
+    "gameplayBane": "riordan's gameplayBane"
   },
   "arthur": {
     "introduction": "arthur's introduction",
-    "gameplay": "arthur's gameplay"
+    "base": "",
+    "classes": "",
+    "gameplayBoon": "arthur's gameplayBoon",
+    "gameplayBane": "riordan's gameplayBane"
   },
   "cassandra": {
     "introduction": "cassandra's introduction",
-    "gameplay": "cassandra's gameplay"
+    "base": "",
+    "classes": "",
+    "gameplayBoon": "cassandra's gameplayBoon",
+    "gameplayBane": "riordan's gameplayBane"
   },
   "saxon": {
     "introduction": "saxon's introduction",
-    "gameplay": "saxon's gameplay"
+    "base": "",
+    "classes": "",
+    "gameplayBoon": "saxon's gameplayBoon",
+    "gameplayBane": "riordan's gameplayBane"
   },
   "alden": {
     "introduction": "alden's introduction",
-    "gameplay": "alden's gameplay"
+    "base": "",
+    "classes": "",
+    "gameplayBoon": "alden's gameplayBoon",
+    "gameplayBane": "riordan's gameplayBane"
   },
   "valeria": {
     "introduction": "valeria's introduction",
-    "gameplay": "valeria's gameplay"
+    "base": "",
+    "classes": "",
+    "gameplayBoon": "valeria's gameplayBoon",
+    "gameplayBane": "riordan's gameplayBane"
   },
   "benji": {
     "introduction": "benji's introduction",
-    "gameplay": "benji's gameplay"
+    "base": "",
+    "classes": "",
+    "gameplayBoon": "benji's gameplayBoon",
+    "gameplayBane": "riordan's gameplayBane"
   },
   "khamari": {
     "introduction": "khamari's introduction",
-    "gameplay": "khamari's gameplay"
+    "base": "",
+    "classes": "",
+    "gameplayBoon": "khamari's gameplayBoon",
+    "gameplayBane": "riordan's gameplayBane"
   },
   "zanele": {
     "introduction": "zanele's introduction",
-    "gameplay": "zanele's gameplay"
+    "base": "",
+    "classes": "",
+    "gameplayBoon": "zanele's gameplayBoon",
+    "gameplayBane": "riordan's gameplayBane"
   },
   "zuhair": {
     "introduction": "zuhair's introduction",
-    "gameplay": "zuhair's gameplay"
+    "base": "",
+    "classes": "",
+    "gameplayBoon": "zuhair's gameplayBoon",
+    "gameplayBane": "riordan's gameplayBane"
   },
   "eve": {
     "introduction": "eve's introduction",
-    "gameplay": "eve's gameplay"
+    "base": "",
+    "classes": "",
+    "gameplayBoon": "eve's gameplayBoon",
+    "gameplayBane": "riordan's gameplayBane"
   },
   "haoran": {
     "introduction": "haoran's introduction",
-    "gameplay": "haoran's gameplay"
+    "base": "",
+    "classes": "",
+    "gameplayBoon": "haoran's gameplayBoon",
+    "gameplayBane": "riordan's gameplayBane"
   },
   "mashal": {
     "introduction": "mashal's introduction",
-    "gameplay": "mashal's gameplay"
+    "base": "",
+    "classes": "",
+    "gameplayBoon": "mashal's gameplayBoon",
+    "gameplayBane": "riordan's gameplayBane"
   },
   "aya": {
     "introduction": "aya's introduction",
-    "gameplay": "aya's gameplay"
+    "base": "",
+    "classes": "",
+    "gameplayBoon": "aya's gameplayBoon",
+    "gameplayBane": "riordan's gameplayBane"
   },
   "tusk": {
     "introduction": "tusk's introduction",
-    "gameplay": "tusk's gameplay"
+    "base": "",
+    "classes": "",
+    "gameplayBoon": "tusk's gameplayBoon",
+    "gameplayBane": "riordan's gameplayBane"
   },
   "laurai": {
     "introduction": "laurai's introduction",
-    "gameplay": "laurai's gameplay"
+    "base": "",
+    "classes": "",
+    "gameplayBoon": "laurai's gameplayBoon",
+    "gameplayBane": "riordan's gameplayBane"
   },
   "taldera": {
     "introduction": "taldera's introduction",
-    "gameplay": "taldera's gameplay"
+    "base": "",
+    "classes": "",
+    "gameplayBoon": "taldera's gameplayBoon",
+    "gameplayBane": "riordan's gameplayBane"
   },
   "vissarion": {
     "introduction": "vissarion's introduction",
-    "gameplay": "vissarion's gameplay"
+    "base": "",
+    "classes": "",
+    "gameplayBoon": "vissarion's gameplayBoon",
+    "gameplayBane": "riordan's gameplayBane"
   },
   "calith": {
     "introduction": "calith's introduction",
-    "gameplay": "calith's gameplay"
+    "base": "",
+    "classes": "",
+    "gameplayBoon": "calith's gameplayBoon",
+    "gameplayBane": "riordan's gameplayBane"
   }
 }
