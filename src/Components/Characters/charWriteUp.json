@@ -3,140 +3,180 @@
     "introduction": "Gwyn is the main character of Dark Deity 2. She joins your party as a Lv.1 Vanguard in Chapter 1.",
     "base": "Gwyn has decent spread of growth across all area. Her starting Fortitude is on the lower side, and she will have trouble doubling enemies, but she has decent physical bulk and power to be a good frontline tanker and damage dealer when she first joins.",
     "classes": "Gwyn's average growth makes her a decent unit in any class. Devoted/Reaper line gives her good Might, Mastery and Luck for higher damage dealt with crits, as well as the highest total growth. Nightblade/Ancarant line gives her good speed for doubling, while also patches up her lower Fortitude stat. Seeker/Ellisant line gives her good Might, Mastery and Dexterity, which couples with the class's skills, result in accurate and powerful hits. Gallant/Champion line gives her the highest Might, Defense and HP, allowing her to hit really hard and take physical hits pretty well.",
-    "gameplayBoon": "Gwyn's personal passive gives Gwyn effectively up to 15 defenses on both side of the spectrum, making her even better at tanking. On lower difficulties, this skill is powerful enough to make her virtually unkillable if you can keep up with the kills. Reaper is a decent choice for her in this case as it is a close range class with very high kill threshold, which is the best class to make use of her passive. On higher difficulties, Gwyn can use Ellisant as it has te range to damage enemies from a safe range. Her personal active skill can also add damage in addition to the bonus damage Seeker provides with Enchant Weapon",
-    "gameplayBane": "Gwyn's personal active skill is rather mediocre. It is decent in the early game to secure a kill, but it provides little in addition to this utility. It is quite mana heavy for a simple skill and pales in comparison to Enchant Weapon from Seeker."
+    "skills": ["Low", "Mid", "Mid", "Low"],
+    "gameplayBoon": "Gwyn's personal passive gives Gwyn effectively up to 15 defenses on both side of the spectrum, making her even better at tanking. On lower difficulties, this skill is powerful enough to make her virtually unkillable if you can keep up with the kills. Reaper is a decent choice for her in this case as it is a close range class with very high kill threshold, which is the best class to make use of her passive. On higher difficulties, Gwyn can use Ellisant as it has te range to damage enemies from a safe range. Her personal active skill can also add damage in addition to the bonus damage Seeker provides with Enchant Weapon. This skill is not going to be used often as game progresses, thus the upgrade are not of high priority. Reducing the mana cost is useful so that it is more readily available in case it is needed. Increasing mastery scaling will make this skill more powerful and find more use. Increasing mana cost for better effect is undesirable and the healing provided is niche but can be considered at lower difficulties when Gwyn is more likely to be tanking hits.",
+    "gameplayBane": "Gwyn's personal active skill is rather mediocre. It is decent in the early game to secure a kill, but it provides little in addition to this utility. It is quite mana heavy for a simple skill and pales in comparison to Enchant Weapon from Seeker. Gwyn's stats, while not bad, also means that she excels in no particular area, which is a more prominent issue at higher difficulty when more min-max stats are preferred.",
+    "suggestion": "Gallant/Reaper (Deity and below), Seeker/Ellisant (All difficulty)"
   },
   "riordan": {
-    "introduction": "riordan's introduction",
-    "base": "",
-    "classes": "",
-    "gameplayBoon": "riordan's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane"
+    "introduction": "Riordan is one of the first group of units to join your party. He joins you at Chapter 1 as a Lv.1 Hunter.",
+    "base": "Riordan has a very even spread of base stats with no inherent strength and weakness. Riordan has quite a high total base growth. His growth in Speed and Dexterity are low but the rest are all very decent. He can provide decent damage output in the early game as an archer.",
+    "classes": "Riordan's high base growth results in him having really good growth rate in all the Hunter classline. He can be a decent tank with Ranger/Warden line with great HP, Might and Defense, and a respectable Fortitude. His growth in Tamer/Beastmaster line is similiar with only slightly lower Might and Defense, but even better Hp and good Fortitude, as well as much better Mastery.If you wish for a faster Riordan, Quickdraw/Deadeye is a decent combat option with good Might and Speed and passable bulk. Cutthroat/Slayer is similiar but with lower Might in exchange for a small increase in Fortitude, Mastery and Luck",
+    "skills": ["Low", "Low", "Mid", "Low"],
+    "gameplayBoon": "Riordan's passive is a decently powerful skill that increases his weapon's might, accuracy and crit chance but may result in a reduction to True Speed due to increased weight. Just be careful not to let your weapon's weight reach 5 and the downside is mitigated. Riordan's active skill is similiar to other Hunter classline units, being a normal attack with pet assistance, dealing extra damage with possibility of extra effect. Riordan has really good damage potential while having good defensive capability to take some hits as a Warden or Beastmaster. Upgrading the damage scaling part of his active skill allows for more damge to be dealt. Mana increase can be considered if going down Tamer/Beastmaster line but not desirable otherwise. Mana cost reduction is unnecessary and increasing Defense reduction is not as useful as increasing Mastery scaling.",
+    "gameplayBane": "Riordan's Speed is on the lower side and if you opt for Warden or Beastmaster he is going to be doubled by most enemies as game progresses. Even if he goes Slayer or Deadeye, he is unlikely to double quite a significant portion of enemies. He also have specific problems in specific classes. As a Warden, his Dexterity is lackluster and he might be missing more than you like. As a Beastmaster he has poor Speed, Dexterity and Luck, making his combat lackluster. As a Slayer Riordan's Might takes a hit and he deals less damage per hit while unable to double quite often. As a Deadeye he has no particular weakness but his Dex, Def, Frt and Lck are all not impressive.",
+    "suggestion": "Ranger/Warden, Tamer/Beastmaster"
   },
   "arthur": {
     "introduction": "arthur's introduction",
     "base": "",
     "classes": "",
+    "skills": ["Low", "Low", "Low", "Low"],
     "gameplayBoon": "arthur's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane"
+    "gameplayBane": "riordan's gameplayBane",
+    "suggestion": ""
   },
   "cassandra": {
     "introduction": "cassandra's introduction",
     "base": "",
     "classes": "",
+    "skills": ["Low", "Low", "Low", "Low"],
     "gameplayBoon": "cassandra's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane"
+    "gameplayBane": "riordan's gameplayBane",
+    "suggestion": ""
   },
   "saxon": {
     "introduction": "saxon's introduction",
     "base": "",
     "classes": "",
+    "skills": ["Low", "Low", "Low", "Low"],
     "gameplayBoon": "saxon's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane"
+    "gameplayBane": "riordan's gameplayBane",
+    "suggestion": ""
   },
   "alden": {
     "introduction": "alden's introduction",
     "base": "",
     "classes": "",
+    "skills": ["Low", "Low", "Low", "Low"],
     "gameplayBoon": "alden's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane"
+    "gameplayBane": "riordan's gameplayBane",
+    "suggestion": ""
   },
   "valeria": {
     "introduction": "valeria's introduction",
     "base": "",
     "classes": "",
+    "skills": ["Low", "Low", "Low", "Low"],
     "gameplayBoon": "valeria's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane"
+    "gameplayBane": "riordan's gameplayBane",
+    "suggestion": ""
   },
   "benji": {
     "introduction": "benji's introduction",
     "base": "",
     "classes": "",
+    "skills": ["Low", "Low", "Low", "Low"],
     "gameplayBoon": "benji's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane"
+    "gameplayBane": "riordan's gameplayBane",
+    "suggestion": ""
   },
   "khamari": {
     "introduction": "khamari's introduction",
     "base": "",
     "classes": "",
+    "skills": ["Low", "Low", "Low", "Low"],
     "gameplayBoon": "khamari's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane"
+    "gameplayBane": "riordan's gameplayBane",
+    "suggestion": ""
   },
   "zanele": {
     "introduction": "zanele's introduction",
     "base": "",
     "classes": "",
+    "skills": ["Low", "Low", "Low", "Low"],
     "gameplayBoon": "zanele's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane"
+    "gameplayBane": "riordan's gameplayBane",
+    "suggestion": ""
   },
   "zuhair": {
     "introduction": "zuhair's introduction",
     "base": "",
     "classes": "",
+    "skills": ["Low", "Low", "Low", "Low"],
     "gameplayBoon": "zuhair's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane"
+    "gameplayBane": "riordan's gameplayBane",
+    "suggestion": ""
   },
   "eve": {
     "introduction": "eve's introduction",
     "base": "",
     "classes": "",
+    "skills": ["Low", "Low", "Low", "Low"],
     "gameplayBoon": "eve's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane"
+    "gameplayBane": "riordan's gameplayBane",
+    "suggestion": ""
   },
   "haoran": {
     "introduction": "haoran's introduction",
     "base": "",
     "classes": "",
+    "skills": ["Low", "Low", "Low", "Low"],
     "gameplayBoon": "haoran's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane"
+    "gameplayBane": "riordan's gameplayBane",
+    "suggestion": ""
   },
   "mashal": {
     "introduction": "mashal's introduction",
     "base": "",
     "classes": "",
+    "skills": ["Low", "Low", "Low", "Low"],
     "gameplayBoon": "mashal's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane"
+    "gameplayBane": "riordan's gameplayBane",
+    "suggestion": ""
   },
   "aya": {
     "introduction": "aya's introduction",
     "base": "",
     "classes": "",
+    "skills": ["Low", "Low", "Low", "Low"],
     "gameplayBoon": "aya's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane"
+    "gameplayBane": "riordan's gameplayBane",
+    "suggestion": ""
   },
   "tusk": {
     "introduction": "tusk's introduction",
     "base": "",
     "classes": "",
+    "skills": ["Low", "Low", "Low", "Low"],
     "gameplayBoon": "tusk's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane"
+    "gameplayBane": "riordan's gameplayBane",
+    "suggestion": ""
   },
   "laurai": {
     "introduction": "laurai's introduction",
     "base": "",
     "classes": "",
+    "skills": ["Low", "Low", "Low", "Low"],
     "gameplayBoon": "laurai's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane"
+    "gameplayBane": "riordan's gameplayBane",
+    "suggestion": ""
   },
   "taldera": {
     "introduction": "taldera's introduction",
     "base": "",
     "classes": "",
+    "skills": ["Low", "Low", "Low", "Low"],
     "gameplayBoon": "taldera's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane"
+    "gameplayBane": "riordan's gameplayBane",
+    "suggestion": ""
   },
   "vissarion": {
     "introduction": "vissarion's introduction",
     "base": "",
     "classes": "",
+    "skills": ["Low", "Low", "Low", "Low"],
     "gameplayBoon": "vissarion's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane"
+    "gameplayBane": "riordan's gameplayBane",
+    "suggestion": ""
   },
   "calith": {
     "introduction": "calith's introduction",
     "base": "",
     "classes": "",
+    "skills": ["Low", "Low", "Low", "Low"],
     "gameplayBoon": "calith's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane"
+    "gameplayBane": "riordan's gameplayBane",
+    "suggestion": ""
   }
 }

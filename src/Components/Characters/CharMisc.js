@@ -1,8 +1,12 @@
 import charActive from "../Datas/charActive.json";
 import charWrite from "./charWriteUp.json";
+import "./Char.css";
 
 export function charIntro(charName, part) {
   const charname = charName.toLowerCase();
+  const character1 = Object.values(charActive).find(
+    (char) => char.Name.toLowerCase() === charname
+  );
   const writeUp = Object.entries(charWrite).find(
     ([key]) => key === charname
   )?.[1];
@@ -13,8 +17,41 @@ export function charIntro(charName, part) {
       return <p>{writeUp.base}</p>;
     case "class":
       return <p>{writeUp.classes}</p>;
+    case "skill":
+      return (
+        <div>
+          <table className="active-table">
+            <tbody>
+              <tr>
+                <th colSpan="4" style={{ textAlign: "center" }}>
+                  Upgrade priority
+                </th>
+              </tr>
+              <tr>
+                <td className="upgrade-box">{character1.activeBuff1}</td>
+                <td className="upgrade-box">{character1.activeBuff2}</td>
+                <td className="upgrade-box">{character1.activeBuff3}</td>
+                <td className="upgrade-box">{character1.activeBuff4}</td>
+              </tr>
+              <tr>
+                <td className="upgrade-box">{writeUp.skills[0]}</td>
+                <td className="upgrade-box">{writeUp.skills[1]}</td>
+                <td className="upgrade-box">{writeUp.skills[2]}</td>
+                <td className="upgrade-box">{writeUp.skills[3]}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      );
     case "gameplay":
-      return <div><p>{writeUp.gameplayBoon}</p><p>{writeUp.gameplayBane}</p></div>;
+      return (
+        <div>
+          <p>{writeUp.gameplayBoon}</p>
+          <p>{writeUp.gameplayBane}</p>
+        </div>
+      );
+      case "suggest":
+      return <p>{writeUp.suggestion}</p>;
     default:
       return <p>placeholder</p>;
   }

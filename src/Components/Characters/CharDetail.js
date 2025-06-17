@@ -460,7 +460,11 @@ function CharDetail() {
               </tr>
             </tbody>
           </table>
+          <br />
+          <div>{charIntro(nameNoMark, "skill")}</div>
           <div>{charIntro(nameNoMark, "gameplay")}</div>
+          <h3>Class Suggestion:</h3>
+          <div>{charIntro(nameNoMark, "suggest")}</div>
         </div>
         <Link to="/characters">Back</Link>{" "}
       </div>
