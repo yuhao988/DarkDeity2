@@ -18,31 +18,31 @@
     "suggestion": "Ranger/Warden, Tamer/Beastmaster"
   },
   "arthur": {
-    "introduction": "arthur's introduction",
-    "base": "",
-    "classes": "",
-    "skills": ["Low", "Low", "Low", "Low"],
-    "gameplayBoon": "arthur's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane",
-    "suggestion": ""
+    "introduction": "Arthur is one the starting units in your party. He joins in Chapter 1 as a Lv.1 Summoner",
+    "base": "Arthur starts with decent Mgt and Spd, as well as really high Frt and Mas. He will be pysically squishy with his lower than average HP and low Def, his base Lck is also on the lower side. His growth rates are very similiar, with decent Mgt and Spd growth, high Frt and Mas growth, but low HP, Def and Lck growth.",
+    "classes": "Arthur in eomancer/Cosmician line will have the highest Mas growth in the entire game, which goes well with his prsonal skill or COsmician's Meteor. However, his combat ability will be abysmal due the low SPd, Dex and Lck. Warlock/Necromancer line has better Mgt and Frt, but poor physical bulk and Spd. His Mas will also be lower than that of Cosmician line. Aegis/Rlic Knigt line gives Arthur respectable bulk on both side but everything else are mediocre to bad. Finally, Scholar/Loremaster line has the best combat potential, having a great combination og Mgt, Spd and Mas, but Arthur's low Dex and Lck still locks him out of a competitive combt unit.",
+    "skills": ["High", "High", "Top", "Top"],
+    "gameplayBoon": "Arthur is a character focusing on skills rather than actual combat. His passive regenerates mana faster than other units, allowing for more frequent use of skills. His personal active is a great skill with growth potential within the chapter, often capable of one shotting bosses, or severely cripple them even if they have abilities that reduces direct damage. Increasing Lunar Reave's range give Arthur a good way of nuking enemies from safe distance, while increasing mastery scaling pairs very well with Arthu's high Mas stat. As the game progresses however, Lunar Reave, while still really strong, will pale in comparison to even stronger skills Arthur has access to, like Warlock's Hellfire or Cosmician's Meteor, so its usage will drop. Cosmician Arthur's Meteor is an absolute nuke, while Warlock's Hellfire is a long range skill that can make Arthur into a skill-based sniper. It is recommended for Arthur to go down Geomancer first for great Mas growth, before reclassing into Warlock and promote into Cosmician, to give Hellfire te best scaling result.",
+    "gameplayBane": "Arthur's combat is quite mediocre even if you try to optimise it. Arthur is very unlikely to double and is often getting doubled. His Might is not terrible, but never great, and his Dex is not great either, resulting in less than stellar Accuracy. He is most often physically squishy also, unless he goes down the Aegis/Relic Knight line. He can go down the line before going into Cosmician agin for a funny bulky Repulsor Shield build but is usually less reliable.",
+    "suggestion": "Geomancer->Warlock/Cosmician"
   },
   "cassandra": {
-    "introduction": "cassandra's introduction",
-    "base": "",
-    "classes": "",
-    "skills": ["Low", "Low", "Low", "Low"],
-    "gameplayBoon": "cassandra's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane",
-    "suggestion": ""
+    "introduction": "Cassandra is one of the starting units in your party. She is your first healer in game. She joins in Chapter 1 as a Lv.1 Shaman.",
+    "base": "Cassandra has rather average starting bases, being only 1 point apart at most from the average mean of all units' base stats in every single area. Cassandra's growth in Spd and Mas are good, and has close to average growth in HP, Mgt, Frt and Lck. Her growth in Dex and Def are quite low.",
+    "classes": "Cassandra will have low Dex and Def regardless of her class choice. Juggernaut/Dreanought line is usually undesirable as Cassandra cannot really tank well. Waveseer/Tidecaller will give Cassandra really good Spd, Frt and Mas. Her offense will not be an issue as it is a support classline. Elementalist/Spirit Keeper will give Cassandra the highest Mas as well as decent Mgt to utilise both skills and combat, it also gives Cassandra the highest Dex growth at 40%, but Dex and Spd are still mediocre. Ritualist/Hemomancer is the strongest combat option for Cassandra with great Lck and HP growth, as well as a decent balance of Mgt, Spd and Mas.",
+    "skills": ["Low", "Low", "Mid", "Mid"],
+    "gameplayBoon": "Cassandra's passive is weird as it require her to be in the centre of combat action. Cassandra has lackluster bulk and mdeiocre dodge, which makes maximising the use of her passive rather peculiar. Her personal active skill is a simple heal at 1 range. It is the earliest heal you get and can be quite useful early game. In the mid-game onwards better skills and better healers can come up and this skill is not as useful. You can upgrade the mastery scaling if you have essence to spare but it is not necessary. Gameplaywise Cassandra can do well as a support with Waveseer/Tidecaller, healing teammates steadily. If you wish for a more offensive build, Waveseer for high speed growth before going into Ritualist/Hemomancer is a good option for Deity and lower difficulty, providing Cassandra with great Spd, power and crit. Elementalist/Spirit Keeper is also a solid choice as Cassandra will have great Mas and Mgt to deal damage both using skills and in combat, with her passive recovering Mana faster along the way.",
+    "gameplayBane": "As stated above cassandra's low Dex makes her accuracy an issue as a combat unit, the main thing holding her back in Demonic as an otherwise excellent Ritualist/Hemomancer. Her role as a support in Waveseer/Tidecaller is ok, but nothing special as there are units who can do this just as well or even better.",
+    "suggestion": "Waveseer->Ritualist/Hemomancer, Waveseer/Tidecaller, Elementalist/Spirit Keeper"
   },
   "saxon": {
-    "introduction": "saxon's introduction",
-    "base": "",
-    "classes": "",
-    "skills": ["Low", "Low", "Low", "Low"],
-    "gameplayBoon": "saxon's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane",
-    "suggestion": ""
+    "introduction": "Saxon is one of the first unit to join your party. He joins in Chapter 1 as a Lv.1 Adept.",
+    "base": "Saxon has a high base Spd, which makes him easier to double during the early game. His Frt is low, making him vulnerable to Magical attacks, and the rest of his stats are average. His growth in Mgt, Def and Mas are quite good, but his Spd growth is mediocre, which means he will stop to double reliably as game progresses. His Dex, Lck and Frt growth are also really low.",
+    "classes": "Saxon as Adept has access to the powerful Monk/Ascendant line, and he will do well in it with his great Mgt and Mas growth. His Spd is also decent and should reliably double most enemies with Monk's Charged Ki. His bulk is not too great but Ascendant's Divine Flow will make up for it. He does have low Lck growth, which is a downside as it affects his crit chance. As Frigillan/Godfrost Saxon should have no problem tanking all Physical damages with his skyhigh HP and Def growth once Godfrost's Absolute Zero is active. However, his Frt will be quite low and his Spd will result in him getting doubled by most enemies, making Saxon vulerable to Magical enemies. Gale/Tempest is a mediocre line and Saxon's mediocre growth will not do well either. Conduit/Stormkeeper is another line Saxon can consider with the highest Mgt and Mas for Saxon. His defenses will be decent as Conduit/Stormkeeper's high Frt growth mod balances out Saxon's inherent good Def growth, but slow Spd and abysmal HP growth will still result in Saxon being unable to tank much hits. Saxon's inherent low Lck growth also will not work well with the classes wanting to get critical hits.",
+    "skills": ["Low", "Mid", "Low", "Low"],
+    "gameplayBoon": "Saxon's personal active skill is quite a lackluster one with high cost and relatively low damage. It can be used early game to hit multiple enemies at once to clear out mobs on enemies easier, but it will struggle to get any kill. Increasing the mastery scaling is ineffective as the skill damage is limited by both the total cap as well as damage cap on individual enemies. Lowering the cost is the best upgrade so that the skill can still be considered as an after thought. Saxon's passive is an okay skill to increase Saxon's longevity and actually scales as the game progresses. However, it is pointless if Saxon decides to go into Ascendant as Divine Flow means Saxon is not going to take any damage in the first place. Monk/Ascendant is a powerful line, and Saxon is rather good in it. Conduit/Stormkeeper can also be considered.",
+    "gameplayBane": "Saxon's Lck will be the only weakness for him as Ascendant, making his crit numbers less than stellar when Elemental Fists is not in correct phase, as his mediocre bulk is a non-issue if he is not getting hit in the first place. As Conduit/Stormkeeper Saxon's combat abiility is less than ideal due to his slow Spd and relatively low crit in a class hoping to reach 100% crit, but his ability to clear out multiple enemies, or to strike enemies from afar with Stormkeeper's Lightning Strike should not be overlooked.",
+    "suggestion": "Monk/Ascedant, Conduit/Stormkeeper"
   },
   "alden": {
     "introduction": "alden's introduction",
