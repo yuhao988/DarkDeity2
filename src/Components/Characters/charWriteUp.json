@@ -45,9 +45,9 @@
     "suggestion": "Monk/Ascedant, Conduit/Stormkeeper"
   },
   "alden": {
-    "introduction": "alden's introduction",
-    "base": "",
-    "classes": "",
+    "introduction": "Alden is a character that join you in the Grettenia arc of the game. He joins your party in Chapter 2 as a Lv.8 Scholar",
+    "base": "Alden's base Def and Lck are quite low and his HP and Mgt are slightly below average. His other stats are slightly above average. In terms of growth, Alsen has low grow in Lk and Dex, but decent growth in other areas, with respectable Def, Frt and Mgt and good growth in Mas.",
+    "classes": "Alden's default class is Scholar, which naturally progresses into Loremaster. This line provides decent Mgt, Spd and Mas  ",
     "skills": ["Low", "Low", "Low", "Low"],
     "gameplayBoon": "alden's gameplayBoon",
     "gameplayBane": "riordan's gameplayBane",

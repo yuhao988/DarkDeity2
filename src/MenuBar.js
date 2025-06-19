@@ -1,8 +1,21 @@
-import { Link } from "react-router-dom";
-import "./App.css"; 
+import { Link, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import "./App.css";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function MenuBar() {
   return (
+    <>
+    <ScrollToTop/>
     <div className="menu-bar">
       <h2 className="menu-title">Dark Deity</h2>
       <nav>
@@ -19,6 +32,7 @@ function MenuBar() {
         </ul>
       </nav>
     </div>
+    </>
   );
 }
 
