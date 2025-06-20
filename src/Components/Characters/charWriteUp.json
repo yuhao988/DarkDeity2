@@ -77,35 +77,35 @@
     "classes": "Khamari starts out as a Ritualist which naturally progresses into Hemomancer. However, despite having an extremely high total growth, Ritualist/Hemomancer Khamari does have issues regarding low Dex and mdeiocre Spd, Mas and defenses. Juggernaut/Dreadnought is the tank line for Shaman and is arguably the best line for Khamari, boasting great HP and stellar defenses, with his passive further boosting his Frt to make Khamari the bulkiest unit at base. Dreadnought's passive also means that low Dex is a non-issue. This build does still suffer from low Spd, Mas and Lck, though none actually hurts his utility as a tank. Due to his high growth, Khamari can still do fine as a Waveseer/Tidecaller or Elementalist/SPirit Keeper, but neither excels as much as Dreadnought Khamari.",
     "skills": ["Low", "High", "Mid", "Mid"],
     "gameplayBoon": "Khamari's passive is a simple yet effective +25% to his already high Frt if he goes down Juggernaut/Dreanought line, making him one of the best Magical tanks out there. His active skill can heal multiple allies at the same time though this requires careful positioning and also has a downside which affects allies that are too low on HP. Increasing the healing effect is quite important to decrease the situations where the downside applies, but increasing mana cost together with effect will leave Khamari having less mana for is other skills which are generally undesirable.",
-    "gameplayBane": "riordan's gameplayBane",
-    "suggestion": ""
+    "gameplayBane": "As Juggernaut/Dreadnought, Khamari does not have much weakness, other than needing to note that he is not totally invincible and still needs to be healed from time to time especially on higher difficulties. On Demonic enemies are much stronger and there is a possibility even Khamari can get overwhelmed, so players should be cautious there. As other lines, Khamari's Dex will be an issue and he might miss more often than you like. His Spd also leaves him vulnerable to be doubled so careful positioning is required.",
+    "suggestion": "Juggernaut/Dreadnought"
   },
   "zanele": {
-    "introduction": "zanele's introduction",
-    "base": "",
-    "classes": "",
-    "skills": ["Low", "Low", "Low", "Low"],
-    "gameplayBoon": "zanele's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane",
-    "suggestion": ""
+    "introduction": "Zanele join you in the Weald arc of the game. She joins you as a Lv.X Quickdraw at the start of Chapter X.",
+    "base": "Zanele's base Spd, Dex and Mas are all very high, while having decent Mgt and Frt. However, Zanele does have low Def and Lck. In terms of growth, Zanele's growth more or less align with her base with really good Dex and Mas growth, decent Mgt, Spd and Frt growth, but terrible HP, Def and Lck growth.",
+    "classes": "Zanele's default class is Quickdraw, which naturally progresses into Deadeye. This line gives Zanele high Spd and Mas, as well as good Mgt and Dex, making her a reliable player phase combatant. However, her bulk and dodge are poor and she cannot counter at 1 range, making her vulnerable in enemy phase. Tamer/Beastmaster is a strong line for Zanele too, giving her extremely high Mas as well as passive that boosts her skill damage, when combined with her own passive lets her pet skills deal insane damage, at the cost of her Spd. Cutthroat/Slayer lets Zanele retain her SPd while having decent Mgt, Dex and having a more bearable Lck growth. This line also has 1~2 attack range making it a more versatile combat unit than Quickdraw/Deadeye. Ranger/Warden gives Zanele good Mgt and decnt HP, but pretty average growth in other areas.",
+    "skills": ["Low", "High", "Mid", "Top"],
+    "gameplayBoon": "Zanele's personal active skill is one of its kind as it gives player Gold when it kills an enemy. It is the only way to reliably farm Gold in this game and essential to keep on training missions forever once the main campiagn ends. Note that the skill will only give Gold if the enemy is killed AFTER the monkey attacks. So players can get gold if the monkey attack or the follow-up attack after pet attack kills, but not if the first attack before the monkey kills. Thus it is eesential to upgrade the Gold increase part of this skill. You can get the cost down upgrade if you are not going Beastmaster as the half cost from Beastmaster's passive makes this redundant. You can also go for Mastery scaling increase if the skill is not enough damage. Class-wise Tamer/Beastmaster is the optimal choice if you want to focus on her personal active, and Quickdraw/Deadeye for best combat potential. A mixture of Tamer/Deadeye is also possible to both retain the Spd from Quickdraw as well as pet damage boost from Tamer.",
+    "gameplayBane": "As a Tamer/Beastmaster, Zanele's combat potential is limited as she loses out in Spd and Mgt so she hits less hard and will not be doubling the enemies. She can still kill very reliably on player phase and have enough bulk to take a surprise hit or two. As Quickdraw/Deadeye she should have little trouble doubling and heal out heavy damage, but she will not be able to kill with her personal as often to earn Gold. She will also be very vulnerable during enemy phase, as her inability to counter at 1 range may draw in many attackers.",
+    "suggestion": "Tamer/Beastmaster, Quickdraw/Deadeye, Quickdraw->Tamer/Deadeye"
   },
   "zuhair": {
-    "introduction": "zuhair's introduction",
-    "base": "",
-    "classes": "",
-    "skills": ["Low", "Low", "Low", "Low"],
-    "gameplayBoon": "zuhair's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane",
-    "suggestion": ""
+    "introduction": "Zuhair is one of the characters joining you during the Shamac arc. He joins you in Chapter X as a Lv.X Frigillan.",
+    "base": "Zuhair has a low base Mgt and Def, and below average base Lck. His base HP is very high, and his Frt is high too. In terms of growth, Zuhair's HP, Frt and Mas growth are quite high, with decent growth in Mgt, Spd, Dex and Lck, while his Def growth is quite low.",
+    "classes": "Zuhait starts out in the Frigillan class, which naturally progresses into Godfrost. This line has good Def but bad Frt, which when combined with Zuhair's personal growth, results in te unit having decent growth in both defenses, coupled with an absurd 100% HP growth and a powerful Godfrost skill in Absolute Zero, makes Zuhair the best tank in the game, capable of even tanking waves of onslaught in Demonic mode. Conduit/Stormkeeper gives Zuhair the best Mas and Frt growth, both of which can be brought into the Frigillan/Godfrost tank line later, but the decrease in Def might be a problem for taking physical hits in higher difficulty. Monk/Ascendant is once again a great line and Zuhair will have great Mgt, Spd, Dex and Mas growth in the line.",
+    "skills": ["Low", "Low", "Mid", "Mid"],
+    "gameplayBoon": "Zuhair's passive effect is simple and effective. Every unit, ally and foes alike have 5 Movement in this game, ZUhair having extra movement means he can reach places faster if necessary. His active skill is decent to bring in enemies that is out of reach for allies, and as a tank himself, is not afraid to go in deeper to face more attacks. However this skill is not often used as Asolute Zero is a crucial skill for Zuhair and it requires a lot of mana, sparing no Mana for his other skills. Class-wise other than going into the natural lines, one alternative is to stay in Conduit for higher Mas growth before going into Godfrost for more effective Absolute Zero.",
+    "gameplayBane": "Zuhair is quite a mediocre unit when first join as Frigillan itself is not very strong, Zuhair cannot deal out enough damage nor take hits all that well. This however, all changes once he has the access to Absolite Zero as Godfrost. If Zuhair goes into other lines, he will face stiff competitions from likes of Saxon or Tal'Dera, making Zuhair more often than not an afterthought.",
+    "suggestion": "Frigillan/Godfrost, Conduit/Godfrost, Conduit/Stormkeeper"
   },
   "eve": {
-    "introduction": "eve's introduction",
-    "base": "",
-    "classes": "",
-    "skills": ["Low", "Low", "Low", "Low"],
-    "gameplayBoon": "eve's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane",
-    "suggestion": ""
+    "introduction": "Eve is a character that joins your party during the Shamac arc of the game plot. She joins in Chapter X as a Lv.X Cutthroat.",
+    "base": "Eve has one of the lowest base total amongest all playable units, with below average HP and Mgt, and horrendous defenses and Mas. However, Eve has very high Spd, Dex and Lck. In terms of growth, Eve similiarly has high Spd, Dex and Lck growth, subpar Mgt growth, and really low HP, Def, Frt and Mas growth.",
+    "classes": "Eve begins in Cutthroat class, which naturally progresses into Slayer. This line has blistering fast Spd, as well as high Dex and Lck. HP and Mgt growth as passable, but Def, Frt and Mas growth are bad. Cutthroat does have a good skill in Licky Lasso, a skill capable of changing enemy position for easier kill. Tamer/Beastmaster will give Eve high HP and Mas growth and passable growth in all other areas, making Eve into a unit with no bad stats, but Eve will lose out on the ability to double most enemies. Quickdraw/Deadeye is a line that allows Eve to retain her Spd as well as having good Mgt, Dex and Lck, but her HP, Def and Frt growth are all really low.",
+    "skills": ["Low", "Low", "Mid", "Low"],
+    "gameplayBoon": "Eve's active skill is nothing spectacular, as due to her low Mas, it is not going to be effective at dealing extra damage or lowering enemy's Frt. Reducing cost is probably the best upgrade for it so that it might find more niche usage. Eve's passive is really good as it augments Eve's relatively low Mgt with her Acc, a stat EVe usually excel in due to her high Dex. Cutthroat/Slayer is the go to line due to its synergy with Eve in terms of growth, a very strong skill in Licky Lasso, as well as one of the best passive for Eve. Cutthroat's passive essentially increases Eve's Dodge by 1 for every point of Lck Eve has. As Eve has extremely high base Lck and growth, this passive makes Eve one of the strongest dodge tank in the game even on higher difficulty. Slayer's passive also provide extra chance for more damage as Eve doubles effectively with good crit chance due to high Lck. Slayer having access to 1~2 range is so good that it feels like an overkill. Quickdraw/Deadeye is a solid pick, but mostly outclassed by Cutthroat/Slayer. Tamer/Beastmaster provides another way to play Eve, focusing on her pet skills more, but is usually not favoured due to her poor Mas.",
+    "gameplayBane": "Although Eve is one of the strongest unit in game, she is not without weakness. Her Mgt is lackluster most of the time, although it is not on Valeria's level. Ricochet from Slayer is good, but unreliable, so is her crit chance. It is very possible for Eve to not crit at crucial moments and miss a kill. Also, when compared to her dodge tank counterpart Valeria, the obvious disadvantage she has is her low Mas, resulting in Eve usually not using any skills other than Licky Lasso, and mainly as a combat unit instead of a versatile unit like Valeria.",
+    "suggestion": "Cutthroat/Slayer"
   },
   "haoran": {
     "introduction": "haoran's introduction",

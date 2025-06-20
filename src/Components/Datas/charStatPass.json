@@ -162,8 +162,7 @@
     "mas": "35%",
     "lck": "20%",
     "passive": "Dancer's Grace",
-    "passiveEff": "Movement +1",
-    "N": "Spin Partner"
+    "passiveEff": "Movement +1"
   },
   {
     "ID": 12,
