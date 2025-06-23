@@ -50,7 +50,7 @@ export function charIntro(charName, part) {
           <p>{writeUp.gameplayBane}</p>
         </div>
       );
-      case "suggest":
+    case "suggest":
       return <p>{writeUp.suggestion}</p>;
     default:
       return <p>placeholder</p>;
@@ -247,7 +247,11 @@ export function charSkillDes(charName, base, scale, upgrade) {
           `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
         )
         .replace("15 Mana", `${finalBase[1]} Mana`);
-      if (upgrade.upgrade3) skillText += ` and clears target's debuffs`;
+      if (upgrade.upgrade3)
+        skillText = skillText.replace(
+          "Crit,",
+          "Crit and clears target's debuffs,"
+        );
       break;
     case "Aya":
       if (upgrade.upgrade2) finalBase[0] += 2;
