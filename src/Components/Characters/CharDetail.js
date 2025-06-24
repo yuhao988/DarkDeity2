@@ -257,7 +257,7 @@ function CharDetail() {
                             return <td key={key}>{value}</td>;
                           } else {
                             const charGrow = parseFloat(growths[i]);
-                            console.log(charGrow);
+                            
                             numValue = value * 100 + charGrow;
 
                             total += numValue;
@@ -322,7 +322,7 @@ function CharDetail() {
                             return <td key={key}>{value}</td>;
                           } else {
                             const charGrow = parseFloat(growths[i]);
-                            console.log(charGrow);
+                        
                             numValue = value * 100 + charGrow;
 
                             total += numValue;

@@ -5,11 +5,12 @@ import "./Char.css";
 export function charIntro(charName, part) {
   const charname = charName.toLowerCase();
   const character1 = Object.values(charActive).find(
-    (char) => char.Name.toLowerCase() === charname
+    (char) => char.Name.toLowerCase().replace(/'/g, "") === charname
   );
   const writeUp = Object.entries(charWrite).find(
     ([key]) => key === charname
   )?.[1];
+
   switch (part) {
     case "intro":
       return <p>{writeUp.introduction} </p>;
@@ -65,6 +66,7 @@ export function charSkillDes(charName, base, scale, upgrade) {
   const finalBase = [...base];
   const finalScale = [...scale];
   let skillText = character.activeEff;
+  
   switch (charName) {
     case "Gwyn":
       if (upgrade.upgrade3) finalScale[0] += 40;
