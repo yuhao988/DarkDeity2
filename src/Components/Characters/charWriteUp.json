@@ -164,14 +164,14 @@
   "vissarion": {
     "introduction": "Vissarion is a character joining you during the Irving Rescue arc. He joins in Chapter X as a Lv.X Devoted.",
     "base": "Vissarion has good HP, Mgt, Dex, Def and Mas, ok Spd, but poor Frt, and Lck. His total growth is actually quite high, with great HP, Dex, Def, Mas, and decent Mgt. His Spd growth is lackluster, and his Frt and Lck growth are atrocious. This makes Vissarion a decent all-rounder that can focus on combat or Skill when necessary.",
-    "classes": "",
-    "skills": ["Low", "Low", "Low", "Low"],
-    "gameplayBoon": "vissarion's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane",
-    "suggestion": ""
+    "classes": "Vissarion starts in the Devoted clas, which naturally prigresses into the Reaper class. This line gives Vissarion extremely high Mas, as well as great HP, Mgt and Dex. His Lck and Def are also decent. His Spd is mediocre and with axe equipped he is unlikely to double, he will also have atrocious Frt. It is a good class as Vissasrion's high Mas will result in great Skill numbers, and decent Lck and Mgt will let him deal great damage by critical hits. Nightblade/Ancarant will offer the highest SPd for Vissarion, as well as great Dex and Mas, but being mediocre in most other areas, especially a shaky 35% growth in Mgt, makes it less than ideal for Vissarion. Seeker/Ellisant will give Vissarion best Mas growth, great HP, Mgt, Def and Dex growth, but terrible Spd, Frt and Lck. This is a good option for Vissarion too, as his high Mas will result in super long attack range for Ellisant's Full Draw. Finally, Gallant/Seeker gives Vissarion abusrdly high HP, great Mgt and Def, good Dex and Mas, but worse Spd, Frt and Lck than Ellisant. Vissarion can take physical attacks well, but his slow Spd and lack of good Skills to go with his high Skill number makes it not a great choice.",
+    "skills": ["Low", "Mid", "High" , "High"],
+    "gameplayBoon": "Vissarion's passive is a decent boost to his defenses, giving Vissarion more survivability, but his magical bulk will still be shaky. His active skill is a great support skill in higher difficulty where the pressure for bulky tanks are much greater. Vissarion's high Mas usually allows this skill to give a pretty significant buff to allies, thus increasing duration and Mas scaling are great upgrade options. Classwise Reaper is a decent choice for Vissarion for long range sniping using Blink, similiar to Ellisant's Full Draw. Gallant/Reaper and Seeker/Ellisant are most ideal for Vissarion.",
+    "gameplayBane": "Vissarion's Spd is more often than not lackluster, so he is proned to get doubled. Coupling with his low Frt, making fast Magical foes like Witches and Magi very dangerous for him. As a Reaper his less than ideal Lck stat may make him miss crucial crits, making him less reliable at doing his job. ",
+    "suggestion": "Seeker/Ellisant, Gallant/Reaper"
   },
   "calith": {
-    "introduction": "calith's introduction",
+    "introduction": "Calith is the last conventional unit to join your party. SHe joins in Chapter X of Irving Rescue arc as a Lv.X Geomancer",
     "base": "",
     "classes": "",
     "skills": ["Low", "Low", "Low", "Low"],
