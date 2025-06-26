@@ -9,7 +9,8 @@
     "defense": 6,
     "fortitude": 2,
     "mastery": 4,
-    "luck": 3
+    "luck": 3,
+    "starting": [18, "Gale", 41, 14, 17, 17, 13, 6, 10, 12]
   },
   {
     "ID": 5,
@@ -21,7 +22,8 @@
     "defense": 4,
     "fortitude": 2,
     "mastery": 5,
-    "luck": 4
+    "luck": 4,
+    "starting": [1, "Adept", 27, 5, 8, 6, 4, 2, 5, 4]
   },
   {
     "ID": 18,
@@ -33,7 +35,8 @@
     "defense": 2,
     "fortitude": 2,
     "mastery": 3,
-    "luck": 8
+    "luck": 8,
+    "starting": [30, "Conduit", 48, 28, 19, 25, 5, 9, 14, 26]
   },
   {
     "ID": 11,
@@ -45,7 +48,8 @@
     "defense": 3,
     "fortitude": 7,
     "mastery": 6,
-    "luck": 5
+    "luck": 5,
+    "starting": []
   },
   {
     "ID": 12,
@@ -57,7 +61,8 @@
     "defense": 2,
     "fortitude": 3,
     "mastery": 3,
-    "luck": 7
+    "luck": 7,
+    "starting": []
   },
   {
     "ID": 2,
@@ -69,7 +74,8 @@
     "defense": 5,
     "fortitude": 5,
     "mastery": 4,
-    "luck": 5
+    "luck": 5,
+    "starting": [1, "Hunter", 30, 7, 4, 5, 5, 5, 4, 5]
   },
   {
     "ID": 16,
@@ -81,7 +87,8 @@
     "defense": 6,
     "fortitude": 2,
     "mastery": 2,
-    "luck": 3
+    "luck": 3,
+    "starting": [24, "Ranger", 70, 25, 13, 14, 18, 6, 5, 10]
   },
   {
     "ID": 10,
@@ -93,7 +100,8 @@
     "defense": 3,
     "fortitude": 5,
     "mastery": 7,
-    "luck": 3
+    "luck": 3,
+    "starting": [6, "Quickdraw", 25, 8, 14, 13, 3, 6, 10, 4]
   },
   {
     "ID": 4,
@@ -105,7 +113,8 @@
     "defense": 4,
     "fortitude": 6,
     "mastery": 5,
-    "luck": 6
+    "luck": 6,
+    "starting": [1, "Shaman", 25, 5, 6, 5, 4, 5, 5, 6]
   },
   {
     "ID": 13,
@@ -117,7 +126,8 @@
     "defense": 7,
     "fortitude": 7,
     "mastery": 7,
-    "luck": 2
+    "luck": 2,
+    "starting": []
   },
   {
     "ID": 9,
@@ -129,7 +139,8 @@
     "defense": 6,
     "fortitude": 8,
     "mastery": 5,
-    "luck": 3
+    "luck": 3,
+    "starting": [8, "Ritualist", 44, 10, 9, 6, 6, 8, 7, 9]
   },
   {
     "ID": 17,
@@ -141,7 +152,8 @@
     "defense": 6,
     "fortitude": 3,
     "mastery": 4,
-    "luck": 3
+    "luck": 3,
+    "starting": [24, "Elementalist", 56, 19, 17, 18, 14, 7, 16, 7]
   },
   {
     "ID": 6,
@@ -153,7 +165,8 @@
     "defense": 2,
     "fortitude": 6,
     "mastery": 6,
-    "luck": 2
+    "luck": 2,
+    "starting": [8, "Scholar", 32, 7, 11, 8, 5, 7, 11, 4]
   },
   {
     "ID": 3,
@@ -165,7 +178,8 @@
     "defense": 1,
     "fortitude": 7,
     "mastery": 8,
-    "luck": 3
+    "luck": 3,
+    "starting": [1, "Summoner", 24, 6, 6, 5, 1, 7, 8, 3]
   },
   {
     "ID": 15,
@@ -177,7 +191,8 @@
     "defense": 1,
     "fortitude": 3,
     "mastery": 4,
-    "luck": 7
+    "luck": 7,
+    "starting": [19, "Warlock", 39, 22, 15, 16, 3, 8, 10, 14]
   },
   {
     "ID": 20,
@@ -189,7 +204,8 @@
     "defense": 3,
     "fortitude": 6,
     "mastery": 2,
-    "luck": 8
+    "luck": 8,
+    "starting": [32, "Geomancer", 68, 21, 17, 22, 16, 15, 15, 26]
   },
   {
     "ID": 8,
@@ -201,7 +217,8 @@
     "defense": 7,
     "fortitude": 3,
     "mastery": 3,
-    "luck": 9
+    "luck": 9,
+    "starting": [5, "Gallant", 40, 12, 4, 4, 10, 3, 4, 10]
   },
   {
     "ID": 1,
@@ -213,7 +230,8 @@
     "defense": 7,
     "fortitude": 2,
     "mastery": 6,
-    "luck": 5
+    "luck": 5,
+    "starting": [1, "Vanguard", 28, 6, 5, 6, 6, 2, 5, 5]
   },
   {
     "ID": 7,
@@ -225,7 +243,8 @@
     "defense": 3,
     "fortitude": 4,
     "mastery": 7,
-    "luck": 3
+    "luck": 3,
+    "starting": [5, "Nightblade", 23, 4, 13, 11, 1, 9, 9, 6]
   },
   {
     "ID": 19,
@@ -237,6 +256,7 @@
     "defense": 7,
     "fortitude": 2,
     "mastery": 7,
-    "luck": 3
+    "luck": 3,
+    "starting": [30, "Devoted", 67, 18, 17, 21, 22, 6, 25, 15]
   }
 ]
