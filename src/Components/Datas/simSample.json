@@ -12,7 +12,7 @@
     "Weapon": "Greatbow",
     "Ddg": 63,
     "Acc": 204,
-    "C. avo": 24,
+    "CAvo": 24,
     "Crit": 0
   },
   {
@@ -28,7 +28,7 @@
     "Weapon": "Greatlance",
     "Ddg": 86,
     "Acc": 190,
-    "C. avo": 20,
+    "CAvo": 20,
     "Crit": 0
   },
   {
@@ -44,7 +44,7 @@
     "Weapon": "Greatlance",
     "Ddg": 52,
     "Acc": 191,
-    "C. avo": 24,
+    "CAvo": 24,
     "Crit": 0
   },
   {
@@ -60,7 +60,7 @@
     "Weapon": "Cloud Focus",
     "Ddg": 75,
     "Acc": 176,
-    "C. avo": 22,
+    "CAvo": 22,
     "Crit": 0
   },
   {
@@ -76,7 +76,7 @@
     "Weapon": "Greataxe",
     "Ddg": 59,
     "Acc": 158,
-    "C. avo": 32,
+    "CAvo": 32,
     "Crit": 0
   },
   {
@@ -92,7 +92,7 @@
     "Weapon": "Relic Archstaff",
     "Ddg": 51,
     "Acc": 155,
-    "C. avo": 20,
+    "CAvo": 20,
     "Crit": 0
   },
   {
@@ -108,7 +108,7 @@
     "Weapon": "Greataxe",
     "Ddg": 52,
     "Acc": 154,
-    "C. avo": 36,
+    "CAvo": 36,
     "Crit": 0
   },
   {
@@ -124,7 +124,7 @@
     "Weapon": "Relic Archstaff",
     "Ddg": 70,
     "Acc": 182,
-    "C. avo": 38,
+    "CAvo": 38,
     "Crit": 0
   },
   {
@@ -140,7 +140,7 @@
     "Weapon": "Shiv",
     "Ddg": 103,
     "Acc": 188,
-    "C. avo": 32,
+    "CAvo": 32,
     "Crit": 0
   },
   {
@@ -156,7 +156,7 @@
     "Weapon": "Greatsword",
     "Ddg": 96,
     "Acc": 195,
-    "C. avo": 30,
+    "CAvo": 30,
     "Crit": 0
   },
   {
@@ -172,7 +172,7 @@
     "Weapon": "Greatsword",
     "Ddg": 53,
     "Acc": 170,
-    "C. avo": 20,
+    "CAvo": 20,
     "Crit": 0
   },
   {
@@ -188,7 +188,7 @@
     "Weapon": "Cloud Focus",
     "Ddg": 60,
     "Acc": 185,
-    "C. avo": 20,
+    "CAvo": 20,
     "Crit": 0
   },
   {
@@ -204,7 +204,7 @@
     "Weapon": "Cloud Focus",
     "Ddg": 72,
     "Acc": 170,
-    "C. avo": 32,
+    "CAvo": 32,
     "Crit": 0
   },
   {
@@ -220,7 +220,7 @@
     "Weapon": "Greataxe",
     "Ddg": 67,
     "Acc": 166,
-    "C. avo": 24,
+    "CAvo": 24,
     "Crit": 0
   },
   {
@@ -236,7 +236,7 @@
     "Weapon": "Relic Archstaff",
     "Ddg": 93,
     "Acc": 190,
-    "C. avo": 32,
+    "CAvo": 32,
     "Crit": 0
   },
   {
@@ -252,16 +252,16 @@
     "Weapon": "Greatsword",
     "Ddg": 64,
     "Acc": 178,
-    "C. avo": 32,
+    "CAvo": 32,
     "Crit": 0
-   
   },
 
   {
     "Level": 41,
     "Class": "Gwyn",
-    "Range": "Gallant",
-    "Phy/Mag": "Reaper",
+    "tier2": "Gallant",
+    "tier3": "Reaper",
+    "Phy/Mag": "Physical",
     "HP": 85,
     "Pwr": 50.8,
     "TSpd": 15,
@@ -270,7 +270,7 @@
     "Weapon": "Greataxe",
     "Ddg": 68.5,
     "Acc": 164.1,
-    "C. avo": 0,
+    "CAvo": 0,
     "Crit": 43.15,
     "Dex": 26.6,
     "Lck": 25.2,
@@ -280,8 +280,9 @@
   {
     "Level": 41,
     "Class": "Arthur",
-    "Range": "Geomancer",
-    "Phy/Mag": "Cosmician",
+    "tier2": "Geomancer",
+    "tier3": "Cosmician",
+    "Phy/Mag": "Magical",
     "HP": 77.2,
     "Pwr": 46.8,
     "TSpd": 13.4,
@@ -290,7 +291,7 @@
     "Weapon": "Cloud Focus",
     "Ddg": 55.7,
     "Acc": 140.9,
-    "C. avo": 0,
+    "CAvo": 0,
     "Crit": 35.05,
     "Dex": 16.2,
     "Lck": 20.8,
@@ -300,8 +301,9 @@
   {
     "Level": 41,
     "Class": "Cassandra",
-    "Range": "Waveseer",
-    "Phy/Mag": "Hemomancer",
+    "tier2": "Waveseer",
+    "tier3": "Hemomancer",
+    "Phy/Mag": "Physical",
     "HP": 86.2,
     "Pwr": 36.6,
     "TSpd": 26.8,
@@ -310,7 +312,7 @@
     "Weapon": "Shiv",
     "Ddg": 93.5,
     "Acc": 147.7,
-    "C. avo": 0,
+    "CAvo": 0,
     "Crit": 57.75,
     "Dex": 19,
     "Lck": 30.4,
@@ -320,8 +322,9 @@
   {
     "Level": 41,
     "Class": "Saxon",
-    "Range": "Monk",
-    "Phy/Mag": "Ascendant",
+    "tier2": "Monk",
+    "tier3": "Ascendant",
+    "Phy/Mag": "Physical",
     "HP": 71.2,
     "Pwr": 46.6,
     "TSpd": 23.6,
@@ -330,7 +333,7 @@
     "Weapon": "Cloud Focus",
     "Ddg": 69.8,
     "Acc": 165.2,
-    "C. avo": 0,
+    "CAvo": 0,
     "Crit": 22.6,
     "Dex": 28.4,
     "Lck": 8.4,
@@ -340,8 +343,9 @@
   {
     "Level": 41,
     "Class": "Alden",
-    "Range": "Aegis",
-    "Phy/Mag": "Relic Knight",
+    "tier2": "Aegis",
+    "tier3": "Relic Knight",
+    "Phy/Mag": "Physical",
     "HP": 91,
     "Pwr": 37.8,
     "TSpd": 13.2,
@@ -350,7 +354,7 @@
     "Weapon": "Greatsword",
     "Ddg": 41.7,
     "Acc": 139.6,
-    "C. avo": 0,
+    "CAvo": 0,
     "Crit": 13.8,
     "Dex": 14.2,
     "Lck": 8.2,
@@ -360,8 +364,9 @@
   {
     "Level": 41,
     "Class": "Valeria",
-    "Range": "Nightblade",
-    "Phy/Mag": "Ancarant",
+    "tier2": "Nightblade",
+    "tier3": "Ancarant",
+    "Phy/Mag": "Physical",
     "HP": 58,
     "Pwr": 29.4,
     "TSpd": 36.2,
@@ -370,7 +375,7 @@
     "Weapon": "Shiv",
     "Ddg": 102.5,
     "Acc": 168.9,
-    "C. avo": 0,
+    "CAvo": 0,
     "Crit": 41.15,
     "Dex": 30.6,
     "Lck": 14.8,
@@ -380,8 +385,9 @@
   {
     "Level": 41,
     "Class": "Benji",
-    "Range": "Gallant",
-    "Phy/Mag": "Champion",
+    "tier2": "Gallant",
+    "tier3": "Champion",
+    "Phy/Mag": "Physical",
     "HP": 81,
     "Pwr": 51.8,
     "TSpd": 10,
@@ -390,7 +396,7 @@
     "Weapon": "Greatsword",
     "Ddg": 64,
     "Acc": 170.6,
-    "C. avo": 0,
+    "CAvo": 0,
     "Crit": 46.9,
     "Dex": 21.6,
     "Lck": 33.2,
@@ -400,8 +406,9 @@
   {
     "Level": 41,
     "Class": "Khamari",
-    "Range": "Juggernaut",
-    "Phy/Mag": "Dreadnought",
+    "tier2": "Juggernaut",
+    "tier3": "Dreadnought",
+    "Phy/Mag": "Physical",
     "HP": 87.8,
     "Pwr": 48.6,
     "TSpd": 8.4,
@@ -410,7 +417,7 @@
     "Weapon": "Greataxe",
     "Ddg": 43.8,
     "Acc": 130,
-    "C. avo": 0,
+    "CAvo": 0,
     "Crit": 33.5,
     "Dex": 14,
     "Lck": 20,
@@ -420,8 +427,9 @@
   {
     "Level": 41,
     "Class": "Zanele",
-    "Range": "Quickdraw",
-    "Phy/Mag": "Beastmaster",
+    "tier2": "Quickdraw",
+    "tier3": "Beastmaster",
+    "Phy/Mag": "Physical",
     "HP": 78.4,
     "Pwr": 41.8,
     "TSpd": 18.6,
@@ -430,7 +438,7 @@
     "Weapon": "Greatbow",
     "Ddg": 61.4,
     "Acc": 185.1,
-    "C. avo": 0,
+    "CAvo": 0,
     "Crit": 24.75,
     "Dex": 28,
     "Lck": 10.2,
@@ -440,8 +448,9 @@
   {
     "Level": 41,
     "Class": "Zuhair",
-    "Range": "Conduit",
-    "Phy/Mag": "Godfrost",
+    "tier2": "Conduit",
+    "tier3": "Godfrost",
+    "Phy/Mag": "Physical",
     "HP": 92.8,
     "Pwr": 51.2,
     "TSpd": 10.4,
@@ -450,7 +459,7 @@
     "Weapon": "Greataxe",
     "Ddg": 51,
     "Acc": 149.6,
-    "C. avo": 0,
+    "CAvo": 0,
     "Crit": 34.5,
     "Dex": 22,
     "Lck": 19.2,
@@ -460,8 +469,9 @@
   {
     "Level": 41,
     "Class": "Eve",
-    "Range": "Cutthroat",
-    "Phy/Mag": "Slayer",
+    "tier2": "Cutthroat",
+    "tier3": "Slayer",
+    "Phy/Mag": "Physical",
     "HP": 71.2,
     "Pwr": 30.8,
     "TSpd": 35.6,
@@ -470,7 +480,7 @@
     "Weapon": "Shiv",
     "Ddg": 120.7,
     "Acc": 175.9,
-    "C. avo": 0,
+    "CAvo": 0,
     "Crit": 65.85,
     "Dex": 29.4,
     "Lck": 34.8,
@@ -480,8 +490,9 @@
   {
     "Level": 41,
     "Class": "Haoran",
-    "Range": "Waveseer",
-    "Phy/Mag": "Tidecaller",
+    "tier2": "Waveseer",
+    "tier3": "Tidecaller",
+    "Phy/Mag": "Magical",
     "HP": 64.2,
     "Pwr": 44,
     "TSpd": 22.4,
@@ -490,7 +501,7 @@
     "Weapon": "Cloud Focus",
     "Ddg": 64.7,
     "Acc": 156.2,
-    "C. avo": 0,
+    "CAvo": 0,
     "Crit": 20.5,
     "Dex": 25,
     "Lck": 7.4,
@@ -500,8 +511,9 @@
   {
     "Level": 41,
     "Class": "Mashal",
-    "Range": "Gale",
-    "Phy/Mag": "Tempest",
+    "tier2": "Gale",
+    "tier3": "Tempest",
+    "Phy/Mag": "Physical",
     "HP": 67.2,
     "Pwr": 40,
     "TSpd": 31.4,
@@ -510,7 +522,7 @@
     "Weapon": "Greatsword",
     "Ddg": 104,
     "Acc": 191.7,
-    "C. avo": 0,
+    "CAvo": 0,
     "Crit": 39.65,
     "Dex": 31.6,
     "Lck": 25.4,
@@ -520,8 +532,9 @@
   {
     "Level": 41,
     "Class": "Aya",
-    "Range": "Warlock",
-    "Phy/Mag": "Loremaster",
+    "tier2": "Warlock",
+    "tier3": "Loremaster",
+    "Phy/Mag": "Magical",
     "HP": 64.4,
     "Pwr": 47.6,
     "TSpd": 26.4,
@@ -530,7 +543,7 @@
     "Weapon": "Relic Archstaff",
     "Ddg": 89.6,
     "Acc": 170.1,
-    "C. avo": 0,
+    "CAvo": 0,
     "Crit": 36.55,
     "Dex": 25.2,
     "Lck": 24.2,
@@ -540,8 +553,9 @@
   {
     "Level": 41,
     "Class": "Tusk",
-    "Range": "Quickdraw",
-    "Phy/Mag": "Deadeye",
+    "tier2": "Quickdraw",
+    "tier3": "Deadeye",
+    "Phy/Mag": "Physical",
     "HP": 86.4,
     "Pwr": 55.4,
     "TSpd": 25.4,
@@ -550,7 +564,7 @@
     "Weapon": "Greatbow",
     "Ddg": 78.3,
     "Acc": 188.1,
-    "C. avo": 0,
+    "CAvo": 0,
     "Crit": 28.65,
     "Dex": 28.6,
     "Lck": 13.2,
@@ -560,8 +574,9 @@
   {
     "Level": 41,
     "Class": "Laurai",
-    "Range": "Elementalist",
-    "Phy/Mag": "Spirit Keeper",
+    "tier2": "Elementalist",
+    "tier3": "Spirit Keeper",
+    "Phy/Mag": "Magical",
     "HP": 76.6,
     "Pwr": 50.2,
     "TSpd": 19.2,
@@ -570,7 +585,7 @@
     "Weapon": "Relic Archstaff",
     "Ddg": 61.8,
     "Acc": 173.3,
-    "C. avo": 0,
+    "CAvo": 0,
     "Crit": 18.15,
     "Dex": 29.6,
     "Lck": 8.6,
@@ -580,8 +595,9 @@
   {
     "Level": 41,
     "Class": "Tal'Dera",
-    "Range": "Conduit",
-    "Phy/Mag": "Tempest",
+    "tier2": "Conduit",
+    "tier3": "Tempest",
+    "Phy/Mag": "Physical",
     "HP": 55.9,
     "Pwr": 47.5,
     "TSpd": 24.8,
@@ -590,7 +606,7 @@
     "Weapon": "Greatsword",
     "Ddg": 104.8,
     "Acc": 201.85,
-    "C. avo": 0,
+    "CAvo": 0,
     "Crit": 56.625,
     "Dex": 33,
     "Lck": 38.7,
@@ -600,8 +616,9 @@
   {
     "Level": 41,
     "Class": "Vissarion",
-    "Range": "Ellisant",
-    "Phy/Mag": "Seeker",
+    "tier2": "Ellisant",
+    "tier3": "Seeker",
+    "Phy/Mag": "Magical",
     "HP": 84.4,
     "Pwr": 46.6,
     "TSpd": 4.2,
@@ -610,7 +627,7 @@
     "Weapon": "Greatbow",
     "Ddg": 36.8,
     "Acc": 201.6,
-    "C. avo": 0,
+    "CAvo": 0,
     "Crit": 27.6,
     "Dex": 34.4,
     "Lck": 11.2,
@@ -620,8 +637,9 @@
   {
     "Level": 41,
     "Class": "Calith",
-    "Range": "Warlock",
-    "Phy/Mag": "Necromancer",
+    "tier2": "Warlock",
+    "tier3": "Necromancer",
+    "Phy/Mag": "Magical",
     "HP": 72.6,
     "Pwr": 49.4,
     "TSpd": 12.2,
@@ -630,14 +648,12 @@
     "Weapon": "Cloud Focus",
     "Ddg": 64.6,
     "Acc": 190.2,
-    "C. avo": 0,
+    "CAvo": 0,
     "Crit": 41.9,
     "Dex": 35.6,
     "Lck": 22.4,
     "Mgt": 31.4,
     "Spd": 17.2
-  },
-  {
-    "Level": 41
   }
+  
 ]
