@@ -1,9 +1,20 @@
 import Modal from "react-modal";
+import { useState } from "react";
+import { battleForecast } from "./SimCalc";
+import "./Sim.css"; 
 
 export default function SimModal(prop) {
-  const { isOpen, onClose, unit } = prop;
+  const { isOpen, onClose, unit, enemies } = prop;
+  const [enemyActive, setEnemyActive] = useState("");
+
   const handleCloseModal = () => {
     onClose();
+  };
+  const handleEnemyChange = (e) => {
+    const selectedEnemy = enemies.find(
+      (enemy) => enemy.Class === e.target.value
+    );
+    setEnemyActive(selectedEnemy);
   };
 
   return (
@@ -33,9 +44,10 @@ export default function SimModal(prop) {
           borderRadius: "4px",
           outline: "none",
           padding: "20px",
-          width: "80%",
-          maxWidth: "600px",
-          maxHeight: "80vh",
+          width: "90vw",
+          height: "90vh",
+          maxWidth: "90vw",
+          maxHeight: "90vh",
           zIndex: 10000, // Even higher than overlay
         },
       }}
@@ -44,11 +56,31 @@ export default function SimModal(prop) {
         ×
       </button>
 
-      {unit && (
+      {unit && enemies && (
         <div className="modal-content">
           <h2>{unit.Class}</h2>
-          <p>Advanced Class: {unit.tier3}</p>
-          {/* Add more unit details here */}
+          <select
+            onChange={handleEnemyChange}
+            value={enemyActive?.Class || ""}
+            className="enemy-select"
+          >
+            <option value="">Select an enemy</option>
+            {enemies.map((enemy) => (
+              <option key={enemy.Class} value={enemy.Class}>
+                {enemy.Class}
+              </option>
+            ))}
+          </select>
+
+          {/* Display selected enemy info */}
+          {enemyActive && (
+            <div>
+              <div className="selected-enemy">
+                <h3>Selected Enemy: {enemyActive.Class}</h3>
+              </div>
+              {battleForecast(unit, enemyActive)}
+            </div>
+          )}
         </div>
       )}
     </Modal>

@@ -113,7 +113,7 @@ function CharDetail() {
             <thead>
               <tr>
                 {Object.keys(charBase[0])
-                  .filter((key) => !["ID", "Name"].includes(key)) // Exclude these keys
+                  .filter((key) => !["ID", "Name", "starting"].includes(key)) // Exclude these keys
                   .map((key) => (
                     <th key={key}>{turnCap(key)}</th>
                   ))}
@@ -129,13 +129,44 @@ function CharDetail() {
                       {Object.entries(
                         charBase.find((char) => char.Name === character1.Name)
                       )
-                        .filter(([key]) => !["ID", "Name"].includes(key))
+                        .filter(
+                          ([key]) => !["ID", "Name", "starting"].includes(key)
+                        )
                         .map(([key, value]) => {
                           const numValue = Number(value) || 0;
                           total += numValue;
                           return <td key={key}>{value}</td>;
                         })}
                       <td>{total}</td>
+                    </>
+                  );
+                })()}
+              </tr>
+            </tbody>
+          </table>
+          <h3>Starting stats:</h3>
+          <table className="stat-table">
+            <thead>
+              <tr>
+                <th>Level</th>
+                <th>Class</th>
+                {Object.keys(charBase[0])
+                  .filter((key) => !["ID", "Name", "starting"].includes(key)) // Exclude these keys
+                  .map((key) => (
+                    <th key={key}>{turnCap(key)}</th>
+                  ))}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {(() => {
+                  return (
+                    <>
+                      {charBase
+                        .find((char) => char.Name === character1.Name)
+                        ?.starting?.map((item, index) => (
+                          <td key={index}>{item}</td>
+                        ))}
                     </>
                   );
                 })()}
@@ -257,7 +288,7 @@ function CharDetail() {
                             return <td key={key}>{value}</td>;
                           } else {
                             const charGrow = parseFloat(growths[i]);
-                            
+
                             numValue = value * 100 + charGrow;
 
                             total += numValue;
@@ -322,7 +353,7 @@ function CharDetail() {
                             return <td key={key}>{value}</td>;
                           } else {
                             const charGrow = parseFloat(growths[i]);
-                        
+
                             numValue = value * 100 + charGrow;
 
                             total += numValue;

@@ -1,0 +1,13 @@
+.battle-stat {
+  border: 3px solid rgb(0, 0, 0); /* Dark red outer border */
+  
+  text-align: center;
+  
+  border-collapse: collapse; /* Crucial for consistent borders */
+}
+
+.battle-stat td {
+  border: 2px solid rgb(0, 0, 0);
+  padding: 8px;
+  
+}
