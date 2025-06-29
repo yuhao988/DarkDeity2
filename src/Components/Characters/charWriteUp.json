@@ -172,11 +172,11 @@
   },
   "calith": {
     "introduction": "Calith is the last conventional unit to join your party. SHe joins in Chapter X of Irving Rescue arc as a Lv.X Geomancer",
-    "base": "",
-    "classes": "",
-    "skills": ["Low", "Low", "Low", "Low"],
-    "gameplayBoon": "calith's gameplayBoon",
-    "gameplayBane": "riordan's gameplayBane",
-    "suggestion": ""
+    "base": "Calith's base focuses on Dec and Lck, with average HP, Mgt, Frt and slightly lower Spd, but terrible Def and Mas. Her growth rates are similiar with good growth in HP, Dex and Lck, average Mgt, Spd and Frt and lackluster Def and Mas.",
+    "classes": "Calith's starting class is Geomancer, which naturally progresses into the Cosmician class. This line provides good Mas growth to patch up her low base Mas, gives Calith decent HP, Mgt, Dex and Lck, but mediocre defenses and bad Spd. Scholar/Loremaster line will give her average growth across the board but low Def and Frt and a mediocre HP growth. Warlock/Necromancer will give her good Mgt, Dex, Frt and decent Lck, but mediocre HP, low Spd, Def and Mas. Finally, Aegis/Relic Knight line will give her good HP, decent growth across the board except mediocre Spd and lackluster Mas.",
+    "skills": ["Mid", "Low", "Mid", "Mid"],
+    "gameplayBoon": "Calith's personal active skill is not very styrong as Blind is not a powerful debuff and Calith's Mas is low. It is mostly to combine with her passive to increase her defenses and make her a decent tank. Increasing the blind stacks by increasing the base number directly is more effective than any boost to the Mas scaling. Increasing number of targets also helps, but you may not run into so many situation of multiple enemies within range. If you wish to utilise her bulk as a tank you can go Aegis/Relic Knight line for some decent tanking. All other lines works fine for Calith too.",
+    "gameplayBane": "Calith joins quite late into the game. By this point in time most of your team should already be optimised for gameplay and you do not need another member. Calith's skills and stats also are not very impressive to the point of outclassing your other teammates. Thus, it is not surprising for players not to find a good use for her. Still, she does not have much shortcomings except maybe her mediocre Spd and Mas, so you can still use her decently if you wish.",
+    "suggestion": "Geomancer/Cosmician, Aegis/Relic Knight"
   }
 }
