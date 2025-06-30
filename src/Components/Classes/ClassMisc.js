@@ -2,6 +2,7 @@ import "./Class.css";
 //import classStat from "../Datas/classStats.json";
 //import charStat from "../Datas/charStatPass.json";
 import classSkills from "../Datas/classSkills.json";
+import classWriteUp from "./classWriteUp.json";
 
 export function ClassIntro(Name) {
   let tier = 1;
@@ -1857,5 +1858,99 @@ export function classSkillRng(className, rng, skillNum, upgrade) {
         break;
     }
     return range;
+  }
+}
+
+export function classWriteUps(className, part) {
+  const writeUp = Object.values(classWriteUp).find(
+    (class1) => class1.Name === className
+  );
+  const class2 = Object.values(classSkills).find(
+    (class1) => class1.Name === className
+  );
+  switch (part) {
+    case "rating":
+      return (
+        <table className="stat-table">
+          <thead>
+            <tr>
+              <td>Stats</td>
+              <td>Combat</td>
+              <td>Support</td>
+              <td>Skill Damage</td>
+              <td>Synergy</td>
+            </tr>
+          </thead>
+          <tr>
+            <td>{writeUp.Rating[0]}</td>
+            <td>{writeUp.Rating[1]}</td>
+            <td>{writeUp.Rating[2]}</td>
+            <td>{writeUp.Rating[3]}</td>
+            <td>{writeUp.Rating[4]}</td>
+          </tr>
+        </table>
+      );
+    case "stats":
+      return <p>{writeUp.Stats}</p>;
+      case "char":
+      return <p>{writeUp.Character}</p>;
+    case "upgrade1":
+      return (
+        <table className="active-table">
+          <tbody>
+            <tr>
+              <th colSpan="4" style={{ textAlign: "center" }}>
+                Upgrade priority
+              </th>
+            </tr>
+            <tr>
+              <td className="upgrade-box">{class2.S1Buff1}</td>
+              <td className="upgrade-box">{class2.S1Buff2}</td>
+              <td className="upgrade-box">{class2.S1Buff3}</td>
+              <td className="upgrade-box">{class2.S1Buff4}</td>
+            </tr>
+            <tr>
+              <td className="upgrade-box">{writeUp.Upgrade1[0]}</td>
+              <td className="upgrade-box">{writeUp.Upgrade1[1]}</td>
+              <td className="upgrade-box">{writeUp.Upgrade1[2]}</td>
+              <td className="upgrade-box">{writeUp.Upgrade1[3]}</td>
+            </tr>
+          </tbody>
+        </table>
+      );
+    case "upgrade2":
+      return (
+        <table className="active-table">
+          <tbody>
+            <tr>
+              <th colSpan="4" style={{ textAlign: "center" }}>
+                Upgrade priority
+              </th>
+            </tr>
+            <tr>
+              <td className="upgrade-box">{class2.S2Buff1}</td>
+              <td className="upgrade-box">{class2.S2Buff2}</td>
+              <td className="upgrade-box">{class2.S2Buff3}</td>
+              <td className="upgrade-box">{class2.S2Buff4}</td>
+            </tr>
+            <tr>
+              <td className="upgrade-box">{writeUp.Upgrade2[0]}</td>
+              <td className="upgrade-box">{writeUp.Upgrade2[1]}</td>
+              <td className="upgrade-box">{writeUp.Upgrade2[2]}</td>
+              <td className="upgrade-box">{writeUp.Upgrade2[3]}</td>
+            </tr>
+          </tbody>
+        </table>
+      );
+    case "skills":
+      return <p>{writeUp.Skills}</p>;
+    case "tips":
+      return <p>{writeUp.Tips}</p>;
+    case "rings":
+      return <p>{writeUp.Rings}</p>;
+    case "weapons":
+      return <p>{writeUp.Weapons}</p>;
+    default:
+      return <p>Insert corresponding {className} write-up</p>;
   }
 }

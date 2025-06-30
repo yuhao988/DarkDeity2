@@ -55,6 +55,7 @@ function CharDetail() {
   const growths = ["hp", "mgt", "spd", "dex", "def", "frt", "mas", "lck"].map(
     (stat) => character2[stat]
   );
+  const growthsValue = growths.map((rate) => parseFloat(rate) / 100);
 
   const imageContext = require.context(
     "./Pictures", // Folder path
@@ -234,6 +235,29 @@ function CharDetail() {
                 })()}
               </tr>
             </tbody>
+          </table>
+          <h4>Growth Score:</h4>
+          <table className="stat-table">
+            <thead>
+              <tr>
+                <td>Bulk</td>
+                <td>Power</td>
+                <td>Skill Num</td>
+                <td>True Speed</td>
+                <td>Dodge</td>
+                <td>Accuracy</td>
+                <td>Crit</td>
+              </tr>
+            </thead>
+            <tr>
+              <td>{((growthsValue[0]+growthsValue[4]+growthsValue[5])*20/7+0.5).toFixed(1)}</td>
+              <td>{growthsValue[1]*10}</td>
+              <td>{growthsValue[6]*10}</td>
+              <td>{growthsValue[2]*10}</td>
+              <td>{((growthsValue[2]*2+growthsValue[3]*0.5+growthsValue[7])*20/7).toFixed(1)}</td>
+              <td>{((growthsValue[3]*2.5+growthsValue[7]*0.5)*10/3).toFixed(1)}</td>
+              <td>{((growthsValue[3]*0.25+growthsValue[7]*1.25)*20/3).toFixed(1)}</td>
+            </tr>
           </table>
           <div>{charIntro(nameNoMark, "base")}</div>
           <h4>Class based growths:</h4>

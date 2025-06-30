@@ -8,6 +8,7 @@ import {
   classSkillDes,
   classSkillCost,
   classSkillRng,
+  classWriteUps,
 } from "./ClassMisc";
 import "../../App.css";
 import "./Class.css";
@@ -151,14 +152,72 @@ function ClassDetail() {
         <div>
           {ClassIntro(Name1)}
           <br />
-          <p>
-            Characters that can be made into the {nameClass.Name} includes:{" "}
+          Characters that can be made into the {nameClass.Name} includes:{" "}
+          <ul>
             {Object.values(charStat)
               .filter((charName) => charName.classLine === nameClass.Classline)
               .map((char) => (
-                <div>{char.Name}</div>
+                <li>{char.Name}</li>
               ))}
-          </p>
+          </ul>
+          <h3>Class Stats Modifier:</h3>
+          <table className="stat-table">
+            <thead>
+              <tr>
+                {Object.keys(classStat[0])
+                  .filter((key) =>
+                    [
+                      "HP_Mod",
+                      "Mgt_Mod",
+                      "Spd_Mod",
+                      "Dex_Mod",
+                      "Def_Mod",
+                      "Frt_Mod",
+                      "Mas_Mod",
+                      "Lck_Mod",
+                    ].includes(key)
+                  ) // Exclude these keys
+                  .map((key) => (
+                    <th key={key}>{modHeader(key)}</th>
+                  ))}
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {(() => {
+                  const character = classStat.find(
+                    (clas) => clas.Name === nameClass.Name
+                  );
+                  let total = 0;
+                  return (
+                    <>
+                      {Object.entries(character)
+                        .filter(([key]) =>
+                          [
+                            "HP_Mod",
+                            "Mgt_Mod",
+                            "Spd_Mod",
+                            "Dex_Mod",
+                            "Def_Mod",
+                            "Frt_Mod",
+                            "Mas_Mod",
+                            "Lck_Mod",
+                          ].includes(key)
+                        )
+                        .map(([key, value]) => {
+                          const numValue = Number(value) || 0;
+                          total += numValue;
+                          return <td key={key}>{value}</td>;
+                        })}
+
+                      <td>{total}</td>
+                    </>
+                  );
+                })()}
+              </tr>
+            </tbody>
+          </table>
           <h3>Class Growth Modifier:</h3>
           <table className="stat-table">
             <thead>
@@ -215,6 +274,82 @@ function ClassDetail() {
               </tr>
             </tbody>
           </table>
+          <h4>Growth Score:</h4>
+          <table className="stat-table">
+            <thead>
+              <tr>
+                <td>Bulk</td>
+                <td>Power</td>
+                <td>Skill Num</td>
+                <td>True Speed</td>
+                <td>Dodge</td>
+                <td>Accuracy</td>
+                <td>Crit</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  {(
+                    ((nameClass.HP_Grow +
+                      nameClass.Def_Grow +
+                      nameClass.Frt_Grow) *
+                      6) /
+                      3 +
+                    (nameClass.HP_Mod + nameClass.Def_Mod + nameClass.Frt_Mod) /
+                      7
+                  ).toFixed(1)}
+                </td>
+                <td>
+                  {(nameClass.Mgt_Grow * 6 + nameClass.Mgt_Mod * 0.5).toFixed(
+                    1
+                  )}
+                </td>
+                <td>
+                  {(nameClass.Mas_Grow * 6 + nameClass.Mas_Mod * 0.5).toFixed(
+                    1
+                  )}
+                </td>
+                <td>
+                  {(nameClass.Spd_Grow * 6 + nameClass.Spd_Mod * 0.5).toFixed(
+                    1
+                  )}
+                </td>
+                <td>
+                  {(
+                    ((nameClass.Spd_Grow * 2 +
+                      nameClass.Dex_Grow * 0.5 +
+                      nameClass.Lck_Grow) *
+                      12) /
+                      7 +
+                    (nameClass.Spd_Mod * 2 +
+                      nameClass.Dex_Mod * 0.5 +
+                      nameClass.Lck_Mod) /
+                      7
+                  ).toFixed(1)}
+                </td>
+                <td>
+                  {(
+                    (((nameClass.Dex_Grow * 2.5 + nameClass.Lck_Grow * 0.5) *
+                      12) /
+                      7 +
+                      (nameClass.Dex_Mod * 2.5 + nameClass.Lck_Mod * 0.5)) /
+                    6
+                  ).toFixed(1)}
+                </td>
+                <td>
+                  {(
+                    (((nameClass.Dex_Grow * 0.25 + nameClass.Lck_Grow * 1.25) *
+                      12) /
+                      7 +
+                      (nameClass.Dex_Mod * 0.25 + nameClass.Lck_Mod * 1.25)) /
+                    3
+                  ).toFixed(1)}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          {classWriteUps(Name1, "stats")}
           <h4>Individual Character growth in {nameClass.Name}</h4>
           <table className="stat-table">
             <thead>
@@ -283,64 +418,12 @@ function ClassDetail() {
                 })}
             </tbody>
           </table>
-          <h3>Class Stats Modifier:</h3>
-          <table className="stat-table">
-            <thead>
-              <tr>
-                {Object.keys(classStat[0])
-                  .filter((key) =>
-                    [
-                      "HP_Mod",
-                      "Mgt_Mod",
-                      "Spd_Mod",
-                      "Dex_Mod",
-                      "Def_Mod",
-                      "Frt_Mod",
-                      "Mas_Mod",
-                      "Lck_Mod",
-                    ].includes(key)
-                  ) // Exclude these keys
-                  .map((key) => (
-                    <th key={key}>{modHeader(key)}</th>
-                  ))}
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                {(() => {
-                  const character = classStat.find(
-                    (clas) => clas.Name === nameClass.Name
-                  );
-                  let total = 0;
-                  return (
-                    <>
-                      {Object.entries(character)
-                        .filter(([key]) =>
-                          [
-                            "HP_Mod",
-                            "Mgt_Mod",
-                            "Spd_Mod",
-                            "Dex_Mod",
-                            "Def_Mod",
-                            "Frt_Mod",
-                            "Mas_Mod",
-                            "Lck_Mod",
-                          ].includes(key)
-                        )
-                        .map(([key, value]) => {
-                          const numValue = Number(value) || 0;
-                          total += numValue;
-                          return <td key={key}>{value}</td>;
-                        })}
-
-                      <td>{total}</td>
-                    </>
-                  );
-                })()}
-              </tr>
-            </tbody>
-          </table>
+          {classWriteUps(Name1,"char")}
+          <h3>Class rating (/5):</h3>
+          {classWriteUps(Name1, "rating")}
+          {classWriteUps(Name1, "tips")}
+          <br />
+          {classWriteUps(Name1, "first")}
           <h3>Class Passive:</h3>
           <table className="passive-table">
             <tbody>
@@ -466,6 +549,8 @@ function ClassDetail() {
             </tbody>
           </table>
           <br />
+          {classWriteUps(Name1, "upgrade1")}
+          <br />
           <table className="active-table">
             <tbody>
               <tr>
@@ -576,6 +661,13 @@ function ClassDetail() {
               </tr>
             </tbody>
           </table>
+          <br />
+          {classWriteUps(Name1, "upgrade2")}
+          <br />
+          {classWriteUps(Name1, "skills")}
+          <h3>Rings and weapons recommendations:</h3>
+          {classWriteUps(Name1, "rings")}
+          {classWriteUps(Name1, "weapons")}
         </div>
         <Link to="/classes">Back</Link>{" "}
       </div>

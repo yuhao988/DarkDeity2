@@ -144,3 +144,8 @@
 .upgrade-box.active {
   border: none; /* Remove default border */
 }
+
+.page-body > div > p {
+  max-width: 70vw;
+  margin: 0 auto;
+}
