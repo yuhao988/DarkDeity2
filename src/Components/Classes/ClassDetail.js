@@ -291,59 +291,67 @@ function ClassDetail() {
               <tr>
                 <td>
                   {(
-                    ((nameClass.HP_Grow +
+                    (nameClass.HP_Grow +
                       nameClass.Def_Grow +
-                      nameClass.Frt_Grow) *
-                      6) /
-                      3 +
-                    (nameClass.HP_Mod + nameClass.Def_Mod + nameClass.Frt_Mod) /
-                      7
+                      nameClass.Frt_Grow +
+                      0.5) *
+                      2.4 +
+                    ((nameClass.HP_Mod +
+                      nameClass.Def_Mod +
+                      nameClass.Frt_Mod) *
+                      0.2 +
+                      1.4)
                   ).toFixed(1)}
                 </td>
                 <td>
-                  {(nameClass.Mgt_Grow * 6 + nameClass.Mgt_Mod * 0.5).toFixed(
-                    1
-                  )}
-                </td>
-                <td>
-                  {(nameClass.Mas_Grow * 6 + nameClass.Mas_Mod * 0.5).toFixed(
-                    1
-                  )}
-                </td>
-                <td>
-                  {(nameClass.Spd_Grow * 6 + nameClass.Spd_Mod * 0.5).toFixed(
-                    1
-                  )}
+                  {(
+                    nameClass.Mgt_Grow * 10.8 +
+                    nameClass.Mgt_Mod * 0.6 +
+                    1.3
+                  ).toFixed(1)}
                 </td>
                 <td>
                   {(
-                    ((nameClass.Spd_Grow * 2 +
+                    nameClass.Mas_Grow * 11 +
+                    nameClass.Mas_Mod * 0.6 +
+                    1.2
+                  ).toFixed(1)}
+                </td>
+                <td>
+                  {(
+                    nameClass.Spd_Grow * 14.1 +
+                    nameClass.Spd_Mod * 0.5 +
+                    2.3
+                  ).toFixed(1)}
+                </td>
+                <td>
+                  {(
+                    (nameClass.Spd_Grow * 2 +
                       nameClass.Dex_Grow * 0.5 +
                       nameClass.Lck_Grow) *
-                      12) /
-                      7 +
+                      4.2 +
                     (nameClass.Spd_Mod * 2 +
                       nameClass.Dex_Mod * 0.5 +
-                      nameClass.Lck_Mod) /
-                      7
+                      nameClass.Lck_Mod) *
+                      0.2 +
+                    1.8
                   ).toFixed(1)}
                 </td>
                 <td>
                   {(
-                    (((nameClass.Dex_Grow * 2.5 + nameClass.Lck_Grow * 0.5) *
-                      12) /
-                      7 +
-                      (nameClass.Dex_Mod * 2.5 + nameClass.Lck_Mod * 0.5)) /
-                    6
+                    (nameClass.Dex_Grow * 2.5 + nameClass.Lck_Grow * 0.5) *
+                      4.5 +
+                    (nameClass.Dex_Mod * 2.5 + nameClass.Lck_Mod * 0.5) * 0.3 +
+                    1.5
                   ).toFixed(1)}
                 </td>
                 <td>
                   {(
-                    (((nameClass.Dex_Grow * 0.25 + nameClass.Lck_Grow * 1.25) *
-                      12) /
-                      7 +
-                      (nameClass.Dex_Mod * 0.25 + nameClass.Lck_Mod * 1.25)) /
-                    3
+                    (nameClass.Dex_Grow * 0.25 + nameClass.Lck_Grow * 1.25) *
+                      10.7 +
+                    (nameClass.Dex_Mod * 0.25 + nameClass.Lck_Mod * 1.25) *
+                      0.5 +
+                    1.4
                   ).toFixed(1)}
                 </td>
               </tr>
@@ -418,7 +426,7 @@ function ClassDetail() {
                 })}
             </tbody>
           </table>
-          {classWriteUps(Name1,"char")}
+          {classWriteUps(Name1, "char")}
           <h3>Class rating (/5):</h3>
           {classWriteUps(Name1, "rating")}
           {classWriteUps(Name1, "tips")}

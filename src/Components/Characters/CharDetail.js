@@ -250,13 +250,35 @@ function CharDetail() {
               </tr>
             </thead>
             <tr>
-              <td>{((growthsValue[0]+growthsValue[4]+growthsValue[5])*20/7+0.5).toFixed(1)}</td>
-              <td>{growthsValue[1]*10}</td>
-              <td>{growthsValue[6]*10}</td>
-              <td>{growthsValue[2]*10}</td>
-              <td>{((growthsValue[2]*2+growthsValue[3]*0.5+growthsValue[7])*20/7).toFixed(1)}</td>
-              <td>{((growthsValue[3]*2.5+growthsValue[7]*0.5)*10/3).toFixed(1)}</td>
-              <td>{((growthsValue[3]*0.25+growthsValue[7]*1.25)*20/3).toFixed(1)}</td>
+              <td>
+                {(
+                  (growthsValue[0] + growthsValue[4] + growthsValue[5] + 0.5) *
+                  3.8
+                ).toFixed(1)}
+              </td>
+              <td>{(growthsValue[1] * 16.8).toFixed(1)}</td>
+              <td>{(growthsValue[6] * 20.4).toFixed(1)}</td>
+              <td>{(growthsValue[2] * 21.7).toFixed(1)}</td>
+              <td>
+                {(
+                  (growthsValue[2] * 2 +
+                    growthsValue[3] * 0.5 +
+                    growthsValue[7]) *
+                  6.5
+                ).toFixed(1)}
+              </td>
+              <td>
+                {(
+                  (growthsValue[3] * 2.5 + growthsValue[7] * 0.5) *
+                  7.3
+                ).toFixed(1)}
+              </td>
+              <td>
+                {(
+                  (growthsValue[3] * 0.25 + growthsValue[7] * 1.25) *
+                  16.3
+                ).toFixed(1)}
+              </td>
             </tr>
           </table>
           <div>{charIntro(nameNoMark, "base")}</div>
