@@ -11,3 +11,67 @@
   padding: 8px;
   
 }
+
+.page-body {
+  display: flex;
+  gap: 20px;
+}
+
+.list-container {
+  flex: 1;
+}
+
+.sim-container {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.unit-panel, .enemy-panel {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* List Items */
+.unit-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.unit-list li {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 6px;
+  padding: 12px;
+  border-left: 4px solid #4a6baf;
+}
+
+.unit-list button {
+  background: none;
+  border: none;
+  color: #2c3e50;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px 0;
+  text-align: left;
+  width: 100%;
+}
+
+.unit-list button:hover {
+  color: #4a6baf;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sim-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+}

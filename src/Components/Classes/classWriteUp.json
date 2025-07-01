@@ -4,15 +4,16 @@
     "Classline": "Vanguard",
     "Tier": 2,
     "Name": "Devoted",
-    "Rating": [4, 3, 0, 0, 2],
+    "Rating": [4, 4, 0, 0, 2],
     "Stats": "Devoted is a class focusing on Mas and Lck, with high modifier and growth in these two areas. Other than Mas and Lck, Devoted also has decent mod and growth in Dex and mediocre numbers in Mgt and Spd. The defensive stats of Devoted are horrendous. Devoted is a class focusing on Skill numbers as well as Crt, with decent Ddg, but its Acc, TSpd and Pwr are low, and its bulk is absolutely terrible.",
     "Character": "Amongst the four units capable of going into the Devoted class, Vissarion starts off as a Devoted. He also has the highest total growth amongst them. He will have extremely high HP and Mas growth, good Dex and Def and decent Mgt and Lck. Benji as Devoted will have the highest Mgt and Lck, making him an excellent Crit damage dealer, it will also give him slightly better Dex and Mas growth. He will also have passable bulk, making him a good choice for Devoted. Valeria will have decent Spd growth and great Dex and Mas, but her stats in other areas will be mediocre. Gwyn as Devoted has good HP, Mas and Lck, ok bulk mainly due to high HP growth, and decent growths in other areas.",
     "Upgrade1": ["Mid", "Low", "Mid", "Mid"],
-    "Upgrade2": ["Mid", "Low", "Low", "Mid"],
-    "Skills": "",
-    "Tips": "Devoted is a combat class with good Mas and crit chance. It also has some Block skill for extra bulk. You would like to stack some more Crit onto Devoted, as well as use items that boost damages. Devoted is not a bulky class, andits Dodge is also shaky",
-    "Rings": "",
-    "Weapons": ""
+    "Upgrade2": ["High", "Low", "Low", "Mid"],
+    "Skills": "Devoted's passive boosts unit's Crit chance if enemy is inflicted with a debuff. However, Devoted only can apply 1 kind of debuff on its own, and none of the Vanguard units have a personal skill that applies debuff either. So Devoted has to either be content with 1 stack of passive, go into a tier 3 class that provides debuffs, or relies on teammates help. Spinning Blade is a skill that boosts Devoted's bulk by quite a bit. While it is not very synergetic with Devoted's dodgy not bulky stats, it does have good numbers due to Devoted's high Mas. It provides a nice defensive boost in case Devoted need to face a counter attack. It also can serve as a debuff cleanser in higher difficulties when debuffs starts to hinder Devoted's combat capabilities. Hemorrage is the synergetic skill Devoted can use to boost Crit chance together with appling Bleed to enemey, further increasing damage outcome. It is recommended to go for the cost down upgrade in order to apply debuff more readily, giving Devoted higher Crit chances.",
+    "Tips": "Devoted is a combat class with good Mas and crit chance. It also has some Block skill for extra bulk. You would like to stack some more Crit onto Devoted, as well as use items that boost damages. Devoted is not a bulky class, and its Dodge is also shaky, so players need to be careful with enemy phase tanking. Best use of Devoted is for attacking on player phase to deal Crit damage to enemies with weak Def hoping for a kill.",
+    "Rings": "Rings providing extra critical are the ",
+    "Weapons": "",
+    "Class": "Devoted's natural progression is Reaper, a highly synergetic class as Reaper also focuses, if not more focused, on Critical chance and damage. Devoted's Crit chance boost would be useful if enemy is debuffed. Ancarant is a decent choice for Devoted to go into due to having a skill that can apply up to 2 debuffs to enemies, giving Devoted 3 stacks of its passive."
   },
   {
     "ID": 2,
@@ -27,7 +28,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 3,
@@ -42,7 +44,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 4,
@@ -57,7 +60,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 5,
@@ -72,7 +76,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 6,
@@ -87,7 +92,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 7,
@@ -102,7 +108,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 8,
@@ -117,7 +124,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 9,
@@ -132,7 +140,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 10,
@@ -147,7 +156,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 11,
@@ -162,7 +172,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 12,
@@ -177,7 +188,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 13,
@@ -192,7 +204,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 14,
@@ -207,7 +220,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 15,
@@ -222,7 +236,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 16,
@@ -237,7 +252,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 17,
@@ -252,7 +268,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 18,
@@ -267,7 +284,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 19,
@@ -282,7 +300,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 20,
@@ -297,7 +316,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 21,
@@ -312,7 +332,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 22,
@@ -327,7 +348,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 23,
@@ -342,7 +364,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 24,
@@ -357,7 +380,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 25,
@@ -372,7 +396,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 26,
@@ -387,7 +412,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 27,
@@ -402,7 +428,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 28,
@@ -417,7 +444,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 29,
@@ -432,7 +460,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 30,
@@ -447,7 +476,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 31,
@@ -462,7 +492,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 32,
@@ -477,7 +508,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 33,
@@ -492,7 +524,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 34,
@@ -507,7 +540,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 35,
@@ -522,7 +556,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 36,
@@ -537,7 +572,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 37,
@@ -552,7 +588,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 38,
@@ -567,7 +604,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 39,
@@ -582,7 +620,8 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   },
   {
     "ID": 40,
@@ -597,6 +636,7 @@
     "Skills": "",
     "Tips": "",
     "Rings": "",
-    "Weapons": ""
+    "Weapons": "",
+    "Class": ""
   }
 ]

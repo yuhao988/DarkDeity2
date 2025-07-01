@@ -1895,7 +1895,7 @@ export function classWriteUps(className, part) {
       );
     case "stats":
       return <p>{writeUp.Stats}</p>;
-      case "char":
+    case "char":
       return <p>{writeUp.Character}</p>;
     case "upgrade1":
       return (
@@ -1953,6 +1953,8 @@ export function classWriteUps(className, part) {
       return <p>{writeUp.Rings}</p>;
     case "weapons":
       return <p>{writeUp.Weapons}</p>;
+    case "class":
+      return <p>{writeUp.Class}</p>;
     default:
       return <p>Insert corresponding {className} write-up</p>;
   }

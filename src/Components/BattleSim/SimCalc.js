@@ -1,5 +1,6 @@
 import sample from "../Datas/simSample.json";
-import "./Sim.css"; 
+import classSample from "../Datas/simClassSmp.json";
+import "./Sim.css";
 
 const [unitList, enemyList] = Array.isArray(sample)
   ? sample.reduce(
@@ -11,8 +12,14 @@ const [unitList, enemyList] = Array.isArray(sample)
     )
   : [[], []];
 
-export function scoreCalc1(unitName) {
-  const unit = unitList.find((units) => units.Class === unitName);
+export function scoreCalc1(unitName, isUnit) {
+  let unit;
+  if (isUnit) {
+     unit = unitList.find((units) => units.Class === unitName);
+  } else{
+      unit = Object.values(classSample).find((classes)=>classes.Class===unitName);
+  }
+
   let cnt = 0;
   let eneDdg = 0;
   let wCnt = 0;
@@ -47,8 +54,14 @@ export function scoreCalc1(unitName) {
   return score;
 }
 
-export function tankCalc(unitName) {
-  const unit = unitList.find((units) => units.Class === unitName);
+export function tankCalc(unitName, isUnit) {
+  let unit;
+  if (isUnit) {
+     unit = unitList.find((units) => units.Class === unitName);
+  } else{
+      unit = Object.values(classSample).find((classes)=>classes.Class===unitName);
+     
+  }
 
   let cnt = 0;
   let eneHit = 0;
@@ -77,31 +90,33 @@ export function tankCalc(unitName) {
 }
 
 export function battleForecast(unit, enemy) {
-    const TspdDiff = unit.TSpd-enemy.TSpd;
-    let unitW =false;
-    let enemyW =false;
-    if (TspdDiff >= 5){
-        unitW = true;
-    } else if (TspdDiff <= -5){
-        enemyW = true
-    }
+  const TspdDiff = unit.TSpd - enemy.TSpd;
+  let unitW = false;
+  let enemyW = false;
+  if (TspdDiff >= 5) {
+    unitW = true;
+  } else if (TspdDiff <= -5) {
+    enemyW = true;
+  }
 
-    let unitDmg =0;
-    let eneDmg =0;
-    if (unit["Phy/Mag"]==="Physical"){
-      unitDmg = Math.max(0, unit.Pwr-enemy.Def).toFixed(0);
-    } else if (unit["Phy/Mag"]==="Magical"){
-      unitDmg = Math.max(0, unit.Pwr-enemy.For).toFixed(0);
-    }
-    if (enemy["Phy/Mag"]==="Physical"){
-      eneDmg = Math.max(0, enemy.Pwr-unit.Def).toFixed(0);
-    } else if (enemy["Phy/Mag"]==="Magical"){
-      eneDmg = Math.max(0, enemy.Pwr-unit.For).toFixed(0);
-    }
+  let unitDmg = 0;
+  let eneDmg = 0;
+  if (unit["Phy/Mag"] === "Physical") {
+    unitDmg = Math.max(0, unit.Pwr - enemy.Def).toFixed(0);
+  } else if (unit["Phy/Mag"] === "Magical") {
+    unitDmg = Math.max(0, unit.Pwr - enemy.For).toFixed(0);
+  }
+  if (enemy["Phy/Mag"] === "Physical") {
+    eneDmg = Math.max(0, enemy.Pwr - unit.Def).toFixed(0);
+  } else if (enemy["Phy/Mag"] === "Magical") {
+    eneDmg = Math.max(0, enemy.Pwr - unit.For).toFixed(0);
+  }
 
-    const unitHit = Math.max(0, Math.min(100,unit.Acc-enemy.Ddg)).toFixed(0);
-    const eneHit = Math.max(0, Math.min(100,enemy.Acc-unit.Ddg)).toFixed(0);
-    const unitCrit = Math.max(0, Math.min(100,unit.Crit-enemy.CAvo)).toFixed(0);
+  const unitHit = Math.max(0, Math.min(100, unit.Acc - enemy.Ddg)).toFixed(0);
+  const eneHit = Math.max(0, Math.min(100, enemy.Acc - unit.Ddg)).toFixed(0);
+  const unitCrit = Math.max(0, Math.min(100, unit.Crit - enemy.CAvo)).toFixed(
+    0
+  );
 
   return (
     <table className="battle-stat">
@@ -111,9 +126,9 @@ export function battleForecast(unit, enemy) {
         <td>{enemy.Class}</td>
       </tr>
       <tr>
-        <td>{(unit.HP).toFixed(0)}</td>
+        <td>{unit.HP.toFixed(0)}</td>
         <td>HP</td>
-        <td>{(enemy.HP).toFixed(0)}</td>
+        <td>{enemy.HP.toFixed(0)}</td>
       </tr>
       <tr>
         <td>{unitHit}</td>
@@ -121,9 +136,15 @@ export function battleForecast(unit, enemy) {
         <td>{eneHit}</td>
       </tr>
       <tr>
-        <td>{unitDmg}{unitW ? " X2" : ""}</td>
+        <td>
+          {unitDmg}
+          {unitW ? " X2" : ""}
+        </td>
         <td>Damage</td>
-        <td>{eneDmg}{enemyW ? "X2" : ""}</td>
+        <td>
+          {eneDmg}
+          {enemyW ? "X2" : ""}
+        </td>
       </tr>
       <tr>
         <td>{unitCrit}</td>

@@ -142,7 +142,9 @@ function ClassDetail() {
 
   return (
     <div>
-      <header className="page-header">{nameClass.Name}</header>
+      <header className="page-header">
+        <h1>{nameClass.Name}</h1>
+      </header>
       <div className="page-body">
         <img
           src={images[name.toLowerCase()]}
@@ -432,9 +434,8 @@ function ClassDetail() {
           {classWriteUps(Name1, "char")}
           <h3>Class rating (/5):</h3>
           {classWriteUps(Name1, "rating")}
-          {classWriteUps(Name1, "tips")}
           <br />
-          {classWriteUps(Name1, "first")}
+          {classWriteUps(Name1, "tips")}
           <h3>Class Passive:</h3>
           <table className="passive-table">
             <tbody>
@@ -679,6 +680,8 @@ function ClassDetail() {
           <h3>Rings and weapons recommendations:</h3>
           {classWriteUps(Name1, "rings")}
           {classWriteUps(Name1, "weapons")}
+          <h3>Class Synergy</h3>
+          {classWriteUps(Name1, "class")}
         </div>
         <Link to="/classes">Back</Link>{" "}
       </div>
