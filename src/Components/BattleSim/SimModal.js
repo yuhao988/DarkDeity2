@@ -1,7 +1,7 @@
 import Modal from "react-modal";
 import { useState } from "react";
-import { battleForecast } from "./SimCalc";
-import "./Sim.css"; 
+import { battleForecast, simulateBattle } from "./SimCalc";
+import "./Sim.css";
 
 export default function SimModal(prop) {
   const { isOpen, onClose, unit, enemies } = prop;
@@ -9,6 +9,7 @@ export default function SimModal(prop) {
 
   const handleCloseModal = () => {
     onClose();
+    setEnemyActive("");
   };
   const handleEnemyChange = (e) => {
     const selectedEnemy = enemies.find(
@@ -63,6 +64,7 @@ export default function SimModal(prop) {
             onChange={handleEnemyChange}
             value={enemyActive?.Class || ""}
             className="enemy-select"
+            style={{ width: "20vw" }}
           >
             <option value="">Select an enemy</option>
             {enemies.map((enemy) => (
@@ -74,11 +76,21 @@ export default function SimModal(prop) {
 
           {/* Display selected enemy info */}
           {enemyActive && (
-            <div>
-              <div className="selected-enemy">
-                <h3>Selected Enemy: {enemyActive.Class}</h3>
+            <div className="battle-container">
+              <div>
+                <div className="selected-enemy">
+                  <h3>Selected Enemy: {enemyActive.Class}</h3>
+                </div>
+                {battleForecast(unit, enemyActive)}
               </div>
-              {battleForecast(unit, enemyActive)}
+              <div className="right-content">
+                {/* Your right-aligned content goes here */}
+                <p>
+                  For 1000 simulated battles in which each side attacks first
+                  for half of the time:
+                </p>
+                {simulateBattle(unit, enemyActive)}
+              </div>
             </div>
           )}
         </div>

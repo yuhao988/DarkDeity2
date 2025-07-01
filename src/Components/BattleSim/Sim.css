@@ -1,6 +1,6 @@
 .battle-stat {
   border: 3px solid rgb(0, 0, 0); /* Dark red outer border */
-  
+   flex: 1;
   text-align: center;
   
   border-collapse: collapse; /* Crucial for consistent borders */
@@ -74,4 +74,21 @@
     flex-direction: column;
     gap: 20px;
   }
+}
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.battle-container {
+  display: flex;
+  gap: 20px; /* Space between battle stats and right content */
+  flex-grow: 1;
+}
+.right-content {
+  width: 50vw; /* Adjust width as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
 }

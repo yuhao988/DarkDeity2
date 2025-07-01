@@ -9,6 +9,7 @@ import "./Sim.css";
 function SimSample1() {
   const [isModal, setIsModal] = useState(false);
   const [selectedUnit, setSelectedUnit] = useState(null);
+  const [isUnit, setIsUnit]=useState(false);
 
   const [unitList, enemyList] = Array.isArray(sample)
     ? sample.reduce(
@@ -20,8 +21,9 @@ function SimSample1() {
       )
     : [[], []];
 
-  const openModal = (unit) => {
+  const openModal = (unit,isU) => {
     setSelectedUnit(unit);
+    setIsUnit(isU);
     setIsModal(true);
   };
 
@@ -40,7 +42,7 @@ function SimSample1() {
           <ul>
             {unitList.map((unit, index) => (
               <li key={index}>
-                <button onClick={() => openModal(unit)}>{unit.Class}</button>
+                <button onClick={() => openModal(unit,true)}>{unit.Class}</button>
                 <br />
                 Attack score: {scoreCalc1(unit.Class,true)} <br />
                 Tank score: {tankCalc(unit.Class,true)}%
@@ -51,6 +53,7 @@ function SimSample1() {
             isOpen={isModal}
             onClose={closeModal}
             unit={selectedUnit}
+            isUnit={isUnit}
             enemies={enemyList}
           />
         </div>
@@ -59,7 +62,7 @@ function SimSample1() {
           <ul>
             {Object.values(classSample).map((classes, index) => (
               <li key={index}>
-                <button onClick={() => openModal(classes)}>
+                <button onClick={() => openModal(classes,false)}>
                   {classes.Class}
                 </button>
                 <br />
