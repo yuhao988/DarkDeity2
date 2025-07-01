@@ -253,18 +253,20 @@ function CharDetail() {
               <td>
                 {(
                   (growthsValue[0] + growthsValue[4] + growthsValue[5] + 0.5) *
-                  3.8
+                    7.6 -
+                  5
                 ).toFixed(1)}
               </td>
               <td>{(growthsValue[1] * 16.8).toFixed(1)}</td>
               <td>{(growthsValue[6] * 20.4).toFixed(1)}</td>
-              <td>{(growthsValue[2] * 21.7).toFixed(1)}</td>
+              <td>{(growthsValue[2] * 27.1 - 1.25).toFixed(1)}</td>
               <td>
                 {(
                   (growthsValue[2] * 2 +
                     growthsValue[3] * 0.5 +
                     growthsValue[7]) *
-                  6.5
+                    8.13 -
+                  1.25
                 ).toFixed(1)}
               </td>
               <td>

@@ -274,7 +274,7 @@ function ClassDetail() {
               </tr>
             </tbody>
           </table>
-          <h4>Growth Score:</h4>
+          <h4>Stat Score:</h4>
           <table className="stat-table">
             <thead>
               <tr>
@@ -295,33 +295,33 @@ function ClassDetail() {
                       nameClass.Def_Grow +
                       nameClass.Frt_Grow +
                       0.5) *
-                      2.4 +
-                    ((nameClass.HP_Mod +
-                      nameClass.Def_Mod +
-                      nameClass.Frt_Mod) *
+                      4 -
+                    5 / 3 +
+                    (nameClass.HP_Mod + nameClass.Def_Mod + nameClass.Frt_Mod) *
                       0.2 +
-                      1.4)
+                    1.4
                   ).toFixed(1)}
                 </td>
                 <td>
                   {(
-                    nameClass.Mgt_Grow * 10.8 +
-                    nameClass.Mgt_Mod * 0.6 +
-                    1.3
+                    nameClass.Mgt_Grow * 13.5 -
+                    0.625 +
+                    nameClass.Mgt_Mod * 0.625 +
+                    1.25
                   ).toFixed(1)}
                 </td>
                 <td>
                   {(
                     nameClass.Mas_Grow * 11 +
-                    nameClass.Mas_Mod * 0.6 +
-                    1.2
+                    nameClass.Mas_Mod * (5 / 9) +
+                    10 / 9
                   ).toFixed(1)}
                 </td>
                 <td>
                   {(
                     nameClass.Spd_Grow * 14.1 +
-                    nameClass.Spd_Mod * 0.5 +
-                    2.3
+                    nameClass.Spd_Mod * (5 / 11) +
+                    25 / 11
                   ).toFixed(1)}
                 </td>
                 <td>
@@ -333,25 +333,28 @@ function ClassDetail() {
                     (nameClass.Spd_Mod * 2 +
                       nameClass.Dex_Mod * 0.5 +
                       nameClass.Lck_Mod) *
-                      0.2 +
-                    1.8
+                      (2 / 9) +
+                    16 / 9
                   ).toFixed(1)}
                 </td>
                 <td>
                   {(
                     (nameClass.Dex_Grow * 2.5 + nameClass.Lck_Grow * 0.5) *
-                      4.5 +
-                    (nameClass.Dex_Mod * 2.5 + nameClass.Lck_Mod * 0.5) * 0.3 +
-                    1.5
+                      5.6 -
+                    0.625 +
+                    (nameClass.Dex_Mod * 2.5 + nameClass.Lck_Mod * 0.5) *
+                      0.294 +
+                    1.324
                   ).toFixed(1)}
                 </td>
                 <td>
                   {(
                     (nameClass.Dex_Grow * 0.25 + nameClass.Lck_Grow * 1.25) *
-                      10.7 +
+                      8.9 +
+                    0.42 +
                     (nameClass.Dex_Mod * 0.25 + nameClass.Lck_Mod * 1.25) *
-                      0.5 +
-                    1.4
+                      0.465 +
+                    1.28
                   ).toFixed(1)}
                 </td>
               </tr>

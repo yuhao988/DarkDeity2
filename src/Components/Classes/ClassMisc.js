@@ -1,5 +1,5 @@
 import "./Class.css";
-//import classStat from "../Datas/classStats.json";
+import classStat from "../Datas/classStats.json";
 //import charStat from "../Datas/charStatPass.json";
 import classSkills from "../Datas/classSkills.json";
 import classWriteUp from "./classWriteUp.json";
@@ -1868,6 +1868,9 @@ export function classWriteUps(className, part) {
   const class2 = Object.values(classSkills).find(
     (class1) => class1.Name === className
   );
+  const class3 = Object.values(classStat).find(
+    (class1) => class1.Name === className
+  );
   switch (part) {
     case "rating":
       return (
@@ -1900,7 +1903,7 @@ export function classWriteUps(className, part) {
           <tbody>
             <tr>
               <th colSpan="4" style={{ textAlign: "center" }}>
-                Upgrade priority
+                {class3.Skill1} Upgrade priority
               </th>
             </tr>
             <tr>
@@ -1924,7 +1927,7 @@ export function classWriteUps(className, part) {
           <tbody>
             <tr>
               <th colSpan="4" style={{ textAlign: "center" }}>
-                Upgrade priority
+                {class3.Skill2} Upgrade priority
               </th>
             </tr>
             <tr>
