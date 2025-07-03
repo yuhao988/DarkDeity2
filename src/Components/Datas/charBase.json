@@ -49,7 +49,7 @@
     "fortitude": 7,
     "mastery": 6,
     "luck": 5,
-    "starting": []
+    "starting": [10, "Frigillan", 49, 10, 7, 9, 6, 9, 13, 8]
   },
   {
     "ID": 12,
