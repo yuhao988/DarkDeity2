@@ -1,5 +1,4 @@
 import "./Class.css";
-
 import classStat from "../Datas/classStats.json";
 //import charStat from "../Datas/charStatPass.json";
 import classSkills from "../Datas/classSkills.json";

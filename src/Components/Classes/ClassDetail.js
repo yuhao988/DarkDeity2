@@ -679,6 +679,7 @@ function ClassDetail() {
           {classWriteUps(Name1, "skills")}
           <h3>Rings and weapons recommendations:</h3>
           {classWriteUps(Name1, "rings")}
+          <br />
           {classWriteUps(Name1, "weapons")}
           <h3>Class Synergy</h3>
           {classWriteUps(Name1, "class")}

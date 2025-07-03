@@ -1,6 +1,7 @@
 import charActive from "../Datas/charActive.json";
 import charWrite from "./charWriteUp.json";
 import "./Char.css";
+import { processRingText } from "../Rings/RingMisc";
 
 export function charIntro(charName, part) {
   const charname = charName.toLowerCase();
@@ -53,6 +54,8 @@ export function charIntro(charName, part) {
       );
     case "suggest":
       return <p>{writeUp.suggestion}</p>;
+    case "ring":
+      return <p>{processRingText(writeUp.Rings)}</p>; 
     default:
       return <p>placeholder</p>;
   }

@@ -544,6 +544,8 @@ function CharDetail() {
           <div>{charIntro(nameNoMark, "gameplay")}</div>
           <h3>Class Suggestion:</h3>
           <div>{charIntro(nameNoMark, "suggest")}</div>
+          <h3>Ring Suggestions:</h3>
+          <div>{charIntro(nameNoMark, "ring")}</div>
         </div>
         <Link to="/characters">Back</Link>{" "}
       </div>
