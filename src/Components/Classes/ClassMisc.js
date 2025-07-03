@@ -1,8 +1,12 @@
 import "./Class.css";
+
 import classStat from "../Datas/classStats.json";
 //import charStat from "../Datas/charStatPass.json";
 import classSkills from "../Datas/classSkills.json";
 import classWriteUp from "./classWriteUp.json";
+import { processRingText } from "../Rings/RingMisc";
+
+
 
 export function ClassIntro(Name) {
   let tier = 1;
@@ -1950,7 +1954,7 @@ export function classWriteUps(className, part) {
     case "tips":
       return <p>{writeUp.Tips}</p>;
     case "rings":
-      return <p>{writeUp.Rings}</p>;
+      return <p>{processRingText(writeUp.Rings)}</p>;
     case "weapons":
       return <p>{writeUp.Weapons}</p>;
     case "class":

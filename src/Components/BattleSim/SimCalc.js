@@ -115,8 +115,12 @@ export function battleForecast(unit, enemy) {
     eneDmg = Math.max(0, enemy.Pwr - unit.For).toFixed(0);
   }
 
-  const unitHit = Math.max(0, Math.min(100, unit.Acc - enemy.Ddg)).toFixed(0);
-  const eneHit = Math.max(0, Math.min(100, enemy.Acc - unit.Ddg)).toFixed(0);
+  let unitHit = Math.max(0, Math.min(100, unit.Acc - enemy.Ddg)).toFixed(0);
+  let eneHit = Math.max(0, Math.min(100, enemy.Acc - unit.Ddg)).toFixed(0);
+  if (unit.Class === "Dreadnought") {
+    unitHit = 100;
+    eneHit = 100;
+  }
   const unitCrit = Math.max(0, Math.min(100, unit.Crit - enemy.CAvo)).toFixed(
     0
   );
@@ -161,17 +165,6 @@ export function battleForecast(unit, enemy) {
 }
 
 export function simulateBattle(unit, enemy) {
-  // let unit;
-  // let enemy;
-  // if (isUnit) {
-  //   unit = unitList.find((units) => units.Class === unitName);
-  // } else {
-  //   unit = Object.values(classSample).find(
-  //     (classes) => classes.Class === unitName
-  //   );
-  // }
-  // enemy = enemyList.find((units) => units.Class === enemyName);
-
   let unitW = false;
   let enemyW = false;
   if (unit.TSpd - enemy.TSpd >= 5) {
@@ -195,8 +188,12 @@ export function simulateBattle(unit, enemy) {
     eneDmg = Math.max(0, enemy.Pwr - unit.For).toFixed(0);
   }
 
-  const unitHit = Math.max(0, Math.min(100, unit.Acc - enemy.Ddg)).toFixed(0);
-  const eneHit = Math.max(0, Math.min(100, enemy.Acc - unit.Ddg)).toFixed(0);
+  let unitHit = Math.max(0, Math.min(100, unit.Acc - enemy.Ddg)).toFixed(0);
+  let eneHit = Math.max(0, Math.min(100, enemy.Acc - unit.Ddg)).toFixed(0);
+  if (unit.Class === "Dreadnought") {
+    unitHit = 100;
+    eneHit = 100;
+  }
   const unitCrit = Math.max(0, Math.min(100, unit.Crit - enemy.CAvo)).toFixed(
     0
   );
@@ -290,7 +287,6 @@ export function simulateBattle(unit, enemy) {
           winloseCnt[0]++;
           break;
         }
-        
       }
     }
     //Enemy strikes first

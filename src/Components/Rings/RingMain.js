@@ -24,7 +24,7 @@ function RingMain() {
       </header>
       <div className="page-body">
         <div className="ring-list">
-          <table className = "ring-table">
+          <table className="ring-table">
             <thead></thead>
 
             {Object.values(ringInfo).map((ring, index) => (
