@@ -5,7 +5,15 @@ import classSkills from "../Datas/classSkills.json";
 import classWriteUp from "./classWriteUp.json";
 import { processRingText } from "../Rings/RingMisc";
 
-
+const getUpGradeColor = (priority) => {
+  const colorMap = {
+    Top: "rgb(75, 199, 95)",
+    High: "rgb(221, 235, 96)",
+    Mid: "rgb(226, 191, 76)",
+    default: "rgb(184, 182, 182)", // Fallback
+  };
+  return colorMap[priority] || colorMap.default;
+};
 
 export function ClassIntro(Name) {
   let tier = 1;
@@ -1916,10 +1924,42 @@ export function classWriteUps(className, part) {
               <td className="upgrade-box">{class2.S1Buff4}</td>
             </tr>
             <tr>
-              <td className="upgrade-box">{writeUp.Upgrade1[0]}</td>
-              <td className="upgrade-box">{writeUp.Upgrade1[1]}</td>
-              <td className="upgrade-box">{writeUp.Upgrade1[2]}</td>
-              <td className="upgrade-box">{writeUp.Upgrade1[3]}</td>
+              <td
+                style={{
+                  backgroundColor: getUpGradeColor(writeUp.Upgrade1[0]),
+                  textAlign: " center",
+                  borderRight: "1px solid black",
+                }}
+              >
+                {writeUp.Upgrade1[0]}
+              </td>
+              <td
+                style={{
+                  backgroundColor: getUpGradeColor(writeUp.Upgrade1[1]),
+                  textAlign: " center",
+                  borderRight: "1px solid black",
+                }}
+              >
+                {writeUp.Upgrade1[1]}
+              </td>
+              <td
+                style={{
+                  backgroundColor: getUpGradeColor(writeUp.Upgrade1[2]),
+                  textAlign: " center",
+                  borderRight: "1px solid black",
+                }}
+              >
+                {writeUp.Upgrade1[2]}
+              </td>
+              <td
+                style={{
+                  backgroundColor: getUpGradeColor(writeUp.Upgrade1[3]),
+                  textAlign: " center",
+                  borderRight: "1px solid black",
+                }}
+              >
+                {writeUp.Upgrade1[3]}
+              </td>
             </tr>
           </tbody>
         </table>
@@ -1940,10 +1980,42 @@ export function classWriteUps(className, part) {
               <td className="upgrade-box">{class2.S2Buff4}</td>
             </tr>
             <tr>
-              <td className="upgrade-box">{writeUp.Upgrade2[0]}</td>
-              <td className="upgrade-box">{writeUp.Upgrade2[1]}</td>
-              <td className="upgrade-box">{writeUp.Upgrade2[2]}</td>
-              <td className="upgrade-box">{writeUp.Upgrade2[3]}</td>
+              <td
+                style={{
+                  backgroundColor: getUpGradeColor(writeUp.Upgrade2[0]),
+                  textAlign: " center",
+                  borderRight: "1px solid black",
+                }}
+              >
+                {writeUp.Upgrade2[0]}
+              </td>
+              <td
+                style={{
+                  backgroundColor: getUpGradeColor(writeUp.Upgrade2[1]),
+                  textAlign: " center",
+                  borderRight: "1px solid black",
+                }}
+              >
+                {writeUp.Upgrade2[1]}
+              </td>
+              <td
+                style={{
+                  backgroundColor: getUpGradeColor(writeUp.Upgrade2[2]),
+                  textAlign: " center",
+                  borderRight: "1px solid black",
+                }}
+              >
+                {writeUp.Upgrade2[2]}
+              </td>
+              <td
+                style={{
+                  backgroundColor: getUpGradeColor(writeUp.Upgrade2[3]),
+                  textAlign: " center",
+                  borderRight: "1px solid black",
+                }}
+              >
+                {writeUp.Upgrade2[3]}
+              </td>
             </tr>
           </tbody>
         </table>
