@@ -4,6 +4,7 @@ import classStat from "../Datas/classStats.json";
 import classSkills from "../Datas/classSkills.json";
 import classWriteUp from "./classWriteUp.json";
 import { processRingText } from "../Rings/RingMisc";
+import { paragraphBreak } from "../../Home";
 
 const getUpGradeColor = (priority) => {
   const colorMap = {
@@ -1905,9 +1906,9 @@ export function classWriteUps(className, part) {
         </table>
       );
     case "stats":
-      return <p>{writeUp.Stats}</p>;
+      return <p>{paragraphBreak(writeUp.Stats)}</p>;
     case "char":
-      return <p>{writeUp.Character}</p>;
+      return <p>{paragraphBreak(writeUp.Character)}</p>;
     case "upgrade1":
       return (
         <table className="active-table">
@@ -2021,15 +2022,15 @@ export function classWriteUps(className, part) {
         </table>
       );
     case "skills":
-      return <p>{writeUp.Skills}</p>;
+      return <p>{paragraphBreak(writeUp.Skills)}</p>;
     case "tips":
-      return <p>{writeUp.Tips}</p>;
+      return <p>{paragraphBreak(writeUp.Tips)}</p>;
     case "rings":
       return <p>{processRingText(writeUp.Rings)}</p>;
     case "weapons":
       return <p>{writeUp.Weapons}</p>;
     case "class":
-      return <p>{writeUp.Class}</p>;
+      return <p>{paragraphBreak(writeUp.Class)}</p>;
     default:
       return <p>Insert corresponding {className} write-up</p>;
   }

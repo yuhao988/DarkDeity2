@@ -2,6 +2,7 @@ import charActive from "../Datas/charActive.json";
 import charWrite from "./charWriteUp.json";
 import "./Char.css";
 import { processRingText } from "../Rings/RingMisc";
+import { paragraphBreak } from "../../Home";
 
 export function charIntro(charName, part) {
   const charname = charName.toLowerCase();
@@ -14,11 +15,11 @@ export function charIntro(charName, part) {
 
   switch (part) {
     case "intro":
-      return <p>{writeUp.introduction} </p>;
+      return <p>{paragraphBreak(writeUp.introduction)} </p>;
     case "base":
-      return <p>{writeUp.base}</p>;
+      return <p>{paragraphBreak(writeUp.base)}</p>;
     case "class":
-      return <p>{writeUp.classes}</p>;
+      return <p>{paragraphBreak(writeUp.classes)}</p>;
     case "skill":
       return (
         <div>
@@ -48,12 +49,12 @@ export function charIntro(charName, part) {
     case "gameplay":
       return (
         <div>
-          <p>{writeUp.gameplayBoon}</p>
-          <p>{writeUp.gameplayBane}</p>
+          <p>{paragraphBreak(writeUp.gameplayBoon)}</p>
+          <p>{paragraphBreak(writeUp.gameplayBane)}</p>
         </div>
       );
     case "suggest":
-      return <p>{writeUp.suggestion}</p>;
+      return <p>{paragraphBreak(writeUp.suggestion)}</p>;
     case "ring":
       return <p>{processRingText(writeUp.Rings)}</p>; 
     default:
