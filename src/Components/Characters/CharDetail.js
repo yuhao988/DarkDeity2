@@ -333,7 +333,7 @@ function CharDetail() {
                           let numValue;
 
                           if (key === "Name") {
-                            return <td key={key}>{value}</td>;
+                            return <td key={key}><Link to={`/classes/${value.toLowerCase()}`}>{value}</Link></td>;
                           } else {
                             const charGrow = parseFloat(growths[i]);
 
@@ -398,7 +398,7 @@ function CharDetail() {
                           let numValue;
 
                           if (key === "Name") {
-                            return <td key={key}>{value}</td>;
+                            return <td key={key}><Link to={`/classes/${value.toLowerCase()}`}>{value}</Link></td>;
                           } else {
                             const charGrow = parseFloat(growths[i]);
 

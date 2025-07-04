@@ -414,7 +414,7 @@ function ClassDetail() {
                           let numValue;
 
                           if (key === "Name") {
-                            return <td key={key}>{value}</td>;
+                            return <td key={key}><Link to={`/characters/${value.toLowerCase()}`}>{value}</Link></td>;
                           } else {
                             const charGrow = parseFloat(value);
 
