@@ -3,13 +3,15 @@ import classSample from "../Datas/simClassSmp.json";
 import { useState } from "react";
 import SimModal from "./SimModal";
 import { scoreCalc1, tankCalc } from "./SimCalc";
+//import eneHeroic from "../Datas/eneHeroic.json";
+//import eneDeity from "../Datas/eneDeity.json";
 import "../../App.css";
 import "./Sim.css";
 
 function SimSample1() {
   const [isModal, setIsModal] = useState(false);
   const [selectedUnit, setSelectedUnit] = useState(null);
-  const [isUnit, setIsUnit]=useState(false);
+  const [isUnit, setIsUnit] = useState(false);
 
   const [unitList, enemyList] = Array.isArray(sample)
     ? sample.reduce(
@@ -21,7 +23,7 @@ function SimSample1() {
       )
     : [[], []];
 
-  const openModal = (unit,isU) => {
+  const openModal = (unit, isU) => {
     setSelectedUnit(unit);
     setIsUnit(isU);
     setIsModal(true);
@@ -42,10 +44,12 @@ function SimSample1() {
           <ul>
             {unitList.map((unit, index) => (
               <li key={index}>
-                <button onClick={() => openModal(unit,true)}>{unit.Class}</button>
+                <button onClick={() => openModal(unit, true)}>
+                  {unit.Class}
+                </button>
                 <br />
-                Attack score: {scoreCalc1(unit.Class,true)} <br />
-                Tank score: {tankCalc(unit.Class,true)}%
+                Attack score: {scoreCalc1(unit.Class, true)} <br />
+                Tank score: {tankCalc(unit.Class, true)}%
               </li>
             ))}
           </ul>
@@ -54,7 +58,6 @@ function SimSample1() {
             onClose={closeModal}
             unit={selectedUnit}
             isUnit={isUnit}
-            enemies={enemyList}
           />
         </div>
         <div className="list-container">
@@ -62,12 +65,12 @@ function SimSample1() {
           <ul>
             {Object.values(classSample).map((classes, index) => (
               <li key={index}>
-                <button onClick={() => openModal(classes,false)}>
+                <button onClick={() => openModal(classes, false)}>
                   {classes.Class}
                 </button>
                 <br />
-                Attack score: {scoreCalc1(classes.Class,false)} <br />
-                Tank score: {tankCalc(classes.Class,false)}%
+                Attack score: {scoreCalc1(classes.Class, false)} <br />
+                Tank score: {tankCalc(classes.Class, false)}%
               </li>
             ))}
           </ul>

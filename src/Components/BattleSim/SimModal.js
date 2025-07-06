@@ -1,21 +1,34 @@
 import Modal from "react-modal";
 import { useState } from "react";
 import { battleForecast, simulateBattle } from "./SimCalc";
+import eneHeroic from "../Datas/eneHeroic.json";
+import eneDeity from "../Datas/eneDeity.json";
 import "./Sim.css";
 
 export default function SimModal(prop) {
-  const { isOpen, onClose, unit, enemies } = prop;
+  const { isOpen, onClose, unit } = prop;
   const [enemyActive, setEnemyActive] = useState("");
+  const [enmDiff, setEnmDiff] = useState("Heroic");
+  //const [isBoss, setIsBoss]=useState("");
+
+  // Get enemies based on current difficulty
+  const currentEnemies = enmDiff === "Heroic" ? eneHeroic : eneDeity;
 
   const handleCloseModal = () => {
     onClose();
     setEnemyActive("");
   };
   const handleEnemyChange = (e) => {
-    const selectedEnemy = enemies.find(
-      (enemy) => enemy.Class === e.target.value
+    const selectedEnemy = currentEnemies.find(
+      (enemy) => enemy.Class === e.target.value && enemy.Boss === ""
     );
-    setEnemyActive(selectedEnemy);
+    setEnemyActive(selectedEnemy || null);
+  };
+
+  const handleDiffChange = (e) => {
+    const diff = e.target.value;
+    setEnmDiff(diff);
+    setEnemyActive(null); // Reset selected enemy when difficulty changes
   };
 
   return (
@@ -57,9 +70,24 @@ export default function SimModal(prop) {
         ×
       </button>
 
-      {unit && enemies && (
+      {unit && (
         <div className="modal-content">
           <h2>{unit.Class}</h2>
+
+          {/* Difficulty Selector */}
+          <h4>Game difficulty:</h4>
+          <select
+            onChange={handleDiffChange}
+            value={enmDiff}
+            className="enemy-select"
+            style={{ width: "20vw" }}
+          >
+            <option value="Heroic">Heroic</option>
+            <option value="Deity">Deity</option>
+          </select>
+
+          {/* Enemy Selector - Now uses currentEnemies */}
+          <h4>Enemy Class:</h4>
           <select
             onChange={handleEnemyChange}
             value={enemyActive?.Class || ""}
@@ -67,14 +95,17 @@ export default function SimModal(prop) {
             style={{ width: "20vw" }}
           >
             <option value="">Select an enemy</option>
-            {enemies.map((enemy) => (
-              <option key={enemy.Class} value={enemy.Class}>
-                {enemy.Class}
-              </option>
-            ))}
+            {currentEnemies.map(
+              (enemy) =>
+                enemy.Boss === "" && (
+                  <option key={`${enemy.Class}`} value={enemy.Class}>
+                    {enemy.Class}
+                  </option>
+                )
+            )}
           </select>
 
-          {/* Display selected enemy info */}
+          {/* Battle Display - Will update immediately on any change */}
           {enemyActive && (
             <div className="battle-container">
               <div>
@@ -84,7 +115,6 @@ export default function SimModal(prop) {
                 {battleForecast(unit, enemyActive)}
               </div>
               <div className="right-content">
-                {/* Your right-aligned content goes here */}
                 <p>
                   For 1000 simulated battles in which each side attacks first
                   for half of the time:
