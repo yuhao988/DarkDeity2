@@ -110,7 +110,7 @@
     "suggestion": "Tamer/Beastmaster, Quickdraw/Deadeye, Quickdraw->Tamer/Deadeye"
   },
   "zuhair": {
-    "introduction": "Zuhair is one of the characters joining you during the Shamac arc. He joins you in Chapter 9 as a Lv.10updated zuhair's bas Frigillan.",
+    "introduction": "Zuhair is one of the characters joining you during the Shamac arc. He joins you in Chapter 9 as a Lv.10 Frigillan.",
     "base": "Zuhair has a low base Mgt and Def, and below average base Lck. His base HP is very high, and his Frt is high too. In terms of growth, Zuhair's HP, Frt and Mas growth are quite high, with decent growth in Mgt, Spd, Dex and Lck, while his Def growth is quite low. Zuhair will be a decent tank magically and hit for decent damage, but will not be too good elsewhere.",
     "classes": "Zuhait starts out in the Frigillan class, which naturally progresses into Godfrost. This line has good Def but bad Frt, which when combined with Zuhair's personal growth, results in te unit having decent growth in both defenses, coupled with an absurd 100% HP growth and a powerful Godfrost skill in Absolute Zero, makes Zuhair the best tank in the game, capable of even tanking waves of onslaught in Demonic mode. Conduit/Stormkeeper gives Zuhair the best Mas and Frt growth, both of which can be brought into the Frigillan/Godfrost tank line later, but the decrease in Def might be a problem for taking physical hits in higher difficulty. Monk/Ascendant is once again a great line and Zuhair will have great Mgt, Spd, Dex and Mas growth in the line.",
     "skills": ["Low", "Low", "Mid", "Mid"],
@@ -121,7 +121,7 @@
     "suggestion": "Frigillan/Godfrost, Conduit/Godfrost, Conduit/Stormkeeper"
   },
   "eve": {
-    "introduction": "Eve is a character that joins your party during the Shamac arc of the game plot. She joins in Chapter X as a Lv.X Cutthroat.",
+    "introduction": "Eve is a character that joins your party during the Shamac arc of the game plot. She joins in Chapter 10 as a Lv.13 Cutthroat.",
     "base": "Eve has one of the lowest base total amongest all playable units, with below average HP and Mgt, and horrendous defenses and Mas. However, Eve has very high Spd, Dex and Lck. In terms of growth, Eve similiarly has high Spd, Dex and Lck growth, subpar Mgt growth, and really low HP, Def, Frt and Mas growth. Eve will be a superb dodge tank with good crit potential, but she will not hit very hard if she did not crit and will have low Skill numbers.",
     "classes": "Eve begins in Cutthroat class, which naturally progresses into Slayer. This line has blistering fast Spd, as well as high Dex and Lck. HP and Mgt growth as passable, but Def, Frt and Mas growth are bad. Cutthroat does have a good skill in Licky Lasso, a skill capable of changing enemy position for easier kill. Tamer/Beastmaster will give Eve high HP and Mas growth and passable growth in all other areas, making Eve into a unit with no bad stats, but Eve will lose out on the ability to double most enemies. Quickdraw/Deadeye is a line that allows Eve to retain her Spd as well as having good Mgt, Dex and Lck, but her HP, Def and Frt growth are all really low.",
     "skills": ["Low", "Low", "Mid", "Low"],

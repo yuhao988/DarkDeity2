@@ -3,8 +3,7 @@ import classSample from "../Datas/simClassSmp.json";
 import { useState } from "react";
 import SimModal from "./SimModal";
 import { scoreCalc1, tankCalc } from "./SimCalc";
-//import eneHeroic from "../Datas/eneHeroic.json";
-//import eneDeity from "../Datas/eneDeity.json";
+
 import "../../App.css";
 import "./Sim.css";
 
@@ -13,15 +12,9 @@ function SimSample1() {
   const [selectedUnit, setSelectedUnit] = useState(null);
   const [isUnit, setIsUnit] = useState(false);
 
-  const [unitList, enemyList] = Array.isArray(sample)
-    ? sample.reduce(
-        ([units, enemies], obj) =>
-          obj.hasOwnProperty("tier3")
-            ? [[...units, obj], enemies]
-            : [units, [...enemies, obj]],
-        [[], []]
-      )
-    : [[], []];
+const unitList = Array.isArray(sample)
+  ? sample.filter(obj => obj.hasOwnProperty("tier3"))
+  : [];
 
   const openModal = (unit, isU) => {
     setSelectedUnit(unit);

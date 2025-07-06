@@ -159,7 +159,7 @@ function ClassDetail() {
             {Object.values(charStat)
               .filter((charName) => charName.classLine === nameClass.Classline)
               .map((char) => (
-                <li>{char.Name}</li>
+                <li><Link to={`/characters/${char.Name.toLowerCase()}`}>{char.Name}</Link></li>
               ))}
           </ul>
           <h3>Class Stats Modifier:</h3>

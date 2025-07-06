@@ -121,11 +121,11 @@
     "Character": "Amongst the four units capable of going into the Quickdraw class, Zanele starts off as a Quickdraw. She has very high Spd, Dex, Mgt and Mas growth, but has mediocre HP, Def, Frt and Lck growth. This will make her a very capable combat unit, but does not utilise her special personal skill as effectively as Tamer.<br/>Eve will be just as fast compared to Cutthroat and will have better Mgt. However, her Ddg will be compromised without Cutthroat's passive, making it less than ideal as her bulk also gets worse.<br/>Riordan's high personal growth makes him a functional Quickdraw with decent bulk and great combat. However, he does have least Spd growth amongst all Hunter unit, something Quickdraw does not desire.<br/> Tusk is surprisingly capable as Quickdraw, as he will get good Spd growth together with high HP, Mgt and Dex. His physical bulk is impressive and magical bulk is bad but still managable, as most enemies cannot double him and will not defeat him easily through his huge HP pool.",
     "Upgrade1": ["Low", "Mid", "Low", "Mid"],
     "Upgrade2": ["Low", "Low", "Mid", "Mid"],
-    "Skills": "",
-    "Tips": "",
-    "Rings": "",
+    "Skills": "Quickdraw's passive gives the unit 5 Mana if a follow-up attack is performed. It is not a very useful ability as follow-up attacks are not very consistent, possibly due to having to fight fast enemies Quickdraw struggle to double, or outright killing a weakened enemy without needing to follow-up. Enemy phase follow-up is also hard to do as Quickdraw is a 2 range unit. <br/>Wicked Cackle is an AOE debuff skill which applies Weak to enemies. it is a weird skill as Weak reduces damage dealt by enemy, something Quickdraw does not really utilise well as Quickdraw cannot tank and would prefer to outright kill enemies. It can help to support teammates if there are numerous enemies that player cannot take out in one turn but it is highly situational.<br/>Command Hyena is your typical Hunter Red Skill that deals extra damage in addition to a normal attack and applies a Bleed debuff, adding even more damage to it. It is essentially just more damage, something welcomed by a damage-centric class. Adding a heal for some utility or increase stacks for more damage is preferred.",
+    "Tips": "Quickdraw is a combat focused class, with good damage, fast speed for doubling and accurate attacks. Players should focus on Spd for doubling as it will trigger the class's passive. While Quickdraw's Skill num is not very good, as Hunter's skills are based off a normal attack, players can still expect good damage output. As Quickdraw has a way to refill Mana, players should not hesitate to use skills whenever necessary.",
+    "Rings": "Quickdraw would prefer rings that improves battle performances. Grip increase TSpd equals to half of weapon weight, which might be useful if you opt for heavy weapons. Kindling increases Pwr every time mana is spent, which can be useful to combo with Quickdraw's mana regen for more Skill usage.<br/> Crit increasing rings are also great due to Quickdraw's high Mgt and Spd, so Soulfire and Dominator can be considered. <br/>Finally, Archmage is an interesting pick as Quickdraw is a 2 range unit and its skills depend on attack range, which means it qualifies for the condition needed to trigger Archmage ring's effect, essentially giving Quickdraw 1 extra attack range.",
     "Weapons": "",
-    "Class": ""
+    "Class": "Quickdraw naturally progresses into the Deadeye class, with similiar stas and growths. It is also a good combat class and plays quite well. <br/>Slayer is a decent choice which is also fast, and has 1-2 range, which utilises Quickdraw's passive much better than Quickdraw itself or Deadeye, making it a great choice too.<br/>Warden and Beastmaster are too slow to utilise Quickdraw's passive, and Quickeye does not really have strong skill effects, and the classes would much rather have Cutthroat for better Spd growth."
   },
   {
     "ID": 9,
@@ -133,7 +133,7 @@
     "Tier": 2,
     "Name": "Geomancer",
     "Rating": [1, 1, 1, 1, 1],
-    "Stats": "",
+    "Stats": "Geomancer is a class focuses on Mas and Lck. It has great stat modifier in Mas and Lck, and good modifier in HP and Def. Its Spd and especially Frt stat mod are negative. In terms of growth, Geomancer has great HP and Mas growth, decent Mgt, Def and Lck growth and low growth in terms of Spd, Dex and Frt.<br/> Geomancer is a Skill focused class with great Skill Num and decent Bulk, but lackluster in terms of combat with below average Pwr, Ddg, TSpd and Acc. It does however, has decent Crt potential.",
     "Character": "",
     "Upgrade1": ["Low", "Low", "Low", "Low"],
     "Upgrade2": ["Low", "Low", "Low", "Low"],

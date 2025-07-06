@@ -40,7 +40,7 @@ function ClassMain() {
           <br />
           Note that when a character
           promotes into a higher tier, they can no longer go back into a lower tier,
-          and when they promote into a Tier 3 class from TIer 2, the passive and
+          and when they promote into a Tier 3 class from Tier 2, the passive and
           skills of the Tier 2 class stay with the character and can no longer
           be changed. Thus while players can have fun experimenting with
           different classes throughout the game, it is advised for players to be
