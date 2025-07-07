@@ -1,0 +1,519 @@
+[
+  {
+    "Name": "Hatchet",
+    "Type": "Axe",
+    "Power": "10",
+    "Crit": "0",
+    "Accuracy": "75",
+    "Weight": "2",
+    "Runes": ["Mighty", "Faith", "Slim", "Barbs"],
+    "Obtain": "default"
+  },
+  {
+    "Name": "Axe",
+    "Type": "Axe",
+    "Power": "12",
+    "Crit": "0",
+    "Accuracy": "80",
+    "Weight": "3",
+    "Runes": [
+      "Mighty",
+      "Faith",
+      "Slim",
+      "Barbs",
+      "Titan",
+      "Celerity",
+      "Tactician",
+      "Overflow"
+    ],
+    "Obtain": "Chapter 3 onward shop"
+  },
+  {
+    "Name": "Battleaxe",
+    "Type": "Axe",
+    "Power": "15",
+    "Crit": "5",
+    "Accuracy": "80",
+    "Weight": "4",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Nemesis",
+      "Crusader",
+      "Wizard",
+      "Swift",
+      "Templar"
+    ],
+    "Obtain": "Chapter 19 onward shop"
+  },
+  {
+    "Name": "Greataxe",
+    "Type": "Axe",
+    "Power": "20",
+    "Crit": "5",
+    "Accuracy": "85",
+    "Weight": "6",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Cadence",
+      "Assassin",
+      "Light",
+      "Vicious",
+      "Titan"
+    ],
+    "Obtain": ""
+  },
+  {
+    "Name": "Ceremonial Cleaver",
+    "Type": "Axe",
+    "Power": "7",
+    "Crit": "25",
+    "Accuracy": "75",
+    "Weight": "1",
+    "Runes": [
+      "Mighty",
+      "Faith",
+      "Slim",
+      "Barbs",
+      "Silent",
+      "Assassin",
+      "Arcane",
+      "Cadence",
+      "Piercing"
+    ],
+    "Obtain": ""
+  },
+  {
+    "Name": "Mauler",
+    "Type": "Axe",
+    "Power": "22",
+    "Crit": "0",
+    "Accuracy": "70",
+    "Weight": "6",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Empyrean",
+      "Solar",
+      "Challenger",
+      "Ragnarok",
+      "Truestrike"
+    ],
+    "Obtain": ""
+  },
+  {
+    "Name": "Splitter",
+    "Type": "Axe",
+    "Power": "11",
+    "Crit": "5",
+    "Accuracy": "110",
+    "Weight": "2",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Solar",
+      "Vampire",
+      "Crusader",
+      "Celerity"
+    ],
+    "Obtain": ""
+  },
+  {
+    "Name": "Shortbow",
+    "Type": "Bow",
+    "Power": "8",
+    "Crit": "0",
+    "Accuracy": "90",
+    "Weight": "2",
+    "Runes": ["Mighty", "Faith", "Slim", "Barbs"],
+    "Obtain": ""
+  },
+  {
+    "Name": "Longbow",
+    "Type": "Bow",
+    "Power": "10",
+    "Crit": "0",
+    "Accuracy": "95",
+    "Weight": "3",
+    "Runes": "Solar",
+    "Obtain": ""
+  },
+  {
+    "Name": "Recurve Bow",
+    "Type": "Bow",
+    "Power": "12",
+    "Crit": "5",
+    "Accuracy": "100",
+    "Weight": "4",
+    "Runes": "Bludgeon",
+    "Obtain": ""
+  },
+  {
+    "Name": "Greatbow",
+    "Type": "Bow",
+    "Power": "17",
+    "Crit": "5",
+    "Accuracy": "110",
+    "Weight": "5",
+    "Runes": "Challenger",
+    "Obtain": ""
+  },
+  {
+    "Name": "Deepsong Greatbow",
+    "Type": "Bow",
+    "Power": "18",
+    "Crit": "5",
+    "Accuracy": "65",
+    "Weight": "5",
+    "Runes": "Knight",
+    "Obtain": ""
+  },
+  {
+    "Name": "Repeater",
+    "Type": "Bow",
+    "Power": "10",
+    "Crit": "0",
+    "Accuracy": "90",
+    "Weight": "0",
+    "Runes": "Tactician",
+    "Obtain": ""
+  },
+  {
+    "Name": "Conquest Bow",
+    "Type": "Bow",
+    "Power": "11",
+    "Crit": "20",
+    "Accuracy": "85",
+    "Weight": "2",
+    "Runes": "Bursting",
+    "Obtain": ""
+  },
+  {
+    "Name": "Arbalest",
+    "Type": "Bow",
+    "Power": "13",
+    "Crit": "10",
+    "Accuracy": "125",
+    "Weight": "4",
+    "Runes": "Templar",
+    "Obtain": ""
+  },
+  {
+    "Name": "Dagger",
+    "Type": "Dagger",
+    "Power": "6",
+    "Crit": "5",
+    "Accuracy": "80",
+    "Weight": "0",
+    "Runes": ["Mighty", "Faith", "Slim", "Barbs"],
+    "Obtain": ""
+  },
+  {
+    "Name": "Knife",
+    "Type": "Dagger",
+    "Power": "7",
+    "Crit": "8",
+    "Accuracy": "80",
+    "Weight": "0",
+    "Runes": "Leeching",
+    "Obtain": ""
+  },
+  {
+    "Name": "Kris",
+    "Type": "Dagger",
+    "Power": "9",
+    "Crit": "10",
+    "Accuracy": "85",
+    "Weight": "1",
+    "Runes": "Barbs",
+    "Obtain": ""
+  },
+  {
+    "Name": "Shiv",
+    "Type": "Dagger",
+    "Power": "13",
+    "Crit": "15",
+    "Accuracy": "85",
+    "Weight": "2",
+    "Runes": "Vampire",
+    "Obtain": ""
+  },
+  {
+    "Name": "Athame",
+    "Type": "Dagger",
+    "Power": "7",
+    "Crit": "25",
+    "Accuracy": "80",
+    "Weight": "1",
+    "Runes": "Valorous",
+    "Obtain": ""
+  },
+  {
+    "Name": "Karambit",
+    "Type": "Dagger",
+    "Power": "12",
+    "Crit": "0",
+    "Accuracy": "80",
+    "Weight": "0",
+    "Runes": "Draining",
+    "Obtain": ""
+  },
+  {
+    "Name": "Cinquedea",
+    "Type": "Dagger",
+    "Power": "15",
+    "Crit": "20",
+    "Accuracy": "75",
+    "Weight": "3",
+    "Runes": "Arcane",
+    "Obtain": ""
+  },
+  {
+    "Name": "Focus",
+    "Type": "Focus",
+    "Power": "7",
+    "Crit": "0",
+    "Accuracy": "80",
+    "Weight": "0",
+    "Runes": ["Mighty", "Faith", "Slim", "Barbs"],
+    "Obtain": ""
+  },
+  {
+    "Name": "Crystal Focus",
+    "Type": "Focus",
+    "Power": "9",
+    "Crit": "0",
+    "Accuracy": "85",
+    "Weight": "1",
+    "Runes": "Celerity",
+    "Obtain": ""
+  },
+  {
+    "Name": "Gemmed Focus",
+    "Type": "Focus",
+    "Power": "13",
+    "Crit": "5",
+    "Accuracy": "85",
+    "Weight": "3",
+    "Runes": "Cadence",
+    "Obtain": ""
+  },
+  {
+    "Name": "Cloud Focus",
+    "Type": "Focus",
+    "Power": "18",
+    "Crit": "5",
+    "Accuracy": "90",
+    "Weight": "5",
+    "Runes": "Nemesis",
+    "Obtain": ""
+  },
+  {
+    "Name": "Jeweled Wand",
+    "Type": "Focus",
+    "Power": "10",
+    "Crit": "10",
+    "Accuracy": "80",
+    "Weight": "2",
+    "Runes": "Celerity",
+    "Obtain": ""
+  },
+  {
+    "Name": "Fractal Prism",
+    "Type": "Focus",
+    "Power": "9",
+    "Crit": "30",
+    "Accuracy": "90",
+    "Weight": "3",
+    "Runes": "Knight",
+    "Obtain": ""
+  },
+  {
+    "Name": "Decrepit Skull",
+    "Type": "Focus",
+    "Power": "19",
+    "Crit": "0",
+    "Accuracy": "70",
+    "Weight": "4",
+    "Runes": "Bursting",
+    "Obtain": ""
+  },
+  {
+    "Name": "Shimmering Vial",
+    "Type": "Focus",
+    "Power": "11",
+    "Crit": "0",
+    "Accuracy": "110",
+    "Weight": "1",
+    "Runes": "Wizard",
+    "Obtain": ""
+  },
+  {
+    "Name": "Relic",
+    "Type": "Relic",
+    "Power": "8",
+    "Crit": "0",
+    "Accuracy": "80",
+    "Weight": "1",
+    "Runes": ["Mighty", "Faith", "Slim", "Barbs"],
+    "Obtain": ""
+  },
+  {
+    "Name": "Relic Staff",
+    "Type": "Relic",
+    "Power": "10",
+    "Crit": "0",
+    "Accuracy": "85",
+    "Weight": "2",
+    "Runes": "Sealing",
+    "Obtain": ""
+  },
+  {
+    "Name": "Relic Tome",
+    "Type": "Relic",
+    "Power": "12",
+    "Crit": "0",
+    "Accuracy": "90",
+    "Weight": "2",
+    "Runes": "Colossus",
+    "Obtain": ""
+  },
+  {
+    "Name": "Relic Archstaff",
+    "Type": "Relic",
+    "Power": "15",
+    "Crit": "0",
+    "Accuracy": "95",
+    "Weight": "3",
+    "Runes": "Leeching",
+    "Obtain": ""
+  },
+  {
+    "Name": "Depleted Ward",
+    "Type": "Relic",
+    "Power": "10",
+    "Crit": "15",
+    "Accuracy": "90",
+    "Weight": "3",
+    "Runes": "Solar",
+    "Obtain": ""
+  },
+  {
+    "Name": "Moon Wand",
+    "Type": "Relic",
+    "Power": "6",
+    "Crit": "35",
+    "Accuracy": "80",
+    "Weight": "1",
+    "Runes": "Stagger",
+    "Obtain": ""
+  },
+  {
+    "Name": "Gryphon Crest",
+    "Type": "Relic",
+    "Power": "10",
+    "Crit": "0",
+    "Accuracy": "110",
+    "Weight": "1",
+    "Runes": "Knight",
+    "Obtain": ""
+  },
+  {
+    "Name": "Cosmere Grimoire",
+    "Type": "Relic",
+    "Power": "21",
+    "Crit": "0",
+    "Accuracy": "75",
+    "Weight": "6",
+    "Runes": "Vampire",
+    "Obtain": ""
+  },
+  {
+    "Name": "Shortsword",
+    "Type": "Sword",
+    "Power": "7",
+    "Crit": "0",
+    "Accuracy": "85",
+    "Weight": "1",
+    "Runes": ["Mighty", "Faith", "Slim", "Barbs"],
+    "Obtain": ""
+  },
+  {
+    "Name": "Longsword",
+    "Type": "Sword",
+    "Power": "10",
+    "Crit": "0",
+    "Accuracy": "85",
+    "Weight": "2",
+    "Runes": "",
+    "Obtain": ""
+  },
+  {
+    "Name": "Broadsword",
+    "Type": "Sword",
+    "Power": "13",
+    "Crit": "0",
+    "Accuracy": "90",
+    "Weight": "3",
+    "Runes": "Cadence",
+    "Obtain": ""
+  },
+  {
+    "Name": "Greatsword",
+    "Type": "Sword",
+    "Power": "16",
+    "Crit": "0",
+    "Accuracy": "100",
+    "Weight": "4",
+    "Runes": "Sniper",
+    "Obtain": ""
+  },
+  {
+    "Name": "Scimitar",
+    "Type": "Sword",
+    "Power": "8",
+    "Crit": "20",
+    "Accuracy": "80",
+    "Weight": "2",
+    "Runes": "Cadence",
+    "Obtain": ""
+  },
+  {
+    "Name": "Katana",
+    "Type": "Sword",
+    "Power": "11",
+    "Crit": "0",
+    "Accuracy": "115",
+    "Weight": "3",
+    "Runes": "Bursting",
+    "Obtain": ""
+  },
+  {
+    "Name": "Zweihander",
+    "Type": "Sword",
+    "Power": "18",
+    "Crit": "15",
+    "Accuracy": "80",
+    "Weight": "6",
+    "Runes": "Challenger",
+    "Obtain": ""
+  },
+  {
+    "Name": "Khopesh",
+    "Type": "Sword",
+    "Power": "7",
+    "Crit": "30",
+    "Accuracy": "90",
+    "Weight": "1",
+    "Runes": "Powered"
+  }
+]

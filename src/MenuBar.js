@@ -15,23 +15,33 @@ function ScrollToTop() {
 function MenuBar() {
   return (
     <>
-    <ScrollToTop/>
-    <div className="menu-bar">
-      <h2 className="menu-title">Dark Deity</h2>
-      <nav>
-        <ul className="menu-list">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/characters">Characters</Link></li>
-          <li><Link to="/classes">Classes</Link></li>
-          <li><Link to="/rings">Rings</Link></li>
-          <li>Weapons</li>
-          <li>Shop items</li>
-          <li>Calculations & Terminologies</li>
-          <li>Character Builder</li>
-          <li>Enemies</li>
-        </ul>
-      </nav>
-    </div>
+      <ScrollToTop />
+      <div className="menu-bar">
+        <h2 className="menu-title">Dark Deity</h2>
+        <nav>
+          <ul className="menu-list">
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/characters">Characters</Link>
+            </li>
+            <li>
+              <Link to="/classes">Classes</Link>
+            </li>
+            <li>
+              <Link to="/rings">Rings</Link>
+            </li>
+            <li>
+              <Link to="/weapons">Weapons</Link>
+            </li>
+            <li>Shop items</li>
+            <li>Calculations & Terminologies</li>
+            <li>Character Builder</li>
+            <li>Enemies</li>
+          </ul>
+        </nav>
+      </div>
     </>
   );
 }

@@ -1,0 +1,194 @@
+[
+  {
+    "Rune": "Solar",
+    "Effect": "10% chance to deal 50% extra damage"
+  },
+  {
+    "Rune": "Faith",
+    "Effect": "Accuracy +20"
+  },
+  {
+    "Rune": "Pure",
+    "Effect": "Accuracy +30"
+  },
+  {
+    "Rune": "Sniper",
+    "Effect": "Accuracy +40, Power -5"
+  },
+  {
+    "Rune": "Knight",
+    "Effect": "Add 10% of current HP to Power. Capped at 5"
+  },
+  {
+    "Rune": "Finesse",
+    "Effect": "Add 25% of unit's Dexterity to unit's Power"
+  },
+  {
+    "Rune": "Silent",
+    "Effect": "Add 25% of unit's Fortitude to unit's Power"
+  },
+  {
+    "Rune": "Fool",
+    "Effect": "Add 25% of unit's Luck to unit's Power"
+  },
+  {
+    "Rune": "Wizard",
+    "Effect": "Add 25% of unit's Mastery to unit's Power"
+  },
+  {
+    "Rune": "Ferocity",
+    "Effect": "Attack twice at 60% damage"
+  },
+  {
+    "Rune": "Poison",
+    "Effect": "Attacks apply 2 Light Poison stacks"
+  },
+  {
+    "Rune": "Bludgeon",
+    "Effect": "Attacks has a 25% chance to apply Light Stun"
+  },
+  {
+    "Rune": "Leeching",
+    "Effect": "Attacks restore 3 Mana"
+  },
+  {
+    "Rune": "Nemsis",
+    "Effect": "Counterattack damage +6"
+  },
+  {
+    "Rune": "Barbs",
+    "Effect": "Crit +10"
+  },
+  {
+    "Rune": "Deadly",
+    "Effect": "Crit +15"
+  },
+  {
+    "Rune": "Challenger",
+    "Effect": "Crit +20% when enemy is at full hp"
+  },
+  {
+    "Rune": "Truestrike",
+    "Effect": "Crit +20, Accuracy +20, Weight +3, Power -3"
+  },
+  {
+    "Rune": "Vicious",
+    "Effect": "Crit +20, Accuracy -15, Power -3"
+  },
+  {
+    "Rune": "Assassin",
+    "Effect": "Critical hits deal 50% more damage"
+  },
+  {
+    "Rune": "Ragnarok",
+    "Effect": "Crits deal +10 damage"
+  },
+  {
+    "Rune": "Cadence",
+    "Effect": "Deal 1 additional damage for each tile moved this turn"
+  },
+  {
+    "Rune": "Templar",
+    "Effect": "Deal 5 additional damage to magic enemies"
+  },
+  {
+    "Rune": "Light",
+    "Effect": "Dealing damage applies 30 Heavy Blind stacks"
+  },
+  {
+    "Rune": "Stagger",
+    "Effect": "Dealing damage applies 4 Light Vulnerable stacks"
+  },
+  {
+    "Rune": "Draining",
+    "Effect": "Dealing damage applies 4 Light Weak stacks"
+  },
+  {
+    "Rune": "Powered",
+    "Effect": "Drains 10 Mana for 6 Power per attack"
+  },
+  {
+    "Rune": "Tactician",
+    "Effect": "Every debuff on enemy increases damage by 2"
+  },
+  {
+    "Rune": "Empyrean",
+    "Effect": "Gain 5 mana from kills"
+  },
+  {
+    "Rune": "Vampire",
+    "Effect": "Hits heal unit for 5"
+  },
+  {
+    "Rune": "Crusador",
+    "Effect": "Kills grant 1 power until end of battle"
+  },
+  {
+    "Rune": "Arcane",
+    "Effect": "Makes damage type Magical"
+  },
+  {
+    "Rune": "Sealing",
+    "Effect": "Makes damage type Physical"
+  },
+  {
+    "Rune": "Mighty",
+    "Effect": "Power +2"
+  },
+  {
+    "Rune": "Maul ",
+    "Effect": "Power +3"
+  },
+  {
+    "Rune": "Titan",
+    "Effect": "Power +5, Accuracy -25"
+  },
+  {
+    "Rune": "Colossus",
+    "Effect": "Power +5, Weight +5, Accuracy +10"
+  },
+  {
+    "Rune": "Overflow",
+    "Effect": "Store 10% of damage dealt as Light Block"
+  },
+  {
+    "Rune": "Bursting",
+    "Effect": "Store up to 8 overkill damage to be dealt on next attack"
+  },
+  {
+    "Rune": "Valorous",
+    "Effect": "Unit Power +5 when below half HP"
+  },
+  {
+    "Rune": "Piercing",
+    "Effect": "Unit Power halfed, ignore Defense/Fortitude"
+  },
+  {
+    "Rune": "Serene",
+    "Effect": "Unit Power increase by 4% of unit Accuracy"
+  },
+  {
+    "Rune": "Celerity",
+    "Effect": "Weapon Power -2, Damage +6 on followup attacks"
+  },
+  {
+    "Rune": "Slim",
+    "Effect": "Weight -2"
+  },
+  {
+    "Rune": "Shrink",
+    "Effect": "Weight -3"
+  },
+  {
+    "Rune": "Swift",
+    "Effect": "Weight -4, Power -2"
+  },
+  {
+    "Rune": "Cavalier",
+    "Effect": "Add 25% of unit's Speed to unit's Power"
+  },
+  {
+    "Rune": "Bastion",
+    "Effect": "Add 25% of unit's Defense to unit's Power"
+  }
+]
