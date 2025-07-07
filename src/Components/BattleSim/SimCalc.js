@@ -202,7 +202,7 @@ export function simulateBattle(unit, enemy) {
     return <p>The battle results in a draw</p>;
   } else {
     //Player unit attacks first
-    for (let i = 0; i < 500; i++) {
+    for (let i = 0; i < 5000; i++) {
       let unitCurHP = unit.HP;
       let eneCurHP = enemy.HP;
       while (unitCurHP > 0 && eneCurHP > 0) {
@@ -290,7 +290,7 @@ export function simulateBattle(unit, enemy) {
       }
     }
     //Enemy strikes first
-    for (let j = 0; j < 500; j++) {
+    for (let j = 0; j < 5000; j++) {
       let unitCurHP = unit.HP;
       let eneCurHP = enemy.HP;
       while (unitCurHP > 0 && eneCurHP > 0) {

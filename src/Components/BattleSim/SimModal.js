@@ -116,7 +116,7 @@ export default function SimModal(prop) {
               </div>
               <div className="right-content">
                 <p>
-                  For 1000 simulated battles in which each side attacks first
+                  For 10000 simulated battles in which each side attacks first
                   for half of the time:
                 </p>
                 {simulateBattle(unit, enemyActive)}
