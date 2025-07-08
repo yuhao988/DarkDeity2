@@ -52,7 +52,7 @@
     "Effect": "Attacks restore 3 Mana"
   },
   {
-    "Rune": "Nemsis",
+    "Rune": "Nemesis",
     "Effect": "Counterattack damage +6"
   },
   {
@@ -120,7 +120,7 @@
     "Effect": "Hits heal unit for 5"
   },
   {
-    "Rune": "Crusador",
+    "Rune": "Crusader",
     "Effect": "Kills grant 1 power until end of battle"
   },
   {

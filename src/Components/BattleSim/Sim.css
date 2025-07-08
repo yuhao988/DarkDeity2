@@ -92,3 +92,59 @@
   justify-content: flex-start;
   align-items: flex-end;
 }
+
+.units-table {
+  width: 70%;
+  border-collapse: collapse;
+  margin: 0 auto; /* Center the table */
+}
+
+.units-table th {
+  text-align: center; /* Center header text */
+  padding: 12px;
+
+  font-weight: bold;
+}
+
+.units-table td {
+  padding: 12px;
+  vertical-align: middle; /* Better vertical alignment */
+  text-align: center; /* Center cell content */
+}
+
+.unit-item, 
+.class-item {
+  padding: 10px;
+  margin: 0 auto; /* Center the items */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  max-width: 90%; /* Prevent items from stretching full width */
+}
+
+.unit-stats, 
+.class-stats {
+  font-size: 0.9em;
+  margin-top: 5px;
+  color: #383838;
+  text-align: center; /* Ensure stats are centered */
+}
+
+/* Button styling for consistency */
+.units-table button {
+  margin: 5px 0;
+  padding: 8px 10px;
+  font-size: 16px;
+  background-color: #4e2721;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.units-table button:hover {
+  background-color: #444444;
+}

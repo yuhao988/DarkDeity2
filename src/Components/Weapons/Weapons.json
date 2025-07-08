@@ -144,7 +144,17 @@
     "Crit": "0",
     "Accuracy": "95",
     "Weight": "3",
-    "Runes": "Solar",
+    "Runes": [
+      "Mighty",
+      "Faith",
+      "Slim",
+      "Barbs",
+      "Colossus",
+      "Empyrean",
+      "Draining",
+      "Light",
+      "Solar"
+    ],
     "Obtain": ""
   },
   {
@@ -154,7 +164,17 @@
     "Crit": "5",
     "Accuracy": "100",
     "Weight": "4",
-    "Runes": "Bludgeon",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Serene",
+      "Overflow",
+      "Assassin",
+      "Piercing",
+      "Bludgeon"
+    ],
     "Obtain": ""
   },
   {
@@ -164,7 +184,17 @@
     "Crit": "5",
     "Accuracy": "110",
     "Weight": "5",
-    "Runes": "Challenger",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Stagger",
+      "Vampire",
+      "Ragnarok",
+      "Fool",
+      "Challenger"
+    ],
     "Obtain": ""
   },
   {
@@ -174,7 +204,17 @@
     "Crit": "5",
     "Accuracy": "65",
     "Weight": "5",
-    "Runes": "Knight",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Serene",
+      "Solar",
+      "Ferocity",
+      "Crusader",
+      "Knight"
+    ],
     "Obtain": ""
   },
   {
@@ -184,7 +224,17 @@
     "Crit": "0",
     "Accuracy": "90",
     "Weight": "0",
-    "Runes": "Tactician",
+    "Runes": [
+      "Mighty",
+      "Faith",
+      "Slim",
+      "Barbs",
+      "Ferocity",
+      "Crusader",
+      "Valorous",
+      "Powered",
+      "Tactician"
+    ],
     "Obtain": ""
   },
   {
@@ -194,7 +244,17 @@
     "Crit": "20",
     "Accuracy": "85",
     "Weight": "2",
-    "Runes": "Bursting",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Ragnarok",
+      "Vampire",
+      "Light",
+      "Sniper",
+      "Bursting"
+    ],
     "Obtain": ""
   },
   {
@@ -204,7 +264,17 @@
     "Crit": "10",
     "Accuracy": "125",
     "Weight": "4",
-    "Runes": "Templar",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Ferocity",
+      "Leeching",
+      "Wizard",
+      "Arcane",
+      "Templar"
+    ],
     "Obtain": ""
   },
   {
@@ -224,7 +294,17 @@
     "Crit": "8",
     "Accuracy": "80",
     "Weight": "0",
-    "Runes": "Leeching",
+    "Runes": [
+      "Mighty",
+      "Faith",
+      "Slim",
+      "Barbs",
+      "Poison",
+      "Draining",
+      "Light",
+      "Stagger",
+      "Leeching"
+    ],
     "Obtain": ""
   },
   {
@@ -234,7 +314,16 @@
     "Crit": "10",
     "Accuracy": "85",
     "Weight": "1",
-    "Runes": "Barbs",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Serene",
+      "Truestrike",
+      "Piercing",
+      "Crusader"
+    ],
     "Obtain": ""
   },
   {
@@ -244,7 +333,17 @@
     "Crit": "15",
     "Accuracy": "85",
     "Weight": "2",
-    "Runes": "Vampire",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Valorous",
+      "Assassin",
+      "Bursting",
+      "Crusader",
+      "Vampire"
+    ],
     "Obtain": ""
   },
   {
@@ -254,7 +353,17 @@
     "Crit": "25",
     "Accuracy": "80",
     "Weight": "1",
-    "Runes": "Valorous",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Fool",
+      "Knight",
+      "Challenger",
+      "Powered",
+      "Valorous"
+    ],
     "Obtain": ""
   },
   {
@@ -264,7 +373,17 @@
     "Crit": "0",
     "Accuracy": "80",
     "Weight": "0",
-    "Runes": "Draining",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Ferocity",
+      "Powered",
+      "Overflow",
+      "Empyrean",
+      "Draining"
+    ],
     "Obtain": ""
   },
   {
@@ -274,7 +393,17 @@
     "Crit": "20",
     "Accuracy": "75",
     "Weight": "3",
-    "Runes": "Arcane",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Vicious",
+      "Solar",
+      "Leeching",
+      "Ragnarok",
+      "Arcane"
+    ],
     "Obtain": ""
   },
   {
@@ -294,7 +423,17 @@
     "Crit": "0",
     "Accuracy": "85",
     "Weight": "1",
-    "Runes": "Celerity",
+    "Runes": [
+      "Mighty",
+      "Faith",
+      "Slim",
+      "Barbs",
+      "Poison",
+      "Light",
+      "Leeching",
+      "Titan",
+      "Celerity"
+    ],
     "Obtain": ""
   },
   {
@@ -304,7 +443,17 @@
     "Crit": "5",
     "Accuracy": "85",
     "Weight": "3",
-    "Runes": "Cadence",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Valorous",
+      "Challenger",
+      "Swift",
+      "Colossus",
+      "Cadence"
+    ],
     "Obtain": ""
   },
   {
@@ -314,7 +463,17 @@
     "Crit": "5",
     "Accuracy": "90",
     "Weight": "5",
-    "Runes": "Nemesis",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Overflow",
+      "Stagger",
+      "Bursting",
+      "Draining",
+      "Nemesis"
+    ],
     "Obtain": ""
   },
   {
@@ -324,7 +483,17 @@
     "Crit": "10",
     "Accuracy": "80",
     "Weight": "2",
-    "Runes": "Celerity",
+    "Runes": [
+      "Mighty",
+      "Faith",
+      "Slim",
+      "Barbs",
+      "Cavalier",
+      "Assassin",
+      "Arcane",
+      "Cadence",
+      "Celerity"
+    ],
     "Obtain": ""
   },
   {
@@ -334,7 +503,17 @@
     "Crit": "30",
     "Accuracy": "90",
     "Weight": "3",
-    "Runes": "Knight",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Powered",
+      "Solar",
+      "Leeching",
+      "Vampire",
+      "Knight"
+    ],
     "Obtain": ""
   },
   {
@@ -344,7 +523,17 @@
     "Crit": "0",
     "Accuracy": "70",
     "Weight": "4",
-    "Runes": "Bursting",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Poison",
+      "Tactician",
+      "Knight",
+      "Ragnarok",
+      "Bursting"
+    ],
     "Obtain": ""
   },
   {
@@ -354,7 +543,17 @@
     "Crit": "0",
     "Accuracy": "110",
     "Weight": "1",
-    "Runes": "Wizard",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Draining",
+      "Assassin",
+      "Templar",
+      "Ferocity",
+      "Wizard"
+    ],
     "Obtain": ""
   },
   {
@@ -374,7 +573,17 @@
     "Crit": "0",
     "Accuracy": "85",
     "Weight": "2",
-    "Runes": "Sealing",
+    "Runes": [
+      "Mighty",
+      "Faith",
+      "Slim",
+      "Barbs",
+      "Tactician",
+      "Celerity",
+      "Nemesis",
+      "Solar",
+      "Sealing"
+    ],
     "Obtain": ""
   },
   {
@@ -384,7 +593,17 @@
     "Crit": "0",
     "Accuracy": "90",
     "Weight": "2",
-    "Runes": "Colossus",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Ragnarok",
+      "Cadence",
+      "Poison",
+      "Celerity",
+      "Colossus"
+    ],
     "Obtain": ""
   },
   {
@@ -394,7 +613,17 @@
     "Crit": "0",
     "Accuracy": "95",
     "Weight": "3",
-    "Runes": "Leeching",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Overflow",
+      "Bursting",
+      "Empyrean",
+      "Draining",
+      "Leeching"
+    ],
     "Obtain": ""
   },
   {
@@ -404,7 +633,17 @@
     "Crit": "15",
     "Accuracy": "90",
     "Weight": "3",
-    "Runes": "Solar",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Light",
+      "Templar",
+      "Overflow",
+      "Draining",
+      "Solar"
+    ],
     "Obtain": ""
   },
   {
@@ -414,7 +653,17 @@
     "Crit": "35",
     "Accuracy": "80",
     "Weight": "1",
-    "Runes": "Stagger",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Ragnarok",
+      "Valorous",
+      "Wizard",
+      "Poison",
+      "Stagger"
+    ],
     "Obtain": ""
   },
   {
@@ -424,7 +673,17 @@
     "Crit": "0",
     "Accuracy": "110",
     "Weight": "1",
-    "Runes": "Knight",
+    "Runes": [
+      "Mighty",
+      "Faith",
+      "Slim",
+      "Barbs",
+      "Ferocity",
+      "Celerity",
+      "Tactician",
+      "Challenger",
+      "Knight"
+    ],
     "Obtain": ""
   },
   {
@@ -434,7 +693,17 @@
     "Crit": "0",
     "Accuracy": "75",
     "Weight": "6",
-    "Runes": "Vampire",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Piercing",
+      "Empyrean",
+      "Assassin",
+      "Powered",
+      "Vampire"
+    ],
     "Obtain": ""
   },
   {
@@ -454,7 +723,16 @@
     "Crit": "0",
     "Accuracy": "85",
     "Weight": "2",
-    "Runes": "",
+    "Runes": [
+      "Mighty",
+      "Faith",
+      "Slim",
+      "Barbs",
+      "Templar",
+      "Knight",
+      "Vicious",
+      "Tactician"
+    ],
     "Obtain": ""
   },
   {
@@ -464,7 +742,17 @@
     "Crit": "0",
     "Accuracy": "90",
     "Weight": "3",
-    "Runes": "Cadence",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Valorous",
+      "Nemesis",
+      "Light",
+      "Colossus",
+      "Cadence"
+    ],
     "Obtain": ""
   },
   {
@@ -474,7 +762,17 @@
     "Crit": "0",
     "Accuracy": "100",
     "Weight": "4",
-    "Runes": "Sniper",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Powered",
+      "Knight",
+      "Ragnarok",
+      "Challenger",
+      "Sniper"
+    ],
     "Obtain": ""
   },
   {
@@ -484,7 +782,17 @@
     "Crit": "20",
     "Accuracy": "80",
     "Weight": "2",
-    "Runes": "Cadence",
+    "Runes": [
+      "Mighty",
+      "Faith",
+      "Slim",
+      "Barbs",
+      "Piercing",
+      "Finesse",
+      "Assassin",
+      "Arcane",
+      "Cadence"
+    ],
     "Obtain": ""
   },
   {
@@ -494,7 +802,17 @@
     "Crit": "0",
     "Accuracy": "115",
     "Weight": "3",
-    "Runes": "Bursting",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Templar",
+      "Bastion",
+      "Empyrean",
+      "Ferocity",
+      "Bursting"
+    ],
     "Obtain": ""
   },
   {
@@ -504,7 +822,17 @@
     "Crit": "15",
     "Accuracy": "80",
     "Weight": "6",
-    "Runes": "Challenger",
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Templar",
+      "Knight",
+      "Wizard",
+      "Solar",
+      "Challenger"
+    ],
     "Obtain": ""
   },
   {
@@ -514,6 +842,17 @@
     "Crit": "30",
     "Accuracy": "90",
     "Weight": "1",
-    "Runes": "Powered"
+    "Runes": [
+      "Deadly",
+      "Maul",
+      "Shrink",
+      "Pure",
+      "Poison",
+      "Arcane",
+      "Serene",
+      "Leeching",
+      "Powered"
+    ],
+    "Obtain": ""
   }
 ]

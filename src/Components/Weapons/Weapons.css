@@ -1,0 +1,48 @@
+.weapon-image {
+  width: 35px;
+  height: 35px;
+  padding: 3px;
+}
+
+.weapon-table {
+  border: 3px solid rgb(65, 2, 2); /* Dark red outer border */
+  background-color: rgb(194, 178, 178);
+  text-align: left;
+  width: 75vw;
+  border-collapse: collapse; /* Crucial for consistent borders */
+}
+.weapon-table thead {
+  background-color: #404755;
+  color: white;
+  height: 50px;
+  text-align: center;
+  font-weight: bold;
+}
+.weapon-table td {
+  width: 25vw;
+}
+.weapon-table thead td {
+  border-right: 2px solid rgb(177, 176, 176);
+}
+.weapon-table tbody td {
+  border-right: 2px solid rgb(65, 2, 2);
+}
+
+.rune-table {
+  border: 3px solid rgb(65, 2, 2); /* Dark red outer border */
+  background-color: rgb(194, 178, 178);
+  text-align: left;
+  width: 75vw;
+  border-collapse: collapse; /* Crucial for consistent borders */
+}
+.rune-table thead {
+  background-color: #404755;
+  color: white;
+  height: 50px;
+  text-align: center;
+  font-weight: bold;
+}
+.rune-table tbody td {
+  border: 1px solid rgb(65, 2, 2);
+  padding: 3px;
+}

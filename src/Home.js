@@ -13,6 +13,7 @@ export function paragraphBreak(text) {
 
   return parts.map((part, index) => (
     <React.Fragment key={index}>
+      {<br/>}
       {part}
       {index < parts.length - 1 && <br />} {/* Add JSX <br> between parts*/}
     </React.Fragment>
