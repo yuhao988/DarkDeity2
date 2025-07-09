@@ -169,11 +169,11 @@
     "Character": "None of the characters you have starts off in this class. Base on growth, Alden will have the best in terms of Bulk yielding the highest HP, Def and great Frt growth amongst the four units. All his other growth however, are either mediocre or abysmal. <br/>Aya has the most balanced growth in Aegis class, with no growth below 35%. However, it also means Aegis Aya has problem excelling in anything at all, espcially with mediocre Spd, below average Mas and middling Bulk making her excel in neither combat nor Skill num. <br/>Calith has lowest Mas growth, which is not something Aegis desires. While Calith's bulk is decent, Calith will not be doing much in return due to low Mgt and Spd.<br/> Arthur can be an Aegis due to having the highest Mas amongst all Summoner units. He will also have good Def and highest Frt. His combat may not be stellar, but at least Arthur is a great user of Aegis' Skills.",
     "Upgrade1": ["Low", "Mid", "Low", "Low"],
     "Upgrade2": ["High", "Top", "Mid", "Mid"],
-    "Skills": "Aegis's passive increases the class's damage done if it took damage. It looks synergetic on paper but Aegis's damage output is still horrible even after the buff.",
+    "Skills": "Aegis's passive increases the class's damage done if it took damage. It looks synergetic on paper but Aegis's damage output is still horrible even after the buff.<br/>Aegis's Relic Refraction applies AOE Blind to enemies, reducing their Acc and indirectly increases the longevity of your units. It is not a very reliable debuff as some enemies will still have considerable Hit chance after the debuff. This debuff is also anti-synergetic with the other skill of Aegis.<br/>Repulsor Shield is the signature ability, it is also the most effective way to deal with horde of enemies. If multiple instances of Repulsor Shield are casted onto the same target, the amount of damage will be added together. One stragtegy is to use multiple instances of Repulsor Shield on Juggernaut, and combine with Juggernaut's Wreathed in Flame for massive reflect damage to kill enemies during enemy phase. On higher difficulties, Godfrost with Absolute Zero can be a more reliable target. Increasing duration is the strongest upgrade as it aloows for more time and more stacks. Reducing mana cost is also great for more instances of skill usage.",
     "Tips": "Aegis is a tanky class capable of taking a hit, but does not do much in return with lackluster TSpd, Acc and Pwr. The class is generally more used as a support unit with nice skills and the tankiness helps in making Aegis less peculiar about positioning compared to the more squishy supports. Use Aegis for its skills, or as a shield against possible stray attacks on your more squishy units.",
-    "Rings": "",
+    "Rings": "Aegis does not really need any rings to perform its job, but rings that increase its tankiness is still good. Hallowed, Dauntless and Indomitable are all good choices.<br/>Charged ring is also a possible option allowing for faster mana generation and more Repulsor Shield casts.<br/> Plague ring is niche but works well if player choose to use Aegis itself as Repulsor Shield target for enemy phase damage reflecting.",
     "Weapons": "",
-    "Class": ""
+    "Class": "Aegis naturally progresses into Relic Knight class, which is a good tank class. It can carry on Aegis's legacy of being a tanky support capable of resisting stray attacks, but offers little skill wise.<br/>Cosmician is a good choice if you wish to optimise Repulsor Shield's Skill num due to its high Mas growth and Mas increasing passive."
   },
   {
     "ID": 12,
@@ -181,7 +181,7 @@
     "Tier": 2,
     "Name": "Scholar",
     "Rating": [1, 1, 1, 1, 1],
-    "Stats": "",
+    "Stats": "Scholar is a balanced class with no particular strength or weakness but has better modifier in Spd, Mas and Lck and worse modifiers in HP, Dex and Frt. Its growth focuses on Mgt, Spd and Mas, and has mediocre HP growth. Scholar's growth in Dex, Def, Frt and Lck are low.<br/>",
     "Character": "",
     "Upgrade1": ["Low", "Low", "Low", "Low"],
     "Upgrade2": ["Low", "Low", "Low", "Low"],
