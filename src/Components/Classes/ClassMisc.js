@@ -462,7 +462,7 @@ export function classSkillDes(className, base, scale, skillNum, upgrade) {
         if (upgrade.upgrade3) skillText += ` and heals user for 6`;
         break;
       case "Scholar":
-        //if (upgrade.upgrade4) finalBase[0] += 1;
+        if (upgrade.upgrade4) finalBase[0] += 1;
         skillText = skillText.replace(
           "4+10%",
           `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
@@ -1617,7 +1617,7 @@ export function classSkillRng(className, rng, skillNum, upgrade) {
         break;
       case "Scholar":
         if (upgrade.upgrade3) rngMin -= 1;
-        if (upgrade.upgrade4) rngMax += 1;
+        
         range = `${rngMin}~${rngMax}`;
         break;
       case "Juggernaut":
