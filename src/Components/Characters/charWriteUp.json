@@ -132,7 +132,7 @@
     "suggestion": "Cutthroat/Slayer"
   },
   "haoran": {
-    "introduction": "Haoran is a character joinging you durng the Shamac arc. He joins in Chapter X as a Lv.X Waveseer.",
+    "introduction": "Haoran is a character joinging you durng the Shamac arc. He joins in Chapter 12 as a Lv.15 Waveseer.",
     "base": "Haoran has great base Mgt, and good Def, Frt and Mas. His base Spd is low, and his HP and Lck base are atrocious. In terms of growth, Haoran has very good Mas growth, as well good Mgt and Dex. His defenses growth are also good. His HP and Spd growth are bad, and his Lck growth is especially atrocious at only 5%. Haoran will hit hard and have good Skill numbers, but his attacks will not crit nor is very accurate, and is prone to be doubled by the enemies.",
     "classes": "Haoran starts off in the Waveseer class, which naturally progresses into Tidecaller. This line provides decent Spd to compensate for Haoran's inherent low Spd. It also makes Haoran's Mas very high, making him a good support healer. Ritualist/Hemomancer gives Haoran best HP, as well as great Mgt and Mas, but its offensive prowess is heldback by the slow Spd and mediocre Lck. Elementalist/Spirit Keeper line gives Haoran best offense with high Mgt and Mas, but is held back by low HP, Spd and Lck. Finally, despite Haoran's inherent low HP, Juggernaut/Dreadnought line actually provides decent HP growth for him, and coupled with decent Def and Frt growth, makes Haoran a viable tank.",
     "skills": ["Low", "Mid", "High", "High"],
@@ -143,7 +143,7 @@
     "suggestion": "Waveseer/Tidecaller, Elementalist/Spirit Keeper"
   },
   "mashal": {
-    "introduction": "Mashal is a character joining your party during the Demon realm arc of the game. She joins as a Lv.X Gale in Chapter X.",
+    "introduction": "Mashal is a character joining your party during the Demon realm arc of the game. She joins as a Lv.18 Gale in Chapter 13.",
     "base": "Mashal has pretty good base Spd and Dex, with decent HP, Mgt and Def. Her Frt, Mas and Lck however, are lackluster. In terms of growth, her strength and weakness are pretty much the same as her base stats, other than a mediocre HP growth. Mashal's combat will be great, hitting hard, fast and accurately, but will not be able to take magical hits or have high Skill numbers.",
     "classes": "Mashal starts off as a Gale, which naturally progresses into Tempest. This is the fastest line in Adept classline. When combined with Mashal's growth, this line gives her blistering fast Spd, good Dex and decent Mgt and Lck. She will also have ok Def and Mas. Her HP and Frt growth will be low. Frigillan/Godfrost gives her the best HP growth, coupled with great Mgt and Def, as well as decent Dex, but her Spd growth will be lowered and have more trouble doubling. Her other growths will also be atrocious. Conduit/Stormkeeper averages out most of her growth giving her decent to good growth in most area other than a great Mgt at 65% and an atrocious HP growth at 40%. Finally, Monk/Ascendant line gives her decent Mgt and Mas, good Spd and Dex, but terrible bulk and Lck. ",
     "skills": ["Mid", "Mid", "Low", "High"],

@@ -127,7 +127,7 @@
     "fortitude": 7,
     "mastery": 7,
     "luck": 2,
-    "starting": []
+    "starting": [15, "Waveseer", 34, 13, 13, 12, 9, 13, 17, 3]
   },
   {
     "ID": 9,
