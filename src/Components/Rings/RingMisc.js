@@ -12,7 +12,7 @@ export function processRingText(text) {
   return segments.map((segment, segmentIndex) => {
     // Process ring names in this segment (original functionality)
     const ringPattern = new RegExp(
-      `(${ringNames.map(name => name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`,
+      `\\b(${ringNames.map(name => name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})\\b`,
       'g'
     );
     const parts = segment.split(ringPattern);

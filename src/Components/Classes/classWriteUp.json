@@ -235,9 +235,9 @@
     "Upgrade2": ["Low", "High", "High", "Mid"],
     "Skills": "Elementalist's passive cements its role as damage dealer in both combat and skills, as the passive boost the class's comat damage, but only if the class uses skills first. It is advisable to use a few skills first, before attacking for a powerful single hit.<br/>Ice Shield is a decent support skill that can boost unit's own or allies' survivability. Allowing self-cast is a very strong upgrade that can allow Elementalist to survive if the unit is forced to take hits.<br/>Flame Strike is a good AOE damage that can be accessed early. it is a costly skill, so lowering mana cost is highly appreciated. Increasing range from 2 to 3 also greatly increases the range of enemies this skill can reach.",
     "Tips": "Elementalist focuses on damage, both combat and skill. However, Elementalist's actual combat is not great due to lack of TSpd, Ddg and mediocre bulk. It is best to use Elementalist as a player phase nuke, killing enemies during player phase and then leave Elementalist out of range for attacks during enemy phase, as Elementalist will not last against many attacks.",
-    "Rings": "",
+    "Rings": "Elementalist has heavy skill cost, thus Charged ring is preferred. Archmage and Farseer ring are also great to provide more range to Elementalist skills.<br/>Skill num increasing rings are also useful, like Lava and Mystic ring. Flame Strike also benefits from Inferno ring, making it very powerful.",
     "Weapons": "",
-    "Class": ""
+    "Class": "Elementalist naturally progresses into the Spirit Keeper class, a class that has powerful skills and a passive that increases Skill num if the unit performs combat, which perfectly synergises into Elementalist's style of dealing heavy damage both through combat and skill. The unit's combat strengthens its skill effect and skill usage strengthens combat.<br/>Tidecaller is also greatly synergetic as it provides even more bonus every time a skill is used, making the unit very potent late into the battle."
   },
   {
     "ID": 16,
