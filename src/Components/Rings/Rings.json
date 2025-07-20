@@ -3,560 +3,392 @@
     "ID": 1,
     "Name": "Love",
     "Description": "Gain 1 HP per achieved bond level.",
-    "Ores": [
-      "Sapphire",
-      "Sapphire",
-      "Sapphire"
-    ]
+    "Ores": ["Sapphire", "Sapphire", "Sapphire"],
+    "Tags": ["Bulk","Bond"]
   },
   {
     "ID": 2,
     "Name": "Blazing",
     "Description": "10% chance to deal 50% additional damage.",
-    "Ores": [
-      "Sapphire",
-      "Sapphire",
-      "Onyx"
-    ]
+    "Ores": ["Sapphire", "Sapphire", "Onyx"],
+    "Tags": ["Damage"]
   },
   {
     "ID": 3,
     "Name": "Prophet",
     "Description": "Healing an ally gives them 25 accuracy for 1 turn.",
-    "Ores": [
-      "Sapphire",
-      "Sapphire",
-      "Diamond"
-    ]
+    "Ores": ["Sapphire", "Sapphire", "Diamond"],
+    "Tags": ["Healer","Accuracy","Support"]
   },
   {
     "ID": 4,
     "Name": "Attuned",
     "Description": "No longer gain mana every turn, but start with 250 mana.",
-    "Ores": [
-      "Sapphire",
-      "Sapphire",
-      "Amethyst"
-    ]
+    "Ores": ["Sapphire", "Sapphire", "Amethyst"],
+    "Tags": ["Mana"]
   },
   {
     "ID": 5,
     "Name": "Kindling",
     "Description": "Spending Mana on abilities grants 1 Power for this Chapter.",
-    "Ores": [
-      "Sapphire",
-      "Sapphire",
-      "Emerald"
-    ]
+    "Ores": ["Sapphire", "Sapphire", "Emerald"],
+    "Tags": ["Damage"]
   },
   {
     "ID": 6,
     "Name": "Cleave",
     "Description": "Single target damage spells deal 50% of their damage to the target and adjacent enemies",
-    "Ores": [
-      "Sapphire",
-      "Sapphire",
-      "Ruby"
-    ]
+    "Ores": ["Sapphire", "Sapphire", "Ruby"],
+    "Tags": ["Skill Effect"]
   },
   {
     "ID": 7,
     "Name": "Tranquility",
     "Description": "Gain 8 Fortitude when no allies are within 2 tiles.",
-    "Ores": [
-      "Sapphire",
-      "Onyx",
-      "Onyx"
-    ]
+    "Ores": ["Sapphire", "Onyx", "Onyx"],
+    "Tags": ["Bulk","Solo"]
   },
   {
     "ID": 8,
     "Name": "Harmony",
     "Description": "Adjacent allies gain +3 Power.",
-    "Ores": [
-      "Sapphire",
-      "Onyx",
-      "Diamond"
-    ]
+    "Ores": ["Sapphire", "Onyx", "Diamond"],
+    "Tags": ["Aura","Support"]
   },
   {
     "ID": 9,
     "Name": "Farseer",
     "Description": "Doubles the effect of distance and size ability upgrades.",
-    "Ores": [
-      "Sapphire",
-      "Onyx",
-      "Amethyst"
-    ]
+    "Ores": ["Sapphire", "Onyx", "Amethyst"],
+    "Tags": ["Skill Range"]
   },
   {
     "ID": 10,
     "Name": "Depth",
     "Description": "Dodge increased by 50% of Power.",
-    "Ores": [
-      "Sapphire",
-      "Onyx",
-      "Emerald"
-    ]
+    "Ores": ["Sapphire", "Onyx", "Emerald"],
+    "Tags": ["Dodge"]
   },
   {
     "ID": 11,
     "Name": "Grip",
     "Description": "Ignore half of weapon weight.",
-    "Ores": [
-      "Sapphire",
-      "Onyx",
-      "Ruby"
-    ]
+    "Ores": ["Sapphire", "Onyx", "Ruby"],
+    "Tags": ["True Speed"]
   },
   {
     "ID": 12,
     "Name": "Hallowed",
     "Description": "Waiting grants +5 Def and Fort until the start of the next turn.",
-    "Ores": [
-      "Sapphire",
-      "Diamond",
-      "Diamond"
-    ]
+    "Ores": ["Sapphire", "Diamond", "Diamond"],
+    "Tags": ["Bulk"]
   },
   {
     "ID": 13,
     "Name": "Mystic",
     "Description": "Grants 25% increased Mastery scaling for all scaling abilities",
-    "Ores": [
-      "Sapphire",
-      "Diamond",
-      "Amethyst"
-    ]
+    "Ores": ["Sapphire", "Diamond", "Amethyst"],
+    "Tags": ["Skill Effect"]
   },
   {
     "ID": 14,
     "Name": "Soul",
     "Description": "Gain 50% additional bond XP.",
-    "Ores": [
-      "Sapphire",
-      "Diamond",
-      "Emerald"
-    ]
+    "Ores": ["Sapphire", "Diamond", "Emerald"],
+    "Tags": ["Bond"]
   },
   {
     "ID": 15,
     "Name": "Victorious",
     "Description": "Defeating an enemy restores 20% max HP.",
-    "Ores": [
-      "Sapphire",
-      "Diamond",
-      "Ruby"
-    ]
+    "Ores": ["Sapphire", "Diamond", "Ruby"],
+    "Tags": ["HP Recovery"]
   },
   {
     "ID": 16,
     "Name": "Solitude",
     "Description": "Gain 35 Acc when no bonded allies are within 2 tiles.",
-    "Ores": [
-      "Sapphire",
-      "Amethyst",
-      "Amethyst"
-    ]
+    "Ores": ["Sapphire", "Amethyst", "Amethyst"],
+    "Tags": ["Accuracy","Solo"]
   },
   {
     "ID": 17,
     "Name": "Inferno",
     "Description": "Fire magic abilities gain 40% effect.",
-    "Ores": [
-      "Sapphire",
-      "Amethyst",
-      "Emerald"
-    ]
+    "Ores": ["Sapphire", "Amethyst", "Emerald"],
+    "Tags": ["Skill Effect"]
   },
   {
     "ID": 18,
     "Name": "Karmic",
     "Description": "Store 25% of received damage and add it to your next attack.",
-    "Ores": [
-      "Sapphire",
-      "Amethyst",
-      "Ruby"
-    ]
+    "Ores": ["Sapphire", "Amethyst", "Ruby"],
+    "Tags": ["Damage"]
   },
   {
     "ID": 19,
     "Name": "Charged",
     "Description": "Gain 5 additional Mana on turn start.",
-    "Ores": [
-      "Sapphire",
-      "Emerald",
-      "Emerald"
-    ]
+    "Ores": ["Sapphire", "Emerald", "Emerald"],
+    "Tags": ["Mana"]
   },
   {
     "ID": 20,
     "Name": "Chosen",
     "Description": "Cannot take more than 40% HP in one hit.",
-    "Ores": [
-      "Sapphire",
-      "Emerald",
-      "Ruby"
-    ]
+    "Ores": ["Sapphire", "Emerald", "Ruby"],
+    "Tags": ["Bulk"]
   },
   {
     "ID": 21,
     "Name": "Ghoul",
     "Description": "Gain Fortitude equal to half of weapon weight.",
-    "Ores": [
-      "Sapphire",
-      "Ruby",
-      "Ruby"
-    ]
+    "Ores": ["Sapphire", "Ruby", "Ruby"],
+    "Tags": ["Bulk"]
   },
   {
     "ID": 22,
     "Name": "Dauntless",
     "Description": "Gain +1 Def and Fort for every enemy within 2 tiles.",
-    "Ores": [
-      "Onyx",
-      "Onyx",
-      "Onyx"
-    ]
+    "Ores": ["Onyx", "Onyx", "Onyx"],
+    "Tags": ["Bulk"]
   },
   {
     "ID": 23,
     "Name": "Dimming",
     "Description": "Lose all mastery, increasing Def and Fort by a third of that amount.",
-    "Ores": [
-      "Onyx",
-      "Onyx",
-      "Diamond"
-    ]
+    "Ores": ["Onyx", "Onyx", "Diamond"],
+    "Tags": ["Bulk"]
   },
   {
     "ID": 24,
     "Name": "Siphon",
     "Description": "Gain 25% addtional XP.",
-    "Ores": [
-      "Onyx",
-      "Onyx",
-      "Amethyst"
-    ]
+    "Ores": ["Onyx", "Onyx", "Amethyst"],
+    "Tags": ["Utility"]
   },
   {
     "ID": 25,
     "Name": "Lava",
     "Description": "Abilities gain +20% effect.",
-    "Ores": [
-      "Onyx",
-      "Onyx",
-      "Emerald"
-    ]
+    "Ores": ["Onyx", "Onyx", "Emerald"],
+    "Tags": ["Skill Effect"]
   },
   {
     "ID": 26,
     "Name": "Calamity",
     "Description": "Every death on the map heals wearer for 2 HP.",
-    "Ores": [
-      "Onyx",
-      "Onyx",
-      "Ruby"
-    ]
+    "Ores": ["Onyx", "Onyx", "Ruby"],
+    "Tags": ["HP Recovery"]
   },
   {
     "ID": 27,
     "Name": "Brightening",
     "Description": "Healing an ally grants them +4 Might for 1 turn.",
-    "Ores": [
-      "Onyx",
-      "Diamond",
-      "Diamond"
-    ]
+    "Ores": ["Onyx", "Diamond", "Diamond"],
+    "Tags": ["Healer","Support"]
   },
   {
     "ID": 28,
     "Name": "Saint",
     "Description": "Reduce adjacent enemies' Power by 4.",
-    "Ores": [
-      "Onyx",
-      "Diamond",
-      "Diamond"
-    ]
+    "Ores": ["Onyx", "Diamond", "Diamond"],
+    "Tags": ["Bulk","Aura"]
   },
   {
     "ID": 29,
     "Name": "Antimage",
     "Description": "Take 3 less and deal 3 more damage to magical enemies.",
-    "Ores": [
-      "Onyx",
-      "Diamond",
-      "Amethyst"
-    ]
+    "Ores": ["Onyx", "Diamond", "Amethyst"],
+    "Tags": ["Bulk","Damage"]
   },
   {
     "ID": 30,
     "Name": "Flux",
     "Description": "Equalize hit rates with foes.",
-    "Ores": [
-      "Onyx",
-      "Diamond",
-      "Emerald"
-    ]
+    "Ores": ["Onyx", "Diamond", "Emerald"],
+    "Tags": ["Accuracy","Dodge"]
   },
   {
     "ID": 31,
     "Name": "Companion",
     "Description": "Pet commands use 10 less Mana.",
-    "Ores": [
-      "Onyx",
-      "Diamond",
-      "Ruby"
-    ]
+    "Ores": ["Onyx", "Diamond", "Ruby"],
+    "Tags": ["Mana"]
   },
   {
     "ID": 32,
     "Name": "Competitor",
     "Description": "Kills grant +1 Power, stacking for the chapter.",
-    "Ores": [
-      "Onyx",
-      "Amethyst",
-      "Amethyst"
-    ]
+    "Ores": ["Onyx", "Amethyst", "Amethyst"],
+    "Tags": ["Damage"]
   },
   {
     "ID": 33,
     "Name": "Indomitable",
     "Description": "Speed and Dex -2, Def and Fort +4",
-    "Ores": [
-      "Onyx",
-      "Amethyst",
-      "Amethyst"
-    ]
+    "Ores": ["Onyx", "Amethyst", "Amethyst"],
+    "Tags": ["Bulk"]
   },
   {
     "ID": 34,
     "Name": "Soulfire",
     "Description": "Gain a 10% independant crit roll, seperate from regular critical.",
-    "Ores": [
-      "Onyx",
-      "Amethyst",
-      "Ruby"
-    ]
+    "Ores": ["Onyx", "Amethyst", "Ruby"],
+    "Tags": ["Critical"]
   },
   {
     "ID": 35,
     "Name": "Hurricane",
     "Description": "Movement +1",
-    "Ores": [
-      "Onyx",
-      "Emerald",
-      "Emerald"
-    ]
+    "Ores": ["Onyx", "Emerald", "Emerald"],
+    "Tags": ["Utility"]
   },
   {
     "ID": 36,
     "Name": "Diplomat",
     "Description": "Defeating a foe grants +25 Dodge for 1 turn.",
-    "Ores": [
-      "Onyx",
-      "Emerald",
-      "Ruby"
-    ]
+    "Ores": ["Onyx", "Emerald", "Ruby"],
+    "Tags": ["Dodge"]
   },
   {
     "ID": 37,
     "Name": "Equilibrium",
     "Description": "The holder's Def and Fort equalize.",
-    "Ores": [
-      "Onyx",
-      "Ruby",
-      "Ruby"
-    ]
+    "Ores": ["Onyx", "Ruby", "Ruby"],
+    "Tags": ["Bulk"]
   },
   {
     "ID": 38,
     "Name": "Sacred",
     "Description": "Using Mana heals wearer for 10% of the value.",
-    "Ores": [
-      "Diamond",
-      "Diamond",
-      "Diamond"
-    ]
+    "Ores": ["Diamond", "Diamond", "Diamond"],
+    "Tags": ["HP Recovery"]
   },
   {
     "ID": 39,
     "Name": "Dominator",
     "Description": "Crit +10 while HP is full.",
-    "Ores": [
-      "Diamond",
-      "Diamond",
-      "Amethyst"
-    ]
+    "Ores": ["Diamond", "Diamond", "Amethyst"],
+    "Tags": ["Critical"]
   },
   {
     "ID": 40,
     "Name": "Sanctified",
     "Description": "Def and Might swap.",
-    "Ores": [
-      "Diamond",
-      "Diamond",
-      "Emerald"
-    ]
+    "Ores": ["Diamond", "Diamond", "Emerald"],
+    "Tags": ["Bulk","Damage"]
   },
   {
     "ID": 41,
     "Name": "Radiance",
     "Description": "Direct damage abilities apply 30 Light Blind.",
-    "Ores": [
-      "Diamond",
-      "Amethyst",
-      "Amethyst"
-    ]
+    "Ores": ["Diamond", "Amethyst", "Amethyst"],
+    "Tags": ["Debuff","Skill Effect"]
   },
   {
     "ID": 42,
     "Name": "Drunkard",
     "Description": "Gain a 10% independant dodge roll, seperate from regular dodge.",
-    "Ores": [
-      "Diamond",
-      "Amethyst",
-      "Emerald"
-    ]
+    "Ores": ["Diamond", "Amethyst", "Emerald"],
+    "Tags": ["Dodge"]
   },
   {
     "ID": 43,
     "Name": "Solemn",
     "Description": "Gain 40 Dodge, but dodging attacks makes them deal half damage instead.",
-    "Ores": [
-      "Diamond",
-      "Amethyst",
-      "Ruby"
-    ]
+    "Ores": ["Diamond", "Amethyst", "Ruby"],
+    "Tags": ["Dodge","Bulk"]
   },
   {
     "ID": 44,
     "Name": "Aqua",
     "Description": "Water magic abilities gain 40% effect.",
-    "Ores": [
-      "Diamond",
-      "Emerald",
-      "Emerald"
-    ]
+    "Ores": ["Diamond", "Emerald", "Emerald"],
+    "Tags": ["Skill Effect"]
   },
   {
     "ID": 45,
     "Name": "Storm",
     "Description": "Ending turn with 'Wait' deals 20% Max HP damage to adjacent enemies.",
-    "Ores": [
-      "Diamond",
-      "Emerald",
-      "Ruby"
-    ]
+    "Ores": ["Diamond", "Emerald", "Ruby"],
+    "Tags": ["Damage"]
   },
   {
     "ID": 46,
     "Name": "Surefire",
     "Description": "Add half of Mastery to Accuracy.",
-    "Ores": [
-      "Diamond",
-      "Ruby",
-      "Ruby"
-    ]
+    "Ores": ["Diamond", "Ruby", "Ruby"],
+    "Tags": ["Accuracy"]
   },
   {
     "ID": 47,
     "Name": "Archmage",
     "Description": "Gain 1 ability range to all abilities with higher than 1 base range.",
-    "Ores": [
-      "Amethyst",
-      "Amethyst",
-      "Amethyst"
-    ]
+    "Ores": ["Amethyst", "Amethyst", "Amethyst"],
+    "Tags": ["Skill Range"]
   },
   {
     "ID": 48,
     "Name": "Destiny",
     "Description": "Ending turn with 'Wait' grants +40% Crit on next attack.",
-    "Ores": [
-      "Amethyst",
-      "Amethyst",
-      "Emerald"
-    ]
+    "Ores": ["Amethyst", "Amethyst", "Emerald"],
+    "Tags": ["Critical"]
   },
   {
     "ID": 49,
     "Name": "Heir",
     "Description": "Mastery increased by 1 for every 10 current HP. (Max 10)",
-    "Ores": [
-      "Amethyst",
-      "Amethyst",
-      "Ruby"
-    ]
+    "Ores": ["Amethyst", "Amethyst", "Ruby"],
+    "Tags": ["Skill Effect"]
   },
   {
     "ID": 50,
     "Name": "Guardian",
     "Description": "Def and Fort +4 when below half HP.",
-    "Ores": [
-      "Amethyst",
-      "Emerald",
-      "Emerald"
-    ]
+    "Ores": ["Amethyst", "Emerald", "Emerald"],
+    "Tags": ["Bulk"]
   },
   {
     "ID": 51,
     "Name": "Elemental",
     "Description": "Gain 1 Light Block stack for every 5 mana spent.",
-    "Ores": [
-      "Amethyst",
-      "Emerald",
-      "Ruby"
-    ]
+    "Ores": ["Amethyst", "Emerald", "Ruby"],
+    "Tags": ["Bulk"]
   },
   {
     "ID": 52,
     "Name": "Astral",
     "Description": "Gain 5 Mana after combat.",
-    "Ores": [
-      "Amethyst",
-      "Ruby",
-      "Ruby"
-    ]
+    "Ores": ["Amethyst", "Ruby", "Ruby"],
+    "Tags": ["Mana"]
   },
   {
     "ID": 53,
     "Name": "Lifebinder",
     "Description": "Healing this unit provides is increased by 50%.",
-    "Ores": [
-      "Emerald",
-      "Emerald",
-      "Emerald"
-    ]
+    "Ores": ["Emerald", "Emerald", "Emerald"],
+    "Tags": ["Healer"]
   },
   {
     "ID": 54,
     "Name": "Advantage",
     "Description": "Ignore 1% enemy resistances per Mastery.",
-    "Ores": [
-      "Emerald",
-      "Emerald",
-      "Ruby"
-    ]
+    "Ores": ["Emerald", "Emerald", "Ruby"],
+    "Tags": ["Damage"]
   },
   {
     "ID": 55,
     "Name": "Plague",
     "Description": "Taking damage reflects Heavy Bleed equal to 8% of Max HP.",
-    "Ores": [
-      "Emerald",
-      "Ruby",
-      "Ruby"
-    ]
+    "Ores": ["Emerald", "Ruby", "Ruby"],
+    "Tags": ["Damage","Debuff"]
   },
   {
     "ID": 56,
     "Name": "Bloodied",
     "Description": "Adds 8% of Max HP to advanced stats, caps at 100HP.",
-    "Ores": [
-      "Ruby",
-      "Ruby",
-      "Ruby"
-    ]
+    "Ores": ["Ruby", "Ruby", "Ruby"],
+    "Tags": ["True Speed","Accuracy","Dodge","Critical","Damage"]
   }
 ]

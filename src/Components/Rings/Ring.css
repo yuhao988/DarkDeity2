@@ -1,10 +1,19 @@
-/*.ring-list {
- 
-}*/
+.filter-controls {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tag-select {
+  padding: 8px;
+  border-radius: 4px;
+  min-width: 150px;
+}
 
 .ring-table {
   border-collapse: collapse;
-  width: 95%;
+  width: 70vw;
   border: 2px solid rgb(65, 2, 2);
   margin-left: 4vw;
 }
@@ -22,7 +31,7 @@
 .ring-table td {
   /* Data cell styling */
   padding: 8px 16px;
-  text-align: left;
+  text-align: center;
   border-bottom: 1px solid rgb(65, 2, 2); /* Horizontal divider */
   background-color: #a0aeca;
 }
@@ -33,3 +42,4 @@
   height: auto; /* Maintains aspect ratio */
   aspect-ratio: 1; /* Optional: Force square (1:1) or set like 16/9 */
 }
+
