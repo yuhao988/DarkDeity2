@@ -159,7 +159,11 @@ function ClassDetail() {
             {Object.values(charStat)
               .filter((charName) => charName.classLine === nameClass.Classline)
               .map((char) => (
-                <li><Link to={`/characters/${char.Name.toLowerCase()}`}>{char.Name}</Link></li>
+                <li>
+                  <Link to={`/characters/${char.Name.toLowerCase()}`}>
+                    {char.Name}
+                  </Link>
+                </li>
               ))}
           </ul>
           <h3>Class Stats Modifier:</h3>
@@ -276,92 +280,6 @@ function ClassDetail() {
               </tr>
             </tbody>
           </table>
-          <h4>Stat Score:</h4>
-          <table className="stat-table">
-            <thead>
-              <tr>
-                <td>Bulk</td>
-                <td>Power</td>
-                <td>Skill Num</td>
-                <td>True Speed</td>
-                <td>Dodge</td>
-                <td>Accuracy</td>
-                <td>Crit</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  {(
-                    (nameClass.HP_Grow +
-                      nameClass.Def_Grow +
-                      nameClass.Frt_Grow +
-                      0.5) *
-                      4 -
-                    5 / 3 +
-                    (nameClass.HP_Mod + nameClass.Def_Mod + nameClass.Frt_Mod) *
-                      0.2 +
-                    1.4
-                  ).toFixed(1)}
-                </td>
-                <td>
-                  {(
-                    nameClass.Mgt_Grow * 13.5 -
-                    0.625 +
-                    nameClass.Mgt_Mod * 0.625 +
-                    1.25
-                  ).toFixed(1)}
-                </td>
-                <td>
-                  {(
-                    nameClass.Mas_Grow * 11 +
-                    nameClass.Mas_Mod * (5 / 9) +
-                    10 / 9
-                  ).toFixed(1)}
-                </td>
-                <td>
-                  {(
-                    nameClass.Spd_Grow * 14.1 +
-                    nameClass.Spd_Mod * (5 / 11) +
-                    25 / 11
-                  ).toFixed(1)}
-                </td>
-                <td>
-                  {(
-                    (nameClass.Spd_Grow * 2 +
-                      nameClass.Dex_Grow * 0.5 +
-                      nameClass.Lck_Grow) *
-                      4.2 +
-                    (nameClass.Spd_Mod * 2 +
-                      nameClass.Dex_Mod * 0.5 +
-                      nameClass.Lck_Mod) *
-                      (2 / 9) +
-                    16 / 9
-                  ).toFixed(1)}
-                </td>
-                <td>
-                  {(
-                    (nameClass.Dex_Grow * 2.5 + nameClass.Lck_Grow * 0.5) *
-                      5.6 -
-                    0.625 +
-                    (nameClass.Dex_Mod * 2.5 + nameClass.Lck_Mod * 0.5) *
-                      0.294 +
-                    1.324
-                  ).toFixed(1)}
-                </td>
-                <td>
-                  {(
-                    (nameClass.Dex_Grow * 0.25 + nameClass.Lck_Grow * 1.25) *
-                      8.9 +
-                    0.42 +
-                    (nameClass.Dex_Mod * 0.25 + nameClass.Lck_Mod * 1.25) *
-                      0.465 +
-                    1.28
-                  ).toFixed(1)}
-                </td>
-              </tr>
-            </tbody>
-          </table>
           {classWriteUps(Name1, "stats")}
           <h4>Individual Character growth in {nameClass.Name}</h4>
           <table className="stat-table">
@@ -414,7 +332,13 @@ function ClassDetail() {
                           let numValue;
 
                           if (key === "Name") {
-                            return <td key={key}><Link to={`/characters/${value.toLowerCase()}`}>{value}</Link></td>;
+                            return (
+                              <td key={key}>
+                                <Link to={`/characters/${value.toLowerCase()}`}>
+                                  {value}
+                                </Link>
+                              </td>
+                            );
                           } else {
                             const charGrow = parseFloat(value);
 
@@ -432,10 +356,6 @@ function ClassDetail() {
             </tbody>
           </table>
           {classWriteUps(Name1, "char")}
-          <h3>Class rating (/5):</h3>
-          {classWriteUps(Name1, "rating")}
-          <br />
-          {classWriteUps(Name1, "tips")}
           <h3>Class Passive:</h3>
           <table className="passive-table">
             <tbody>
@@ -677,6 +597,10 @@ function ClassDetail() {
           {classWriteUps(Name1, "upgrade2")}
           <br />
           {classWriteUps(Name1, "skills")}
+          <h3>Class rating (/10):</h3>
+          {classWriteUps(Name1, "rating")}
+          <br />
+          {classWriteUps(Name1, "tips")}
           <h3>Rings and weapons recommendations:</h3>
           {classWriteUps(Name1, "rings")}
           <br />

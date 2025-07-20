@@ -1617,7 +1617,7 @@ export function classSkillRng(className, rng, skillNum, upgrade) {
         break;
       case "Scholar":
         if (upgrade.upgrade3) rngMin -= 1;
-        
+
         range = `${rngMin}~${rngMax}`;
         break;
       case "Juggernaut":
@@ -1889,20 +1889,23 @@ export function classWriteUps(className, part) {
         <table className="stat-table">
           <thead>
             <tr>
-              <td>Stats</td>
+              <td>Bulk</td>
+              <td>Dodge</td>
+              <td>Range</td>
               <td>Combat</td>
-              <td>Support</td>
-              <td>Skill Damage</td>
-              <td>Synergy</td>
+              <td>Skill Dmg/Debuff</td>
+              <td>Heal/Supp/Util</td>
             </tr>
           </thead>
-          <tr>
-            <td>{writeUp.Rating[0]}</td>
-            <td>{writeUp.Rating[1]}</td>
-            <td>{writeUp.Rating[2]}</td>
-            <td>{writeUp.Rating[3]}</td>
-            <td>{writeUp.Rating[4]}</td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>{writeUp.Rating[0]}</td>
+              <td>{writeUp.Rating[1]}</td>
+              <td>{writeUp.Rating[2]}</td>
+              <td>{writeUp.Rating[3]}</td>
+              <td>{writeUp.Rating[4]}</td>
+            </tr>
+          </tbody>
         </table>
       );
     case "stats":
