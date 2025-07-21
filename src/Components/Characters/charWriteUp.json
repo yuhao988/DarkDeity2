@@ -154,7 +154,7 @@
     "suggestion": "Gale->Monk/Tempest, Monk/Ascedant"
   },
   "aya": {
-    "introduction": "Aya is a character that joins you during the Demon Realm arc. She joins at the start of Chapter X as a Lv.X Warlock.",
+    "introduction": "Aya is a character that joins you during the Demon Realm arc. She joins at the start of Chapter 14 as a Lv.19 Warlock.",
     "base": "Aya has great base Mgt, Spd, Dex and Lck, but her base bulk is atrocious, and her Mas is below average. In terms of growth, Aya has good Mgt, Spd and Lck growth, with decent Dex and Mas. However once again, her growth in HP, Def and Frt are terrible. This makes Aya a glass cannon capable of hitting hard, fast and accurate, with decent Skill numbers, but extremely vulnerable if enemy even land just one hit on her.",
     "classes": "Aya starts off as a Warlock, which naturally progresses into Necromancer. This line gives Aya good Mgt and Dex, decent Frt and Lck, but mediocre Spd, HP and Mas, as well as atrocious Def. Geomancer/Cosmician trades some Mgt, Spd, Dex and Frt, for better HP, Def, Lck, and most importantly, much better Mas, a good choice if you wish to achieve high Skill numbers. Aegis/Relic Knight patches up Aya's poor bulk, but is generally pretty mediocre all around. Finally, Scholar/Loremaster will give a good balance of great Mgt, Spd and Mas, having ok HP, Dex and Lck, but atrocious defenses.",
     "skills": ["Top", "Mid", "High", "Top"],
