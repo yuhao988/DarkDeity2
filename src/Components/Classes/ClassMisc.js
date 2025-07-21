@@ -1904,6 +1904,7 @@ export function classWriteUps(className, part) {
               <td>{writeUp.Rating[2]}</td>
               <td>{writeUp.Rating[3]}</td>
               <td>{writeUp.Rating[4]}</td>
+              <td>{writeUp.Rating[5]}</td>
             </tr>
           </tbody>
         </table>
