@@ -310,7 +310,7 @@
     "Name": "Monk",
     "Rating": [3.8, 5.6, 4.5, 5.9],
     "Stats": "Monk has good stat modifier in Dex and Mas, and has positive modifier on HP, Mgt and Spd as well. Monk will have negative modifier on Def and Lck. In terms of growth, Monk has good growth on Spd, Dex, Frt and Mas, lackluster growth on HP, Mgt and Def, and abysmal Lck growth.",
-    "Character": "",
+    "Character": "None of the characters you have starts off in this class. Base on growth, Zuhair will have the highest total growth, excelling in HP, Dex, Frt and Mas. He will be a great unit although his Def is low and low Lck means his Crit chance are unreliable.<br/>Saxon will be decent all round other than a middling HP and an abysmal Lck. He will problem Critting consistently.",
     "Upgrade1": ["Low", "Low", "Low", "Low"],
     "Upgrade2": ["Low", "Low", "Low", "Low"],
     "Skills": "",
