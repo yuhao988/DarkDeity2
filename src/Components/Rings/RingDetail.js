@@ -37,13 +37,13 @@ function RingDetail() {
         <h3>Ores needed:</h3>
         <ul>
           <li>
-            <Link> {ring1.Ores[0]}</Link>
+            <Link to="/rings/ores"> {ring1.Ores[0]}</Link>
           </li>
           <li>
-            <Link> {ring1.Ores[1]}</Link>
+            <Link to="/rings/ores"> {ring1.Ores[1]}</Link>
           </li>
           <li>
-            <Link>{ring1.Ores[2]}</Link>
+            <Link to="/rings/ores">{ring1.Ores[2]}</Link>
           </li>
         </ul>
         <h3>Effect:</h3>
