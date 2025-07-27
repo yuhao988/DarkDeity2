@@ -1,0 +1,21 @@
+.ore-table {
+  border-collapse: collapse;
+  width: 70vw;
+  border: 2px solid rgb(65, 2, 2);
+  margin-left: 4vw;
+  text-align: center;
+}
+
+.ore-table th {
+  border-right: 2px solid white;
+  background-color: #48505f;
+  color: white;
+}
+
+.ore-table td {
+  border-right: 2px solid rgb(65, 2, 2);
+  border-bottom: 2px solid rgb(65, 2, 2);
+  background-color: #bcd1f8;
+  padding-bottom: 5px;
+  
+}

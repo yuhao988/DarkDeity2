@@ -36,6 +36,7 @@ export default function SimModal(prop) {
       isOpen={isOpen}
       onRequestClose={onClose}
       ariaHideApp={false}
+      className="sim-modal"
       style={{
         overlay: {
           position: "fixed",

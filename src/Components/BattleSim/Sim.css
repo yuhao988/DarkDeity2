@@ -1,15 +1,14 @@
 .battle-stat {
   border: 3px solid rgb(0, 0, 0); /* Dark red outer border */
-   flex: 1;
+  flex: 1;
   text-align: center;
-  
+
   border-collapse: collapse; /* Crucial for consistent borders */
 }
 
 .battle-stat td {
   border: 2px solid rgb(0, 0, 0);
   padding: 8px;
-  
 }
 
 .page-body {
@@ -28,7 +27,8 @@
   margin-top: 20px;
 }
 
-.unit-panel, .enemy-panel {
+.unit-panel,
+.enemy-panel {
   flex: 1;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
@@ -112,7 +112,7 @@
   text-align: center; /* Center cell content */
 }
 
-.unit-item, 
+.unit-item,
 .class-item {
   padding: 10px;
   margin: 0 auto; /* Center the items */
@@ -124,7 +124,7 @@
   max-width: 90%; /* Prevent items from stretching full width */
 }
 
-.unit-stats, 
+.unit-stats,
 .class-stats {
   font-size: 0.9em;
   margin-top: 5px;
@@ -147,4 +147,37 @@
 
 .units-table button:hover {
   background-color: #444444;
+}
+
+.sim-modal{
+ position:fixed
+}
+
+.sim-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 9999;
+}
+
+.sim-modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-45%, -45%);
+  border: none;
+  background: #fff;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+  width: 90vw;
+  height: 90vh;
+  max-width: 90vw;
+  max-height: 90vh;
+  z-index: 10000;
 }

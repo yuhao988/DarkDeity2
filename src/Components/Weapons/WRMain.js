@@ -60,7 +60,7 @@ function WeaponMain() {
                       .filter((weapon) => weapon.Type === "Axe")
                       .map((axe, index) => (
                         <li key={index}>
-                          <Link>
+                          <Link to={`/weapons/${axe.Name.replace(/\s+/g, "").toLowerCase()}`}>
                             <img
                               src={
                                 imagesW[
@@ -82,7 +82,7 @@ function WeaponMain() {
                       .filter((weapon) => weapon.Type === "Bow")
                       .map((bow, index) => (
                         <li key={index}>
-                          <Link>
+                          <Link to={`/weapons/${bow.Name.replace(/\s+/g, "").toLowerCase()}`}>
                             <img
                               src={
                                 imagesW[
@@ -104,7 +104,7 @@ function WeaponMain() {
                       .filter((weapon) => weapon.Type === "Dagger")
                       .map((dagger, index) => (
                         <li key={index}>
-                          <Link>
+                          <Link to={`/weapons/${dagger.Name.replace(/\s+/g, "").toLowerCase()}`}>
                             <img
                               src={
                                 imagesW[
@@ -140,7 +140,7 @@ function WeaponMain() {
                       .filter((weapon) => weapon.Type === "Focus")
                       .map((focus, index) => (
                         <li key={index}>
-                          <Link>
+                          <Link to={`/weapons/${focus.Name.replace(/\s+/g, "").toLowerCase()}`}>
                             <img
                               src={
                                 imagesW[
@@ -162,7 +162,7 @@ function WeaponMain() {
                       .filter((weapon) => weapon.Type === "Relic")
                       .map((relic, index) => (
                         <li key={index}>
-                          <Link>
+                          <Link to={`/weapons/${relic.Name.replace(/\s+/g, "").toLowerCase()}`}>
                             <img
                               src={
                                 imagesW[
@@ -184,7 +184,7 @@ function WeaponMain() {
                       .filter((weapon) => weapon.Type === "Sword")
                       .map((sword, index) => (
                         <li key={index}>
-                          <Link>
+                          <Link to={`/weapons/${sword.Name.toLowerCase()}`}>
                             <img
                               src={
                                 imagesW[
