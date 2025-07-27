@@ -36,7 +36,9 @@ function MenuBar() {
               <Link to="/weapons">Weapons</Link>
             </li>
             <li>Shop items</li>
-            <li>Calculations & Terminologies</li>
+            <li>
+              <Link to="/calc">Calculations & Terminologies</Link>
+            </li>
             <li>Character Builder</li>
             <li>Enemies</li>
           </ul>

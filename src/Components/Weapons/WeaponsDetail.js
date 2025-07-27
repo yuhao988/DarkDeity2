@@ -34,7 +34,7 @@ function WeaponDetail() {
   return (
     <div>
       <header className="page-header">
-        <h1>Characters</h1>
+        <h1>{name}</h1>
       </header>
       <div className="page-body">
         <img src={imagesW[name]} alt={name} className="character-image" />
@@ -51,7 +51,7 @@ function WeaponDetail() {
           </p>
         </div>
         
-        <Link to="/weapons">Back to Weapons</Link>{" "}
+        <Link to="/weapons" className="home-link">Back to Weapons</Link>{" "}
       </div>
     </div>
   );

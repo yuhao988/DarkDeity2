@@ -124,3 +124,18 @@
 .menu-list a:hover {
   color: #83a8f1;
 }
+
+.home-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 8px 16px;
+  background: #6a5acd;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.home-link:hover {
+  background: #5a4acd;
+}

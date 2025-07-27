@@ -86,7 +86,7 @@ function RingMain() {
             </tbody>
           </table>
         </div>
-        <Link to="/">Back to Home</Link>
+        <Link to="/" className="home-link">Back to Home</Link>
       </div>
     </div>
   );

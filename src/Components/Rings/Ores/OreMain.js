@@ -1,5 +1,6 @@
 import OreDetail from "./OreDetail";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Ore.css";
 
 export default function OreMain() {
@@ -82,6 +83,7 @@ export default function OreMain() {
           oreCurrent={oreCurrent}
         />
       </div>
+      <Link to="/rings" className="home-link">Back to rings</Link>
     </div>
   );
 }

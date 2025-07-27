@@ -547,7 +547,7 @@ function CharDetail() {
           <h3>Ring Suggestions:</h3>
           <div>{charIntro(nameNoMark, "ring")}</div>
         </div>
-        <Link to="/characters">Back</Link>{" "}
+        <Link to="/characters" className="home-link">Back</Link>{" "}
       </div>
     </div>
   );

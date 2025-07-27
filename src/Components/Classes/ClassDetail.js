@@ -608,7 +608,7 @@ function ClassDetail() {
           <h3>Class Synergy</h3>
           {classWriteUps(Name1, "class")}
         </div>
-        <Link to="/classes">Back</Link>{" "}
+        <Link to="/classes" className="home-link">Back</Link>{" "}
       </div>
     </div>
   );

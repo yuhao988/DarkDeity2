@@ -50,7 +50,7 @@ function RingDetail() {
         {ring1.Description}
         <br />
         <h3>Details:</h3>
-        <Link to="/rings">Back</Link>
+        <Link to="/rings" className="home-link">Back</Link>
       </div>
     </div>
   );

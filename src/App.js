@@ -15,6 +15,7 @@ import SimSample1 from "./Components/BattleSim/SimSample";
 import WeaponMain from "./Components/Weapons/WRMain";
 import WeaponDetail from "./Components/Weapons/WeaponsDetail";
 import OreMain from "./Components/Rings/Ores/OreMain"; // Import the OreMain component
+import CalcTerm from "./Components/Calc&Term";
 
 function App() {
   // Set the app element when the component mounts
@@ -35,9 +36,10 @@ function App() {
           <Route path="/rings" element={<RingMain />} />
           <Route path="/rings/:name" element={<RingDetail />} />
           <Route path="/rings/ores" element={<OreMain />} />
-          
           <Route path="/weapons" element={<WeaponMain />} />
           <Route path="/weapons/:name" element={<WeaponDetail />} />
+          <Route path="/calc" element={<CalcTerm />} />
+
           <Route path="/secret" element={<SimSample1 />} />
           <Route path="/*" element={<Error />} />
         </Routes>

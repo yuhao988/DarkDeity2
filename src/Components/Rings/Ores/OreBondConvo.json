@@ -1,0 +1,62 @@
+[
+  {
+    "Ore": "Sapphire",
+    "Supports": [
+      "RiordanXCassandra",
+      "ArthurXAya",
+      "CassandraXAlden",
+      "CassandraXTalDera",
+      "AldenXBenji",
+      "AldenXCalith",
+      "ValeriaXVissarion",
+      "BenjiXKhamari",
+      "BenjiXTalDera",
+      "KhamariXCalith",
+      "ZaneleXTusk",
+      "EveXMashal",
+      "MashalXLaurai",
+      "TalDeraXCalith"
+    ]
+  },
+  {
+    "Ore": "Onyx",
+    "Supports": [
+      "GwynXAlden",
+      "RiordanXSaxon",
+      "ArthurXCalith",
+      "BenjiXZuhair",
+      "KhamariXZanele",
+      "ZaneleXTalDera",
+      "ZuhairXEve"
+    ]
+  },
+  {
+    "Ore": "Diamond",
+    "Supports": [
+      "GwynXVissarion",
+      "ArthurXHaoran",
+      "SaxonXValeria",
+      "SaxonXAya",
+      "ValeriaXTusk",
+      "ZuhairXHaoran",
+      "ZuhairXTusk",
+      "HaoranXVissarion"
+    ]
+  },
+  {
+    "Ore": "Amethyst",
+    "Supports": [
+      "GwynXEve",
+      "GwynXLaurai",
+      "RiordanXArthur",
+      "RiordanXValeria",
+      "CassandraXSaxon",
+      "KhamariXAya",
+      "ZaneleXLaurai",
+      "EveXhaoran",
+      "MashalXAya",
+      "MashalXVissarion",
+      "TuskXLaurai"
+    ]
+  }
+]
