@@ -8,30 +8,30 @@ export default function OreMain() {
   const [isModal, setIsModal] = useState(false);
 
   const oreList = [
-    { Name: "Emerald", Color: "Green", Shop: "Start", Convo: "None" },
-    { Name: "Ruby", Color: "Red", Shop: "Start", Convo: "None" },
+    { Name: "Emerald", Color: "Green", Shop: "From Start", Convo: "None" },
+    { Name: "Ruby", Color: "Red", Shop: "From Start", Convo: "None" },
     {
       Name: "Sapphire",
       Color: "Blue",
-      Shop: "Chapter X",
+      Shop: "After Chapter X",
       Convo: <button onClick={() => openModal("Sapphire")}>Total: 14</button>,
     },
     {
       Name: "Onyx",
       Color: "Black",
-      Shop: "Chapter X",
+      Shop: "After Chapter X",
       Convo: <button onClick={() => openModal("Onyx")}>Total: 7</button>,
     },
     {
       Name: "Diamond",
       Color: "White",
-      Shop: "Chapter X",
+      Shop: "After Chapter X",
       Convo: <button onClick={() => openModal("Diamond")}>Total: 8</button>,
     },
     {
       Name: "Amethyst",
       Color: "Purple",
-      Shop: "Chapter X",
+      Shop: "After Chapter X",
       Convo: <button onClick={() => openModal("Amethyst")}>Total: 11</button>,
     },
   ];
@@ -52,8 +52,9 @@ export default function OreMain() {
       </header>
       <div className="page-body">
         <p style={{ width: "70vw" }}>
-          Ores are materials used to make rings. It can found in objective
-          rewards, chests, end of Bond conversations, or bought in shop
+          Ores are materials used to make rings. It can found in chapter
+          objective rewards, enemy droppables, chests, Bond conversations, or
+          bought in shop
         </p>
         <table className="ore-table">
           <thead>
@@ -83,7 +84,9 @@ export default function OreMain() {
           oreCurrent={oreCurrent}
         />
       </div>
-      <Link to="/rings" className="home-link">Back to rings</Link>
+      <Link to="/rings" className="home-link">
+        Back to rings
+      </Link>
     </div>
   );
 }

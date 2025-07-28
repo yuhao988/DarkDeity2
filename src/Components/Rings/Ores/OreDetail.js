@@ -21,17 +21,26 @@ export default function OreDetail(prop) {
     return acc;
   }, {});
 
-  let oreCorrespond = BondConvo.filter((bond) => bond.Ore === oreCurrent);
-  oreCorrespond = oreCorrespond[0];
-  const bondList = oreCorrespond.Supports;
-  const rows = [];
-  for (let i = 0; i < bondList.length; i += 4) {
-    rows.push(bondList.slice(i, i + 4));
+  // Initialize variables that will be conditionally set
+  let oreCorrespond = null;
+  let bondList = [];
+  let rows = [];
+
+  // Only execute this block if oreCurrent is set
+  if (oreCurrent) {
+    oreCorrespond = BondConvo.filter((bond) => bond.Ore === oreCurrent)[0];
+    if (oreCorrespond) {
+      bondList = oreCorrespond.Supports || [];
+      // Create rows of 4 bonds each
+      for (let i = 0; i < bondList.length; i += 4) {
+        rows.push(bondList.slice(i, i + 4));
+      }
+    }
   }
+
   const bondNames = (data) => {
     // Split the string by " X " (space X space)
     const names = data.split(" X ");
-
     // Return the array with the two names
     return names.length === 2 ? names : [data, ""]; // Fallback if format is unexpected
   };
@@ -73,7 +82,7 @@ export default function OreDetail(prop) {
       }}
     >
       <button onClick={handleCloseModal} className="modal-close-button">
-        ×
+        
       </button>
       <h2>Bond conversations that gives {oreCurrent}</h2>
       <p>
@@ -103,8 +112,7 @@ export default function OreDetail(prop) {
                         }
                         alt={bondNames(supp)[0]}
                         className="bond-image"
-                      />
-                      {" "}
+                      />{" "}
                       {/* Gap between images */}
                       <img
                         src={

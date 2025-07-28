@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import weaponInfo from "./Weapons.json";
-import runeInfo from "./Runes.json";
+import runeInfo from "./Runes/Runes.json";
 //import React, { useState } from "react";
 import "../../App.css";
 import "./Weapons.css";
@@ -42,7 +42,14 @@ function WeaponMain() {
       </header>
       <div className="page-body">
         <h2>Weapons</h2>
-        <p>Weapons write-up placeholder</p>
+        <div>
+          <p>
+            Weapons are equipment used by units. Each unit can only equip one
+            weapon, exchangable before battle but not during. There are 6
+            different types of weapon in game, the type of weapon equippable by
+            a unit is decided by the unit's class.
+          </p>
+        </div>
         <div className="weapon-list">
           <table className="weapon-table">
             <thead>
@@ -60,7 +67,12 @@ function WeaponMain() {
                       .filter((weapon) => weapon.Type === "Axe")
                       .map((axe, index) => (
                         <li key={index}>
-                          <Link to={`/weapons/${axe.Name.replace(/\s+/g, "").toLowerCase()}`}>
+                          <Link
+                            to={`/weapons/${axe.Name.replace(
+                              /\s+/g,
+                              ""
+                            ).toLowerCase()}`}
+                          >
                             <img
                               src={
                                 imagesW[
@@ -82,7 +94,12 @@ function WeaponMain() {
                       .filter((weapon) => weapon.Type === "Bow")
                       .map((bow, index) => (
                         <li key={index}>
-                          <Link to={`/weapons/${bow.Name.replace(/\s+/g, "").toLowerCase()}`}>
+                          <Link
+                            to={`/weapons/${bow.Name.replace(
+                              /\s+/g,
+                              ""
+                            ).toLowerCase()}`}
+                          >
                             <img
                               src={
                                 imagesW[
@@ -104,7 +121,12 @@ function WeaponMain() {
                       .filter((weapon) => weapon.Type === "Dagger")
                       .map((dagger, index) => (
                         <li key={index}>
-                          <Link to={`/weapons/${dagger.Name.replace(/\s+/g, "").toLowerCase()}`}>
+                          <Link
+                            to={`/weapons/${dagger.Name.replace(
+                              /\s+/g,
+                              ""
+                            ).toLowerCase()}`}
+                          >
                             <img
                               src={
                                 imagesW[
@@ -140,7 +162,12 @@ function WeaponMain() {
                       .filter((weapon) => weapon.Type === "Focus")
                       .map((focus, index) => (
                         <li key={index}>
-                          <Link to={`/weapons/${focus.Name.replace(/\s+/g, "").toLowerCase()}`}>
+                          <Link
+                            to={`/weapons/${focus.Name.replace(
+                              /\s+/g,
+                              ""
+                            ).toLowerCase()}`}
+                          >
                             <img
                               src={
                                 imagesW[
@@ -162,7 +189,12 @@ function WeaponMain() {
                       .filter((weapon) => weapon.Type === "Relic")
                       .map((relic, index) => (
                         <li key={index}>
-                          <Link to={`/weapons/${relic.Name.replace(/\s+/g, "").toLowerCase()}`}>
+                          <Link
+                            to={`/weapons/${relic.Name.replace(
+                              /\s+/g,
+                              ""
+                            ).toLowerCase()}`}
+                          >
                             <img
                               src={
                                 imagesW[
@@ -206,7 +238,14 @@ function WeaponMain() {
         </div>
         <h2>Runes</h2>
         <div>
-          <p>Runes write-up placeholder</p>
+          <p>
+            Runes are upgrades that can be applied to a weapon, they follow the
+            same types as weapons and can only be attached to a weapon of the
+            same type. However, when applied to a weapon, the effect it can
+            provide depends solely on what weapon it is, every weapon has a
+            unique set of rune effects that can be applied. Runes that are
+            applied can be detached with a cost of 300 gold.
+          </p>
         </div>
         <table className="rune-table">
           <thead>
@@ -221,16 +260,17 @@ function WeaponMain() {
                   <td key={`rune-${rowIndex}-${colIndex}`}>
                     {/* Customize this to display your rune data */}
                     <div className="rune-item">
-                      <Link><img
-                              src={
-                                imagesR[
-                                  rune.Rune.replace(/\s+/g, "").toLowerCase()
-                                ]
-                              }
-                              alt={rune.Rune}
-                              className="weapon-image"
-                            />{rune.Rune}</Link>
-                      
+                      <Link>
+                        <img
+                          src={
+                            imagesR[rune.Rune.replace(/\s+/g, "").toLowerCase()]
+                          }
+                          alt={rune.Rune}
+                          className="weapon-image"
+                        />
+                        {rune.Rune}
+                      </Link>
+
                       {/* Add more rune properties as needed */}
                     </div>
                   </td>

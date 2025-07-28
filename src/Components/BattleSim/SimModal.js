@@ -4,6 +4,7 @@ import { battleForecast, simulateBattle } from "./SimCalc";
 import eneHeroic from "../Datas/eneHeroic.json";
 import eneDeity from "../Datas/eneDeity.json";
 import "./Sim.css";
+import "../../App.css";
 
 export default function SimModal(prop) {
   const { isOpen, onClose, unit } = prop;
@@ -68,7 +69,7 @@ export default function SimModal(prop) {
       }}
     >
       <button onClick={handleCloseModal} className="modal-close-button">
-        ×
+        
       </button>
 
       {unit && (

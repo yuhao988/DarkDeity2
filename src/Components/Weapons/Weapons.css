@@ -46,3 +46,29 @@
   border: 1px solid rgb(65, 2, 2);
   padding: 3px;
 }
+
+.big-image{
+  width:200px;
+  height:200px;
+  margin-top: 0;
+}
+
+.detail-table {
+  border: 3px solid rgb(65, 2, 2); /* Dark red outer border */
+  background-color: rgb(194, 178, 178);
+  text-align: left;
+  width: 75vw;
+  border-collapse: collapse; /* Crucial for consistent borders */
+  text-align: center;
+}
+
+.detail-table th{
+  background-color: #404755;
+  color: white;
+  border-right: 2px solid white;
+}
+
+.detail-table td {
+  border-right: 2px solid rgb(65, 2, 2);
+  padding: 5px;
+}

@@ -40,7 +40,8 @@ export default function CalcTerm() {
               <p>
                 These are the calculations for secondary stats in Dark Deity 2
               </p>
-              {/* Add your calculation content here */}
+              <table></table>
+              
             </div>
           )}
 
@@ -51,7 +52,8 @@ export default function CalcTerm() {
                 These are the key words used for describing status effects in
                 Dark Deity 2
               </p>
-              {/* Add your terminology content here */}
+              <table></table>
+              
             </div>
           )}
         </div>
