@@ -40,8 +40,34 @@ export default function CalcTerm() {
               <p>
                 These are the calculations for secondary stats in Dark Deity 2
               </p>
-              <table></table>
-              
+              <div>
+                <table className="stat-table">
+                  <thead>
+                    <tr>
+                      <th style={{ width: "20vw" }}>Stat</th>
+                      <th style={{ width: "80vw" }}>Formula</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Power</td>
+                      <td>Unit Might + Weapon Power</td>
+                    </tr>
+                    <tr>
+                      <td>Accuracy</td>
+                    </tr>
+                    <tr>
+                      <td>Dodge</td>
+                    </tr>
+                    <tr>
+                      <td>Crit</td>
+                    </tr>
+                    <tr>
+                      <td>True Speed</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           )}
 
@@ -52,8 +78,6 @@ export default function CalcTerm() {
                 These are the key words used for describing status effects in
                 Dark Deity 2
               </p>
-              <table></table>
-              
             </div>
           )}
         </div>
