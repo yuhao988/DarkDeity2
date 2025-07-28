@@ -21,9 +21,20 @@
   }
 }
 
-/* Header styles */
+/* Home Component Styles */
+.home-container {
+  position: relative;
+}
+
 .page-header {
-  background-color: #282c34;
+  background-image: url("./Components/Datas/Pictures/MainLogo.jpg");
+  background-size: 50% auto; /* Wider than container */
+  background-position: left; /* Keep centered */
+  
+  /* Add transparency */
+  background-color: rgba(0, 0, 0, 0.3); /* Dark overlay with 30% opacity */
+  background-blend-mode: overlay; /* Blend image with color */
+
   height: 10vh;
   display: flex;
   align-items: center;
