@@ -19,3 +19,28 @@
   padding-bottom: 5px;
   
 }
+
+.bond-table {
+  border-collapse: collapse;
+  width: 70vw;
+  border: 2px solid rgb(26, 7, 78);
+  margin-left: 4vw;
+  text-align: center;
+}
+
+.bond-table th {
+  padding: 5px;
+  background-color: #224d66;
+  color: white;
+}
+
+.bond-table td {
+  padding: 5px;
+  border: 2px solid rgb(26, 7, 78);
+  background-color: #d2dceb;
+}
+
+.bond-image{
+  height: 50px;
+  width:auto;
+}

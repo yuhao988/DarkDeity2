@@ -235,7 +235,7 @@ function WeaponMain() {
                     </div>
                   </td>
                 ))}
-                {/* Fill empty cells if last row has fewer than 4 items */}
+                {/* Fill empty cells if last row has fewer than 6 items */}
                 {row.length < 6 &&
                   Array(6 - row.length)
                     .fill()

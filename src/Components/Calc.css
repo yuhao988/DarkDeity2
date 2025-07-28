@@ -1,6 +1,6 @@
 /* Calculator/Terminology Page Styles */
 .calc-term-container {
-  max-width: 900px;
+  max-width: 80vw;
   margin: 0 auto;
   padding: 20px;
 }
@@ -39,6 +39,8 @@
   padding: 25px;
   box-shadow: 0 3px 10px rgba(0,0,0,0.1);
   min-height: 300px;
+  left: 3vw;
+  width: 70vw;
   position: relative;
 }
 

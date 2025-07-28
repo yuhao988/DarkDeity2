@@ -2,61 +2,61 @@
   {
     "Ore": "Sapphire",
     "Supports": [
-      "RiordanXCassandra",
-      "ArthurXAya",
-      "CassandraXAlden",
-      "CassandraXTalDera",
-      "AldenXBenji",
-      "AldenXCalith",
-      "ValeriaXVissarion",
-      "BenjiXKhamari",
-      "BenjiXTalDera",
-      "KhamariXCalith",
-      "ZaneleXTusk",
-      "EveXMashal",
-      "MashalXLaurai",
-      "TalDeraXCalith"
+      "Riordan X Cassandra",
+      "Arthur X Aya",
+      "Cassandra X Alden",
+      "Cassandra X Tal'Dera",
+      "Alden X Benji",
+      "Alden X Calith",
+      "Valeria X Vissarion",
+      "Benji X Khamari",
+      "Benji X Tal'Dera",
+      "Khamari X Calith",
+      "Zanele X Tusk",
+      "Eve X Mashal",
+      "Mashal X Laurai",
+      "Tal'Dera X Calith"
     ]
   },
   {
     "Ore": "Onyx",
     "Supports": [
-      "GwynXAlden",
-      "RiordanXSaxon",
-      "ArthurXCalith",
-      "BenjiXZuhair",
-      "KhamariXZanele",
-      "ZaneleXTalDera",
-      "ZuhairXEve"
+      "Gwyn X Alden",
+      "Riordan X Saxon",
+      "Arthur X Calith",
+      "Benji X Zuhair",
+      "Khamari X Zanele",
+      "Zanele X Tal'Dera",
+      "Zuhair X Eve"
     ]
   },
   {
     "Ore": "Diamond",
     "Supports": [
-      "GwynXVissarion",
-      "ArthurXHaoran",
-      "SaxonXValeria",
-      "SaxonXAya",
-      "ValeriaXTusk",
-      "ZuhairXHaoran",
-      "ZuhairXTusk",
-      "HaoranXVissarion"
+      "Gwyn X Vissarion",
+      "Arthur X Haoran",
+      "Saxon X Valeria",
+      "Saxon X Aya",
+      "Valeria X Tusk",
+      "Zuhair X Haoran",
+      "Zuhair X Tusk",
+      "Haoran X Vissarion"
     ]
   },
   {
     "Ore": "Amethyst",
     "Supports": [
-      "GwynXEve",
-      "GwynXLaurai",
-      "RiordanXArthur",
-      "RiordanXValeria",
-      "CassandraXSaxon",
-      "KhamariXAya",
-      "ZaneleXLaurai",
-      "EveXhaoran",
-      "MashalXAya",
-      "MashalXVissarion",
-      "TuskXLaurai"
+      "Gwyn X Eve",
+      "Gwyn X Laurai",
+      "Riordan X Arthur",
+      "Riordan X Valeria",
+      "Cassandra X Saxon",
+      "Khamari X Aya",
+      "Zanele X Laurai",
+      "Eve X haoran",
+      "Mashal X Aya",
+      "Mashal X Vissarion",
+      "Tusk X Laurai"
     ]
   }
 ]
