@@ -1,0 +1,242 @@
+[
+  {
+    "ID": 1,
+    "Rune": "Solar",
+    "Details": ""
+  },
+  {
+    "ID": 2,
+    "Rune": "Faith",
+    "Details": ""
+  },
+  {
+    "ID": 3,
+    "Rune": "Pure",
+    "Details": ""
+  },
+  {
+    "ID": 4,
+    "Rune": "Sniper",
+    "Details": ""
+  },
+  {
+    "ID": 5,
+    "Rune": "Knight",
+    "Details": ""
+  },
+  {
+    "ID": 6,
+    "Rune": "Finesse",
+    "Details": ""
+  },
+  {
+    "ID": 7,
+    "Rune": "Silent",
+    "Details": ""
+  },
+  {
+    "ID": 8,
+    "Rune": "Fool",
+    "Details": ""
+  },
+  {
+    "ID": 9,
+    "Rune": "Wizard",
+    "Details": ""
+  },
+  {
+    "ID": 10,
+    "Rune": "Ferocity",
+    "Details": ""
+  },
+  {
+    "ID": 11,
+    "Rune": "Poison",
+    "Details": ""
+  },
+  {
+    "ID": 12,
+    "Rune": "Bludgeon",
+    "Details": ""
+  },
+  {
+    "ID": 13,
+    "Rune": "Leeching",
+    "Details": ""
+  },
+  {
+    "ID": 14,
+    "Rune": "Nemesis",
+    "Details": ""
+  },
+  {
+    "ID": 15,
+    "Rune": "Barbs",
+    "Details": ""
+  },
+  {
+    "ID": 16,
+    "Rune": "Deadly",
+    "Details": ""
+  },
+  {
+    "ID": 17,
+    "Rune": "Challenger",
+    "Details": ""
+  },
+  {
+    "ID": 18,
+    "Rune": "Truestrike",
+    "Details": ""
+  },
+  {
+    "ID": 19,
+    "Rune": "Vicious",
+    "Details": ""
+  },
+  {
+    "ID": 20,
+    "Rune": "Assassin",
+    "Details": ""
+  },
+  {
+    "ID": 21,
+    "Rune": "Ragnarok",
+    "Details": ""
+  },
+  {
+    "ID": 22,
+    "Rune": "Cadence",
+    "Details": ""
+  },
+  {
+    "ID": 23,
+    "Rune": "Templar",
+    "Details": ""
+  },
+  {
+    "ID": 24,
+    "Rune": "Light",
+    "Details": ""
+  },
+  {
+    "ID": 25,
+    "Rune": "Stagger",
+    "Details": ""
+  },
+  {
+    "ID": 26,
+    "Rune": "Draining",
+    "Details": ""
+  },
+  {
+    "ID": 27,
+    "Rune": "Powered",
+    "Details": ""
+  },
+  {
+    "ID": 28,
+    "Rune": "Tactician",
+    "Details": ""
+  },
+  {
+    "ID": 29,
+    "Rune": "Empyrean",
+    "Details": ""
+  },
+  {
+    "ID": 30,
+    "Rune": "Vampire",
+    "Details": ""
+  },
+  {
+    "ID": 31,
+    "Rune": "Crusader",
+    "Details": ""
+  },
+  {
+    "ID": 32,
+    "Rune": "Arcane",
+    "Details": ""
+  },
+  {
+    "ID": 33,
+    "Rune": "Sealing",
+    "Details": ""
+  },
+  {
+    "ID": 34,
+    "Rune": "Mighty",
+    "Details": ""
+  },
+  {
+    "ID": 35,
+    "Rune": "Maul",
+    "Details": ""
+  },
+  {
+    "ID": 36,
+    "Rune": "Titan",
+    "Details": ""
+  },
+  {
+    "ID": 37,
+    "Rune": "Colossus",
+    "Details": ""
+  },
+  {
+    "ID": 38,
+    "Rune": "Overflow",
+    "Details": ""
+  },
+  {
+    "ID": 39,
+    "Rune": "Bursting",
+    "Details": ""
+  },
+  {
+    "ID": 40,
+    "Rune": "Valorous",
+    "Details": ""
+  },
+  {
+    "ID": 41,
+    "Rune": "Piercing",
+    "Details": ""
+  },
+  {
+    "ID": 42,
+    "Rune": "Serene",
+    "Details": ""
+  },
+  {
+    "ID": 43,
+    "Rune": "Celerity",
+    "Details": ""
+  },
+  {
+    "ID": 44,
+    "Rune": "Slim",
+    "Details": ""
+  },
+  {
+    "ID": 45,
+    "Rune": "Shrink",
+    "Details": ""
+  },
+  {
+    "ID": 46,
+    "Rune": "Swift",
+    "Details": ""
+  },
+  {
+    "ID": 47,
+    "Rune": "Cavalier",
+    "Details": ""
+  },
+  {
+    "ID": 48,
+    "Rune": "Bastion",
+    "Details": ""
+  }
+]

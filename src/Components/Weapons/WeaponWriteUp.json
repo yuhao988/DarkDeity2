@@ -1,0 +1,232 @@
+[
+  {
+    "ID": 1,
+    "Name": "Hatchet",
+    "Details": ""
+  },
+  {
+    "ID": 2,
+    "Name": "Axe",
+    "Details": ""
+  },
+  {
+    "ID": 3,
+    "Name": "Battleaxe",
+    "Details": ""
+  },
+  {
+    "ID": 4,
+    "Name": "Greataxe",
+    "Details": ""
+  },
+  {
+    "ID": 5,
+    "Name": "Ceremonial Cleaver",
+    "Details": ""
+  },
+  {
+    "ID": 6,
+    "Name": "Mauler",
+    "Details": ""
+  },
+  {
+    "ID": 7,
+    "Name": "Splitter",
+    "Details": ""
+  },
+  {
+    "ID": 8,
+    "Name": "Shortbow",
+    "Details": ""
+  },
+  {
+    "ID": 9,
+    "Name": "Longbow",
+    "Details": ""
+  },
+  {
+    "ID": 10,
+    "Name": "Recurve Bow",
+    "Details": ""
+  },
+  {
+    "ID": 11,
+    "Name": "Greatbow",
+    "Details": ""
+  },
+  {
+    "ID": 12,
+    "Name": "Deepsong Greatbow",
+    "Details": ""
+  },
+  {
+    "ID": 13,
+    "Name": "Repeater",
+    "Details": ""
+  },
+  {
+    "ID": 14,
+    "Name": "Conquest Bow",
+    "Details": ""
+  },
+  {
+    "ID": 15,
+    "Name": "Arbalest",
+    "Details": ""
+  },
+  {
+    "ID": 16,
+    "Name": "Dagger",
+    "Details": ""
+  },
+  {
+    "ID": 17,
+    "Name": "Knife",
+    "Details": ""
+  },
+  {
+    "ID": 18,
+    "Name": "Kris",
+    "Details": ""
+  },
+  {
+    "ID": 19,
+    "Name": "Shiv",
+    "Details": ""
+  },
+  {
+    "ID": 20,
+    "Name": "Athame",
+    "Details": ""
+  },
+  {
+    "ID": 21,
+    "Name": "Karambit",
+    "Details": ""
+  },
+  {
+    "ID": 22,
+    "Name": "Cinquedea",
+    "Details": ""
+  },
+  {
+    "ID": 23,
+    "Name": "Focus",
+    "Details": ""
+  },
+  {
+    "ID": 24,
+    "Name": "Crystal Focus",
+    "Details": ""
+  },
+  {
+    "ID": 25,
+    "Name": "Gemmed Focus",
+    "Details": ""
+  },
+  {
+    "ID": 26,
+    "Name": "Cloud Focus",
+    "Details": ""
+  },
+  {
+    "ID": 27,
+    "Name": "Jeweled Wand",
+    "Details": ""
+  },
+  {
+    "ID": 28,
+    "Name": "Fractal Prism",
+    "Details": ""
+  },
+  {
+    "ID": 29,
+    "Name": "Decrepit Skull",
+    "Details": ""
+  },
+  {
+    "ID": 30,
+    "Name": "Shimmering Vial",
+    "Details": ""
+  },
+  {
+    "ID": 31,
+    "Name": "Relic",
+    "Details": ""
+  },
+  {
+    "ID": 32,
+    "Name": "Relic Staff",
+    "Details": ""
+  },
+  {
+    "ID": 33,
+    "Name": "Relic Tome",
+    "Details": ""
+  },
+  {
+    "ID": 34,
+    "Name": "Relic Archstaff",
+    "Details": ""
+  },
+  {
+    "ID": 35,
+    "Name": "Depleted Ward",
+    "Details": ""
+  },
+  {
+    "ID": 36,
+    "Name": "Moon Wand",
+    "Details": ""
+  },
+  {
+    "ID": 37,
+    "Name": "Gryphon Crest",
+    "Details": ""
+  },
+  {
+    "ID": 38,
+    "Name": "Cosmere Grimoire",
+    "Details": ""
+  },
+  {
+    "ID": 39,
+    "Name": "Shortsword",
+    "Details": ""
+  },
+  {
+    "ID": 40,
+    "Name": "Longsword",
+    "Details": ""
+  },
+  {
+    "ID": 41,
+    "Name": "Broadsword",
+    "Details": ""
+  },
+  {
+    "ID": 42,
+    "Name": "Greatsword",
+    "Details": ""
+  },
+  {
+    "ID": 43,
+    "Name": "Scimitar",
+    "Details": ""
+  },
+  {
+    "ID": 44,
+    "Name": "Katana",
+    "Details": ""
+  },
+  {
+    "ID": 45,
+    "Name": "Zweihander",
+    "Details": ""
+  },
+  {
+    "ID": 46,
+    "Name": "Khopesh",
+    "Details": ""
+  }
+]

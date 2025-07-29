@@ -102,3 +102,5 @@ export function processLinkText(text) {
     );
   });
 }
+
+export function RingWriteUps(className, part) {}

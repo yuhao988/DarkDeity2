@@ -33,7 +33,7 @@ function MenuBar() {
               <Link to="/rings">Rings</Link>
             </li>
             <li>
-              <Link to="/weapons">Weapons</Link>
+              <Link to="/weapons">Weapons & Runes</Link>
             </li>
             <li>Shop items</li>
             <li>

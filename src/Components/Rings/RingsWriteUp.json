@@ -1,0 +1,282 @@
+[
+  {
+    "ID": 1,
+    "Name": "Love",
+    "Details": ""
+  },
+  {
+    "ID": 2,
+    "Name": "Blazing",
+    "Details": ""
+  },
+  {
+    "ID": 3,
+    "Name": "Prophet",
+    "Details": ""
+  },
+  {
+    "ID": 4,
+    "Name": "Attuned",
+    "Details": ""
+  },
+  {
+    "ID": 5,
+    "Name": "Kindling",
+    "Details": ""
+  },
+  {
+    "ID": 6,
+    "Name": "Cleave",
+    "Details": ""
+  },
+  {
+    "ID": 7,
+    "Name": "Tranquility",
+    "Details": ""
+  },
+  {
+    "ID": 8,
+    "Name": "Harmony",
+    "Details": ""
+  },
+  {
+    "ID": 9,
+    "Name": "Farseer",
+    "Details": ""
+  },
+  {
+    "ID": 10,
+    "Name": "Depth",
+    "Details": ""
+  },
+  {
+    "ID": 11,
+    "Name": "Grip",
+    "Details": ""
+  },
+  {
+    "ID": 12,
+    "Name": "Hallowed",
+    "Details": ""
+  },
+  {
+    "ID": 13,
+    "Name": "Mystic",
+    "Details": ""
+  },
+  {
+    "ID": 14,
+    "Name": "Soul",
+    "Details": ""
+  },
+  {
+    "ID": 15,
+    "Name": "Victorious",
+    "Details": ""
+  },
+  {
+    "ID": 16,
+    "Name": "Solitude",
+    "Details": ""
+  },
+  {
+    "ID": 17,
+    "Name": "Inferno",
+    "Details": ""
+  },
+  {
+    "ID": 18,
+    "Name": "Karmic",
+    "Details": ""
+  },
+  {
+    "ID": 19,
+    "Name": "Charged",
+    "Details": ""
+  },
+  {
+    "ID": 20,
+    "Name": "Chosen",
+    "Details": ""
+  },
+  {
+    "ID": 21,
+    "Name": "Ghoul",
+    "Details": ""
+  },
+  {
+    "ID": 22,
+    "Name": "Dauntless",
+    "Details": ""
+  },
+  {
+    "ID": 23,
+    "Name": "Dimming",
+    "Details": ""
+  },
+  {
+    "ID": 24,
+    "Name": "Siphon",
+    "Details": ""
+  },
+  {
+    "ID": 25,
+    "Name": "Lava",
+    "Details": ""
+  },
+  {
+    "ID": 26,
+    "Name": "Calamity",
+    "Details": ""
+  },
+  {
+    "ID": 27,
+    "Name": "Brightening",
+    "Details": ""
+  },
+  {
+    "ID": 28,
+    "Name": "Saint",
+    "Details": ""
+  },
+  {
+    "ID": 29,
+    "Name": "Antimage",
+    "Details": ""
+  },
+  {
+    "ID": 30,
+    "Name": "Flux",
+    "Details": ""
+  },
+  {
+    "ID": 31,
+    "Name": "Companion",
+    "Details": ""
+  },
+  {
+    "ID": 32,
+    "Name": "Competitor",
+    "Details": ""
+  },
+  {
+    "ID": 33,
+    "Name": "Indomitable",
+    "Details": ""
+  },
+  {
+    "ID": 34,
+    "Name": "Soulfire",
+    "Details": ""
+  },
+  {
+    "ID": 35,
+    "Name": "Hurricane",
+    "Details": ""
+  },
+  {
+    "ID": 36,
+    "Name": "Diplomat",
+    "Details": ""
+  },
+  {
+    "ID": 37,
+    "Name": "Equilibrium",
+    "Details": ""
+  },
+  {
+    "ID": 38,
+    "Name": "Sacred",
+    "Details": ""
+  },
+  {
+    "ID": 39,
+    "Name": "Dominator",
+    "Details": ""
+  },
+  {
+    "ID": 40,
+    "Name": "Sanctified",
+    "Details": ""
+  },
+  {
+    "ID": 41,
+    "Name": "Radiance",
+    "Details": ""
+  },
+  {
+    "ID": 42,
+    "Name": "Drunkard",
+    "Details": ""
+  },
+  {
+    "ID": 43,
+    "Name": "Solemn",
+    "Details": ""
+  },
+  {
+    "ID": 44,
+    "Name": "Aqua",
+    "Details": ""
+  },
+  {
+    "ID": 45,
+    "Name": "Storm",
+    "Details": ""
+  },
+  {
+    "ID": 46,
+    "Name": "Surefire",
+    "Details": ""
+  },
+  {
+    "ID": 47,
+    "Name": "Archmage",
+    "Details": ""
+  },
+  {
+    "ID": 48,
+    "Name": "Destiny",
+    "Details": ""
+  },
+  {
+    "ID": 49,
+    "Name": "Heir",
+    "Details": ""
+  },
+  {
+    "ID": 50,
+    "Name": "Guardian",
+    "Details": ""
+  },
+  {
+    "ID": 51,
+    "Name": "Elemental",
+    "Details": ""
+  },
+  {
+    "ID": 52,
+    "Name": "Astral",
+    "Details": ""
+  },
+  {
+    "ID": 53,
+    "Name": "Lifebinder",
+    "Details": ""
+  },
+  {
+    "ID": 54,
+    "Name": "Advantage",
+    "Details": ""
+  },
+  {
+    "ID": 55,
+    "Name": "Plague",
+    "Details": ""
+  },
+  {
+    "ID": 56,
+    "Name": "Bloodied",
+    "Details": ""
+  }
+]

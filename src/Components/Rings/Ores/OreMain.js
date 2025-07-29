@@ -83,10 +83,11 @@ export default function OreMain() {
           onClose={closeModal}
           oreCurrent={oreCurrent}
         />
+
+        <Link to="/rings" className="home-link">
+          Back to rings
+        </Link>
       </div>
-      <Link to="/rings" className="home-link">
-        Back to rings
-      </Link>
     </div>
   );
 }
