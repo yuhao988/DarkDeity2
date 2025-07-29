@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import ringInfo from "./Rings.json";
 import "../../App.css";
 import "./Ring.css";
+import { RingWriteUps } from "./RingMisc";
 
 function RingDetail() {
   const { name } = useParams();
@@ -32,7 +33,7 @@ function RingDetail() {
           src={images[ring1.Name.toLowerCase()]}
           alt={ring1.Name}
           className="ring-image"
-          style={{width:"100px",height:"110px"}}
+          style={{ width: "100px", height: "110px" }}
         />
         <h3>Ores needed:</h3>
         <ul>
@@ -50,7 +51,10 @@ function RingDetail() {
         {ring1.Description}
         <br />
         <h3>Details:</h3>
-        <Link to="/rings" className="home-link">Back</Link>
+        {RingWriteUps(name, "detail")}
+        <Link to="/rings" className="home-link">
+          Back
+        </Link>
       </div>
     </div>
   );

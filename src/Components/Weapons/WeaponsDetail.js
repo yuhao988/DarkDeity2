@@ -3,6 +3,7 @@ import weaponInfo from "./Weapons.json";
 import React, { useState } from "react";
 import "../../App.css";
 import "./Weapons.css";
+import { WeaponWriteUps } from "./WeaponMisc";
 
 function WeaponDetail() {
   const [attachedRunes, setAttachedRunes] = useState({});
@@ -173,6 +174,8 @@ function WeaponDetail() {
             </table>
           </div>
         </div>
+        <h3>Tips:</h3>
+        {WeaponWriteUps(weaponName, "detail")}
         <Link to="/weapons" className="home-link">
           Back to Weapons
         </Link>{" "}

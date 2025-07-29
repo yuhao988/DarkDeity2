@@ -1,8 +1,10 @@
 import ringInfo from "./Rings.json";
+import ringWriteUp from "./RingsWriteUp.json";
 import weaponInfo from "../Weapons/Weapons.json";
 import runeInfo from "../Weapons/Runes/Runes.json";
 import React from "react";
 import { Link } from "react-router-dom";
+//import { paragraphBreak } from "../../Home";
 
 const ringNames = ringInfo.map((ring) => ring.Name);
 const weaponNames = weaponInfo.map((weapon) => weapon.Name);
@@ -11,8 +13,8 @@ export { ringNames, weaponNames, runeNames };
 
 // Improved splitPattern function with proper handling
 const splitPattern = (array, pattern) => {
-  return array.flatMap(item => {
-    if (typeof item === 'string') {
+  return array.flatMap((item) => {
+    if (typeof item === "string") {
       return item.split(pattern);
     }
     return [item]; // Keep non-string elements as-is
@@ -48,7 +50,6 @@ export function processLinkText(text) {
     parts = splitPattern(parts, ringPattern);
     parts = splitPattern(parts, weaponPattern);
     parts = splitPattern(parts, runePattern);
- 
 
     const processedSegment = parts.map((part, partIndex) => {
       let patternType = null;
@@ -103,4 +104,19 @@ export function processLinkText(text) {
   });
 }
 
-export function RingWriteUps(className, part) {}
+export function RingWriteUps(ringName, part) {
+  const writeUp = Object.values(ringWriteUp).find(
+    (ring) => ring.Name.toLowerCase() === ringName
+  );
+  
+  switch (part) {
+    case "detail":
+      return <p>{processLinkText(writeUp.Details)}</p>;
+    default:
+      return (
+        <p>
+          return <p>Insert corresponding {ringName} write-up</p>;
+        </p>
+      );
+  }
+}

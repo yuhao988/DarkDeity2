@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import runeInfo from "./Runes.json";
 import "../../../App.css";
 import weaponInfo from "../Weapons.json";
+import {RuneWriteUps} from "../WeaponMisc";
 
 function RuneDetail() {
   const { name } = useParams();
@@ -52,6 +53,7 @@ function RuneDetail() {
         {rune1.Effect}
         <br />
         <h3>Details:</h3>
+        {RuneWriteUps(name, "detail")}
         <h3>Available for:</h3>
         <div className="weapon-list">
           <table className="weapon-table">
