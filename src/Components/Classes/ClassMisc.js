@@ -3,7 +3,7 @@ import classStat from "../Datas/classStats.json";
 //import charStat from "../Datas/charStatPass.json";
 import classSkills from "../Datas/classSkills.json";
 import classWriteUp from "./classWriteUp.json";
-import { processRingText } from "../Rings/RingMisc";
+import { processLinkText } from "../Rings/RingMisc";
 import { paragraphBreak } from "../../Home";
 
 const getUpGradeColor = (priority) => {
@@ -2030,9 +2030,9 @@ export function classWriteUps(className, part) {
     case "tips":
       return <p>{paragraphBreak(writeUp.Tips)}</p>;
     case "rings":
-      return <p>{processRingText(writeUp.Rings)}</p>;
+      return <p>{processLinkText(writeUp.Rings)}</p>;
     case "weapons":
-      return <p>{writeUp.Weapons}</p>;
+      return <p>{processLinkText(writeUp.Weapons)}</p>;
     case "class":
       return <p>{paragraphBreak(writeUp.Class)}</p>;
     default:

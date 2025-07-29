@@ -11,10 +11,11 @@ import ClassDetail from "./Components/Classes/ClassDetail";
 import MenuBar from "./MenuBar";
 import RingDetail from "./Components/Rings/RingDetail";
 import RingMain from "./Components/Rings/RingMain";
+import OreMain from "./Components/Rings/Ores/OreMain"; // Import the OreMain component
 import SimSample1 from "./Components/BattleSim/SimSample";
 import WeaponMain from "./Components/Weapons/WRMain";
 import WeaponDetail from "./Components/Weapons/WeaponsDetail";
-import OreMain from "./Components/Rings/Ores/OreMain"; // Import the OreMain component
+import RuneDetail from "./Components/Weapons/Runes/RunesList"; // Import the RuneDetail component
 import CalcTerm from "./Components/Calc&Term";
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route path="/rings/ores" element={<OreMain />} />
           <Route path="/weapons" element={<WeaponMain />} />
           <Route path="/weapons/:name" element={<WeaponDetail />} />
+          <Route path="/weapons/runes/:name" element={<RuneDetail />} />
           <Route path="/calc" element={<CalcTerm />} />
 
           <Route path="/secret" element={<SimSample1 />} />

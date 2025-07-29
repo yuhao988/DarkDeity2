@@ -260,7 +260,7 @@ function WeaponMain() {
                   <td key={`rune-${rowIndex}-${colIndex}`}>
                     {/* Customize this to display your rune data */}
                     <div className="rune-item">
-                      <Link>
+                      <Link to={`/weapons/runes/${rune.Rune.replace(/\s+/g, "").toLowerCase()}`}>
                         <img
                           src={
                             imagesR[rune.Rune.replace(/\s+/g, "").toLowerCase()]

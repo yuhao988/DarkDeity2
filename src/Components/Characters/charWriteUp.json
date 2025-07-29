@@ -215,7 +215,7 @@
     "skills": ["Mid", "Low", "Mid", "Mid"],
     "gameplayBoon": "Calith's personal active skill is not very styrong as Blind is not a powerful debuff and Calith's Mas is low. It is mostly to combine with her passive to increase her defenses and make her a decent tank. Increasing the blind stacks by increasing the base number directly is more effective than any boost to the Mas scaling. Increasing number of targets also helps, but you may not run into so many situation of multiple enemies within range. If you wish to utilise her bulk as a tank you can go Aegis/Relic Knight line for some decent tanking. All other lines works fine for Calith too.",
     "gameplayBane": "Calith joins quite late into the game. By this point in time most of your team should already be optimised for gameplay and you do not need another member. Calith's skills and stats also are not very impressive to the point of outclassing your other teammates. Thus, it is not surprising for players not to find a good use for her. Still, she does not have much shortcomings except maybe her mediocre Spd and Mas, so you can still use her decently if you wish.",
-    "Rings": "",
+    "Rings": "Test text: Attuned ring, Hatchet, Ceremonial Cleaver, Maul rune.",
     
     "suggestion": "Geomancer/Cosmician, Aegis/Relic Knight"
   }
