@@ -7,127 +7,127 @@
   {
     "ID": 2,
     "Name": "Blazing",
-    "Details": "When the unit attacks, there is a 10% chance for the unit's base damage to be 50% more than the damage indicated in the battle forecast. This bonus damage triggers before critical hits are calculated."
+    "Details": "When the unit attacks, there is a 10% chance for the unit's base damage to be 50% more than the damage indicated in the battle forecast. This bonus damage triggers before critical hits are calculated. Good for units that has high damage output."
   },
   {
     "ID": 3,
     "Name": "Prophet",
-    "Details": "Increases the target's Accuracy by 25 when he/she receives a healing effect from wearer. Van be triggered multiple times on a single heal if there is more than one target healed. Also triggers over multiple turns for Haoran's personal skill"
+    "Details": "Increases the target's Accuracy by 25 when he/she receives a healing effect from wearer. Can be triggered multiple times on a single heal if there is more than one target healed. Also triggers over multiple turns for Haoran's personal skill. Recommended for heals with multiple targets, like Waveseer, Tidecaller and Khamari, as well as healing over time like Haoran."
   },
   {
     "ID": 4,
     "Name": "Attuned",
-    "Details": ""
+    "Details": "Wearer starts the chapter with 250 mana, instead of the usual 100. However, the wearer no longer regains 20 mana at the start of each turn. Other ways of gaining mana are not affected, like passive abilities, Charged ring or Empyrean rune. As units only start to generate mana on turn 2, and generates 20 per turn, Attuned ring lets the wearer to have more mana in total up until turn 8, only from turn 9 onwards (other than Arthur) would the ring actually start to affect the unit negatively. Good for classes which uses up a lot of mana right away, like Ascendant and Godfrost."
   },
   {
     "ID": 5,
     "Name": "Kindling",
-    "Details": ""
+    "Details": "Increase power by 1 every time mana is used, works on active skills usage, as well as mana depletion from Mashal's passive. it is a good choice for Mashal as her personal skill allows her to proc Kindling ring's effect multiple times per turn, as opposed to maximum 1 per turn most other units can.*Check if affected by Powered rune."
   },
   {
     "ID": 6,
     "Name": "Cleave",
-    "Details": ""
+    "Details": "Single target Red skills now only deals half the normal damage on its initial target, but also deals half the normal damage to all surronding enemy units. The mass reduction in damage dealt to initial target is very undesirable, making Cleave ring one of the worst rings in game. The ring also has no effect on skills that targets area or more than one target. It is recommended to avoid using this ring, as it is not worth the trade-off."
   },
   {
     "ID": 7,
     "Name": "Tranquility",
-    "Details": ""
+    "Details": "Gains 8 Frt if no allies within 2 tile radius. Good for solo tank strategies. 8 Frt is quite a sizable amount, vastly improves a unit's survivability if he/she is within range of multiple Magical enemies. Good for generic Godfrost, which is a tank class but has much lower Frt than Def."
   },
   {
     "ID": 8,
     "Name": "Harmony",
-    "Details": ""
+    "Details": "*Check if affect self"
   },
   {
     "ID": 9,
     "Name": "Farseer",
-    "Details": ""
+    "Details": "If a skill has \"Range +1\" or \"Size of AOE +1\" as its upgrade option, they turn into \"Range +2\" or \"Size of AOE +2\" respectively. The ring functions similiarly to Archmage ring, but is superior when a skill has size upgrade, or have more than one \"Range +1\" upgrade option. Examples of Class that can utilise this ring well includes but not limited to Cutthroat, Warlock and Elementalist."
   },
   {
     "ID": 10,
     "Name": "Depth",
-    "Details": ""
+    "Details": "Dodge increases by final Power of the wearer, will include any Power buffing effects. Good on dodge tanks, giving them a sizable buff to Dodge. Quickdraw/Deadeye has both good Speed and Might to make use of this ring, Gale/Tempest, Nightblade/Ancarant and Cutthroat/Slayer can utilise this ring well too."
   },
   {
     "ID": 11,
     "Name": "Grip",
-    "Details": ""
+    "Details": "Ignoring half of weapon's Weight, rounded down, basically increasing TSpd as well as Dodge. Heaviest weapons in this game has 8 weight, so this rune can give its wearer 4 extra TSpd and 8 Dodge maximum (5 and 10 respecitvely for Riordan). Good on units with heavy weapons, most notably Riordan, whose passive increases weapon Weight by 20%. Note that this ring is useless on Tusk, whose passive ignores weapon Weight completely."
   },
   {
     "ID": 12,
     "Name": "Hallowed",
-    "Details": ""
+    "Details": "Increases Def and Frt if the wearer uses the \"Wait\" command. The effect does not trigger if player ends the turn automatically, or if the unit performs Attack, uses Red skills, or interact with surronding (open chest, light torches, put out flames, etc.). However, the wearer can trigger the ring's effect if he/she uses a Green or Blue skill before ending the turn with the \"Wait\" command. Great for tanking classes that does not rely on player phase combat, such as Juggernaut/Dreadnought, Aegis and Frigillan/Godfrost."
   },
   {
     "ID": 13,
     "Name": "Mystic",
-    "Details": ""
+    "Details": "Increases the Mas scaling part of a skill by 25%. For example,if a skill has 5+50% Mas scaling as value description, the \"50%\" part increases by 25% of its value and becomes 62.5%, while the base 5 is unchanged. Good for units with high Mas and have skills with high Mas scalings, such as Cosmician. Note that the ring effects works multiplicatively with Mas scaling increasing upgrades as well."
   },
   {
     "ID": 14,
     "Name": "Soul",
-    "Details": ""
+    "Details": "Extra bond XP quickens the process of gaining bond levels. Good for units that need fast bond levels such as Riordan. Also helps players get their desired ores from bond conversations faster."
   },
   {
     "ID": 15,
     "Name": "Victorious",
-    "Details": ""
+    "Details": "Heals by 20% of maximum HP every time the wearer defeats an enemy, both on player phase and enemy phase, and can be triggered by both combat kills and skill damage kills. Good for tanky combat units that can reliable take out enemies in one round of combat, such as Repulsor Shield+Wreathed in Flame Juggernaut/Dreadnought."
   },
   {
     "ID": 16,
     "Name": "Solitude",
-    "Details": ""
+    "Details": "Gains 25 Accuracy if no bonded allies within 2 tile radius. Good for Ellisant or Reaper who can perform combat away from the rest of the party."
   },
   {
     "ID": 17,
     "Name": "Inferno",
-    "Details": ""
+    "Details": "Increase the first scalable number of certain skills by 40%. Skills affected by this ring includes: Wreathed in Flame(number of attacks), Hellfire(damage), Meteor(damage), Flame Strike(damage), Flame Infusion(critical), Illuminate(accuracy), Eternal Sun(accuracy). Good for units that has skills from this list, such as Warlock/Geomancer. "
   },
   {
     "ID": 18,
     "Name": "Karmic",
-    "Details": ""
+    "Details": "Works similiarly to Aegis's passive. Good for units who has good bulk and has good damage like Champion."
   },
   {
     "ID": 19,
     "Name": "Charged",
-    "Details": ""
+    "Details": "Increase mana recovery from 20 to 25. Good for any class that uses a lot of skills like Geomancer/Cosmician, Warlock, or Ascendant and Godfrost who need to keep effects of their core skills up."
   },
   {
     "ID": 20,
     "Name": "Chosen",
-    "Details": ""
+    "Details": "Every attack instance can only deal 40% of wearer's max HP rounded down at maximum, ensuring that it will take a minimum of 3 attacks to defeat the wearer regardless of bulk. Great for healing tanks like Warlock and Ritualists, who do not have the defenses to tank but can easily heal a lot of HP back during combat. Pretty much essential for the two class' tank strategy to work."
   },
   {
     "ID": 21,
     "Name": "Ghoul",
-    "Details": ""
+    "Details": "Slightly increases te wearer's Frt, more effective if the wearer uses a heavier weapon. Synergetic for Riordan or Tusk in Ranger/Warden, which is a tank class weak in Frt and uses Axe, a heavy weapon type, but not very effective especially later in game."
   },
   {
     "ID": 22,
     "Name": "Dauntless",
-    "Details": ""
+    "Details": "Increase Def and Frt based on number on enemies within 2 tile range, good for tank units intending to face groups of enemies."
   },
   {
     "ID": 23,
     "Name": "Dimming",
-    "Details": ""
+    "Details": "Reduce Mas to 0 and increase Def and Frt by 1/3 the amount rounded down. Makes thr wearer's skill much less effective in exchange for more bulk. Good for tanky units that do not rely on its own skills, such as Champion, Warden or Dreadnought."
   },
   {
     "ID": 24,
     "Name": "Siphon",
-    "Details": ""
+    "Details": "Simple increase in XP gain, which is useful for any unit that players need to increase the level of."
   },
   {
     "ID": 25,
     "Name": "Lava",
-    "Details": ""
+    "Details": "Increase the skill number in skill description by 20%, if more than 1 such numbers exists in a skill, both are increased by 20%. The effect of Lava ring stacks multiplicatively with and Mas scaling or base number increasing upgrades."
   },
   {
     "ID": 26,
     "Name": "Calamity",
-    "Details": ""
+    "Details": "Wearer heals by 2 HP every time an enemy dies on the map, regardless of who defeated said enemy. Good for units who do not have the time or opportunity to get healed, such as healers themselves. Also works well in tandem with"
   },
   {
     "ID": 27,
@@ -217,7 +217,7 @@
   {
     "ID": 44,
     "Name": "Aqua",
-    "Details": ""
+    "Details": "Call of the Storm, Mist of Renewal, Healing Wave, Whirlpool (you gain one more turn of effect if you equip Aqua ring and got the duration +1 buff), Chain Heal, Ice Shield, Absolute Zero"
   },
   {
     "ID": 45,

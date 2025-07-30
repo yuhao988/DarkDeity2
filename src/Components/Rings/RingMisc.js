@@ -111,11 +111,11 @@ export function RingWriteUps(ringName, part) {
   
   switch (part) {
     case "detail":
-      return <p>{processLinkText(writeUp.Details)}</p>;
+      return <div style={{width:"75vw"}}>{processLinkText(writeUp.Details)}</div>;
     default:
       return (
         <p>
-          return <p>Insert corresponding {ringName} write-up</p>;
+         Insert corresponding {ringName} write-up;
         </p>
       );
   }
