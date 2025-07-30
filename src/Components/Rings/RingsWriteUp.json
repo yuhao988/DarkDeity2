@@ -127,27 +127,27 @@
   {
     "ID": 26,
     "Name": "Calamity",
-    "Details": "Wearer heals by 2 HP every time an enemy dies on the map, regardless of who defeated said enemy. Good for units who do not have the time or opportunity to get healed, such as healers themselves. Also works well in tandem with"
+    "Details": "Wearer heals by 2 HP every time an enemy dies on the map, regardless of who defeated said enemy. Good for units who do not have the time or opportunity to get healed, such as healers themselves. Also works well in tandem with Victorious ring, as the two rings can heal on the same kill."
   },
   {
     "ID": 27,
     "Name": "Brightening",
-    "Details": ""
+    "Details": "Increases the target's Mgt by 4 when he/she receives a healing effect from wearer. Can be triggered multiple times on a single heal if there is more than one target healed. Also triggers over multiple turns for Haoran's personal skill. Recommended for heals with multiple targets, like Waveseer, Tidecaller and Khamari, as well as healing over time like Haoran."
   },
   {
     "ID": 28,
     "Name": "Saint",
-    "Details": ""
+    "Details": "Effectively increases wearer's Def and Frt by 4 if the attacking enemy is a 1-range attacker. Also can support allies if they are hit by enemies adjacent to the wearer. Good for tanky units, especially those with good Frt who can tank most 2-range enemies without issue."
   },
   {
     "ID": 29,
     "Name": "Antimage",
-    "Details": ""
+    "Details": "Take less and deal more damage to Magical enemies. Generic Magical units include Treant, Oak Treant, Magi, Paladin, Sorcerer, Priest, Overseer, Surge, Witch and Zealot. Good for units that can tank Physical enemies well but struggles against Magical enemies."
   },
   {
     "ID": 30,
     "Name": "Flux",
-    "Details": ""
+    "Details": "Average the final battle forecast Accuracy between wearer and the other combatant. Good for units with poor Accuracy and Dodge such as Juggernaut(not Dreadnought), Ranger/Warden, and Frigillan/Godfrost. Good against enemies with high Dodge such as Rogue, Sellsword and Witch. Also synergies with Indomitable ring, as it lowers wearer's Accuracy and Dodge."
   },
   {
     "ID": 31,
