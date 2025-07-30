@@ -2,17 +2,17 @@
   {
     "ID": 1,
     "Name": "Love",
-    "Details": "For test purposes only, this ring is not meant to be used in production."
+    "Details": "Gives the unit +1 HP for every bond level, maximum is 20. If the unit loses bond level, the bonus is also reduced. Good for Riordan who has access to his bond partners available early."
   },
   {
     "ID": 2,
     "Name": "Blazing",
-    "Details": ""
+    "Details": "When the unit attacks, there is a 10% chance for the unit's base damage to be 50% more than the damage indicated in the battle forecast. This bonus damage triggers before critical hits are calculated."
   },
   {
     "ID": 3,
     "Name": "Prophet",
-    "Details": ""
+    "Details": "Increases the target's Accuracy by 25 when he/she receives a healing effect from wearer. Van be triggered multiple times on a single heal if there is more than one target healed. Also triggers over multiple turns for Haoran's personal skill"
   },
   {
     "ID": 4,
