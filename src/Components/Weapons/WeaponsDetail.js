@@ -3,26 +3,33 @@ import weaponInfo from "./Weapons.json";
 import React, { useState } from "react";
 import "../../App.css";
 import "./Weapons.css";
-import { WeaponWriteUps } from "./WeaponMisc";
+import { WeaponWriteUps, outputEffect,outputStat } from "./WeaponMisc";
 
 function WeaponDetail() {
   const [attachedRunes, setAttachedRunes] = useState({});
 
   const toggleRune = (runeName) => {
-    let cnt = 0;
-    for (const rune in attachedRunes) {
-      if (attachedRunes[rune]) {
-        cnt++;
+    setAttachedRunes((prev) => {
+      // If the rune is already selected, remove it
+      if (prev[runeName]) {
+        const newRunes = { ...prev };
+        delete newRunes[runeName];
+        return newRunes;
       }
-    }
-    if (cnt < 2) {
-      setAttachedRunes((prev) => ({
-        ...prev,
-        [runeName]: !prev[runeName],
-      }));
-    }
+      // Otherwise, check if we can add it (max 2)
+      else {
+        const currentCount = Object.values(prev).filter(Boolean).length;
+        if (currentCount < 2) {
+          return {
+            ...prev,
+            [runeName]: true,
+          };
+        }
+        // If already at max, return unchanged
+        return prev;
+      }
+    });
   };
-
   const resetRunes = () => {
     setAttachedRunes({});
   };
@@ -87,11 +94,15 @@ function WeaponDetail() {
             </thead>
             <tbody>
               <tr>
-                <td>{weaponData.Power}</td>
-                <td>{weaponData.Critical ? weaponData.Critical : 0}</td>
-                <td>{weaponData.Accuracy}</td>
-                <td>{weaponData.Weight ? weaponData.Weight : 0}</td>
-                <td style={{ width: "40vw" }}></td>
+                <td>{outputStat(attachedRunes,weaponData)[0]}</td>
+                <td>{outputStat(attachedRunes,weaponData)[1]}</td>
+                <td>{outputStat(attachedRunes,weaponData)[2]}</td>
+                <td>{outputStat(attachedRunes,weaponData)[3]}</td>
+                <td style={{ width: "40vw" }}>
+                  {outputEffect(Object.keys(attachedRunes)[0])}
+                  {outputEffect(Object.keys(attachedRunes)[0]) ? <br /> : ""}
+                  {outputEffect(Object.keys(attachedRunes)[1])}
+                </td>
               </tr>
             </tbody>
           </table>{" "}
