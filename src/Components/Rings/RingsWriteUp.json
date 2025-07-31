@@ -37,7 +37,7 @@
   {
     "ID": 8,
     "Name": "Harmony",
-    "Details": "*Check if affect self"
+    "Details": "Gives 3 Power to adjacent allies, including wearer him/herself. Good support effect that works on any unit, especially supports."
   },
   {
     "ID": 9,
@@ -177,7 +177,7 @@
   {
     "ID": 36,
     "Name": "Diplomat",
-    "Details": "Gives wearer 25 Dodge if defeats an enemy, either through battle or skills. Stacks on enemy phase if multiple enemies are defeated, but is hampered by the 15 stacks of Exhaustion that also stacks with multiple battles in one phase. Good for units with kill Power and wants Dodge, like Slayer, Tempest and Ancarant."
+    "Details": "Gives wearer 25 Dodge if defeats an enemy, either through battle or skills. Does not stack on enemy phase if multiple enemies are defeated. Good for units with kill Power and wants Dodge, like Slayer, Tempest and Ancarant."
   },
   {
     "ID": 37,
