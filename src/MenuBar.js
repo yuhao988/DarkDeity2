@@ -21,7 +21,7 @@ function MenuBar() {
         <nav>
           <ul className="menu-list">
             <li>
-              <Link to="/">Home</Link>
+              <Link to={`${process.env.PUBLIC_URL}/`}>Home</Link>
             </li>
             <li>
               <Link to="/characters">Characters</Link>
