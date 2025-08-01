@@ -2,7 +2,7 @@
   {
     "ID": 1,
     "Rune": "Solar",
-    "Details": "testing for 1 word rune names"
+    "Details": "Base damage has 10% chance to become 1.5 times the forecasted amount during battle. Applies before crit calculation and may be stacked with critical."
   },
   {
     "ID": 2,
@@ -47,12 +47,12 @@
   {
     "ID": 10,
     "Rune": "Ferocity",
-    "Details": ""
+    "Details": "Takes the total damage after all calculations and multiply by 60%, rounded down. Attacks twice for every one attack normally, without any interruption from enemy. Every attack triggers an instance of on-attack effect like Enchant Weapon. The second attack is considered as a follow-up attack. If the unit doubles enemies normally, the unit now attacks 4 times and has 3 of them considered as follow-up attacks."
   },
   {
     "ID": 11,
     "Rune": "Poison",
-    "Details": ""
+    "Details": "Applies Poison on enemy target. If the unit doubles, enemy is considered to be affected by Poison on second attack and triggers effects like Warlock's passive. However, enemy stats will not drop for this battle and the stack of Poison is not exhausted. An enemy still alive after being doubled by the unit (if both attacks hit) will be affected by 4 stacks of Light Poison."
   },
   {
     "ID": 12,
@@ -87,12 +87,12 @@
   {
     "ID": 18,
     "Rune": "Truestrike",
-    "Details": ""
+    "Details": "Can be used on Mauler to achieve the highest possible Wgt in game. Can be used with Tusk, or Riordan with Ghoul ring."
   },
   {
     "ID": 19,
     "Rune": "Vicious",
-    "Details": ""
+    "Details": "Can be used with Flux ring or on Dreadnought to negate the reduction in Accuracy."
   },
   {
     "ID": 20,
@@ -102,17 +102,17 @@
   {
     "ID": 21,
     "Rune": "Ragnarok",
-    "Details": ""
+    "Details": "Increase Crit damage by 10 after all damage calculations. Will do 10 damage on critical hits even if unit's Power is much lower than enemy's Def or Frt."
   },
   {
     "ID": 22,
     "Rune": "Cadence",
-    "Details": ""
+    "Details": "Works with positioning skills such as Reaper's Blink, Scholar's Phase and Geomancer's Starsurge."
   },
   {
     "ID": 23,
     "Rune": "Templar",
-    "Details": ""
+    "Details": "Works on Magical enemies: Priest, Witch, Paladin, Zealot, Surge, Sorcerer, Overseer, Magi, Treant, Oak Treant and enemies with certain special skills."
   },
   {
     "ID": 24,
@@ -177,7 +177,7 @@
   {
     "ID": 36,
     "Rune": "Titan",
-    "Details": ""
+    "Details": "Can be used with Flux ring or on Dreadnought to negate the reduction in Accuracy."
   },
   {
     "ID": 37,
@@ -207,12 +207,12 @@
   {
     "ID": 42,
     "Rune": "Serene",
-    "Details": ""
+    "Details": "Takes unit's actual Accuracy into calculation, ignores any Dodge from enemy targets."
   },
   {
     "ID": 43,
     "Rune": "Celerity",
-    "Details": ""
+    "Details": "Deals extra damage on all follow-up attacks, including Ferocity rune and Relic Knight's Bladestorm."
   },
   {
     "ID": 44,

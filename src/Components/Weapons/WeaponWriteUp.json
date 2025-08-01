@@ -2,7 +2,7 @@
   {
     "ID": 1,
     "Name": "Hatchet",
-    "Details": ""
+    "Details": "Basic weapon for Axe weapon type. Player will get 1 every time a unit reclasses from a different weapon wielding class to an axe wielding one. Player can sell all extra unequipped Hatchet for extra gold. Weak basic weapon that should be replaced when there is an opportunity."
   },
   {
     "ID": 2,
@@ -37,7 +37,7 @@
   {
     "ID": 8,
     "Name": "Shortbow",
-    "Details": ""
+    "Details": "Basic weapon for Bow weapon type. Player will get 1 every time a unit reclasses from a different weapon wielding class to a bow wielding one. Player can sell all extra unequipped Shortbow for extra gold. Weak basic weapon that should be replaced when there is an opportunity."
   },
   {
     "ID": 9,
@@ -57,7 +57,7 @@
   {
     "ID": 12,
     "Name": "Deepsong Greatbow",
-    "Details": "testing for 2 word weapon names"
+    "Details": ""
   },
   {
     "ID": 13,
@@ -77,7 +77,7 @@
   {
     "ID": 16,
     "Name": "Dagger",
-    "Details": ""
+    "Details": "Basic weapon for Dagger weapon type. Player will get 1 every time a unit reclasses from a different weapon wielding class to a dagger wielding one. Player can sell all extra unequipped Dagger for extra gold. Weak basic weapon that should be replaced when there is an opportunity."
   },
   {
     "ID": 17,
@@ -112,7 +112,7 @@
   {
     "ID": 23,
     "Name": "Focus",
-    "Details": ""
+    "Details": "Basic weapon for Focus weapon type. Player will get 1 every time a unit reclasses from a different weapon wielding class to a focus wielding one. Player can sell all extra unequipped Focus for extra gold. Weak basic weapon that should be replaced when there is an opportunity."
   },
   {
     "ID": 24,
@@ -152,7 +152,7 @@
   {
     "ID": 31,
     "Name": "Relic",
-    "Details": ""
+    "Details": "Basic weapon for Relic weapon type. Player will get 1 every time a unit reclasses from a different weapon wielding class to a relic wielding one. Player can sell all extra unequipped Relic for extra gold. Weak basic weapon that should be replaced when there is an opportunity."
   },
   {
     "ID": 32,
@@ -192,7 +192,7 @@
   {
     "ID": 39,
     "Name": "Shortsword",
-    "Details": ""
+    "Details": "Basic weapon for Sword weapon type. Player will get 1 every time a unit reclasses from a different weapon wielding class to a sword wielding one. Player can sell all extra unequipped Shortsword for extra gold. Weak basic weapon that should be replaced when there is an opportunity."
   },
   {
     "ID": 40,

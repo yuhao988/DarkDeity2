@@ -53,7 +53,7 @@ function RuneDetail() {
         {rune1.Effect}
         <br />
         <h3>Details:</h3>
-        {RuneWriteUps(name, "detail")}
+        <div style={{width:"75vw"}}>{RuneWriteUps(name, "detail")}</div>
         <h3>Available for:</h3>
         <div className="weapon-list">
           <table className="weapon-table">
