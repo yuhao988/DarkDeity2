@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/DarkDeity2/static/css/main.946715c9.css",
+    "main.js": "/DarkDeity2/static/js/main.ba8551f6.js",
+    "static/js/453.fdc6e82d.chunk.js": "/DarkDeity2/static/js/453.fdc6e82d.chunk.js",
+    "static/media/tal'dera.png": "/DarkDeity2/static/media/tal'dera.15b8d65bf553f010e968.png",
+    "static/media/cassandra.png": "/DarkDeity2/static/media/cassandra.2689a68668965e8fe758.png",
+    "static/media/saxon.png": "/DarkDeity2/static/media/saxon.01a907cf58865f5ede40.png",
+    "static/media/haoran.png": "/DarkDeity2/static/media/haoran.ce8643325e9f9ebf23c9.png",
+    "static/media/zanele.png": "/DarkDeity2/static/media/zanele.bf8ce8d90632fbe78ada.png",
+    "static/media/arthur.png": "/DarkDeity2/static/media/arthur.d843657b358aae278bb8.png",
+    "static/media/gwyn.png": "/DarkDeity2/static/media/gwyn.15bd8e15144c1e4b48d7.png",
+    "static/media/vissarion.png": "/DarkDeity2/static/media/vissarion.b03df11b97256f2e5761.png",
+    "static/media/riordan.png": "/DarkDeity2/static/media/riordan.a091fed560f3b6b8c6a9.png",
+    "static/media/khamari.png": "/DarkDeity2/static/media/khamari.a28ccab71682ec81a5de.png",
+    "static/media/tusk.png": "/DarkDeity2/static/media/tusk.358411f9cfdd47a4dba9.png",
+    "static/media/valeria.png": "/DarkDeity2/static/media/valeria.6f949e6423c06fcf697f.png",
+    "static/media/aya.png": "/DarkDeity2/static/media/aya.74e5d33a75b2b9e2a651.png",
+    "static/media/laurai.png": "/DarkDeity2/static/media/laurai.5df1557140f69bbc7751.png",
+    "static/media/alden.png": "/DarkDeity2/static/media/alden.77c7e683fafe6f37bf7a.png",
+    "static/media/zuhair.png": "/DarkDeity2/static/media/zuhair.e970e1febe0a86c4c0ad.png",
+    "static/media/calith.png": "/DarkDeity2/static/media/calith.930823efaf77d28d52eb.png",
+    "static/media/mashal.png": "/DarkDeity2/static/media/mashal.928304b52357f7a42aac.png",
+    "static/media/eve.png": "/DarkDeity2/static/media/eve.e4bebefaf6811322bfb0.png",
+    "static/media/benji.png": "/DarkDeity2/static/media/benji.69a1d2925b609a354541.png",
+    "static/media/MainLogo.jpg": "/DarkDeity2/static/media/MainLogo.d274a1938eba98bbe37f.jpg",
+    "index.html": "/DarkDeity2/index.html",
+    "main.946715c9.css.map": "/DarkDeity2/static/css/main.946715c9.css.map",
+    "main.ba8551f6.js.map": "/DarkDeity2/static/js/main.ba8551f6.js.map",
+    "453.fdc6e82d.chunk.js.map": "/DarkDeity2/static/js/453.fdc6e82d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.946715c9.css",
+    "static/js/main.ba8551f6.js"
+  ]
+}
