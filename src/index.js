@@ -21,12 +21,12 @@ root.render(
 //     }}
 //   >
 //     <PlayerProvider>
-      /*<BrowserRouter>
+      <BrowserRouter>
         <App />
-      </BrowserRouter>*/
-      <HashRouter>
+      </BrowserRouter>
+      /*<HashRouter>
         <App />
-      </HashRouter>
+      </HashRouter>*/
  //   </PlayerProvider>
 //  </Auth0Provider>
 );
