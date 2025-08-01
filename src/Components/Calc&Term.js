@@ -111,8 +111,8 @@ export default function CalcTerm() {
                       <td>Skill Number</td>
                       <td>Base value + Mastery Scaling * Unit Mastery</td>
                     </tr>
-                  </tbody>Enemy units always have a Crit chance of 0
-                </table>
+                  </tbody>
+                </table>Enemy units always have a Crit chance of 0
               </div>
             </div>
           )}
