@@ -36,7 +36,15 @@ function RingMain() {
         <h1>Rings</h1>
       </header>
       <div className="page-body">
-        <p>Ring text placeholder</p>
+        <div style={{ width: "75vw" }}>
+          Rings are equipments for units to boost their gameplay performances.
+          Each ring is constructed using 3{" "}
+          <Link to={`${process.env.PUBLIC_URL}/rings/ores`}>ores</Link>. Only 1
+          of each type of rings can be made. Each unit can equip up to 2 rings.
+          These rings can be freely equipped or unequipped without incurring any
+          loss or cost. While there are 2 distinct slots, the placement of the
+          rings does not have any effect.
+        </div>
         <div className="filter-controls">
           <label htmlFor="tag-filter">Filter by Tag: </label>
           <select
@@ -61,7 +69,6 @@ function RingMain() {
                 <th>Image</th>
                 <th>Name</th>
                 <th>Description</th>
-                
               </tr>
             </thead>
             <tbody>
@@ -75,18 +82,17 @@ function RingMain() {
                     />
                   </td>
                   <td>
-                    <Link to={`${ring.Name.toLowerCase()}`}>
-                      {ring.Name}
-                    </Link>
+                    <Link to={`${ring.Name.toLowerCase()}`}>{ring.Name}</Link>
                   </td>
                   <td>{ring.Description}</td>
-                  
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <Link to={`${process.env.PUBLIC_URL}`} className="home-link">Back to Home</Link>
+        <Link to={`${process.env.PUBLIC_URL}`} className="home-link">
+          Back to Home
+        </Link>
       </div>
     </div>
   );
