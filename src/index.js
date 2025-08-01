@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { /*HashRouter ,*/ BrowserRouter } from 'react-router-dom';
+import { HashRouter , BrowserRouter } from 'react-router-dom';
 
 //import { Auth0Provider } from "@auth0/auth0-react";
 //import { PlayerProvider } from "./PlayerContext";
@@ -21,12 +21,12 @@ root.render(
 //     }}
 //   >
 //     <PlayerProvider>
-      <BrowserRouter>
+      /*<BrowserRouter>
         <App />
-      </BrowserRouter>
-      /*<HashRouter>
+      </BrowserRouter>*/
+      <HashRouter>
         <App />
-      </HashRouter>*/
+      </HashRouter>
  //   </PlayerProvider>
 //  </Auth0Provider>
 );
