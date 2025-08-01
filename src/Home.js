@@ -30,7 +30,7 @@ function Home() {
 
       <div className="page-body">
         <img
-          src={mainLogo}
+          src={process.env.PUBLIC_URL + "/Components/Datas/Pictures/MainLogo.jpg"}
           alt="Dark Deity 2 Logo"
           className="main-logo" // Optional: for additional styling
         />
