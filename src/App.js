@@ -23,27 +23,28 @@ function App() {
   useEffect(() => {
     Modal.setAppElement("#root"); // Replace "#root" with your actual root element id
   }, []);
+  
 
   return (
     <div className="App">
       <MenuBar />
       <div className="main-content">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/characters" element={<CharMain />} />
-          <Route path="/characters/:name" element={<CharDetail />} />
-          <Route path="/classes" element={<ClassMain />} />
-          <Route path="/classes/:name" element={<ClassDetail />} />
-          <Route path="/rings" element={<RingMain />} />
-          <Route path="/rings/:name" element={<RingDetail />} />
-          <Route path="/rings/ores" element={<OreMain />} />
-          <Route path="/weapons" element={<WeaponMain />} />
-          <Route path="/weapons/:name" element={<WeaponDetail />} />
-          <Route path="/weapons/runes/:name" element={<RuneDetail />} />
-          <Route path="/calc" element={<CalcTerm />} />
+          <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />} />
+          <Route path={`${process.env.PUBLIC_URL}/characters`} element={<CharMain />} />
+          <Route path={`${process.env.PUBLIC_URL}/characters/:name`} element={<CharDetail />} />
+          <Route path={`${process.env.PUBLIC_URL}/classes`} element={<ClassMain />} />
+          <Route path={`${process.env.PUBLIC_URL}/classes/:name`} element={<ClassDetail />} />
+          <Route path={`${process.env.PUBLIC_URL}/rings`} element={<RingMain />} />
+          <Route path={`${process.env.PUBLIC_URL}/rings/:name`} element={<RingDetail />} />
+          <Route path={`${process.env.PUBLIC_URL}/rings/ores`} element={<OreMain />} />
+          <Route path={`${process.env.PUBLIC_URL}/weapons`} element={<WeaponMain />} />
+          <Route path={`${process.env.PUBLIC_URL}/weapons/:name`} element={<WeaponDetail />} />
+          <Route path={`${process.env.PUBLIC_URL}/weapons/runes/:name`} element={<RuneDetail />} />
+          <Route path={`${process.env.PUBLIC_URL}/calc`} element={<CalcTerm />} />
 
-          <Route path="/secret" element={<SimSample1 />} />
-          <Route path="/*" element={<Error />} />
+          <Route path={`${process.env.PUBLIC_URL}/secret`} element={<SimSample1 />} />
+          <Route path={`${process.env.PUBLIC_URL}/*`} element={<Error />} />
         </Routes>
       </div>
     </div>
