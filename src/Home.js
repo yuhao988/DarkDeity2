@@ -34,7 +34,7 @@ function Home() {
           alt="Dark Deity 2 Logo"
           className="main-logo" // Optional: for additional styling
         />
-        {console.log('Public URL:', process.env.PUBLIC_URL)}
+        
         <p>
           This is a fan-made web page aiming to provide information on the game
           Dark Deity 2.

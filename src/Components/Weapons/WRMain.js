@@ -68,7 +68,7 @@ function WeaponMain() {
                       .map((axe, index) => (
                         <li key={index}>
                           <Link
-                            to={`/weapons/${axe.Name.replace(
+                            to={`${axe.Name.replace(
                               /\s+/g,
                               ""
                             ).toLowerCase()}`}
@@ -95,7 +95,7 @@ function WeaponMain() {
                       .map((bow, index) => (
                         <li key={index}>
                           <Link
-                            to={`/weapons/${bow.Name.replace(
+                            to={`${bow.Name.replace(
                               /\s+/g,
                               ""
                             ).toLowerCase()}`}
@@ -122,7 +122,7 @@ function WeaponMain() {
                       .map((dagger, index) => (
                         <li key={index}>
                           <Link
-                            to={`/weapons/${dagger.Name.replace(
+                            to={`${dagger.Name.replace(
                               /\s+/g,
                               ""
                             ).toLowerCase()}`}
@@ -163,7 +163,7 @@ function WeaponMain() {
                       .map((focus, index) => (
                         <li key={index}>
                           <Link
-                            to={`/weapons/${focus.Name.replace(
+                            to={`${focus.Name.replace(
                               /\s+/g,
                               ""
                             ).toLowerCase()}`}
@@ -190,7 +190,7 @@ function WeaponMain() {
                       .map((relic, index) => (
                         <li key={index}>
                           <Link
-                            to={`/weapons/${relic.Name.replace(
+                            to={`${relic.Name.replace(
                               /\s+/g,
                               ""
                             ).toLowerCase()}`}
@@ -216,7 +216,7 @@ function WeaponMain() {
                       .filter((weapon) => weapon.Type === "Sword")
                       .map((sword, index) => (
                         <li key={index}>
-                          <Link to={`/weapons/${sword.Name.toLowerCase()}`}>
+                          <Link to={`${sword.Name.toLowerCase()}`}>
                             <img
                               src={
                                 imagesW[
@@ -260,7 +260,7 @@ function WeaponMain() {
                   <td key={`rune-${rowIndex}-${colIndex}`}>
                     {/* Customize this to display your rune data */}
                     <div className="rune-item">
-                      <Link to={`/weapons/runes/${rune.Rune.replace(/\s+/g, "").toLowerCase()}`}>
+                      <Link to={`runes/${rune.Rune.replace(/\s+/g, "").toLowerCase()}`}>
                         <img
                           src={
                             imagesR[rune.Rune.replace(/\s+/g, "").toLowerCase()]
@@ -284,7 +284,7 @@ function WeaponMain() {
             ))}
           </tbody>
         </table>
-        <Link to="/">Back to Home</Link>{" "}
+        <Link to={`${process.env.PUBLIC_URL}`}>Back to Home</Link>{" "}
       </div>
     </div>
   );

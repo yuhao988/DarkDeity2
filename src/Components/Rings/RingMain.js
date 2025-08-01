@@ -75,7 +75,7 @@ function RingMain() {
                     />
                   </td>
                   <td>
-                    <Link to={`/rings/${ring.Name.toLowerCase()}`}>
+                    <Link to={`${ring.Name.toLowerCase()}`}>
                       {ring.Name}
                     </Link>
                   </td>
@@ -86,7 +86,7 @@ function RingMain() {
             </tbody>
           </table>
         </div>
-        <Link to="/" className="home-link">Back to Home</Link>
+        <Link to={`${process.env.PUBLIC_URL}`} className="home-link">Back to Home</Link>
       </div>
     </div>
   );

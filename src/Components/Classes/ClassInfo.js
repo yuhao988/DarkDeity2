@@ -74,7 +74,7 @@ function ClassMain() {
                     />
 
                     <Link
-                      to={`/classes/${class1.Name.replace(
+                      to={`${class1.Name.replace(
                         /\s+/g,
                         ""
                       ).toLowerCase()}`}
@@ -105,7 +105,7 @@ function ClassMain() {
                     />
 
                     <Link
-                      to={`/classes/${class1.Name.replace(
+                      to={`${class1.Name.replace(
                         /\s+/g,
                         ""
                       ).toLowerCase()}`}
@@ -145,7 +145,7 @@ function ClassMain() {
                     />
 
                     <Link
-                      to={`/classes/${class1.Name.replace(
+                      to={`${class1.Name.replace(
                         /\s+/g,
                         ""
                       ).toLowerCase()}`}
@@ -176,7 +176,7 @@ function ClassMain() {
                     />
 
                     <Link
-                      to={`/classes/${class1.Name.replace(
+                      to={`${class1.Name.replace(
                         /\s+/g,
                         ""
                       ).toLowerCase()}`}
@@ -216,7 +216,7 @@ function ClassMain() {
                     />
 
                     <Link
-                      to={`/classes/${class1.Name.replace(
+                      to={`${class1.Name.replace(
                         /\s+/g,
                         ""
                       ).toLowerCase()}`}
@@ -247,7 +247,7 @@ function ClassMain() {
                     />
 
                     <Link
-                      to={`/classes/${class1.Name.replace(
+                      to={`${class1.Name.replace(
                         /\s+/g,
                         ""
                       ).toLowerCase()}`}
@@ -287,7 +287,7 @@ function ClassMain() {
                     />
 
                     <Link
-                      to={`/classes/${class1.Name.replace(
+                      to={`${class1.Name.replace(
                         /\s+/g,
                         ""
                       ).toLowerCase()}`}
@@ -318,7 +318,7 @@ function ClassMain() {
                     />
 
                     <Link
-                      to={`/classes/${class1.Name.replace(
+                      to={`${class1.Name.replace(
                         /\s+/g,
                         ""
                       ).toLowerCase()}`}
@@ -358,7 +358,7 @@ function ClassMain() {
                     />
 
                     <Link
-                      to={`/classes/${class1.Name.replace(
+                      to={`${class1.Name.replace(
                         /\s+/g,
                         ""
                       ).toLowerCase()}`}
@@ -389,7 +389,7 @@ function ClassMain() {
                     />
 
                     <Link
-                      to={`/classes/${class1.Name.replace(
+                      to={`${class1.Name.replace(
                         /\s+/g,
                         ""
                       ).toLowerCase()}`}
@@ -403,7 +403,7 @@ function ClassMain() {
         </table>
         <div className="class-list"></div>
         
-        <Link to="/" className="home-link">Back to Home</Link>{" "}
+        <Link to={`${process.env.PUBLIC_URL}`}  className="home-link">Back to Home</Link>{" "}
       </div>
     </div>
   );

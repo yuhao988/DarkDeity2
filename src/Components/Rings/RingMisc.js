@@ -62,7 +62,7 @@ export function processLinkText(text) {
           return (
             <Link
               key={`${segmentIndex}-${partIndex}`}
-              to={`/rings/${part.toLowerCase()}`}
+              to={`${process.env.PUBLIC_URL}/rings/${part.toLowerCase()}`}
               className="ring-link"
             >
               {part}
@@ -72,7 +72,7 @@ export function processLinkText(text) {
           return (
             <Link
               key={`${segmentIndex}-${partIndex}`}
-              to={`/weapons/${part.replace(/\s+/g, "").toLowerCase()}`}
+              to={`${process.env.PUBLIC_URL}/weapons/${part.replace(/\s+/g, "").toLowerCase()}`}
               className="weapon-link"
             >
               {part}
@@ -82,7 +82,7 @@ export function processLinkText(text) {
           return (
             <Link
               key={`${segmentIndex}-${partIndex}`}
-              to={`/weapons/runes/${part.replace(/\s+/g, "").toLowerCase()}`}
+              to={`${process.env.PUBLIC_URL}/weapons/runes/${part.replace(/\s+/g, "").toLowerCase()}`}
               className="rune-link"
             >
               {part}

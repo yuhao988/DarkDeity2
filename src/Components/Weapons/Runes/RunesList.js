@@ -77,7 +77,7 @@ function RuneDetail() {
                       .map((axe, index) => (
                         <li key={index}>
                           <Link
-                            to={`/weapons/${axe.Name.replace(
+                            to={`${process.env.PUBLIC_URL}/weapons/${axe.Name.replace(
                               /\s+/g,
                               ""
                             ).toLowerCase()}`}
@@ -108,7 +108,7 @@ function RuneDetail() {
                       .map((bow, index) => (
                         <li key={index}>
                           <Link
-                            to={`/weapons/${bow.Name.replace(
+                            to={`${process.env.PUBLIC_URL}/weapons/${bow.Name.replace(
                               /\s+/g,
                               ""
                             ).toLowerCase()}`}
@@ -139,7 +139,7 @@ function RuneDetail() {
                       .map((dagger, index) => (
                         <li key={index}>
                           <Link
-                            to={`/weapons/${dagger.Name.replace(
+                            to={`${process.env.PUBLIC_URL}/weapons/${dagger.Name.replace(
                               /\s+/g,
                               ""
                             ).toLowerCase()}`}
@@ -184,7 +184,7 @@ function RuneDetail() {
                       .map((focus, index) => (
                         <li key={index}>
                           <Link
-                            to={`/weapons/${focus.Name.replace(
+                            to={`${process.env.PUBLIC_URL}/weapons/${focus.Name.replace(
                               /\s+/g,
                               ""
                             ).toLowerCase()}`}
@@ -215,7 +215,7 @@ function RuneDetail() {
                       .map((relic, index) => (
                         <li key={index}>
                           <Link
-                            to={`/weapons/${relic.Name.replace(
+                            to={`${process.env.PUBLIC_URL}/weapons/${relic.Name.replace(
                               /\s+/g,
                               ""
                             ).toLowerCase()}`}
@@ -245,7 +245,7 @@ function RuneDetail() {
                       )
                       .map((sword, index) => (
                         <li key={index}>
-                          <Link to={`/weapons/${sword.Name.toLowerCase()}`}>
+                          <Link to={`${process.env.PUBLIC_URL}/weapons/${sword.Name.toLowerCase()}`}>
                             <img
                               src={
                                 imagesW[
@@ -265,7 +265,7 @@ function RuneDetail() {
             </tbody>
           </table>
         </div>
-        <Link to="/weapons" className="home-link">
+        <Link to={`${process.env.PUBLIC_URL}/weapons`} className="home-link">
           Back
         </Link>
       </div>

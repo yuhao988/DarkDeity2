@@ -43,13 +43,13 @@ function CharMain() {
                 alt={character.Name}
                 className="character-image"
               />
-              <Link to={`/characters/${character.Name.toLowerCase()}`}>
+              <Link to={`${character.Name.toLowerCase()}`}>
                 <h3>{character.Name}</h3>
               </Link>
             </div>
           ))}
         </div>
-        <Link to="/" className="home-link">Back to Home</Link>{" "}
+        <Link to={`${process.env.PUBLIC_URL}`} className="home-link">Back to Home</Link>{" "}
       </div>
     </div>
   );

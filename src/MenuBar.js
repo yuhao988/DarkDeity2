@@ -24,20 +24,20 @@ function MenuBar() {
               <Link to={`${process.env.PUBLIC_URL}/`}>Home</Link>
             </li>
             <li>
-              <Link to="/characters">Characters</Link>
+              <Link to={`${process.env.PUBLIC_URL}/characters`}>Characters</Link>
             </li>
             <li>
-              <Link to="/classes">Classes</Link>
+              <Link to={`${process.env.PUBLIC_URL}/classes`}>Classes</Link>
             </li>
             <li>
-              <Link to="/rings">Rings</Link>
+              <Link to={`${process.env.PUBLIC_URL}/rings`}>Rings</Link>
             </li>
             <li>
-              <Link to="/weapons">Weapons & Runes</Link>
+              <Link to={`${process.env.PUBLIC_URL}/weapons`}>Weapons & Runes</Link>
             </li>
             <li>Shop items</li>
             <li>
-              <Link to="/calc">Calculations & Terminologies</Link>
+              <Link to={`${process.env.PUBLIC_URL}/calc`}>Calculations & Terminologies</Link>
             </li>
             <li>Character Builder</li>
             <li>Enemies</li>

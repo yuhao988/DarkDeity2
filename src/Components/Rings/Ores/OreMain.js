@@ -84,7 +84,7 @@ export default function OreMain() {
           oreCurrent={oreCurrent}
         />
 
-        <Link to="/rings" className="home-link">
+        <Link to={`${process.env.PUBLIC_URL}/rings`} className="home-link">
           Back to rings
         </Link>
       </div>

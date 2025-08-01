@@ -124,7 +124,7 @@ function WeaponDetail() {
                         }}
                       >
                         <div className="rune-item">
-                          <Link to={`/weapons/runes/${rune.toLowerCase()}`}>
+                          <Link to={`${process.env.PUBLIC_URL}/weapons/runes/${rune.toLowerCase()}`}>
                             <img
                               src={
                                 imagesR[rune.replace(/\s+/g, "").toLowerCase()]
@@ -187,7 +187,7 @@ function WeaponDetail() {
         </div>
         <h3>Tips:</h3>
         <div style={{width:"75vw"}}>{WeaponWriteUps(weaponName, "detail")}</div>
-        <Link to="/weapons" className="home-link">
+        <Link to={`${process.env.PUBLIC_URL}/weapons`} className="home-link">
           Back to Weapons
         </Link>{" "}
       </div>

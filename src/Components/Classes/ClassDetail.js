@@ -160,7 +160,7 @@ function ClassDetail() {
               .filter((charName) => charName.classLine === nameClass.Classline)
               .map((char) => (
                 <li>
-                  <Link to={`/characters/${char.Name.toLowerCase()}`}>
+                  <Link to={`${process.env.PUBLIC_URL}/characters/${char.Name.toLowerCase()}`}>
                     {char.Name}
                   </Link>
                 </li>
@@ -334,7 +334,7 @@ function ClassDetail() {
                           if (key === "Name") {
                             return (
                               <td key={key}>
-                                <Link to={`/characters/${value.toLowerCase()}`}>
+                                <Link to={`${process.env.PUBLIC_URL}/characters/${value.toLowerCase()}`}>
                                   {value}
                                 </Link>
                               </td>
@@ -608,7 +608,7 @@ function ClassDetail() {
           <h3>Class Synergy</h3>
           {classWriteUps(Name1, "class")}
         </div>
-        <Link to="/classes" className="home-link">Back</Link>{" "}
+        <Link to={`${process.env.PUBLIC_URL}/classes`} className="home-link">Back</Link>{" "}
       </div>
     </div>
   );

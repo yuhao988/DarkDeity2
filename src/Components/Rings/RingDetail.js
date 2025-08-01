@@ -38,13 +38,13 @@ function RingDetail() {
         <h3>Ores needed:</h3>
         <ul>
           <li>
-            <Link to="/rings/ores"> {ring1.Ores[0]}</Link>
+            <Link to={`${process.env.PUBLIC_URL}/rings/ores`}> {ring1.Ores[0]}</Link>
           </li>
           <li>
-            <Link to="/rings/ores"> {ring1.Ores[1]}</Link>
+            <Link to={`${process.env.PUBLIC_URL}/rings/ores`}> {ring1.Ores[1]}</Link>
           </li>
           <li>
-            <Link to="/rings/ores">{ring1.Ores[2]}</Link>
+            <Link to={`${process.env.PUBLIC_URL}/rings/ores`}>{ring1.Ores[2]}</Link>
           </li>
         </ul>
         <h3>Effect:</h3>
@@ -52,7 +52,7 @@ function RingDetail() {
         <br />
         <h3>Details:</h3>
         {RingWriteUps(name, "detail")}
-        <Link to="/rings" className="home-link">
+        <Link to={`${process.env.PUBLIC_URL}/rings`} className="home-link">
           Back
         </Link>
       </div>

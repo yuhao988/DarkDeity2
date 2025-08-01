@@ -333,7 +333,7 @@ function CharDetail() {
                           let numValue;
 
                           if (key === "Name") {
-                            return <td key={key}><Link to={`/classes/${value.toLowerCase()}`}>{value}</Link></td>;
+                            return <td key={key}><Link to={`${process.env.PUBLIC_URL}/classes/${value.toLowerCase()}`}>{value}</Link></td>;
                           } else {
                             const charGrow = parseFloat(growths[i]);
 
@@ -398,7 +398,7 @@ function CharDetail() {
                           let numValue;
 
                           if (key === "Name") {
-                            return <td key={key}><Link to={`/classes/${value.toLowerCase()}`}>{value}</Link></td>;
+                            return <td key={key}><Link to={`${process.env.PUBLIC_URL}/classes/${value.toLowerCase()}`}>{value}</Link></td>;
                           } else {
                             const charGrow = parseFloat(growths[i]);
 
@@ -547,7 +547,7 @@ function CharDetail() {
           <h3>Ring Suggestions:</h3>
           <div>{charIntro(nameNoMark, "ring")}</div>
         </div>
-        <Link to="/characters" className="home-link">Back</Link>{" "}
+        <Link to={`${process.env.PUBLIC_URL}/characters`} className="home-link">Back</Link>{" "}
       </div>
     </div>
   );

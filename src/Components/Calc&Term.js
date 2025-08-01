@@ -151,7 +151,7 @@ export default function CalcTerm() {
                 Severity Stage affects the number of instances a effect lasts on
                 a unit. Instance is different for each kind of effect. Each
                 instance is considered a severity stage for{" "}
-                <Link to="/classes/hemomancer">Hemomancer</Link>'s Soul Tear
+                <Link to={`${process.env.PUBLIC_URL}/classes/hemomancer`}>Hemomancer</Link>'s Soul Tear
               </div>
               <h3>Status Effects</h3>
               <table className="stat-table" style={{ width: "70vw" }}>
@@ -238,7 +238,7 @@ export default function CalcTerm() {
           )}
         </div>
 
-        <Link to="/" className="home-link">
+        <Link to={`${process.env.PUBLIC_URL}`} className="home-link">
           Back to Home
         </Link>
       </div>
