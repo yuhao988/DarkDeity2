@@ -30,7 +30,7 @@ function App() {
       <MenuBar />
       <div className="main-content">
         <Routes>
-          <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />} />
+          <Route path={`${process.env.PUBLIC_URL}/#`} element={<Home />} />
           <Route path={`${process.env.PUBLIC_URL}/characters`} element={<CharMain />} />
           <Route path={`${process.env.PUBLIC_URL}/characters/:name`} element={<CharDetail />} />
           <Route path={`${process.env.PUBLIC_URL}/classes`} element={<ClassMain />} />
