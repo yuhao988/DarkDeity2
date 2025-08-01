@@ -10,7 +10,7 @@ export default function OreDetail(prop) {
   };
 
   const imageContext = require.context(
-    "../../Characters/Pictures", // Folder path
+    "../../../../public/Images/Characters/Pictures", // Folder path
     false, // Don't look in subdirectories
     /\.(png)$/ // File extensions to match
   );

@@ -58,7 +58,7 @@ function CharDetail() {
   const growthsValue = growths.map((rate) => parseFloat(rate) / 100);
 
   const imageContext = require.context(
-    "./Pictures", // Folder path
+    "../../../public/Images/Characters/Pictures", // Folder path
     false, // Don't look in subdirectories
     /\.(png)$/ // File extensions to match
   );

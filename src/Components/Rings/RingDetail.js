@@ -12,7 +12,7 @@ function RingDetail() {
   );
 
   const imageContext = require.context(
-    "../Datas/Pictures/Rings", // Folder path
+    "../../../public/Images/Pictures/Rings", // Folder path
     false, // Don't look in subdirectories
     /\.(png)$/ // File extensions to match
   );

@@ -7,7 +7,7 @@ import "./Weapons.css";
 
 function WeaponMain() {
   const imageContextW = require.context(
-    "../Datas/Pictures/Weapons", // Folder path
+    "../../../public/Images/Pictures/Weapons", // Folder path
     false, // Don't look in subdirectories
     /\.(png)$/ // File extensions to match
   );
@@ -19,7 +19,7 @@ function WeaponMain() {
   }, {});
 
   const imageContextR = require.context(
-    "../Datas/Pictures/Runes", // Folder path
+    "../../../public/Images/Pictures/Runes", // Folder path
     false, // Don't look in subdirectories
     /\.(png)$/ // File extensions to match
   );

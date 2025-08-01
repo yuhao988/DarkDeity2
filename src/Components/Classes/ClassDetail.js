@@ -53,7 +53,7 @@ function ClassDetail() {
   ].map((stat) => nameClass[stat]);
 
   const imageContext = require.context(
-    "./Pictures", // Folder path
+    "../../../public/Images/Classes/Pictures", // Folder path
     false, // Don't look in subdirectories
     /\.(png)$/ // File extensions to match
   );

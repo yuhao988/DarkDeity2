@@ -1,5 +1,5 @@
 //import { Link } from "react-router-dom";
-import mainLogo from "./Components/Datas/Pictures/MainLogo.jpg";
+
 import React from "react";
 import "./App.css";
 
@@ -30,10 +30,11 @@ function Home() {
 
       <div className="page-body">
         <img
-          src={process.env.PUBLIC_URL + "/Components/Datas/Pictures/MainLogo.jpg"}
+          src={`${process.env.PUBLIC_URL}/Images/Pictures/MainLogo.jpg`}
           alt="Dark Deity 2 Logo"
           className="main-logo" // Optional: for additional styling
         />
+        {console.log('Public URL:', process.env.PUBLIC_URL)}
         <p>
           This is a fan-made web page aiming to provide information on the game
           Dark Deity 2.
