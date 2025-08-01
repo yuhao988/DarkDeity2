@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/DarkDeity2/static/css/main.946715c9.css",
+    "main.css": "/DarkDeity2/static/css/main.5e35abbb.css",
     "main.js": "/DarkDeity2/static/js/main.7784fb30.js",
     "static/js/453.fdc6e82d.chunk.js": "/DarkDeity2/static/js/453.fdc6e82d.chunk.js",
     "static/media/tal'dera.png": "/DarkDeity2/static/media/tal'dera.15b8d65bf553f010e968.png",
@@ -25,12 +25,12 @@
     "static/media/benji.png": "/DarkDeity2/static/media/benji.69a1d2925b609a354541.png",
     "static/media/MainLogo.jpg": "/DarkDeity2/static/media/MainLogo.d274a1938eba98bbe37f.jpg",
     "index.html": "/DarkDeity2/index.html",
-    "main.946715c9.css.map": "/DarkDeity2/static/css/main.946715c9.css.map",
+    "main.5e35abbb.css.map": "/DarkDeity2/static/css/main.5e35abbb.css.map",
     "main.7784fb30.js.map": "/DarkDeity2/static/js/main.7784fb30.js.map",
     "453.fdc6e82d.chunk.js.map": "/DarkDeity2/static/js/453.fdc6e82d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.946715c9.css",
+    "static/css/main.5e35abbb.css",
     "static/js/main.7784fb30.js"
   ]
 }
