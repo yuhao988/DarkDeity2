@@ -217,7 +217,7 @@ export default function CalcTerm() {
                     <td style={{ textAlign: "left" }}>
                       Debuff: Loses 1 point of Defense and Fortitude
                     </td>
-                    <td>1 round of combat</td>
+                    <td>1 hit from enemy</td>
                   </tr>
                   <tr>
                     <td>Weak</td>
