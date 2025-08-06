@@ -24,7 +24,9 @@ function MenuBar() {
               <Link to={`${process.env.PUBLIC_URL}/`}>Home</Link>
             </li>
             <li>
-              <Link to={`${process.env.PUBLIC_URL}/characters`}>Characters</Link>
+              <Link to={`${process.env.PUBLIC_URL}/characters`}>
+                Characters
+              </Link>
             </li>
             <li>
               <Link to={`${process.env.PUBLIC_URL}/classes`}>Classes</Link>
@@ -33,14 +35,20 @@ function MenuBar() {
               <Link to={`${process.env.PUBLIC_URL}/rings`}>Rings</Link>
             </li>
             <li>
-              <Link to={`${process.env.PUBLIC_URL}/weapons`}>Weapons & Runes</Link>
+              <Link to={`${process.env.PUBLIC_URL}/weapons`}>
+                Weapons & Runes
+              </Link>
             </li>
             <li>Shop items</li>
             <li>
-              <Link to={`${process.env.PUBLIC_URL}/calc`}>Calculations & Terminologies</Link>
+              <Link to={`${process.env.PUBLIC_URL}/calc`}>
+                Calculations & Terminologies
+              </Link>
+            </li>
+            <li>
+              <Link to={`${process.env.PUBLIC_URL}/enemies`}>Enemies</Link>
             </li>
             <li>Character Builder</li>
-            <li>Enemies</li>
           </ul>
           {console.log(process.env.PUBLIC_URL)}
           {console.log(`${process.env.PUBLIC_URL}/characters`)}
