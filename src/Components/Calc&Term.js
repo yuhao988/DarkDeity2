@@ -77,6 +77,10 @@ export default function CalcTerm() {
                       <td>True Speed</td>
                       <td>Unit Speed - Weapon Weight</td>
                     </tr>
+                    <tr>
+                      <td>Crit Avo*</td>
+                      <td>Unit Lck * 2</td>
+                    </tr>
                   </tbody>
                 </table>
 
