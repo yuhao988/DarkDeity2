@@ -603,7 +603,7 @@ export function classSkillDes(className, base, scale, skillNum, upgrade) {
         if (upgrade.upgrade4) finalScale[0] += 50;
         skillText = skillText.replace(
           "(45+100%)",
-          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+          `[${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)]`
         );
         break;
       case "Warden":
@@ -1065,7 +1065,7 @@ export function classSkillDes(className, base, scale, skillNum, upgrade) {
         if (upgrade.upgrade4) finalScale[0] += 50;
         skillText = skillText.replace(
           "(45+100%)",
-          `${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)`
+          `[${finalBase[0]}+(${finalScale[0]}% Mastery-scaling)]`
         );
         break;
       case "Warden":
