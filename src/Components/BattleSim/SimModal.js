@@ -1,6 +1,7 @@
 import Modal from "react-modal";
 import { useState } from "react";
 import { battleForecast, simulateBattle } from "./SimCalc";
+import classSample from "../Datas/simClassSmp.json";
 import eneHeroic from "../Datas/eneHeroic.json";
 import eneDeity from "../Datas/eneDeity.json";
 import "./Sim.css";
@@ -11,6 +12,7 @@ export default function SimModal(prop) {
   const [enemyActive, setEnemyActive] = useState("");
   const [enmDiff, setEnmDiff] = useState("Heroic");
   //const [isBoss, setIsBoss]=useState("");
+  const [oppoClass, setOppoClass] = useState("");
 
   // Get enemies based on current difficulty
   const currentEnemies = enmDiff === "Heroic" ? eneHeroic : eneDeity;
@@ -24,12 +26,20 @@ export default function SimModal(prop) {
       (enemy) => enemy.Class === e.target.value && enemy.Boss === ""
     );
     setEnemyActive(selectedEnemy || null);
+    setOppoClass("");
   };
 
   const handleDiffChange = (e) => {
     const diff = e.target.value;
     setEnmDiff(diff);
     setEnemyActive(null); // Reset selected enemy when difficulty changes
+  };
+  const handleOppoChange = (e) => {
+    const selectedOppo = classSample.find(
+      (opponent) => opponent.Class === e.target.value
+    );
+    setEnemyActive("");
+    setOppoClass(selectedOppo || null);
   };
 
   return (
@@ -68,9 +78,10 @@ export default function SimModal(prop) {
         },
       }}
     >
-      <button onClick={handleCloseModal} className="modal-close-button">
-        
-      </button>
+      <button
+        onClick={handleCloseModal}
+        className="modal-close-button"
+      ></button>
 
       {unit && (
         <div className="modal-content">
@@ -106,15 +117,37 @@ export default function SimModal(prop) {
                 )
             )}
           </select>
+          <h4>Playable class enemy</h4>
+          <select
+            onChange={handleOppoChange}
+            value={oppoClass?.Class || ""}
+            className="enemy-select"
+            style={{ width: "20vw" }}
+          >
+            <option value="">Select an opponent</option>
+            {classSample.map((opponent) => (
+              <option key={`${opponent.Class}`} value={opponent.Class}>
+                {opponent.Class}
+              </option>
+            ))}
+          </select>
 
           {/* Battle Display - Will update immediately on any change */}
-          {enemyActive && (
+          {(enemyActive || oppoClass) && (
             <div className="battle-container">
               <div>
                 <div className="selected-enemy">
-                  <h3>Selected Enemy: {enemyActive.Class}</h3>
+                  {enemyActive ? (
+                    <h3>Selected Enemy: {enemyActive.Class}</h3>
+                  ) : (
+                    <h3>Selected Opponent: {oppoClass.Class}</h3>
+                  )}
                 </div>
-                {battleForecast(unit, enemyActive)}
+                {enemyActive ? (
+                  <div>{battleForecast(unit, enemyActive)}</div>
+                ) : (
+                  <div>{battleForecast(unit, oppoClass)}</div>
+                )}
               </div>
               <div className="right-content">
                 <p>
