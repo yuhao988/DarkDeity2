@@ -707,6 +707,11 @@ export function simulateBattle2(unit, oppo) {
           {unit.Class} defeats {oppo.Class} {winloseCnt[2]} times and loses{" "}
           {winloseCnt[3]} times when {oppo.Class} attacks first.
         </p>
+        <p>
+          Win count: {winloseCnt[0] + winloseCnt[2]} Lose count:{" "}
+          {winloseCnt[1] + winloseCnt[3]} Nett:{" "}
+          {winloseCnt[0] + winloseCnt[2] - winloseCnt[1] - winloseCnt[3]}
+        </p>
       </div>
     );
   }

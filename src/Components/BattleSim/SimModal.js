@@ -1,6 +1,11 @@
 import Modal from "react-modal";
 import { useState } from "react";
-import { battleForecast, battleForecast2, simulateBattle } from "./SimCalc";
+import {
+  battleForecast,
+  battleForecast2,
+  simulateBattle,
+  simulateBattle2,
+} from "./SimCalc";
 import classSample from "../Datas/simClassSmp.json";
 import eneHeroic from "../Datas/eneHeroic.json";
 import eneDeity from "../Datas/eneDeity.json";
@@ -25,6 +30,7 @@ export default function SimModal(prop) {
   const handleCloseModal = () => {
     onClose();
     setEnemyActive("");
+    setUnitActive(null);
   };
   const handleEnemyChange = (e) => {
     const selectedEnemy = currentEnemies.find(
@@ -96,9 +102,9 @@ export default function SimModal(prop) {
 
       {unit &&
         (isEnemy ? (
-          
           <div className="modal-content">
-            {!unitActive && setUnitActive(unit)}
+            {(!unitActive || unitActive.Class !== unit.Class) &&
+              setUnitActive(unit)}
             <h2>{unit.Class}</h2>
             <h4>Game difficulty:</h4>
             <select
@@ -221,7 +227,7 @@ export default function SimModal(prop) {
                   {enemyActive ? (
                     <div>{simulateBattle(unit, enemyActive)}</div>
                   ) : (
-                    <div>{simulateBattle(unit, oppoClass)}</div>
+                    <div>{simulateBattle2(unit, oppoClass)}</div>
                   )}
                 </div>
               </div>
