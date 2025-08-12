@@ -50,8 +50,6 @@ function MenuBar() {
             </li>
             <li>Character Builder</li>
           </ul>
-          {console.log(process.env.PUBLIC_URL)}
-          {console.log(`${process.env.PUBLIC_URL}/characters`)}
         </nav>
       </div>
     </>

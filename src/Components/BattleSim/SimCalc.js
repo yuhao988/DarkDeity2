@@ -93,6 +93,7 @@ export function tankCalc(unitName, isUnit) {
 }
 
 export function battleForecast(unit, enemy) {
+  //console.log(unit)
   const TspdDiff = unit.TSpd - enemy.TSpd;
   let unitW = false;
   let enemyW = false;
@@ -158,6 +159,81 @@ export function battleForecast(unit, enemy) {
           <td>{unitCrit}</td>
           <td>Critical</td>
           <td>0</td>
+        </tr>
+      </tbody>
+    </table>
+  );
+}
+
+export function battleForecast2(unit, oppo) {
+  const TspdDiff = unit.TSpd - oppo.TSpd;
+  let unitW = false;
+  let oppoW = false;
+  if (TspdDiff >= 5) {
+    unitW = true;
+  } else if (TspdDiff <= -5) {
+    oppoW = true;
+  }
+
+  let unitDmg = 0;
+  let opDmg = 0;
+  if (unit["Phy/Mag"] === "Physical") {
+    unitDmg = Math.max(0, unit.Pwr - oppo.Def).toFixed(0);
+  } else if (unit["Phy/Mag"] === "Magical") {
+    unitDmg = Math.max(0, unit.Pwr - oppo.For).toFixed(0);
+  }
+  if (oppo["Phy/Mag"] === "Physical") {
+    opDmg = Math.max(0, oppo.Pwr - unit.Def).toFixed(0);
+  } else if (oppo["Phy/Mag"] === "Magical") {
+    opDmg = Math.max(0, oppo.Pwr - unit.For).toFixed(0);
+  }
+
+  let unitHit = Math.max(0, Math.min(100, unit.Acc - oppo.Ddg)).toFixed(0);
+  let opHit = Math.max(0, Math.min(100, oppo.Acc - unit.Ddg)).toFixed(0);
+  if (unit.Class === "Dreadnought") {
+    unitHit = 100;
+    opHit = 100;
+  }
+  const unitCrit = Math.max(0, Math.min(100, unit.Crit - oppo.Lck * 2)).toFixed(
+    0
+  );
+  const opCrit = Math.max(0, Math.min(100, oppo.Crit - unit.Lck * 2)).toFixed(
+    0
+  );
+
+  return (
+    <table className="battle-stat">
+      <tbody>
+        <tr>
+          <td>{unit.Class}</td>
+          <td></td>
+          <td>{oppo.Class}</td>
+        </tr>
+        <tr>
+          <td>{unit.HP.toFixed(0)}</td>
+          <td>HP</td>
+          <td>{oppo.HP.toFixed(0)}</td>
+        </tr>
+        <tr>
+          <td>{unitHit}</td>
+          <td>Hit</td>
+          <td>{opHit}</td>
+        </tr>
+        <tr>
+          <td>
+            {unitDmg}
+            {unitW ? " X2" : ""}
+          </td>
+          <td>Damage</td>
+          <td>
+            {opDmg}
+            {oppoW ? "X2" : ""}
+          </td>
+        </tr>
+        <tr>
+          <td>{unitCrit}</td>
+          <td>Critical</td>
+          <td>{opCrit}</td>
         </tr>
       </tbody>
     </table>
