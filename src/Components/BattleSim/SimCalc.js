@@ -463,6 +463,250 @@ export function simulateBattle(unit, enemy) {
           {unit.Class} defeats {enemy.Class} {winloseCnt[2]} times and loses{" "}
           {winloseCnt[3]} times when {enemy.Class} attacks first.
         </p>
+        <p>
+          Win count: {winloseCnt[0] + winloseCnt[2]} Lose count:{" "}
+          {winloseCnt[1] + winloseCnt[3]} Nett:{" "}
+          {winloseCnt[0] + winloseCnt[2] - winloseCnt[1] - winloseCnt[3]}
+        </p>
+      </div>
+    );
+  }
+}
+
+export function simulateBattle2(unit, oppo) {
+  let unitW = false;
+  let enemyW = false;
+  if (unit.TSpd - oppo.TSpd >= 5) {
+    unitW = true;
+  } else if (unit.TSpd - oppo.TSpd <= -5) {
+    enemyW = true;
+  }
+
+  let winloseCnt = [0, 0, 0, 0];
+
+  let unitDmg = 0;
+  let eneDmg = 0;
+  if (unit["Phy/Mag"] === "Physical") {
+    unitDmg = Math.max(0, unit.Pwr - oppo.Def).toFixed(0);
+  } else if (unit["Phy/Mag"] === "Magical") {
+    unitDmg = Math.max(0, unit.Pwr - oppo.For).toFixed(0);
+  }
+  if (oppo["Phy/Mag"] === "Physical") {
+    eneDmg = Math.max(0, oppo.Pwr - unit.Def).toFixed(0);
+  } else if (oppo["Phy/Mag"] === "Magical") {
+    eneDmg = Math.max(0, oppo.Pwr - unit.For).toFixed(0);
+  }
+
+  let unitHit = Math.max(0, Math.min(100, unit.Acc - oppo.Ddg)).toFixed(0);
+  let eneHit = Math.max(0, Math.min(100, oppo.Acc - unit.Ddg)).toFixed(0);
+  if (unit.Class === "Dreadnought") {
+    unitHit = 100;
+    eneHit = 100;
+  }
+  const unitCrit = Math.max(0, Math.min(100, unit.Crit - oppo.Lck * 2)).toFixed(
+    0
+  );
+  const opCrit = Math.max(0, Math.min(100, oppo.Crit - unit.Lck * 2)).toFixed(
+    0
+  );
+
+  if ((unitDmg === 0 && eneDmg === 0) || (unitHit === 0 && eneHit === 0)) {
+    return <p>The battle results in a draw</p>;
+  } else {
+    //Player unit attacks first
+    for (let i = 0; i < 5000; i++) {
+      let unitCurHP = unit.HP;
+      let eneCurHP = oppo.HP;
+      while (unitCurHP > 0 && eneCurHP > 0) {
+        //Player unit attacks
+        if (Math.floor(Math.random() * 100) < unitHit) {
+          if (Math.floor(Math.random() * 100) < unitCrit) {
+            eneCurHP -= unitDmg * 2;
+          } else {
+            eneCurHP -= unitDmg;
+          }
+        }
+        if (eneCurHP <= 0) {
+          winloseCnt[0]++;
+          break;
+        }
+        //Enemy counters
+        if (Math.floor(Math.random() * 100) < eneHit) {
+          if (Math.floor(Math.random() * 100) < opCrit) {
+            unitCurHP -= eneDmg * 2;
+          } else {
+            unitCurHP -= eneDmg;
+          }
+        }
+        if (unitCurHP <= 0) {
+          winloseCnt[1]++;
+          break;
+        }
+        //If player unit doubles
+        if (unitW && Math.floor(Math.random() * 100) < unitHit) {
+          if (Math.floor(Math.random() * 100) < unitCrit) {
+            eneCurHP -= unitDmg * 2;
+          } else {
+            eneCurHP -= unitDmg;
+          }
+        }
+        if (eneCurHP <= 0) {
+          winloseCnt[0]++;
+          break;
+        }
+        //If enemy doubles
+        if (enemyW && Math.floor(Math.random() * 100) < eneHit) {
+          if (Math.floor(Math.random() * 100) < opCrit) {
+            unitCurHP -= eneDmg * 2;
+          } else {
+            unitCurHP -= eneDmg;
+          }
+        }
+        if (unitCurHP <= 0) {
+          winloseCnt[1]++;
+          break;
+        }
+        //Enemy attacks
+        if (Math.floor(Math.random() * 100) < eneHit) {
+          unitCurHP -= eneDmg;
+        }
+        if (unitCurHP <= 0) {
+          winloseCnt[1]++;
+          break;
+        }
+
+        //Player unit counters
+        if (Math.floor(Math.random() * 100) < unitHit) {
+          if (Math.floor(Math.random() * 100) < unitCrit) {
+            eneCurHP -= unitDmg * 2;
+          } else {
+            eneCurHP -= unitDmg;
+          }
+        }
+        if (eneCurHP <= 0) {
+          winloseCnt[0]++;
+          break;
+        }
+        //If enemy doubles
+        if (enemyW && Math.floor(Math.random() * 100) < eneHit) {
+          unitCurHP -= eneDmg;
+        }
+        if (unitCurHP <= 0) {
+          winloseCnt[1]++;
+          break;
+        }
+        //If player unit doubles
+        if (unitW && Math.floor(Math.random() * 100) < unitHit) {
+          if (Math.floor(Math.random() * 100) < unitCrit) {
+            eneCurHP -= unitDmg * 2;
+          } else {
+            eneCurHP -= unitDmg;
+          }
+        }
+        if (eneCurHP <= 0) {
+          winloseCnt[0]++;
+          break;
+        }
+      }
+    }
+    //Enemy strikes first
+    for (let j = 0; j < 5000; j++) {
+      let unitCurHP = unit.HP;
+      let eneCurHP = oppo.HP;
+      while (unitCurHP > 0 && eneCurHP > 0) {
+        //Enemy attacks
+        if (Math.floor(Math.random() * 100) < eneHit) {
+          unitCurHP -= eneDmg;
+        }
+        if (unitCurHP <= 0) {
+          winloseCnt[3]++;
+          break;
+        }
+
+        //Player unit counters
+        if (Math.floor(Math.random() * 100) < unitHit) {
+          if (Math.floor(Math.random() * 100) < unitCrit) {
+            eneCurHP -= unitDmg * 2;
+          } else {
+            eneCurHP -= unitDmg;
+          }
+        }
+        if (eneCurHP <= 0) {
+          winloseCnt[2]++;
+          break;
+        }
+        //If enemy doubles
+        if (enemyW && Math.floor(Math.random() * 100) < eneHit) {
+          unitCurHP -= eneDmg;
+        }
+        if (unitCurHP <= 0) {
+          winloseCnt[3]++;
+          break;
+        }
+        //If player unit doubles
+        if (unitW && Math.floor(Math.random() * 100) < unitHit) {
+          if (Math.floor(Math.random() * 100) < unitCrit) {
+            eneCurHP -= unitDmg * 2;
+          } else {
+            eneCurHP -= unitDmg;
+          }
+        }
+        if (eneCurHP <= 0) {
+          winloseCnt[2]++;
+          break;
+        }
+        //Player unit attacks
+        if (Math.floor(Math.random() * 100) < unitHit) {
+          if (Math.floor(Math.random() * 100) < unitCrit) {
+            eneCurHP -= unitDmg * 2;
+          } else {
+            eneCurHP -= unitDmg;
+          }
+        }
+        if (eneCurHP <= 0) {
+          winloseCnt[2]++;
+          break;
+        }
+        //Enemy counters
+        if (Math.floor(Math.random() * 100) < eneHit) {
+          unitCurHP -= eneDmg;
+        }
+        if (unitCurHP <= 0) {
+          winloseCnt[3]++;
+          break;
+        }
+        //If player unit doubles
+        if (unitW && Math.floor(Math.random() * 100) < unitHit) {
+          if (Math.floor(Math.random() * 100) < unitCrit) {
+            eneCurHP -= unitDmg * 2;
+          } else {
+            eneCurHP -= unitDmg;
+          }
+        }
+        if (eneCurHP <= 0) {
+          winloseCnt[2]++;
+          break;
+        }
+        //If enemy doubles
+        if (enemyW && Math.floor(Math.random() * 100) < eneHit) {
+          unitCurHP -= eneDmg;
+        }
+        if (unitCurHP <= 0) {
+          winloseCnt[3]++;
+          break;
+        }
+      }
+    }
+    return (
+      <div>
+        <p>
+          {unit.Class} defeats {oppo.Class} {winloseCnt[0]} times and loses{" "}
+          {winloseCnt[1]} times when attacking first.
+        </p>
+        <p>
+          {unit.Class} defeats {oppo.Class} {winloseCnt[2]} times and loses{" "}
+          {winloseCnt[3]} times when {oppo.Class} attacks first.
+        </p>
       </div>
     );
   }
