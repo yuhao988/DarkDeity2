@@ -190,7 +190,7 @@ export function battleForecast2(unit, oppo) {
 
   let unitHit = Math.max(0, Math.min(100, unit.Acc - oppo.Ddg)).toFixed(0);
   let opHit = Math.max(0, Math.min(100, oppo.Acc - unit.Ddg)).toFixed(0);
-  if (unit.Class === "Dreadnought") {
+  if (unit.Class === "Dreadnought" || oppo.Class === "Dreadnought") {
     unitHit = 100;
     opHit = 100;
   }
@@ -499,7 +499,7 @@ export function simulateBattle2(unit, oppo) {
 
   let unitHit = Math.max(0, Math.min(100, unit.Acc - oppo.Ddg)).toFixed(0);
   let eneHit = Math.max(0, Math.min(100, oppo.Acc - unit.Ddg)).toFixed(0);
-  if (unit.Class === "Dreadnought") {
+  if (unit.Class === "Dreadnought" || oppo.Class === "Dreadnought") {
     unitHit = 100;
     eneHit = 100;
   }
