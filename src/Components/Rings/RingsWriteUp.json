@@ -267,7 +267,7 @@
   {
     "ID": 54,
     "Name": "Advantage",
-    "Details": "Actually ignores 2% of enemy resistances (both Def and Frt) per point in Mas. A 30 Mas unit effectively lowers enemy defenses to 1/3 the original amount. Great ring for Valeria and Nightblade/Ancarant, as they have great Mas but very low base Power and damage."
+    "Details": "Actually ignores 2.5% of enemy resistances (both Def and Frt) per point in Mas. A 20 Mas unit effectively halves enemy defenses. Great ring for Valeria and Nightblade/Ancarant, as they have great Mas but very low base Power and damage."
   },
   {
     "ID": 55,
