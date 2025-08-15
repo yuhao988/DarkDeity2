@@ -12,6 +12,39 @@ const [unitList, enemyList] = Array.isArray(sample)
     )
   : [[], []];
 
+function adjustStats(self, enemy) {
+  let selfDmg = 0;
+  let eneDmg = 0;
+  if (self["Phy/Mag"] === "Physical") {
+    selfDmg = Math.max(0, self.Pwr - enemy.Def).toFixed(0);
+  } else if (self["Phy/Mag"] === "Magical") {
+    selfDmg = Math.max(0, self.Pwr - enemy.For).toFixed(0);
+  }
+  if (enemy["Phy/Mag"] === "Physical") {
+    eneDmg = Math.max(0, enemy.Pwr - self.Def).toFixed(0);
+  } else if (enemy["Phy/Mag"] === "Magical") {
+    eneDmg = Math.max(0, enemy.Pwr - self.For).toFixed(0);
+  }
+
+  let selfHit = Math.max(0, Math.min(100, self.Acc - enemy.Ddg)).toFixed(0);
+  let eneHit = Math.max(0, Math.min(100, enemy.Acc - self.Ddg)).toFixed(0);
+  if (self.Class === "Dreadnought") {
+    selfHit = 100;
+    eneHit = 100;
+  }
+
+  let selfCrit = 0,
+    eneCrit = 0;
+  if (enemy.Lck) {
+    selfCrit = Math.max(0, Math.min(100, self.Crit - enemy.Lck * 2)).toFixed(0);
+    eneCrit = Math.max(0, Math.min(100, enemy.Crit - self.Lck * 2)).toFixed(0);
+  } else {
+    selfCrit = Math.max(0, Math.min(100, self.Crit - enemy.CAvo)).toFixed(0);
+    eneCrit = 0;
+  }
+  return [selfDmg, selfHit, selfCrit, eneDmg, eneHit, eneCrit];
+}
+
 export function scoreCalc1(unitName, isUnit) {
   let unit;
   if (isUnit) {
@@ -103,28 +136,7 @@ export function battleForecast(unit, enemy) {
     enemyW = true;
   }
 
-  let unitDmg = 0;
-  let eneDmg = 0;
-  if (unit["Phy/Mag"] === "Physical") {
-    unitDmg = Math.max(0, unit.Pwr - enemy.Def).toFixed(0);
-  } else if (unit["Phy/Mag"] === "Magical") {
-    unitDmg = Math.max(0, unit.Pwr - enemy.For).toFixed(0);
-  }
-  if (enemy["Phy/Mag"] === "Physical") {
-    eneDmg = Math.max(0, enemy.Pwr - unit.Def).toFixed(0);
-  } else if (enemy["Phy/Mag"] === "Magical") {
-    eneDmg = Math.max(0, enemy.Pwr - unit.For).toFixed(0);
-  }
-
-  let unitHit = Math.max(0, Math.min(100, unit.Acc - enemy.Ddg)).toFixed(0);
-  let eneHit = Math.max(0, Math.min(100, enemy.Acc - unit.Ddg)).toFixed(0);
-  if (unit.Class === "Dreadnought") {
-    unitHit = 100;
-    eneHit = 100;
-  }
-  const unitCrit = Math.max(0, Math.min(100, unit.Crit - enemy.CAvo)).toFixed(
-    0
-  );
+  const [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(unit, enemy);
 
   return (
     <table className="battle-stat">
@@ -175,30 +187,9 @@ export function battleForecast2(unit, oppo) {
     oppoW = true;
   }
 
-  let unitDmg = 0;
-  let opDmg = 0;
-  if (unit["Phy/Mag"] === "Physical") {
-    unitDmg = Math.max(0, unit.Pwr - oppo.Def).toFixed(0);
-  } else if (unit["Phy/Mag"] === "Magical") {
-    unitDmg = Math.max(0, unit.Pwr - oppo.For).toFixed(0);
-  }
-  if (oppo["Phy/Mag"] === "Physical") {
-    opDmg = Math.max(0, oppo.Pwr - unit.Def).toFixed(0);
-  } else if (oppo["Phy/Mag"] === "Magical") {
-    opDmg = Math.max(0, oppo.Pwr - unit.For).toFixed(0);
-  }
-
-  let unitHit = Math.max(0, Math.min(100, unit.Acc - oppo.Ddg)).toFixed(0);
-  let opHit = Math.max(0, Math.min(100, oppo.Acc - unit.Ddg)).toFixed(0);
-  if (unit.Class === "Dreadnought" || oppo.Class === "Dreadnought") {
-    unitHit = 100;
-    opHit = 100;
-  }
-  const unitCrit = Math.max(0, Math.min(100, unit.Crit - oppo.Lck * 2)).toFixed(
-    0
-  );
-  const opCrit = Math.max(0, Math.min(100, oppo.Crit - unit.Lck * 2)).toFixed(
-    0
+  const [unitDmg, unitHit, unitCrit, opDmg, opHit, opCrit] = adjustStats(
+    unit,
+    oppo
   );
 
   return (
@@ -251,28 +242,7 @@ export function simulateBattle(unit, enemy) {
 
   let winloseCnt = [0, 0, 0, 0];
 
-  let unitDmg = 0;
-  let eneDmg = 0;
-  if (unit["Phy/Mag"] === "Physical") {
-    unitDmg = Math.max(0, unit.Pwr - enemy.Def).toFixed(0);
-  } else if (unit["Phy/Mag"] === "Magical") {
-    unitDmg = Math.max(0, unit.Pwr - enemy.For).toFixed(0);
-  }
-  if (enemy["Phy/Mag"] === "Physical") {
-    eneDmg = Math.max(0, enemy.Pwr - unit.Def).toFixed(0);
-  } else if (enemy["Phy/Mag"] === "Magical") {
-    eneDmg = Math.max(0, enemy.Pwr - unit.For).toFixed(0);
-  }
-
-  let unitHit = Math.max(0, Math.min(100, unit.Acc - enemy.Ddg)).toFixed(0);
-  let eneHit = Math.max(0, Math.min(100, enemy.Acc - unit.Ddg)).toFixed(0);
-  if (unit.Class === "Dreadnought") {
-    unitHit = 100;
-    eneHit = 100;
-  }
-  const unitCrit = Math.max(0, Math.min(100, unit.Crit - enemy.CAvo)).toFixed(
-    0
-  );
+  const [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(unit, enemy);
 
   if ((unitDmg === 0 && eneDmg === 0) || (unitHit === 0 && eneHit === 0)) {
     return <p>The battle results in a draw</p>;
@@ -283,7 +253,10 @@ export function simulateBattle(unit, enemy) {
       let eneCurHP = enemy.HP;
       while (unitCurHP > 0 && eneCurHP > 0) {
         //Player unit attacks
-        if (Math.floor(Math.random() * 100) < unitHit) {
+        let rngUnit =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        if (rngUnit < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             eneCurHP -= unitDmg * 2;
           } else {
@@ -295,7 +268,10 @@ export function simulateBattle(unit, enemy) {
           break;
         }
         //Enemy counters
-        if (Math.floor(Math.random() * 100) < eneHit) {
+        let rngEne =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        if (rngEne < eneHit) {
           unitCurHP -= eneDmg;
         }
         if (unitCurHP <= 0) {
@@ -303,7 +279,10 @@ export function simulateBattle(unit, enemy) {
           break;
         }
         //If player unit doubles
-        if (unitW && Math.floor(Math.random() * 100) < unitHit) {
+        let rngUnit2 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        if (unitW && rngUnit2 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             eneCurHP -= unitDmg * 2;
           } else {
@@ -315,15 +294,22 @@ export function simulateBattle(unit, enemy) {
           break;
         }
         //If enemy doubles
-        if (enemyW && Math.floor(Math.random() * 100) < eneHit) {
+        let rngEne2 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        if (enemyW && rngEne2 < eneHit) {
           unitCurHP -= eneDmg;
         }
         if (unitCurHP <= 0) {
           winloseCnt[1]++;
           break;
         }
+
         //Enemy attacks
-        if (Math.floor(Math.random() * 100) < eneHit) {
+        let rngEne3 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        if (rngEne3 < eneHit) {
           unitCurHP -= eneDmg;
         }
         if (unitCurHP <= 0) {
@@ -332,7 +318,10 @@ export function simulateBattle(unit, enemy) {
         }
 
         //Player unit counters
-        if (Math.floor(Math.random() * 100) < unitHit) {
+        let rngUnit3 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        if (rngUnit3 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             eneCurHP -= unitDmg * 2;
           } else {
@@ -344,15 +333,21 @@ export function simulateBattle(unit, enemy) {
           break;
         }
         //If enemy doubles
-        if (enemyW && Math.floor(Math.random() * 100) < eneHit) {
+        let rngEne4 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        if (enemyW && rngEne4 < eneHit) {
           unitCurHP -= eneDmg;
         }
         if (unitCurHP <= 0) {
           winloseCnt[1]++;
           break;
         }
+        let rngUnit4 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
         //If player unit doubles
-        if (unitW && Math.floor(Math.random() * 100) < unitHit) {
+        if (unitW && rngUnit4 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             eneCurHP -= unitDmg * 2;
           } else {
@@ -370,8 +365,32 @@ export function simulateBattle(unit, enemy) {
       let unitCurHP = unit.HP;
       let eneCurHP = enemy.HP;
       while (unitCurHP > 0 && eneCurHP > 0) {
+        let rngUnit =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngUnit2 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngUnit3 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngUnit4 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngEne =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngEne2 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngEne3 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngEne4 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
         //Enemy attacks
-        if (Math.floor(Math.random() * 100) < eneHit) {
+        if (rngEne < eneHit) {
           unitCurHP -= eneDmg;
         }
         if (unitCurHP <= 0) {
@@ -380,7 +399,7 @@ export function simulateBattle(unit, enemy) {
         }
 
         //Player unit counters
-        if (Math.floor(Math.random() * 100) < unitHit) {
+        if (rngUnit < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             eneCurHP -= unitDmg * 2;
           } else {
@@ -392,7 +411,7 @@ export function simulateBattle(unit, enemy) {
           break;
         }
         //If enemy doubles
-        if (enemyW && Math.floor(Math.random() * 100) < eneHit) {
+        if (enemyW && rngEne2 < eneHit) {
           unitCurHP -= eneDmg;
         }
         if (unitCurHP <= 0) {
@@ -400,7 +419,7 @@ export function simulateBattle(unit, enemy) {
           break;
         }
         //If player unit doubles
-        if (unitW && Math.floor(Math.random() * 100) < unitHit) {
+        if (unitW && rngUnit2 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             eneCurHP -= unitDmg * 2;
           } else {
@@ -412,7 +431,7 @@ export function simulateBattle(unit, enemy) {
           break;
         }
         //Player unit attacks
-        if (Math.floor(Math.random() * 100) < unitHit) {
+        if (rngUnit3 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             eneCurHP -= unitDmg * 2;
           } else {
@@ -424,7 +443,7 @@ export function simulateBattle(unit, enemy) {
           break;
         }
         //Enemy counters
-        if (Math.floor(Math.random() * 100) < eneHit) {
+        if (rngEne3 < eneHit) {
           unitCurHP -= eneDmg;
         }
         if (unitCurHP <= 0) {
@@ -432,7 +451,7 @@ export function simulateBattle(unit, enemy) {
           break;
         }
         //If player unit doubles
-        if (unitW && Math.floor(Math.random() * 100) < unitHit) {
+        if (unitW && rngUnit4 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             eneCurHP -= unitDmg * 2;
           } else {
@@ -444,7 +463,7 @@ export function simulateBattle(unit, enemy) {
           break;
         }
         //If enemy doubles
-        if (enemyW && Math.floor(Math.random() * 100) < eneHit) {
+        if (enemyW && rngEne4 < eneHit) {
           unitCurHP -= eneDmg;
         }
         if (unitCurHP <= 0) {
@@ -484,30 +503,9 @@ export function simulateBattle2(unit, oppo) {
 
   let winloseCnt = [0, 0, 0, 0];
 
-  let unitDmg = 0;
-  let eneDmg = 0;
-  if (unit["Phy/Mag"] === "Physical") {
-    unitDmg = Math.max(0, unit.Pwr - oppo.Def).toFixed(0);
-  } else if (unit["Phy/Mag"] === "Magical") {
-    unitDmg = Math.max(0, unit.Pwr - oppo.For).toFixed(0);
-  }
-  if (oppo["Phy/Mag"] === "Physical") {
-    eneDmg = Math.max(0, oppo.Pwr - unit.Def).toFixed(0);
-  } else if (oppo["Phy/Mag"] === "Magical") {
-    eneDmg = Math.max(0, oppo.Pwr - unit.For).toFixed(0);
-  }
-
-  let unitHit = Math.max(0, Math.min(100, unit.Acc - oppo.Ddg)).toFixed(0);
-  let eneHit = Math.max(0, Math.min(100, oppo.Acc - unit.Ddg)).toFixed(0);
-  if (unit.Class === "Dreadnought" || oppo.Class === "Dreadnought") {
-    unitHit = 100;
-    eneHit = 100;
-  }
-  const unitCrit = Math.max(0, Math.min(100, unit.Crit - oppo.Lck * 2)).toFixed(
-    0
-  );
-  const opCrit = Math.max(0, Math.min(100, oppo.Crit - unit.Lck * 2)).toFixed(
-    0
+  const [unitDmg, unitHit, unitCrit, eneDmg, eneHit, opCrit] = adjustStats(
+    unit,
+    oppo
   );
 
   if ((unitDmg === 0 && eneDmg === 0) || (unitHit === 0 && eneHit === 0)) {
@@ -518,8 +516,32 @@ export function simulateBattle2(unit, oppo) {
       let unitCurHP = unit.HP;
       let eneCurHP = oppo.HP;
       while (unitCurHP > 0 && eneCurHP > 0) {
+        let rngUnit =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngUnit2 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngUnit3 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngUnit4 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngOppo =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngOppo2 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngOppo3 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngOppo4 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
         //Player unit attacks
-        if (Math.floor(Math.random() * 100) < unitHit) {
+        if (rngUnit < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             eneCurHP -= unitDmg * 2;
           } else {
@@ -531,7 +553,7 @@ export function simulateBattle2(unit, oppo) {
           break;
         }
         //Enemy counters
-        if (Math.floor(Math.random() * 100) < eneHit) {
+        if (rngOppo < eneHit) {
           if (Math.floor(Math.random() * 100) < opCrit) {
             unitCurHP -= eneDmg * 2;
           } else {
@@ -543,7 +565,7 @@ export function simulateBattle2(unit, oppo) {
           break;
         }
         //If player unit doubles
-        if (unitW && Math.floor(Math.random() * 100) < unitHit) {
+        if (unitW && rngUnit2 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             eneCurHP -= unitDmg * 2;
           } else {
@@ -555,7 +577,7 @@ export function simulateBattle2(unit, oppo) {
           break;
         }
         //If enemy doubles
-        if (enemyW && Math.floor(Math.random() * 100) < eneHit) {
+        if (enemyW && rngOppo2 < eneHit) {
           if (Math.floor(Math.random() * 100) < opCrit) {
             unitCurHP -= eneDmg * 2;
           } else {
@@ -567,7 +589,7 @@ export function simulateBattle2(unit, oppo) {
           break;
         }
         //Enemy attacks
-        if (Math.floor(Math.random() * 100) < eneHit) {
+        if (rngOppo3 < eneHit) {
           unitCurHP -= eneDmg;
         }
         if (unitCurHP <= 0) {
@@ -576,7 +598,7 @@ export function simulateBattle2(unit, oppo) {
         }
 
         //Player unit counters
-        if (Math.floor(Math.random() * 100) < unitHit) {
+        if (rngUnit3 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             eneCurHP -= unitDmg * 2;
           } else {
@@ -588,7 +610,7 @@ export function simulateBattle2(unit, oppo) {
           break;
         }
         //If enemy doubles
-        if (enemyW && Math.floor(Math.random() * 100) < eneHit) {
+        if (enemyW && rngOppo4 < eneHit) {
           unitCurHP -= eneDmg;
         }
         if (unitCurHP <= 0) {
@@ -596,7 +618,7 @@ export function simulateBattle2(unit, oppo) {
           break;
         }
         //If player unit doubles
-        if (unitW && Math.floor(Math.random() * 100) < unitHit) {
+        if (unitW && rngUnit4 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             eneCurHP -= unitDmg * 2;
           } else {
@@ -614,8 +636,32 @@ export function simulateBattle2(unit, oppo) {
       let unitCurHP = unit.HP;
       let eneCurHP = oppo.HP;
       while (unitCurHP > 0 && eneCurHP > 0) {
+        let rngUnit =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngUnit2 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngUnit3 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngUnit4 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngOppo =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngOppo2 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngOppo3 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
+        let rngOppo4 =
+          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
+          2;
         //Enemy attacks
-        if (Math.floor(Math.random() * 100) < eneHit) {
+        if (rngOppo < eneHit) {
           unitCurHP -= eneDmg;
         }
         if (unitCurHP <= 0) {
@@ -624,7 +670,7 @@ export function simulateBattle2(unit, oppo) {
         }
 
         //Player unit counters
-        if (Math.floor(Math.random() * 100) < unitHit) {
+        if (rngUnit < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             eneCurHP -= unitDmg * 2;
           } else {
@@ -636,7 +682,7 @@ export function simulateBattle2(unit, oppo) {
           break;
         }
         //If enemy doubles
-        if (enemyW && Math.floor(Math.random() * 100) < eneHit) {
+        if (enemyW && rngOppo2 < eneHit) {
           unitCurHP -= eneDmg;
         }
         if (unitCurHP <= 0) {
@@ -644,7 +690,7 @@ export function simulateBattle2(unit, oppo) {
           break;
         }
         //If player unit doubles
-        if (unitW && Math.floor(Math.random() * 100) < unitHit) {
+        if (unitW && rngUnit2 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             eneCurHP -= unitDmg * 2;
           } else {
@@ -656,7 +702,7 @@ export function simulateBattle2(unit, oppo) {
           break;
         }
         //Player unit attacks
-        if (Math.floor(Math.random() * 100) < unitHit) {
+        if (rngUnit3 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             eneCurHP -= unitDmg * 2;
           } else {
@@ -668,7 +714,7 @@ export function simulateBattle2(unit, oppo) {
           break;
         }
         //Enemy counters
-        if (Math.floor(Math.random() * 100) < eneHit) {
+        if (rngOppo3 < eneHit) {
           unitCurHP -= eneDmg;
         }
         if (unitCurHP <= 0) {
@@ -676,7 +722,7 @@ export function simulateBattle2(unit, oppo) {
           break;
         }
         //If player unit doubles
-        if (unitW && Math.floor(Math.random() * 100) < unitHit) {
+        if (unitW && rngUnit4 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             eneCurHP -= unitDmg * 2;
           } else {
@@ -688,7 +734,7 @@ export function simulateBattle2(unit, oppo) {
           break;
         }
         //If enemy doubles
-        if (enemyW && Math.floor(Math.random() * 100) < eneHit) {
+        if (enemyW && rngOppo4 < eneHit) {
           unitCurHP -= eneDmg;
         }
         if (unitCurHP <= 0) {

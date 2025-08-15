@@ -12,6 +12,16 @@ import eneDeity from "../Datas/eneDeity.json";
 import "./Sim.css";
 import "../../App.css";
 
+function effectWriteup() {
+  let test = "test1";
+  switch (test) {
+    case "test1":
+      return <div>Buff example</div>;
+    default:
+      return null;
+  }
+}
+
 export default function SimModal(prop) {
   const { isOpen, onClose, unit, isEnemy } = prop;
   const [unitActive, setUnitActive] = useState(
@@ -218,6 +228,8 @@ export default function SimModal(prop) {
                   ) : (
                     <div>{battleForecast2(unit, oppoClass)}</div>
                   )}
+                  {effectWriteup()}
+                  {effectWriteup()}
                 </div>
                 <div className="right-content">
                   <p>
