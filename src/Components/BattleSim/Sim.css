@@ -82,8 +82,9 @@
 }
 .battle-container {
   display: flex;
-  gap: 20px; /* Space between battle stats and right content */
+  gap: 15px; /* Space between battle stats and right content */
   flex-grow: 1;
+  
 }
 .right-content {
   width: 50vw; /* Adjust width as needed */
