@@ -15,6 +15,78 @@ const [unitList, enemyList] = Array.isArray(sample)
 function adjustStats(self, enemy) {
   let selfDmg = 0;
   let eneDmg = 0;
+
+  switch (self.Class) {
+    case "Devoted":
+      self.Crit += 8;
+      break;
+    case "Nightblade":
+      self.Ddg += 20;
+      break;
+    case "Cutthroat":
+      self.Ddg += self.Lck;
+      break;
+    case "Scholar":
+      self.Frt += 2;
+      break;
+    case "Elementalist":
+      self.Pwr += 4;
+      break;
+    case "Gale":
+      self.Pwr += 6;
+      break;
+    case "Conduit":
+      self.Crit += 6;
+      break;
+    case "Ancarant":
+      self.Ddg += 25;
+      break;
+    case "Champion":
+      self.TSpd -= 4;
+      self.Pwr *= 1.25;
+      break;
+    case "Warden":
+      self.Def += 6;
+      break;
+    default:
+      break;
+  }
+  switch (enemy.Class) {
+    case "Devoted":
+      enemy.Crit += 8;
+      break;
+    case "Nightblade":
+      enemy.Ddg += 20;
+      break;
+    case "Cutthroat":
+      enemy.Ddg += enemy.Lck;
+      break;
+    case "Scholar":
+      enemy.Frt += 2;
+      break;
+    case "Elementalist":
+      enemy.Pwr += 4;
+      break;
+    case "Gale":
+      enemy.Pwr += 6;
+      break;
+    case "Conduit":
+      enemy.Crit += 6;
+      break;
+    case "Ancarant":
+      enemy.Ddg += 25;
+      break;
+    case "Champion":
+      enemy.TSpd -= 4;
+      enemy.Pwr *= 1.25;
+      break;
+    case "Warden":
+      enemy.Def += 6;
+      break;
+    default:
+      break;
+  }
+
   if (self["Phy/Mag"] === "Physical") {
     selfDmg = Math.max(0, self.Pwr - enemy.Def).toFixed(0);
   } else if (self["Phy/Mag"] === "Magical") {
@@ -240,9 +312,37 @@ export function simulateBattle(unit, enemy) {
     enemyW = true;
   }
 
+  switch (unit.Class) {
+    case "Seeker":
+      return "+4 Vulnerable to opponent from Exposing Light";
+    case "Gallant":
+      return "+5 Dmg from Honorclad";
+    case "Ranger":
+      return "+8 Heavy Block from Shield Stance";
+    case "Aegis":
+      return "+20% Dmg from Reflection";
+    case "Frigillan":
+      return "+5 Pwr and 25 Acc from Defensive Fighter";
+    case "Monk":
+      return "+4 Weak to opponent from Nerve Strike";
+
+    case "Ellisant":
+      return "+25 Blind to opponent from Blinding Light";
+    case "Slayer":
+      return "20% chance for extra attack from Ricochet";
+    case "Relic Knight":
+      return "+6 Def and Frt from Unstoppable";
+    case "Hemomancer":
+      return "+1 Pwr and Crit for every 5 missing HP from Dark Magic";
+    case "Tempest":
+      return "+1 Dmg for every excess TSpd on follow-up attacks from Swift Strike";
+    case "Ascendant":
+      return "+25 Ddg, Acc or Crit from Elemental Fist";
+  }
+
   let winloseCnt = [0, 0, 0, 0];
 
-  const [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(unit, enemy);
+  let [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(unit, enemy);
 
   if ((unitDmg === 0 && eneDmg === 0) || (unitHit === 0 && eneHit === 0)) {
     return <p>The battle results in a draw</p>;
@@ -251,14 +351,40 @@ export function simulateBattle(unit, enemy) {
     for (let i = 0; i < 5000; i++) {
       let unitCurHP = unit.HP;
       let eneCurHP = enemy.HP;
+      let turn = 0;
       while (unitCurHP > 0 && eneCurHP > 0) {
+        turn += 1;
+        let round = turn % 3;
+        if (unit.Class === "Ascendant") {
+          switch (round) {
+            case 1:
+              unit.Ddg += 25;
+              break;
+            case 2:
+              unit.Acc += 25;
+              break;
+            case 0:
+              unit.Crit += 25;
+              break;
+            default:
+              break;
+          }
+          [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
+            unit,
+            enemy
+          );
+        }
         //Player unit attacks
         let rngUnit =
           (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
           2;
         if (rngUnit < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
-            eneCurHP -= unitDmg * 2;
+            if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
+              eneCurHP -= unitDmg * 3;
+            } else {
+              eneCurHP -= unitDmg * 2;
+            }
           } else {
             eneCurHP -= unitDmg;
           }
@@ -284,7 +410,11 @@ export function simulateBattle(unit, enemy) {
           2;
         if (unitW && rngUnit2 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
-            eneCurHP -= unitDmg * 2;
+            if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
+              eneCurHP -= unitDmg * 3;
+            } else {
+              eneCurHP -= unitDmg * 2;
+            }
           } else {
             eneCurHP -= unitDmg;
           }
@@ -305,7 +435,43 @@ export function simulateBattle(unit, enemy) {
           break;
         }
 
+        if (unit.Class === "Ascendant") {
+          switch (round) {
+            case 1:
+              unit.Ddg -= 25;
+              break;
+            case 2:
+              unit.Acc -= 25;
+              break;
+            case 0:
+              unit.Crit -= 25;
+              break;
+            default:
+              break;
+          }
+        }
         //Enemy attacks
+        turn += 1;
+        round = turn % 3;
+        if (unit.Class === "Ascendant") {
+          switch (round) {
+            case 1:
+              unit.Ddg += 25;
+              break;
+            case 2:
+              unit.Acc += 25;
+              break;
+            case 0:
+              unit.Crit += 25;
+              break;
+            default:
+              break;
+          }
+          [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
+            unit,
+            enemy
+          );
+        }
         let rngEne3 =
           (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
           2;
@@ -323,7 +489,11 @@ export function simulateBattle(unit, enemy) {
           2;
         if (rngUnit3 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
-            eneCurHP -= unitDmg * 2;
+            if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
+              eneCurHP -= unitDmg * 3;
+            } else {
+              eneCurHP -= unitDmg * 2;
+            }
           } else {
             eneCurHP -= unitDmg;
           }
@@ -349,7 +519,11 @@ export function simulateBattle(unit, enemy) {
         //If player unit doubles
         if (unitW && rngUnit4 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
-            eneCurHP -= unitDmg * 2;
+            if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
+              eneCurHP -= unitDmg * 3;
+            } else {
+              eneCurHP -= unitDmg * 2;
+            }
           } else {
             eneCurHP -= unitDmg;
           }
@@ -357,6 +531,21 @@ export function simulateBattle(unit, enemy) {
         if (eneCurHP <= 0) {
           winloseCnt[0]++;
           break;
+        }
+        if (unit.Class === "Ascendant") {
+          switch (round) {
+            case 1:
+              unit.Ddg -= 25;
+              break;
+            case 2:
+              unit.Acc -= 25;
+              break;
+            case 0:
+              unit.Crit -= 25;
+              break;
+            default:
+              break;
+          }
         }
       }
     }
@@ -364,7 +553,29 @@ export function simulateBattle(unit, enemy) {
     for (let j = 0; j < 5000; j++) {
       let unitCurHP = unit.HP;
       let eneCurHP = enemy.HP;
+      let turn = 0;
       while (unitCurHP > 0 && eneCurHP > 0) {
+        turn += 1;
+        let round = turn % 3;
+        if (unit.Class === "Ascendant") {
+          switch (round) {
+            case 1:
+              unit.Ddg += 25;
+              break;
+            case 2:
+              unit.Acc += 25;
+              break;
+            case 0:
+              unit.Crit += 25;
+              break;
+            default:
+              break;
+          }
+          [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
+            unit,
+            enemy
+          );
+        }
         let rngUnit =
           (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
           2;
@@ -401,7 +612,11 @@ export function simulateBattle(unit, enemy) {
         //Player unit counters
         if (rngUnit < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
-            eneCurHP -= unitDmg * 2;
+            if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
+              eneCurHP -= unitDmg * 3;
+            } else {
+              eneCurHP -= unitDmg * 2;
+            }
           } else {
             eneCurHP -= unitDmg;
           }
@@ -430,10 +645,51 @@ export function simulateBattle(unit, enemy) {
           winloseCnt[2]++;
           break;
         }
+        if (unit.Class === "Ascendant") {
+          switch (round) {
+            case 1:
+              unit.Ddg -= 25;
+              break;
+            case 2:
+              unit.Acc -= 25;
+              break;
+            case 0:
+              unit.Crit -= 25;
+              break;
+            default:
+              break;
+          }
+        }
+
         //Player unit attacks
+        turn += 1;
+        round = turn % 3;
+        if (unit.Class === "Ascendant") {
+          switch (round) {
+            case 1:
+              unit.Ddg += 25;
+              break;
+            case 2:
+              unit.Acc += 25;
+              break;
+            case 0:
+              unit.Crit += 25;
+              break;
+            default:
+              break;
+          }
+          [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
+            unit,
+            enemy
+          );
+        }
         if (rngUnit3 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
-            eneCurHP -= unitDmg * 2;
+            if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
+              eneCurHP -= unitDmg * 3;
+            } else {
+              eneCurHP -= unitDmg * 2;
+            }
           } else {
             eneCurHP -= unitDmg;
           }
@@ -453,7 +709,11 @@ export function simulateBattle(unit, enemy) {
         //If player unit doubles
         if (unitW && rngUnit4 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
-            eneCurHP -= unitDmg * 2;
+            if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
+              eneCurHP -= unitDmg * 3;
+            } else {
+              eneCurHP -= unitDmg * 2;
+            }
           } else {
             eneCurHP -= unitDmg;
           }
@@ -469,6 +729,21 @@ export function simulateBattle(unit, enemy) {
         if (unitCurHP <= 0) {
           winloseCnt[3]++;
           break;
+        }
+        if (unit.Class === "Ascendant") {
+          switch (round) {
+            case 1:
+              unit.Ddg -= 25;
+              break;
+            case 2:
+              unit.Acc -= 25;
+              break;
+            case 0:
+              unit.Crit -= 25;
+              break;
+            default:
+              break;
+          }
         }
       }
     }
@@ -540,10 +815,47 @@ export function simulateBattle2(unit, oppo) {
         let rngOppo4 =
           (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
           2;
+
+        let round = i / 3;
+        if (unit.Class === "Ascendant") {
+          switch (round) {
+            case 1:
+              unit.Ddg += 25;
+              break;
+            case 2:
+              unit.Acc += 25;
+              break;
+            case 0:
+              unit.Crit += 25;
+              break;
+            default:
+              break;
+          }
+        }
+
+        if (oppo.Class === "Ascendant") {
+          switch (round) {
+            case 1:
+              oppo.Ddg += 25;
+              break;
+            case 2:
+              oppo.Acc += 25;
+              break;
+            case 0:
+              oppo.Crit += 25;
+              break;
+            default:
+              break;
+          }
+        }
         //Player unit attacks
         if (rngUnit < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
-            eneCurHP -= unitDmg * 2;
+            if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
+              eneCurHP -= unitDmg * 3;
+            } else {
+              eneCurHP -= unitDmg * 2;
+            }
           } else {
             eneCurHP -= unitDmg;
           }
@@ -555,7 +867,11 @@ export function simulateBattle2(unit, oppo) {
         //Enemy counters
         if (rngOppo < eneHit) {
           if (Math.floor(Math.random() * 100) < opCrit) {
-            unitCurHP -= eneDmg * 2;
+            if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
+              unitCurHP -= eneDmg * 3;
+            } else {
+              unitCurHP -= eneDmg * 2;
+            }
           } else {
             unitCurHP -= eneDmg;
           }
@@ -567,7 +883,11 @@ export function simulateBattle2(unit, oppo) {
         //If player unit doubles
         if (unitW && rngUnit2 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
-            eneCurHP -= unitDmg * 2;
+            if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
+              eneCurHP -= unitDmg * 3;
+            } else {
+              eneCurHP -= unitDmg * 2;
+            }
           } else {
             eneCurHP -= unitDmg;
           }
@@ -579,7 +899,11 @@ export function simulateBattle2(unit, oppo) {
         //If enemy doubles
         if (enemyW && rngOppo2 < eneHit) {
           if (Math.floor(Math.random() * 100) < opCrit) {
-            unitCurHP -= eneDmg * 2;
+            if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
+              unitCurHP -= eneDmg * 3;
+            } else {
+              unitCurHP -= eneDmg * 2;
+            }
           } else {
             unitCurHP -= eneDmg;
           }
@@ -590,7 +914,15 @@ export function simulateBattle2(unit, oppo) {
         }
         //Enemy attacks
         if (rngOppo3 < eneHit) {
-          unitCurHP -= eneDmg;
+          if (Math.floor(Math.random() * 100) < opCrit) {
+            if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
+              unitCurHP -= eneDmg * 3;
+            } else {
+              unitCurHP -= eneDmg * 2;
+            }
+          } else {
+            unitCurHP -= eneDmg;
+          }
         }
         if (unitCurHP <= 0) {
           winloseCnt[1]++;
@@ -600,7 +932,11 @@ export function simulateBattle2(unit, oppo) {
         //Player unit counters
         if (rngUnit3 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
-            eneCurHP -= unitDmg * 2;
+            if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
+              eneCurHP -= unitDmg * 3;
+            } else {
+              eneCurHP -= unitDmg * 2;
+            }
           } else {
             eneCurHP -= unitDmg;
           }
@@ -611,7 +947,15 @@ export function simulateBattle2(unit, oppo) {
         }
         //If enemy doubles
         if (enemyW && rngOppo4 < eneHit) {
-          unitCurHP -= eneDmg;
+          if (Math.floor(Math.random() * 100) < opCrit) {
+            if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
+              unitCurHP -= eneDmg * 3;
+            } else {
+              unitCurHP -= eneDmg * 2;
+            }
+          } else {
+            unitCurHP -= eneDmg;
+          }
         }
         if (unitCurHP <= 0) {
           winloseCnt[1]++;
@@ -620,7 +964,11 @@ export function simulateBattle2(unit, oppo) {
         //If player unit doubles
         if (unitW && rngUnit4 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
-            eneCurHP -= unitDmg * 2;
+            if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
+              eneCurHP -= unitDmg * 3;
+            } else {
+              eneCurHP -= unitDmg * 2;
+            }
           } else {
             eneCurHP -= unitDmg;
           }
@@ -662,7 +1010,15 @@ export function simulateBattle2(unit, oppo) {
           2;
         //Enemy attacks
         if (rngOppo < eneHit) {
-          unitCurHP -= eneDmg;
+          if (Math.floor(Math.random() * 100) < opCrit) {
+            if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
+              unitCurHP -= eneDmg * 3;
+            } else {
+              unitCurHP -= eneDmg * 2;
+            }
+          } else {
+            unitCurHP -= eneDmg;
+          }
         }
         if (unitCurHP <= 0) {
           winloseCnt[3]++;
@@ -672,7 +1028,11 @@ export function simulateBattle2(unit, oppo) {
         //Player unit counters
         if (rngUnit < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
-            eneCurHP -= unitDmg * 2;
+            if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
+              eneCurHP -= unitDmg * 3;
+            } else {
+              eneCurHP -= unitDmg * 2;
+            }
           } else {
             eneCurHP -= unitDmg;
           }
@@ -683,7 +1043,15 @@ export function simulateBattle2(unit, oppo) {
         }
         //If enemy doubles
         if (enemyW && rngOppo2 < eneHit) {
-          unitCurHP -= eneDmg;
+          if (Math.floor(Math.random() * 100) < opCrit) {
+            if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
+              unitCurHP -= eneDmg * 3;
+            } else {
+              unitCurHP -= eneDmg * 2;
+            }
+          } else {
+            unitCurHP -= eneDmg;
+          }
         }
         if (unitCurHP <= 0) {
           winloseCnt[3]++;
@@ -692,7 +1060,11 @@ export function simulateBattle2(unit, oppo) {
         //If player unit doubles
         if (unitW && rngUnit2 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
-            eneCurHP -= unitDmg * 2;
+            if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
+              eneCurHP -= unitDmg * 3;
+            } else {
+              eneCurHP -= unitDmg * 2;
+            }
           } else {
             eneCurHP -= unitDmg;
           }
@@ -704,7 +1076,11 @@ export function simulateBattle2(unit, oppo) {
         //Player unit attacks
         if (rngUnit3 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
-            eneCurHP -= unitDmg * 2;
+            if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
+              eneCurHP -= unitDmg * 3;
+            } else {
+              eneCurHP -= unitDmg * 2;
+            }
           } else {
             eneCurHP -= unitDmg;
           }
@@ -715,7 +1091,15 @@ export function simulateBattle2(unit, oppo) {
         }
         //Enemy counters
         if (rngOppo3 < eneHit) {
-          unitCurHP -= eneDmg;
+          if (Math.floor(Math.random() * 100) < opCrit) {
+            if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
+              unitCurHP -= eneDmg * 3;
+            } else {
+              unitCurHP -= eneDmg * 2;
+            }
+          } else {
+            unitCurHP -= eneDmg;
+          }
         }
         if (unitCurHP <= 0) {
           winloseCnt[3]++;
@@ -724,7 +1108,11 @@ export function simulateBattle2(unit, oppo) {
         //If player unit doubles
         if (unitW && rngUnit4 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
-            eneCurHP -= unitDmg * 2;
+            if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
+              eneCurHP -= unitDmg * 3;
+            } else {
+              eneCurHP -= unitDmg * 2;
+            }
           } else {
             eneCurHP -= unitDmg;
           }
@@ -735,7 +1123,15 @@ export function simulateBattle2(unit, oppo) {
         }
         //If enemy doubles
         if (enemyW && rngOppo4 < eneHit) {
-          unitCurHP -= eneDmg;
+          if (Math.floor(Math.random() * 100) < opCrit) {
+            if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
+              unitCurHP -= eneDmg * 3;
+            } else {
+              unitCurHP -= eneDmg * 2;
+            }
+          } else {
+            unitCurHP -= eneDmg;
+          }
         }
         if (unitCurHP <= 0) {
           winloseCnt[3]++;

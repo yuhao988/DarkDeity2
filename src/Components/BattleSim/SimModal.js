@@ -33,7 +33,7 @@ function effectWriteup(class1) {
     case "Scholar":
       return "+2 Frt from Building Knowledge";
     case "Elementalist":
-      return "+4 Pwr from Incoke Spirits";
+      return "+4 Pwr from Invoke Spirits";
     case "Gale":
       return "+6 Dmg from Turbine";
     case "Conduit":
