@@ -104,7 +104,7 @@ export default function SimModal(prop) {
     const selectUnitActive = currentDiff.find(
       (item) => item.Class === unit.Class && item.Boss === ""
     );
-    console.log(selectUnitActive);
+    
     setUnitActive(selectUnitActive);
     setEnemyActive(null); // Reset selected enemy when difficulty changes
   };
