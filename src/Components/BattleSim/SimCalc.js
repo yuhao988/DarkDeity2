@@ -19,29 +19,29 @@ function adjustStats(self, enemy) {
   switch (self.Class) {
     case "Elementalist":
       if (enemy.Class === "Scholar") {
-        selfDmg = Math.max(0, self.Pwr + 4 - (enemy.For + 2)).toFixed(0);
+        selfDmg = Math.floor(Math.max(0, self.Pwr + 4 - (enemy.For + 2)));
       } else {
-        selfDmg = Math.max(0, self.Pwr + 4 - enemy.For).toFixed(0);
+        selfDmg = Math.floor(Math.max(0, self.Pwr + 4 - enemy.For));
       }
       break;
     case "Gale":
       switch (enemy.Class) {
         case "Warden":
-          selfDmg = Math.max(0, self.Pwr + 6 - (enemy.Def + 6)).toFixed(0);
+          selfDmg = Math.floor(Math.max(0, self.Pwr + 6 - (enemy.Def + 6)));
           break;
         default:
-          selfDmg = Math.max(0, self.Pwr + 6 - enemy.Def).toFixed(0);
+          selfDmg = Math.floor(Math.max(0, self.Pwr + 6 - enemy.Def));
           break;
       }
       break;
     case "Champion":
       switch (enemy.Class) {
         case "Warden":
-          selfDmg = Math.max(0, self.Pwr * 1.25 - (enemy.Def + 6)).toFixed(0);
+          selfDmg = Math.floor(Math.max(0, self.Pwr * 1.25 - (enemy.Def + 6)));
 
           break;
         default:
-          selfDmg = Math.max(0, self.Pwr * 1.25 - enemy.Def).toFixed(0);
+          selfDmg = Math.floor(Math.max(0, self.Pwr * 1.25 - enemy.Def));
           break;
       }
       break;
@@ -49,18 +49,18 @@ function adjustStats(self, enemy) {
       if (self["Phy/Mag"] === "Physical") {
         switch (enemy.Class) {
           case "Warden":
-            selfDmg = Math.max(0, self.Pwr - (enemy.Def + 6)).toFixed(0);
+            selfDmg = Math.floor(Math.max(0, self.Pwr - (enemy.Def + 6)));
 
             break;
           default:
-            selfDmg = Math.max(0, self.Pwr - enemy.Def).toFixed(0);
+            selfDmg = Math.floor(Math.max(0, self.Pwr - enemy.Def));
             break;
         }
       } else if (self["Phy/Mag"] === "Magical") {
         if (enemy.Class === "Scholar") {
-          selfDmg = Math.max(0, self.Pwr - (enemy.For + 2)).toFixed(0);
+          selfDmg = Math.floor(Math.max(0, self.Pwr - (enemy.For + 2)));
         } else {
-          selfDmg = Math.max(0, self.Pwr - enemy.For).toFixed(0);
+          selfDmg = Math.floor(Math.max(0, self.Pwr - enemy.For));
         }
       }
       break;
@@ -68,28 +68,28 @@ function adjustStats(self, enemy) {
   switch (enemy.Class) {
     case "Elementalist":
       if (self.Class === "Scholar") {
-        eneDmg = Math.max(0, enemy.Pwr + 4 - (self.For + 2)).toFixed(0);
+        eneDmg = Math.floor(Math.max(0, enemy.Pwr + 4 - (self.For + 2)));
       } else {
-        eneDmg = Math.max(0, enemy.Pwr + 4 - self.For).toFixed(0);
+        eneDmg = Math.floor(Math.max(0, enemy.Pwr + 4 - self.For));
       }
       break;
     case "Gale":
       switch (self.Class) {
         case "Warden":
-          eneDmg = Math.max(0, enemy.Pwr + 6 - (self.Def + 6)).toFixed(0);
+          eneDmg = Math.floor(Math.max(0, enemy.Pwr + 6 - (self.Def + 6)));
           break;
         default:
-          eneDmg = Math.max(0, enemy.Pwr + 6 - self.Def).toFixed(0);
+          eneDmg = Math.floor(Math.max(0, enemy.Pwr + 6 - self.Def));
           break;
       }
       break;
     case "Champion":
       switch (self.Class) {
         case "Warden":
-          eneDmg = Math.max(0, enemy.Pwr * 1.25 - (self.Def + 6)).toFixed(0);
+          eneDmg = Math.floor(Math.max(0, enemy.Pwr * 1.25 - (self.Def + 6)));
           break;
         default:
-          eneDmg = Math.max(0, enemy.Pwr * 1.25 - self.Def).toFixed(0);
+          eneDmg = Math.floor(Math.max(0, enemy.Pwr * 1.25 - self.Def));
           break;
       }
       break;
@@ -97,17 +97,17 @@ function adjustStats(self, enemy) {
       if (enemy["Phy/Mag"] === "Physical") {
         switch (self.Class) {
           case "Warden":
-            eneDmg = Math.max(0, enemy.Pwr - (self.Def + 6)).toFixed(0);
+            eneDmg = Math.floor(Math.max(0, enemy.Pwr - (self.Def + 6)));
             break;
           default:
-            eneDmg = Math.max(0, enemy.Pwr - self.Def).toFixed(0);
+            eneDmg = Math.floor(Math.max(0, enemy.Pwr - self.Def));
             break;
         }
       } else if (enemy["Phy/Mag"] === "Magical") {
         if (enemy.Class === "Scholar") {
-          eneDmg = Math.max(0, enemy.Pwr - (self.For + 2)).toFixed(0);
+          eneDmg = Math.floor(Math.max(0, enemy.Pwr - (self.For + 2)));
         } else {
-          eneDmg = Math.max(0, enemy.Pwr - self.For).toFixed(0);
+          eneDmg = Math.floor(Math.max(0, enemy.Pwr - self.For));
         }
       }
       break;
@@ -116,46 +116,46 @@ function adjustStats(self, enemy) {
   let selfHit = 0;
   switch (enemy.Class) {
     case "Nightblade":
-      selfHit = Math.max(0, Math.min(100, self.Acc - (enemy.Ddg + 20))).toFixed(
-        0
+      selfHit = Math.floor(
+        Math.max(0, Math.min(100, self.Acc - (enemy.Ddg + 20)))
       );
       break;
     case "Cutthroat":
       selfHit = Math.max(
         0,
-        Math.min(100, self.Acc - (enemy.Ddg + enemy.Lck))
-      ).toFixed(0);
+        Math.floor(Math.min(100, self.Acc - (enemy.Ddg + enemy.Lck)))
+      );
       break;
     case "Ancarant":
-      selfHit = Math.max(0, Math.min(100, self.Acc - (enemy.Ddg + 25))).toFixed(
-        0
+      selfHit = Math.floor(
+        Math.max(0, Math.min(100, self.Acc - (enemy.Ddg + 25)))
       );
       break;
     default:
-      selfHit = Math.max(0, Math.min(100, self.Acc - enemy.Ddg)).toFixed(0);
+      selfHit = Math.floor(Math.max(0, Math.min(100, self.Acc - enemy.Ddg)));
       break;
   }
 
   let eneHit = 0;
   switch (self.Class) {
     case "Nightblade":
-      eneHit = Math.max(0, Math.min(100, enemy.Acc - (self.Ddg + 20))).toFixed(
-        0
+      eneHit = Math.floor(
+        Math.max(0, Math.min(100, enemy.Acc - (self.Ddg + 20)))
       );
       break;
     case "Cutthroat":
       eneHit = Math.max(
         0,
-        Math.min(100, enemy.Acc - (self.Ddg + self.Lck))
-      ).toFixed(0);
+        Math.floor(Math.min(100, enemy.Acc - (self.Ddg + self.Lck)))
+      );
       break;
     case "Ancarant":
-      eneHit = Math.max(0, Math.min(100, enemy.Acc - (self.Ddg + 25))).toFixed(
-        0
+      eneHit = Math.floor(
+        Math.max(0, Math.min(100, enemy.Acc - (self.Ddg + 25)))
       );
       break;
     default:
-      eneHit = Math.max(0, Math.min(100, enemy.Acc - self.Ddg)).toFixed(0);
+      eneHit = Math.floor(Math.max(0, Math.min(100, enemy.Acc - self.Ddg)));
       break;
   }
 
@@ -171,39 +171,39 @@ function adjustStats(self, enemy) {
       case "Devoted":
         selfCrit = Math.max(
           0,
-          Math.min(100, self.Crit + 8 - enemy.Lck * 2)
-        ).toFixed(0);
+          Math.floor(Math.min(100, self.Crit + 8 - enemy.Lck * 2))
+        );
         break;
       case "Conduit":
         selfCrit = Math.max(
           0,
-          Math.min(100, self.Crit + 6 - enemy.Lck * 2)
-        ).toFixed(0);
+          Math.floor(Math.min(100, self.Crit + 6 - enemy.Lck * 2))
+        );
 
         break;
       default:
         selfCrit = Math.max(
           0,
-          Math.min(100, self.Crit - enemy.Lck * 2)
-        ).toFixed(0);
+          Math.floor(Math.min(100, self.Crit - enemy.Lck * 2))
+        );
         break;
     }
     switch (enemy.Class) {
       case "Devoted":
         eneCrit = Math.max(
           0,
-          Math.min(100, enemy.Crit + 8 - self.Lck * 2)
-        ).toFixed(0);
+          Math.floor(Math.min(100, enemy.Crit + 8 - self.Lck * 2))
+        );
         break;
       case "Conduit":
         eneCrit = Math.max(
           0,
-          Math.min(100, enemy.Crit + 6 - self.Lck * 2)
-        ).toFixed(0);
+          Math.floor(Math.min(100, enemy.Crit + 6 - self.Lck * 2))
+        );
         break;
       default:
-        eneCrit = Math.max(0, Math.min(100, enemy.Crit - self.Lck * 2)).toFixed(
-          0
+        eneCrit = Math.floor(
+          Math.max(0, Math.min(100, enemy.Crit - self.Lck * 2))
         );
         break;
     }
@@ -212,24 +212,25 @@ function adjustStats(self, enemy) {
       case "Devoted":
         selfCrit = Math.max(
           0,
-          Math.min(100, self.Crit + 8 - enemy.CAvo)
-        ).toFixed(0);
+          Math.floor(Math.min(100, self.Crit + 8 - enemy.CAvo))
+        );
         break;
       case "Conduit":
         selfCrit = Math.max(
           0,
-          Math.min(100, self.Crit + 6 - enemy.CAvo)
-        ).toFixed(0);
+          Math.floor(Math.min(100, self.Crit + 6 - enemy.CAvo))
+        );
         break;
       default:
-        selfCrit = Math.max(0, Math.min(100, self.Crit - enemy.CAvo)).toFixed(
-          0
+        selfCrit = Math.floor(
+          Math.max(0, Math.min(100, self.Crit - enemy.CAvo))
         );
         break;
     }
 
     eneCrit = 0;
   }
+
   return [selfDmg, selfHit, selfCrit, eneDmg, eneHit, eneCrit];
 }
 
@@ -251,7 +252,6 @@ function ascendantBuffUp(unit, buffNum) {
 
   return unit;
 }
-
 //Remove the buff Ascendant received after battle
 function ascendantBuffDown(unit, buffNum) {
   switch (buffNum) {
@@ -267,9 +267,18 @@ function ascendantBuffDown(unit, buffNum) {
     default:
       break;
   }
+
   return unit;
 }
 
+function adjustHemomancer(unit, currHP, enemy) {
+  const [unitDmg, , unitCrit] = adjustStats(unit, enemy);
+
+  let newUnitDmg = unitDmg + Math.floor((unit.HP - currHP) / 5);
+  let newUnitCrit = unitCrit + Math.floor((unit.HP - currHP) / 5);
+
+  return [newUnitDmg, newUnitCrit];
+}
 export function scoreCalc1(unitName, isUnit) {
   let unit;
   if (isUnit) {
@@ -300,9 +309,9 @@ export function scoreCalc1(unitName, isUnit) {
     }
   }
 
-  const unitAcc = Math.min(unit.Acc - eneDdg / cnt, 100).toFixed(1);
-  const unitCrit = Math.min(unit.Crit - eneCAvo / cnt, 100).toFixed(1);
-  const unitDmg = Math.max(unit.Pwr - eneRes / cnt, 0).toFixed(1);
+  const unitAcc = Math.min(unit.Acc - eneDdg / cnt, 100);
+  const unitCrit = Math.min(unit.Crit - eneCAvo / cnt, 100);
+  const unitDmg = Math.max(unit.Pwr - eneRes / cnt, 0);
 
   const score = (
     unitDmg *
@@ -493,7 +502,7 @@ export function simulateBattle(unit, enemy) {
   //     return "20% chance for extra attack from Ricochet";
   //   case "Relic Knight":
   //     return "+6 Def and Frt from Unstoppable";
-  //   case "Hemomancer":
+  //   case "Hemomancer":(done)
   //     return "+1 Pwr and Crit for every 5 missing HP from Dark Magic";
   //   case "Tempest":
   //     return "+1 Dmg for every excess TSpd on follow-up attacks from Swift Strike";
@@ -516,21 +525,28 @@ export function simulateBattle(unit, enemy) {
       let round = 0;
 
       while (unitCurHP > 0 && eneCurHP > 0) {
-        let rotation = round % 3;
-
+        let rotation = 0;
         round += 1;
         rotation = round % 3;
-        if (unit.Class === "Ascendant") {
-          unit = ascendantBuffUp(unit, rotation);
-          [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
-            unit,
-            enemy
-          );
-        }
+
         //Player unit attacks
         let rngUnit =
           (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
           2;
+        switch (unit.Class) {
+          case "Hemomancer":
+            [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
+            break;
+          case "Ascendant":
+            unit = ascendantBuffUp(unit, rotation);
+            [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
+              unit,
+              enemy
+            );
+            break;
+          default:
+            break;
+        }
         if (rngUnit < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
@@ -567,19 +583,22 @@ export function simulateBattle(unit, enemy) {
           (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
           2;
         if (unitW || enemyW) {
-          if (unit.Class === "Ascendant") {
-            round += 1;
-            rotation = round % 3;
-
-            unit = ascendantBuffUp(unit, rotation);
-
-            [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
-              unit,
-              enemy
-            );
+          round += 1;
+          switch (unit.Class) {
+            case "Hemomancer":
+              [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
+              break;
+            case "Ascendant":
+              unit = ascendantBuffUp(unit, rotation);
+              [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
+                unit,
+                enemy
+              );
+              break;
+            default:
+              break;
           }
         }
-
         if (unitW && rngUnit2 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
@@ -631,6 +650,9 @@ export function simulateBattle(unit, enemy) {
         let rngUnit3 =
           (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
           2;
+        if (unit.Class === "Hemomancer") {
+          [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
+        }
         if (rngUnit3 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
@@ -675,6 +697,9 @@ export function simulateBattle(unit, enemy) {
           2;
 
         //If player unit doubles
+        if (unit.Class === "Hemomancer") {
+          [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
+        }
         if (unitW && rngUnit4 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
@@ -746,6 +771,9 @@ export function simulateBattle(unit, enemy) {
         }
 
         //Player unit counters
+        if (unit.Class === "Hemomancer") {
+          [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
+        }
         if (rngUnit < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
@@ -786,6 +814,9 @@ export function simulateBattle(unit, enemy) {
         }
 
         //If player unit doubles
+        if (unit.Class === "Hemomancer") {
+          [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
+        }
         if (unitW && rngUnit2 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             eneCurHP -= unitDmg * 2;
@@ -809,12 +840,19 @@ export function simulateBattle(unit, enemy) {
         //Player unit attacks
         round += 1;
         rotation = round % 3;
-        if (unit.Class === "Ascendant") {
-          unit = ascendantBuffUp(unit, rotation);
-          [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
-            unit,
-            enemy
-          );
+        switch (unit.Class) {
+          case "Hemomancer":
+            [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
+            break;
+          case "Ascendant":
+            unit = ascendantBuffUp(unit, rotation);
+            [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
+              unit,
+              enemy
+            );
+            break;
+          default:
+            break;
         }
         if (rngUnit3 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
@@ -845,15 +883,23 @@ export function simulateBattle(unit, enemy) {
         }
 
         //If player unit doubles
-        if ((unitW || enemyW) && unit.Class === "Ascendant") {
-          round += 1;
-          rotation = round % 3;
-          unit = ascendantBuffUp(unit, rotation);
-          [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
-            unit,
-            enemy
-          );
+        if (unitW || enemyW) {
+          switch (unit.Class) {
+            case "Hemomancer":
+              [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
+              break;
+            case "Ascendant":
+              unit = ascendantBuffUp(unit, rotation);
+              [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
+                unit,
+                enemy
+              );
+              break;
+            default:
+              break;
+          }
         }
+
         if (unitW && rngUnit4 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
@@ -959,35 +1005,10 @@ export function simulateBattle2(unit, oppo) {
         let rotationO = roundO % 3;
 
         if (unit.Class === "Ascendant") {
-          switch (rotationU) {
-            case 1:
-              unit.Ddg += 25;
-              break;
-            case 2:
-              unit.Acc += 25;
-              break;
-            case 0:
-              unit.Crit += 25;
-              break;
-            default:
-              break;
-          }
+          unit = ascendantBuffUp(unit, rotationU);
         }
-
         if (oppo.Class === "Ascendant") {
-          switch (rotationO) {
-            case 1:
-              oppo.Ddg += 25;
-              break;
-            case 2:
-              oppo.Acc += 25;
-              break;
-            case 0:
-              oppo.Crit += 25;
-              break;
-            default:
-              break;
-          }
+          oppo = ascendantBuffUp(oppo, rotationO);
         }
         [unitDmg, unitHit, unitCrit, eneDmg, eneHit, opCrit] = adjustStats(
           unit,
@@ -995,6 +1016,9 @@ export function simulateBattle2(unit, oppo) {
         );
 
         //Player unit attacks
+        if (unit.Class === "Hemomancer") {
+          [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
+        }
         if (rngUnit < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
@@ -1008,6 +1032,10 @@ export function simulateBattle2(unit, oppo) {
         }
 
         //Enemy counters
+        if (oppo.Class === "Hemomancer") {
+          [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
+        }
+
         if (rngOppo < eneHit) {
           if (Math.floor(Math.random() * 100) < opCrit) {
             if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
@@ -1021,34 +1049,10 @@ export function simulateBattle2(unit, oppo) {
         }
 
         if (unit.Class === "Ascendant") {
-          switch (rotationU) {
-            case 1:
-              unit.Ddg -= 25;
-              break;
-            case 2:
-              unit.Acc -= 25;
-              break;
-            case 0:
-              unit.Crit -= 25;
-              break;
-            default:
-              break;
-          }
+          unit = ascendantBuffDown(unit, rotationU);
         }
         if (oppo.Class === "Ascendant") {
-          switch (rotationO) {
-            case 1:
-              oppo.Ddg -= 25;
-              break;
-            case 2:
-              oppo.Acc -= 25;
-              break;
-            case 0:
-              oppo.Crit -= 25;
-              break;
-            default:
-              break;
-          }
+          oppo = ascendantBuffDown(oppo, rotationO);
         }
         if (eneCurHP <= 0) {
           winloseCnt[0]++;
@@ -1061,44 +1065,23 @@ export function simulateBattle2(unit, oppo) {
 
         //If player unit doubles
         if (unitW || enemyW) {
+          roundU += 1;
+          roundO += 1;
           if (unit.Class === "Ascendant") {
-            roundU += 1;
             rotationU = roundU % 3;
-            switch (rotationU) {
-              case 1:
-                unit.Ddg += 25;
-                break;
-              case 2:
-                unit.Acc += 25;
-                break;
-              case 0:
-                unit.Crit += 25;
-                break;
-              default:
-                break;
-            }
+            unit = ascendantBuffUp(unit, rotationU);
           }
           if (oppo.Class === "Ascendant") {
-            roundO += 1;
             rotationO = roundO % 3;
-            switch (rotationO) {
-              case 1:
-                oppo.Ddg += 25;
-                break;
-              case 2:
-                oppo.Acc += 25;
-                break;
-              case 0:
-                oppo.Crit += 25;
-                break;
-              default:
-                break;
-            }
+            oppo = ascendantBuffUp(oppo, rotationO);
           }
           [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
             unit,
             oppo
           );
+        }
+        if (unit.Class === "Hemomancer") {
+          [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
         }
         if (unitW && rngUnit2 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
@@ -1114,6 +1097,9 @@ export function simulateBattle2(unit, oppo) {
 
         //If enemy doubles
         if (enemyW && rngOppo2 < eneHit) {
+          if (oppo.Class === "Hemomancer") {
+            [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
+          }
           if (Math.floor(Math.random() * 100) < opCrit) {
             if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
               unitCurHP -= eneDmg * 3;
@@ -1126,34 +1112,10 @@ export function simulateBattle2(unit, oppo) {
         }
         if (unitW || enemyW) {
           if (unit.Class === "Ascendant") {
-            switch (rotationU) {
-              case 1:
-                unit.Ddg -= 25;
-                break;
-              case 2:
-                unit.Acc -= 25;
-                break;
-              case 0:
-                unit.Crit -= 25;
-                break;
-              default:
-                break;
-            }
+            unit = ascendantBuffDown(unit, rotationU);
           }
           if (oppo.Class === "Ascendant") {
-            switch (rotationO) {
-              case 1:
-                oppo.Ddg -= 25;
-                break;
-              case 2:
-                oppo.Acc -= 25;
-                break;
-              case 0:
-                oppo.Crit -= 25;
-                break;
-              default:
-                break;
-            }
+            oppo = ascendantBuffDown(oppo, rotationO);
           }
         }
         if (eneCurHP <= 0) {
@@ -1172,39 +1134,18 @@ export function simulateBattle2(unit, oppo) {
         rotationO = roundO % 3;
 
         if (unit.Class === "Ascendant") {
-          switch (rotationU) {
-            case 1:
-              unit.Ddg += 25;
-              break;
-            case 2:
-              unit.Acc += 25;
-              break;
-            case 0:
-              unit.Crit += 25;
-              break;
-            default:
-              break;
-          }
+          unit = ascendantBuffUp(unit, rotationU);
         }
         if (oppo.Class === "Ascendant") {
-          switch (rotationO) {
-            case 1:
-              oppo.Ddg += 25;
-              break;
-            case 2:
-              oppo.Acc += 25;
-              break;
-            case 0:
-              oppo.Crit += 25;
-              break;
-            default:
-              break;
-          }
+          oppo = ascendantBuffUp(oppo, rotationO);
         }
         [unitDmg, unitHit, unitCrit, eneDmg, eneHit, opCrit] = adjustStats(
           unit,
           oppo
         );
+        if (oppo.Class === "Hemomancer") {
+          [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
+        }
 
         if (rngOppo3 < eneHit) {
           if (Math.floor(Math.random() * 100) < opCrit) {
@@ -1219,6 +1160,9 @@ export function simulateBattle2(unit, oppo) {
         }
 
         //Player unit counters
+        if (unit.Class === "Hemomancer") {
+          [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
+        }
         if (rngUnit3 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
@@ -1231,34 +1175,10 @@ export function simulateBattle2(unit, oppo) {
           }
         }
         if (unit.Class === "Ascendant") {
-          switch (rotationU) {
-            case 1:
-              unit.Ddg -= 25;
-              break;
-            case 2:
-              unit.Acc -= 25;
-              break;
-            case 0:
-              unit.Crit -= 25;
-              break;
-            default:
-              break;
-          }
+          unit = ascendantBuffDown(unit, rotationU);
         }
         if (oppo.Class === "Ascendant") {
-          switch (rotationO) {
-            case 1:
-              oppo.Ddg -= 25;
-              break;
-            case 2:
-              oppo.Acc -= 25;
-              break;
-            case 0:
-              oppo.Crit -= 25;
-              break;
-            default:
-              break;
-          }
+          oppo = ascendantBuffDown(oppo, rotationO);
         }
         if (unitCurHP <= 0) {
           winloseCnt[1]++;
@@ -1274,41 +1194,20 @@ export function simulateBattle2(unit, oppo) {
           if (unit.Class === "Ascendant") {
             roundU += 1;
             rotationU = roundU % 3;
-            switch (rotationU) {
-              case 1:
-                unit.Ddg += 25;
-                break;
-              case 2:
-                unit.Acc += 25;
-                break;
-              case 0:
-                unit.Crit += 25;
-                break;
-              default:
-                break;
-            }
+            unit = ascendantBuffUp(unit, rotationU);
           }
           if (oppo.Class === "Ascendant") {
             roundO += 1;
             rotationO = roundO % 3;
-            switch (rotationO) {
-              case 1:
-                oppo.Ddg += 25;
-                break;
-              case 2:
-                oppo.Acc += 25;
-                break;
-              case 0:
-                oppo.Crit += 25;
-                break;
-              default:
-                break;
-            }
+            oppo = ascendantBuffUp(oppo, rotationO);
           }
           [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
             unit,
             oppo
           );
+        }
+        if (oppo.Class === "Hemomancer") {
+          [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
         }
         if (enemyW && rngOppo4 < eneHit) {
           if (Math.floor(Math.random() * 100) < opCrit) {
@@ -1324,6 +1223,9 @@ export function simulateBattle2(unit, oppo) {
 
         //If player unit doubles
         if (unitW && rngUnit4 < unitHit) {
+          if (unit.Class === "Hemomancer") {
+            [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
+          }
           if (Math.floor(Math.random() * 100) < unitCrit) {
             if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
               eneCurHP -= unitDmg * 3;
@@ -1336,34 +1238,10 @@ export function simulateBattle2(unit, oppo) {
         }
         if (unitW || enemyW) {
           if (unit.Class === "Ascendant") {
-            switch (rotationU) {
-              case 1:
-                unit.Ddg -= 25;
-                break;
-              case 2:
-                unit.Acc -= 25;
-                break;
-              case 0:
-                unit.Crit -= 25;
-                break;
-              default:
-                break;
-            }
+            unit = ascendantBuffDown(unit, rotationU);
           }
           if (oppo.Class === "Ascendant") {
-            switch (rotationO) {
-              case 1:
-                oppo.Ddg -= 25;
-                break;
-              case 2:
-                oppo.Acc -= 25;
-                break;
-              case 0:
-                oppo.Crit -= 25;
-                break;
-              default:
-                break;
-            }
+            oppo = ascendantBuffDown(oppo, rotationO);
           }
         }
         if (unitCurHP <= 0) {
@@ -1414,40 +1292,18 @@ export function simulateBattle2(unit, oppo) {
         let rotationO = roundO % 3;
 
         if (unit.Class === "Ascendant") {
-          switch (rotationU) {
-            case 1:
-              unit.Ddg += 25;
-              break;
-            case 2:
-              unit.Acc += 25;
-              break;
-            case 0:
-              unit.Crit += 25;
-              break;
-            default:
-              break;
-          }
+          unit = ascendantBuffUp(unit, rotationU);
         }
         if (oppo.Class === "Ascendant") {
-          switch (rotationO) {
-            case 1:
-              oppo.Ddg += 25;
-              break;
-            case 2:
-              oppo.Acc += 25;
-              break;
-            case 0:
-              oppo.Crit += 25;
-              break;
-            default:
-              break;
-          }
+          oppo = ascendantBuffUp(oppo, rotationO);
         }
         [unitDmg, unitHit, unitCrit, eneDmg, eneHit, opCrit] = adjustStats(
           unit,
           oppo
         );
-
+        if (oppo.Class === "Hemomancer") {
+          [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
+        }
         //Enemy attacks
         if (rngOppo < eneHit) {
           if (Math.floor(Math.random() * 100) < opCrit) {
@@ -1462,6 +1318,9 @@ export function simulateBattle2(unit, oppo) {
         }
 
         //Player unit counters
+        if (unit.Class === "Hemomancer") {
+          [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
+        }
         if (rngUnit < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
@@ -1475,34 +1334,10 @@ export function simulateBattle2(unit, oppo) {
         }
 
         if (unit.Class === "Ascendant") {
-          switch (rotationU) {
-            case 1:
-              unit.Ddg -= 25;
-              break;
-            case 2:
-              unit.Acc -= 25;
-              break;
-            case 0:
-              unit.Crit -= 25;
-              break;
-            default:
-              break;
-          }
+          unit = ascendantBuffDown(unit, rotationU);
         }
         if (oppo.Class === "Ascendant") {
-          switch (rotationO) {
-            case 1:
-              oppo.Ddg -= 25;
-              break;
-            case 2:
-              oppo.Acc -= 25;
-              break;
-            case 0:
-              oppo.Crit -= 25;
-              break;
-            default:
-              break;
-          }
+          oppo = ascendantBuffDown(oppo, rotationO);
         }
 
         if (unitCurHP <= 0) {
@@ -1516,47 +1351,25 @@ export function simulateBattle2(unit, oppo) {
 
         //If enemy doubles
         if (unitW || enemyW) {
+          roundU += 1;
+          roundO += 1;
           //Add Ascendant buff for the battle
           if (unit.Class === "Ascendant") {
-            roundU += 1;
             rotationU = roundU % 3;
-            switch (rotationU) {
-              case 1:
-                unit.Ddg += 25;
-                break;
-              case 2:
-                unit.Acc += 25;
-                break;
-              case 0:
-                unit.Crit += 25;
-                break;
-              default:
-                break;
-            }
+            unit = ascendantBuffUp(unit, rotationU);
           }
           if (oppo.Class === "Ascendant") {
-            roundO += 1;
             rotationO = roundO % 3;
-            switch (rotationO) {
-              case 1:
-                oppo.Ddg += 25;
-                break;
-              case 2:
-                oppo.Acc += 25;
-                break;
-              case 0:
-                oppo.Crit += 25;
-                break;
-              default:
-                break;
-            }
+            oppo = ascendantBuffUp(oppo, rotationO);
           }
           [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
             unit,
             oppo
           );
         }
-
+        if (oppo.Class === "Hemomancer") {
+          [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
+        }
         if (enemyW && rngOppo2 < eneHit) {
           if (Math.floor(Math.random() * 100) < opCrit) {
             if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
@@ -1570,6 +1383,9 @@ export function simulateBattle2(unit, oppo) {
         }
 
         //If player unit doubles
+        if (unit.Class === "Hemomancer") {
+          [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
+        }
         if (unitW && rngUnit2 < unitHit) {
           if (Math.floor(Math.random() * 100) < unitCrit) {
             if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
@@ -1584,255 +1400,147 @@ export function simulateBattle2(unit, oppo) {
         if (unitW || enemyW) {
           //Remove Ascendant buff after the battle
           if (unit.Class === "Ascendant") {
-            switch (rotationU) {
-              case 1:
-                unit.Ddg -= 25;
-                break;
-              case 2:
-                unit.Acc -= 25;
-                break;
-              case 0:
-                unit.Crit -= 25;
-                break;
-              default:
-                break;
-            }
+            unit = ascendantBuffDown(unit, rotationU);
           }
           if (oppo.Class === "Ascendant") {
-            switch (rotationO) {
-              case 1:
-                oppo.Ddg -= 25;
-                break;
-              case 2:
-                oppo.Acc -= 25;
-                break;
-              case 0:
-                oppo.Crit -= 25;
-                break;
-              default:
-                break;
-            }
+            oppo = ascendantBuffDown(oppo, rotationO);
           }
-        }
-        if (unitCurHP <= 0) {
-          winloseCnt[3]++;
-          break;
-        }
-        if (eneCurHP <= 0) {
-          winloseCnt[2]++;
-          break;
-        }
+          if (unitCurHP <= 0) {
+            winloseCnt[3]++;
+            break;
+          }
+          if (eneCurHP <= 0) {
+            winloseCnt[2]++;
+            break;
+          }
 
-        //Player unit attacks
-        roundO += 1;
-        roundU += 1;
-        rotationU = roundU % 3;
-        rotationO = roundO % 3;
-        if (unit.Class === "Ascendant") {
-          switch (rotationU) {
-            case 1:
-              unit.Ddg += 25;
-              break;
-            case 2:
-              unit.Acc += 25;
-              break;
-            case 0:
-              unit.Crit += 25;
-              break;
-            default:
-              break;
-          }
-        }
-        if (oppo.Class === "Ascendant") {
-          switch (rotationO) {
-            case 1:
-              oppo.Ddg += 25;
-              break;
-            case 2:
-              oppo.Acc += 25;
-              break;
-            case 0:
-              oppo.Crit += 25;
-              break;
-            default:
-              break;
-          }
-        }
-        [unitDmg, unitHit, unitCrit, eneDmg, eneHit, opCrit] = adjustStats(
-          unit,
-          oppo
-        );
-
-        if (rngUnit3 < unitHit) {
-          if (Math.floor(Math.random() * 100) < unitCrit) {
-            if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
-              eneCurHP -= unitDmg * 3;
-            } else {
-              eneCurHP -= unitDmg * 2;
-            }
-          } else {
-            eneCurHP -= unitDmg;
-          }
-        }
-
-        //Enemy counters
-        if (rngOppo3 < eneHit) {
-          if (Math.floor(Math.random() * 100) < opCrit) {
-            if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
-              unitCurHP -= eneDmg * 3;
-            } else {
-              unitCurHP -= eneDmg * 2;
-            }
-          } else {
-            unitCurHP -= eneDmg;
-          }
-        }
-        if (unit.Class === "Ascendant") {
-          switch (rotationU) {
-            case 1:
-              unit.Ddg -= 25;
-              break;
-            case 2:
-              unit.Acc -= 25;
-              break;
-            case 0:
-              unit.Crit -= 25;
-              break;
-            default:
-              break;
-          }
-        }
-        if (oppo.Class === "Ascendant") {
-          switch (rotationO) {
-            case 1:
-              oppo.Ddg -= 25;
-              break;
-            case 2:
-              oppo.Acc -= 25;
-              break;
-            case 0:
-              oppo.Crit -= 25;
-              break;
-            default:
-              break;
-          }
-        }
-
-        if (eneCurHP <= 0) {
-          winloseCnt[2]++;
-          break;
-        }
-        if (unitCurHP <= 0) {
-          winloseCnt[3]++;
-          break;
-        }
-
-        //If player unit doubles
-        if (unitW || enemyW) {
-          //Add Ascendant buff for the battle
+          //Player unit attacks
+          roundO += 1;
+          roundU += 1;
+          rotationU = roundU % 3;
+          rotationO = roundO % 3;
           if (unit.Class === "Ascendant") {
-            roundU += 1;
-            rotationU = roundU % 3;
-            switch (rotationU) {
-              case 1:
-                unit.Ddg += 25;
-                break;
-              case 2:
-                unit.Acc += 25;
-                break;
-              case 0:
-                unit.Crit += 25;
-                break;
-              default:
-                break;
-            }
+            unit = ascendantBuffUp(unit, rotationU);
           }
+
           if (oppo.Class === "Ascendant") {
-            roundO += 1;
-            rotationO = roundO % 3;
-            switch (rotationO) {
-              case 1:
-                oppo.Ddg += 25;
-                break;
-              case 2:
-                oppo.Acc += 25;
-                break;
-              case 0:
-                oppo.Crit += 25;
-                break;
-              default:
-                break;
-            }
+            oppo = ascendantBuffUp(oppo, rotationO);
           }
-          [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
+          [unitDmg, unitHit, unitCrit, eneDmg, eneHit, opCrit] = adjustStats(
             unit,
             oppo
           );
-        }
-        if (unitW && rngUnit4 < unitHit) {
-          if (Math.floor(Math.random() * 100) < unitCrit) {
-            if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
-              eneCurHP -= unitDmg * 3;
-            } else {
-              eneCurHP -= unitDmg * 2;
-            }
-          } else {
-            eneCurHP -= unitDmg;
+          if (unit.Class === "Hemomancer") {
+            [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
           }
-        }
+          if (rngUnit3 < unitHit) {
+            if (Math.floor(Math.random() * 100) < unitCrit) {
+              if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
+                eneCurHP -= unitDmg * 3;
+              } else {
+                eneCurHP -= unitDmg * 2;
+              }
+            } else {
+              eneCurHP -= unitDmg;
+            }
+          }
 
-        //If enemy doubles
-        if (enemyW && rngOppo4 < eneHit) {
-          if (Math.floor(Math.random() * 100) < opCrit) {
-            if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
-              unitCurHP -= eneDmg * 3;
-            } else {
-              unitCurHP -= eneDmg * 2;
-            }
-          } else {
-            unitCurHP -= eneDmg;
+          //Enemy counters
+          if (oppo.Class === "Hemomancer") {
+            [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
           }
-        }
-        if (unitW || enemyW) {
-          //Remove Ascendant buff after the battle
-          if (unit.Class === "Ascendant") {
-            switch (rotationU) {
-              case 1:
-                unit.Ddg -= 25;
-                break;
-              case 2:
-                unit.Acc -= 25;
-                break;
-              case 0:
-                unit.Crit -= 25;
-                break;
-              default:
-                break;
+          if (rngOppo3 < eneHit) {
+            if (Math.floor(Math.random() * 100) < opCrit) {
+              if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
+                unitCurHP -= eneDmg * 3;
+              } else {
+                unitCurHP -= eneDmg * 2;
+              }
+            } else {
+              unitCurHP -= eneDmg;
             }
+          }
+          if (unit.Class === "Ascendant") {
+            unit = ascendantBuffDown(unit, rotationU);
           }
           if (oppo.Class === "Ascendant") {
-            switch (rotationO) {
-              case 1:
-                oppo.Ddg -= 25;
-                break;
-              case 2:
-                oppo.Acc -= 25;
-                break;
-              case 0:
-                oppo.Crit -= 25;
-                break;
-              default:
-                break;
+            oppo = ascendantBuffDown(oppo, rotationO);
+          }
+
+          if (eneCurHP <= 0) {
+            winloseCnt[2]++;
+            break;
+          }
+          if (unitCurHP <= 0) {
+            winloseCnt[3]++;
+            break;
+          }
+
+          //If player unit doubles
+          if (unitW || enemyW) {
+            roundU += 1;
+            roundO += 1;
+            //Add Ascendant buff for the battle
+            if (unit.Class === "Ascendant") {
+              rotationU = roundU % 3;
+              unit = ascendantBuffUp(unit, rotationU);
+            }
+            if (oppo.Class === "Ascendant") {
+              rotationO = roundO % 3;
+              oppo = ascendantBuffUp(oppo, rotationO);
+            }
+            [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
+              unit,
+              oppo
+            );
+          }
+          if (unit.Class === "Hemomancer") {
+            [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
+          }
+          if (unitW && rngUnit4 < unitHit) {
+            if (Math.floor(Math.random() * 100) < unitCrit) {
+              if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
+                eneCurHP -= unitDmg * 3;
+              } else {
+                eneCurHP -= unitDmg * 2;
+              }
+            } else {
+              eneCurHP -= unitDmg;
             }
           }
-        }
-        if (eneCurHP <= 0) {
-          winloseCnt[2]++;
-          break;
-        }
-        if (unitCurHP <= 0) {
-          winloseCnt[3]++;
-          break;
+
+          //If enemy doubles
+          if (oppo.Class === "Hemomancer") {
+            [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
+          }
+          if (enemyW && rngOppo4 < eneHit) {
+            if (Math.floor(Math.random() * 100) < opCrit) {
+              if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
+                unitCurHP -= eneDmg * 3;
+              } else {
+                unitCurHP -= eneDmg * 2;
+              }
+            } else {
+              unitCurHP -= eneDmg;
+            }
+          }
+          if (unitW || enemyW) {
+            //Remove Ascendant buff after the battle
+            if (unit.Class === "Ascendant") {
+              unit = ascendantBuffDown(unit, rotationU);
+            }
+            if (oppo.Class === "Ascendant") {
+              oppo = ascendantBuffDown(oppo, rotationO);
+            }
+          }
+          if (eneCurHP <= 0) {
+            winloseCnt[2]++;
+            break;
+          }
+          if (unitCurHP <= 0) {
+            winloseCnt[3]++;
+            break;
+          }
         }
       }
     }
