@@ -542,7 +542,6 @@ export function simulateBattle(unit, enemy) {
         rotation = round % 3;
 
         //Player unit attacks
-        
         switch (unit.Class) {
           case "Hemomancer":
             [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
@@ -584,7 +583,7 @@ export function simulateBattle(unit, enemy) {
           }
         }
 
-        //Enemy counters        
+        //Enemy counters
         if (check2RN(eneHit)) {
           unitCurHP -= eneDmg;
         }
@@ -601,7 +600,7 @@ export function simulateBattle(unit, enemy) {
         }
 
         //If player unit doubles
-                if (unitW || enemyW) {
+        if (unitW || enemyW) {
           round += 1;
           switch (unit.Class) {
             case "Hemomancer":
@@ -648,10 +647,8 @@ export function simulateBattle(unit, enemy) {
         }
 
         //If enemy doubles
-        let rngEne2 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        if (enemyW && rngEne2 < eneHit) {
+
+        if (enemyW && check2RN(eneHit)) {
           unitCurHP -= eneDmg;
         }
         if (unitW || enemyW) {
@@ -675,22 +672,17 @@ export function simulateBattle(unit, enemy) {
           unit = ascendantBuffUp(unit, rotation);
         }
         [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(unit, enemy);
-        let rngEne3 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        if (rngEne3 < eneHit) {
+        if (check2RN(eneHit)) {
           unitCurHP -= eneDmg;
         }
 
         //Player unit counters
-        let rngUnit3 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
+
         if (unit.Class === "Hemomancer") {
           [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
         }
-        if (rngUnit3 < unitHit) {
-          if (Math.floor(Math.random() * 100) < unitCrit) {
+        if (check2RN(unitHit)) {
+          if (check1RN(unitCrit)) {
             if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
               eneCurHP -= unitDmg * 3;
             } else if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
@@ -706,9 +698,9 @@ export function simulateBattle(unit, enemy) {
             }
           }
         }
-        if (unit.Class === "Slayer" && Math.floor(Math.random() * 100) < 20) {
-          if (Math.floor(Math.random() * 100) < unitHit) {
-            if (Math.floor(Math.random() * 100) < unitCrit) {
+        if (unit.Class === "Slayer" && check1RN(20)) {
+          if (check2RN(unitHit)) {
+            if (check1RN(unitCrit)) {
               eneCurHP -= unitDmg * 2;
             } else {
               eneCurHP -= unitDmg;
@@ -728,9 +720,7 @@ export function simulateBattle(unit, enemy) {
           break;
         }
         //If enemy doubles
-        let rngEne4 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
+
         if (unitW || enemyW) {
           round += 1;
           rotation = round % 3;
@@ -740,20 +730,17 @@ export function simulateBattle(unit, enemy) {
             enemy
           );
         }
-        if (enemyW && rngEne4 < eneHit) {
+        if (enemyW && check2RN(eneHit)) {
           unitCurHP -= eneDmg;
         }
-        let rngUnit4 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
 
         //If player unit doubles
         if (unit.Class === "Hemomancer") {
           [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
         }
         if (unitW) {
-          if (rngUnit4 < unitHit) {
-            if (Math.floor(Math.random() * 100) < unitCrit) {
+          if (check2RN(unitHit)) {
+            if (check1RN(unitCrit)) {
               if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
                 eneCurHP -= unitDmg * 3;
               } else if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
@@ -768,12 +755,9 @@ export function simulateBattle(unit, enemy) {
                 eneCurHP -= unitDmg;
               }
             }
-            if (
-              unit.Class === "Slayer" &&
-              Math.floor(Math.random() * 100) < 20
-            ) {
-              if (Math.floor(Math.random() * 100) < unitHit) {
-                if (Math.floor(Math.random() * 100) < unitCrit) {
+            if (unit.Class === "Slayer" && check1RN(20)) {
+              if (check2RN(unitHit)) {
+                if (check1RN(unitCrit)) {
                   eneCurHP -= unitDmg * 2;
                 } else {
                   eneCurHP -= unitDmg;
@@ -812,32 +796,9 @@ export function simulateBattle(unit, enemy) {
             enemy
           );
         }
-        let rngUnit =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngUnit2 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngUnit3 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngUnit4 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngEne =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngEne2 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngEne3 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngEne4 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
+
         //Enemy attacks
-        if (rngEne < eneHit) {
+        if (check2RN(eneHit)) {
           unitCurHP -= eneDmg;
         }
 
@@ -845,8 +806,8 @@ export function simulateBattle(unit, enemy) {
         if (unit.Class === "Hemomancer") {
           [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
         }
-        if (rngUnit < unitHit) {
-          if (Math.floor(Math.random() * 100) < unitCrit) {
+        if (check2RN(unitHit)) {
+          if (check1RN(unitCrit)) {
             if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
               eneCurHP -= unitDmg * 3;
             } else if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
@@ -862,8 +823,8 @@ export function simulateBattle(unit, enemy) {
             }
           }
         }
-        if (unit.Class === "Slayer" && Math.floor(Math.random() * 100) < 20) {
-          if (Math.floor(Math.random() * 100) < unitHit) {
+        if (unit.Class === "Slayer" && check1RN(20)) {
+          if (check2RN(unitHit)) {
             if (Math.floor(Math.random() * 100) < unitCrit) {
               eneCurHP -= unitDmg * 2;
             } else {
@@ -895,7 +856,7 @@ export function simulateBattle(unit, enemy) {
           );
         }
 
-        if (enemyW && rngEne2 < eneHit) {
+        if (enemyW && check2RN(eneHit)) {
           unitCurHP -= eneDmg;
         }
 
@@ -904,8 +865,8 @@ export function simulateBattle(unit, enemy) {
           [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
         }
         if (unitW) {
-          if (rngUnit2 < unitHit) {
-            if (Math.floor(Math.random() * 100) < unitCrit) {
+          if (check2RN(unitHit)) {
+            if (check1RN(unitCrit)) {
               if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
                 eneCurHP -= unitDmg * 3;
               } else if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
@@ -920,12 +881,9 @@ export function simulateBattle(unit, enemy) {
                 eneCurHP -= unitDmg;
               }
             }
-            if (
-              unit.Class === "Slayer" &&
-              Math.floor(Math.random() * 100) < 20
-            ) {
-              if (Math.floor(Math.random() * 100) < unitHit) {
-                if (Math.floor(Math.random() * 100) < unitCrit) {
+            if (unit.Class === "Slayer" && check1RN(20)) {
+              if (check2RN(unitHit)) {
+                if (check1RN(unitCrit)) {
                   eneCurHP -= unitDmg * 2;
                 } else {
                   eneCurHP -= unitDmg;
@@ -964,8 +922,8 @@ export function simulateBattle(unit, enemy) {
           default:
             break;
         }
-        if (rngUnit3 < unitHit) {
-          if (Math.floor(Math.random() * 100) < unitCrit) {
+        if (check2RN(unitHit)) {
+          if (check1RN(unitCrit)) {
             if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
               eneCurHP -= unitDmg * 3;
             } else if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
@@ -981,9 +939,9 @@ export function simulateBattle(unit, enemy) {
             }
           }
         }
-        if (unit.Class === "Slayer" && Math.floor(Math.random() * 100) < 20) {
-          if (Math.floor(Math.random() * 100) < unitHit) {
-            if (Math.floor(Math.random() * 100) < unitCrit) {
+        if (unit.Class === "Slayer" && check1RN(20)) {
+          if (check2RN(unitHit)) {
+            if (check1RN(unitCrit)) {
               eneCurHP -= unitDmg * 2;
             } else {
               eneCurHP -= unitDmg;
@@ -991,7 +949,7 @@ export function simulateBattle(unit, enemy) {
           }
         }
         //Enemy counters
-        if (rngEne3 < eneHit) {
+        if (check2RN(eneHit)) {
           unitCurHP -= eneDmg;
         }
 
@@ -1026,8 +984,8 @@ export function simulateBattle(unit, enemy) {
         }
 
         if (unitW) {
-          if (rngUnit4 < unitHit) {
-            if (Math.floor(Math.random() * 100) < unitCrit) {
+          if (check2RN(unitHit)) {
+            if (check1RN(unitCrit)) {
               if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
                 eneCurHP -= unitDmg * 3;
               } else if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
@@ -1043,9 +1001,9 @@ export function simulateBattle(unit, enemy) {
               }
             }
           }
-          if (unit.Class === "Slayer" && Math.floor(Math.random() * 100) < 20) {
-            if (Math.floor(Math.random() * 100) < unitHit) {
-              if (Math.floor(Math.random() * 100) < unitCrit) {
+          if (unit.Class === "Slayer" && check1RN(20)) {
+            if (check2RN(unitHit)) {
+              if (check1RN(unitCrit)) {
                 eneCurHP -= unitDmg * 2;
               } else {
                 eneCurHP -= unitDmg;
@@ -1055,7 +1013,7 @@ export function simulateBattle(unit, enemy) {
         }
 
         //If enemy doubles
-        if (enemyW && rngEne4 < eneHit) {
+        if (enemyW && check2RN(eneHit)){
           unitCurHP -= eneDmg;
         }
         if ((unitW || enemyW) && unit.Class === "Ascendant") {
@@ -1113,30 +1071,6 @@ export function simulateBattle2(unit, oppo) {
       let roundU = 0;
       let roundO = 0;
       while (unitCurHP > 0 && eneCurHP > 0) {
-        let rngUnit =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngUnit2 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngUnit3 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngUnit4 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngOppo =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngOppo2 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngOppo3 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngOppo4 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
         roundU += 1;
         roundO += 1;
         let rotationU = roundU % 3;
@@ -1157,8 +1091,8 @@ export function simulateBattle2(unit, oppo) {
         if (unit.Class === "Hemomancer") {
           [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
         }
-        if (rngUnit < unitHit) {
-          if (Math.floor(Math.random() * 100) < unitCrit) {
+        if (check2RN(unitHit)) {
+          if (check1RN(unitCrit)) {
             if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
               eneCurHP -= unitDmg * 3;
             } else if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
@@ -1174,9 +1108,9 @@ export function simulateBattle2(unit, oppo) {
             }
           }
         }
-        if (unit.Class === "Slayer" && Math.floor(Math.random() * 100) < 20) {
-          if (Math.floor(Math.random() * 100) < unitHit) {
-            if (Math.floor(Math.random() * 100) < unitCrit) {
+        if (unit.Class === "Slayer" && check1RN(20)) {
+          if (check2RN(unitHit)) {
+            if (check1RN(unitCrit)) {
               eneCurHP -= unitDmg * 2;
             } else {
               eneCurHP -= unitDmg;
@@ -1189,8 +1123,8 @@ export function simulateBattle2(unit, oppo) {
           [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
         }
 
-        if (rngOppo < eneHit) {
-          if (Math.floor(Math.random() * 100) < opCrit) {
+        if (check2RN(eneHit)) {
+          if (check1RN(opCrit)) {
             if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
               unitCurHP -= eneDmg * 3;
             } else if (oppo.Class === "Gallant" && unitCurHP * 2 > unit.HP) {
@@ -1206,9 +1140,9 @@ export function simulateBattle2(unit, oppo) {
             }
           }
         }
-        if (oppo.Class === "Slayer" && Math.floor(Math.random() * 100) < 20) {
-          if (Math.floor(Math.random() * 100) < eneHit) {
-            if (Math.floor(Math.random() * 100) < opCrit) {
+        if (oppo.Class === "Slayer" && check1RN(20)) {
+          if (check2RN(eneHit)) {
+            if (check1RN(opCrit)) {
               unitCurHP -= eneDmg * 2;
             } else {
               unitCurHP -= eneDmg;
@@ -1252,8 +1186,8 @@ export function simulateBattle2(unit, oppo) {
           [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
         }
         if (unitW) {
-          if (rngUnit2 < unitHit) {
-            if (Math.floor(Math.random() * 100) < unitCrit) {
+          if (check2RN(unitHit)) {
+            if (check1RN(unitCrit)) {
               if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
                 eneCurHP -= unitDmg * 3;
               } else if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
@@ -1269,9 +1203,9 @@ export function simulateBattle2(unit, oppo) {
               }
             }
           }
-          if (unit.Class === "Slayer" && Math.floor(Math.random() * 100) < 20) {
-            if (Math.floor(Math.random() * 100) < unitHit) {
-              if (Math.floor(Math.random() * 100) < unitCrit) {
+          if (unit.Class === "Slayer" && check1RN(20)) {
+            if (check2RN(unitHit)) {
+              if (check1RN(unitCrit)) {
                 eneCurHP -= unitDmg * 2;
               } else {
                 eneCurHP -= unitDmg;
@@ -1282,11 +1216,11 @@ export function simulateBattle2(unit, oppo) {
 
         //If enemy doubles
         if (enemyW) {
-          if (rngOppo2 < eneHit) {
+          if (check2RN(eneHit)) {
             if (oppo.Class === "Hemomancer") {
               [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
             }
-            if (Math.floor(Math.random() * 100) < opCrit) {
+            if (check1RN(opCrit)) {
               if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
                 unitCurHP -= eneDmg * 3;
               } else if (oppo.Class === "Gallant" && unitCurHP * 2 > unit.HP) {
@@ -1302,9 +1236,9 @@ export function simulateBattle2(unit, oppo) {
               }
             }
           }
-          if (oppo.Class === "Slayer" && Math.floor(Math.random() * 100) < 20) {
-            if (Math.floor(Math.random() * 100) < eneHit) {
-              if (Math.floor(Math.random() * 100) < opCrit) {
+          if (oppo.Class === "Slayer" && check1RN(20)) {
+            if (check2RN(eneHit)) {
+              if (check1RN(opCrit)) {
                 unitCurHP -= eneDmg * 2;
               } else {
                 unitCurHP -= eneDmg;
@@ -1349,8 +1283,8 @@ export function simulateBattle2(unit, oppo) {
           [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
         }
 
-        if (rngOppo3 < eneHit) {
-          if (Math.floor(Math.random() * 100) < opCrit) {
+        if (check2RN(eneHit)) {
+          if (check1RN(opCrit)) {
             if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
               unitCurHP -= eneDmg * 3;
             } else if (oppo.Class === "Gallant" && unitCurHP * 2 > unit.HP) {
@@ -1366,9 +1300,9 @@ export function simulateBattle2(unit, oppo) {
             }
           }
         }
-        if (unit.Class === "Slayer" && Math.floor(Math.random() * 100) < 20) {
-          if (Math.floor(Math.random() * 100) < unitHit) {
-            if (Math.floor(Math.random() * 100) < unitCrit) {
+        if (unit.Class === "Slayer" && check1RN(20)) {
+          if (check2RN(unitHit)) {
+            if (check1RN(unitCrit)) {
               eneCurHP -= unitDmg * 2;
             } else {
               eneCurHP -= unitDmg;
@@ -1380,8 +1314,8 @@ export function simulateBattle2(unit, oppo) {
         if (unit.Class === "Hemomancer") {
           [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
         }
-        if (rngUnit3 < unitHit) {
-          if (Math.floor(Math.random() * 100) < unitCrit) {
+        if (check2RN(unitHit)) {
+          if (check1RN(unitCrit)) {
             if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
               eneCurHP -= unitDmg * 3;
             } else if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
@@ -1397,9 +1331,9 @@ export function simulateBattle2(unit, oppo) {
             }
           }
         }
-        if (oppo.Class === "Slayer" && Math.floor(Math.random() * 100) < 20) {
-          if (Math.floor(Math.random() * 100) < eneHit) {
-            if (Math.floor(Math.random() * 100) < opCrit) {
+        if (oppo.Class === "Slayer" && check1RN(20)) {
+          if (check2RN(eneHit)) {
+            if (check1RN(opCrit)) {
               unitCurHP -= eneDmg * 2;
             } else {
               unitCurHP -= eneDmg;
@@ -1442,8 +1376,8 @@ export function simulateBattle2(unit, oppo) {
           [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
         }
         if (enemyW) {
-          if (rngOppo4 < eneHit) {
-            if (Math.floor(Math.random() * 100) < opCrit) {
+          if (check2RN(eneHit)) {
+            if (check1RN(opCrit)) {
               if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
                 unitCurHP -= eneDmg * 3;
               } else if (oppo.Class === "Gallant" && unitCurHP * 2 > unit.HP) {
@@ -1459,9 +1393,9 @@ export function simulateBattle2(unit, oppo) {
               }
             }
           }
-          if (oppo.Class === "Slayer" && Math.floor(Math.random() * 100) < 20) {
-            if (Math.floor(Math.random() * 100) < eneHit) {
-              if (Math.floor(Math.random() * 100) < opCrit) {
+          if (oppo.Class === "Slayer" && check1RN(20)) {
+            if (check2RN(eneHit)) {
+              if (check1RN(opCrit)) {
                 unitCurHP -= eneDmg * 2;
               } else {
                 unitCurHP -= eneDmg;
@@ -1472,11 +1406,11 @@ export function simulateBattle2(unit, oppo) {
 
         //If player unit doubles
         if (unitW) {
-          if (rngUnit4 < unitHit) {
+          if (check2RN(unitHit)) {
             if (unit.Class === "Hemomancer") {
               [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
             }
-            if (Math.floor(Math.random() * 100) < unitCrit) {
+            if (check1RN(unitCrit)) {
               if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
                 eneCurHP -= unitDmg * 3;
               } else if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
@@ -1492,9 +1426,9 @@ export function simulateBattle2(unit, oppo) {
               }
             }
           }
-          if (unit.Class === "Slayer" && Math.floor(Math.random() * 100) < 20) {
-            if (Math.floor(Math.random() * 100) < unitHit) {
-              if (Math.floor(Math.random() * 100) < unitCrit) {
+          if (unit.Class === "Slayer" && check1RN(20)) {
+            if (check2RN(unitHit)) {
+              if (check1RN(unitCrit)) {
                 eneCurHP -= unitDmg * 2;
               } else {
                 eneCurHP -= unitDmg;
@@ -1528,31 +1462,7 @@ export function simulateBattle2(unit, oppo) {
       let eneCurHP = oppo.HP;
       let roundU = 0;
       let roundO = 0;
-      while (unitCurHP > 0 && eneCurHP > 0) {
-        let rngUnit =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngUnit2 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngUnit3 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngUnit4 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngOppo =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngOppo2 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngOppo3 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        let rngOppo4 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
+      while (unitCurHP > 0 && eneCurHP > 0) {        
         roundU += 1;
         roundO += 1;
         let rotationU = roundU % 3;
@@ -1572,8 +1482,8 @@ export function simulateBattle2(unit, oppo) {
           [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
         }
         //Enemy attacks
-        if (rngOppo < eneHit) {
-          if (Math.floor(Math.random() * 100) < opCrit) {
+        if (check2RN(eneHit)) {
+          if (check1RN(opCrit)) {
             if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
               unitCurHP -= eneDmg * 3;
             } else if (oppo.Class === "Gallant" && unitCurHP * 2 > unit.HP) {
@@ -1589,9 +1499,9 @@ export function simulateBattle2(unit, oppo) {
             }
           }
         }
-        if (oppo.Class === "Slayer" && Math.floor(Math.random() * 100) < 20) {
-          if (Math.floor(Math.random() * 100) < eneHit) {
-            if (Math.floor(Math.random() * 100) < opCrit) {
+        if (oppo.Class === "Slayer" && check1RN(20)) {
+          if (check2RN(eneHit)) {
+            if (check1RN(opCrit)) {
               unitCurHP -= eneDmg * 2;
             } else {
               unitCurHP -= eneDmg;
@@ -1603,8 +1513,8 @@ export function simulateBattle2(unit, oppo) {
         if (unit.Class === "Hemomancer") {
           [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
         }
-        if (rngUnit < unitHit) {
-          if (Math.floor(Math.random() * 100) < unitCrit) {
+        if (check2RN(unitHit)) {
+          if (check1RN(unitCrit)) {
             if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
               eneCurHP -= unitDmg * 3;
             } else if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
@@ -1620,9 +1530,9 @@ export function simulateBattle2(unit, oppo) {
             }
           }
         }
-        if (unit.Class === "Slayer" && Math.floor(Math.random() * 100) < 20) {
-          if (Math.floor(Math.random() * 100) < unitHit) {
-            if (Math.floor(Math.random() * 100) < unitCrit) {
+        if (unit.Class === "Slayer" && check1RN(20)) {
+          if (check2RN(unitHit)) {
+            if (check1RN(unitCrit)) {
               eneCurHP -= unitDmg * 2;
             } else {
               eneCurHP -= unitDmg;
@@ -1668,8 +1578,8 @@ export function simulateBattle2(unit, oppo) {
           [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
         }
         if (enemyW) {
-          if (rngOppo2 < eneHit) {
-            if (Math.floor(Math.random() * 100) < opCrit) {
+          if (check2RN(eneHit)) {
+            if (check1RN(opCrit)) {
               if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
                 unitCurHP -= eneDmg * 3;
               } else if (oppo.Class === "Gallant" && unitCurHP * 2 > unit.HP) {
@@ -1685,9 +1595,9 @@ export function simulateBattle2(unit, oppo) {
               }
             }
           }
-          if (oppo.Class === "Slayer" && Math.floor(Math.random() * 100) < 20) {
-            if (Math.floor(Math.random() * 100) < eneHit) {
-              if (Math.floor(Math.random() * 100) < opCrit) {
+          if (oppo.Class === "Slayer" && check1RN(20)) {
+            if (check2RN(eneHit)) {
+              if (check1RN(opCrit)) {
                 unitCurHP -= eneDmg * 2;
               } else {
                 unitCurHP -= eneDmg;
@@ -1701,8 +1611,8 @@ export function simulateBattle2(unit, oppo) {
           [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
         }
         if (unitW) {
-          if (rngUnit2 < unitHit) {
-            if (Math.floor(Math.random() * 100) < unitCrit) {
+          if (check2RN(unitHit)) {
+            if (check1RN(unitCrit)) {
               if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
                 eneCurHP -= unitDmg * 3;
               } else if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
@@ -1718,9 +1628,9 @@ export function simulateBattle2(unit, oppo) {
               }
             }
           }
-          if (unit.Class === "Slayer" && Math.floor(Math.random() * 100) < 20) {
-            if (Math.floor(Math.random() * 100) < unitHit) {
-              if (Math.floor(Math.random() * 100) < unitCrit) {
+          if (unit.Class === "Slayer" && check1RN(20)) {
+            if (check2RN(unitHit)) {
+              if (check1RN(unitCrit)) {
                 eneCurHP -= unitDmg * 2;
               } else {
                 eneCurHP -= unitDmg;
@@ -1764,8 +1674,8 @@ export function simulateBattle2(unit, oppo) {
           if (unit.Class === "Hemomancer") {
             [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
           }
-          if (rngUnit3 < unitHit) {
-            if (Math.floor(Math.random() * 100) < unitCrit) {
+          if (check2RN(unitHit)) {
+            if (check1RN(unitCrit)) {
               if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
                 eneCurHP -= unitDmg * 3;
               } else if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
@@ -1781,9 +1691,9 @@ export function simulateBattle2(unit, oppo) {
               }
             }
           }
-          if (unit.Class === "Slayer" && Math.floor(Math.random() * 100) < 20) {
-            if (Math.floor(Math.random() * 100) < unitHit) {
-              if (Math.floor(Math.random() * 100) < unitCrit) {
+          if (unit.Class === "Slayer" && check1RN(20)) {
+            if (check2RN(unitHit)) {
+              if (check1RN(unitCrit)) {
                 eneCurHP -= unitDmg * 2;
               } else {
                 eneCurHP -= unitDmg;
@@ -1795,8 +1705,8 @@ export function simulateBattle2(unit, oppo) {
           if (oppo.Class === "Hemomancer") {
             [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
           }
-          if (rngOppo3 < eneHit) {
-            if (Math.floor(Math.random() * 100) < opCrit) {
+          if (check2RN(eneHit)) {
+            if (check1RN(opCrit)) {
               if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
                 unitCurHP -= eneDmg * 3;
               } else if (oppo.Class === "Gallant" && unitCurHP * 2 > unit.HP) {
@@ -1812,9 +1722,9 @@ export function simulateBattle2(unit, oppo) {
               }
             }
           }
-          if (oppo.Class === "Slayer" && Math.floor(Math.random() * 100) < 20) {
-            if (Math.floor(Math.random() * 100) < eneHit) {
-              if (Math.floor(Math.random() * 100) < opCrit) {
+          if (oppo.Class === "Slayer" && check1RN(20)) {
+            if (check2RN(eneHit)) {
+              if (check1RN(opCrit)) {
                 unitCurHP -= eneDmg * 2;
               } else {
                 unitCurHP -= eneDmg;
@@ -1859,8 +1769,8 @@ export function simulateBattle2(unit, oppo) {
             [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
           }
           if (unitW) {
-            if (rngUnit4 < unitHit) {
-              if (Math.floor(Math.random() * 100) < unitCrit) {
+            if (check2RN(unitHit)) {
+              if (check1RN(unitCrit)) {
                 if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
                   eneCurHP -= unitDmg * 3;
                 } else if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
@@ -1876,12 +1786,9 @@ export function simulateBattle2(unit, oppo) {
                 }
               }
             }
-            if (
-              unit.Class === "Slayer" &&
-              Math.floor(Math.random() * 100) < 20
-            ) {
-              if (Math.floor(Math.random() * 100) < unitHit) {
-                if (Math.floor(Math.random() * 100) < unitCrit) {
+            if (unit.Class === "Slayer" && check1RN(20)) {
+              if (check2RN(unitHit)) {
+                if (check1RN(unitCrit)) {
                   eneCurHP -= unitDmg * 2;
                 } else {
                   eneCurHP -= unitDmg;
@@ -1895,8 +1802,8 @@ export function simulateBattle2(unit, oppo) {
             [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
           }
           if (enemyW) {
-            if (rngOppo4 < eneHit) {
-              if (Math.floor(Math.random() * 100) < opCrit) {
+            if (check2RN(eneHit)) {
+              if (check1RN(opCrit)) {
                 if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
                   unitCurHP -= eneDmg * 3;
                 } else if (
@@ -1915,12 +1822,9 @@ export function simulateBattle2(unit, oppo) {
                 }
               }
             }
-            if (
-              oppo.Class === "Slayer" &&
-              Math.floor(Math.random() * 100) < 20
-            ) {
-              if (Math.floor(Math.random() * 100) < eneHit) {
-                if (Math.floor(Math.random() * 100) < opCrit) {
+            if (oppo.Class === "Slayer" && check1RN(20)) {
+              if (check2RN(eneHit)) {
+                if (check1RN(opCrit)) {
                   unitCurHP -= eneDmg * 2;
                 } else {
                   unitCurHP -= eneDmg;
