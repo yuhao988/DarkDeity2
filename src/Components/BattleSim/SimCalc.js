@@ -478,6 +478,17 @@ function determineDoubleAttack(speed1, speed2) {
   return [speedDiff >= 5, speedDiff <= -5];
 }
 
+function check2RN(num) {
+  const rng =
+    (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) / 2;
+  return rng < num;
+}
+
+function check1RN(num) {
+  const rng = Math.floor(Math.random() * 100);
+  return rng < num;
+}
+
 export function simulateBattle(unit, enemy) {
   // Determine if either unit gets a double attack based on speed difference
   let [unitW, enemyW] = determineDoubleAttack(unit.TSpd, enemy.TSpd);
@@ -516,7 +527,7 @@ export function simulateBattle(unit, enemy) {
   let [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(unit, enemy);
 
   // Check for immediate draw conditions
-  if (unitDmg*unitHit === 0 && eneDmg*eneHit === 0) {
+  if (unitDmg * unitHit === 0 && eneDmg * eneHit === 0) {
     return <p>The battle results in a draw</p>;
   } else {
     //Player unit attacks first
@@ -531,9 +542,7 @@ export function simulateBattle(unit, enemy) {
         rotation = round % 3;
 
         //Player unit attacks
-        let rngUnit =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
+        
         switch (unit.Class) {
           case "Hemomancer":
             [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
@@ -548,8 +557,8 @@ export function simulateBattle(unit, enemy) {
           default:
             break;
         }
-        if (rngUnit < unitHit) {
-          if (Math.floor(Math.random() * 100) < unitCrit) {
+        if (check2RN(unitHit)) {
+          if (check1RN(unitCrit)) {
             if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
               eneCurHP -= unitDmg * 3;
             } else if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
@@ -565,9 +574,9 @@ export function simulateBattle(unit, enemy) {
             }
           }
         }
-        if (unit.Class === "Slayer" && Math.floor(Math.random() * 100) < 20) {
-          if (Math.floor(Math.random() * 100) < unitHit) {
-            if (Math.floor(Math.random() * 100) < unitCrit) {
+        if (unit.Class === "Slayer" && check1RN(20)) {
+          if (check2RN(unitHit)) {
+            if (check1RN(unitCrit)) {
               eneCurHP -= unitDmg * 2;
             } else {
               eneCurHP -= unitDmg;
@@ -575,11 +584,8 @@ export function simulateBattle(unit, enemy) {
           }
         }
 
-        //Enemy counters
-        let rngEne =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        if (rngEne < eneHit) {
+        //Enemy counters        
+        if (check2RN(eneHit)) {
           unitCurHP -= eneDmg;
         }
         if (unit.Class === "Ascendant") {
@@ -595,10 +601,7 @@ export function simulateBattle(unit, enemy) {
         }
 
         //If player unit doubles
-        let rngUnit2 =
-          (Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100)) /
-          2;
-        if (unitW || enemyW) {
+                if (unitW || enemyW) {
           round += 1;
           switch (unit.Class) {
             case "Hemomancer":
@@ -616,8 +619,8 @@ export function simulateBattle(unit, enemy) {
           }
         }
         if (unitW) {
-          if (rngUnit2 < unitHit) {
-            if (Math.floor(Math.random() * 100) < unitCrit) {
+          if (check2RN(unitHit)) {
+            if (check1RN(unitCrit)) {
               if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
                 eneCurHP -= unitDmg * 3;
               } else if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
@@ -633,9 +636,9 @@ export function simulateBattle(unit, enemy) {
               }
             }
           }
-          if (unit.Class === "Slayer" && Math.floor(Math.random() * 100) < 20) {
-            if (Math.floor(Math.random() * 100) < unitHit) {
-              if (Math.floor(Math.random() * 100) < unitCrit) {
+          if (unit.Class === "Slayer" && check1RN(20)) {
+            if (check2RN(unitHit)) {
+              if (check1RN(unitCrit)) {
                 eneCurHP -= unitDmg * 2;
               } else {
                 eneCurHP -= unitDmg;
@@ -1100,7 +1103,7 @@ export function simulateBattle2(unit, oppo) {
     oppo
   );
 
-  if (unitDmg*unitHit === 0 && eneDmg*eneHit === 0) {
+  if (unitDmg * unitHit === 0 && eneDmg * eneHit === 0) {
     return <p>The battle results in a draw</p>;
   } else {
     //Player unit attacks first
