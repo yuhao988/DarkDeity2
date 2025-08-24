@@ -363,17 +363,10 @@ export function battleForecast(unit, enemy) {
   if (unit.Class === "Champion") {
     unit.TSpd = Math.max(0, unit.TSpd - 4);
   }
-  const TspdDiff = unit.TSpd - enemy.TSpd;
-  let unitW = false;
-  let enemyW = false;
-  if (TspdDiff >= 5) {
-    unitW = true;
-  } else if (TspdDiff <= -5) {
-    enemyW = true;
-  }
+  const [unitW, enemyW] = determineDoubleAttack(unit.TSpd, enemy.TSpd);
 
   const [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(unit, enemy);
-
+console.log([unitDmg, unitHit, unitCrit, eneDmg, eneHit])
   return (
     <table className="battle-stat">
       <tbody>
@@ -654,6 +647,9 @@ export function simulateBattle(unit, enemy) {
         if (unitW || enemyW) {
           unit = ascendantBuffDown(unit, rotation);
         }
+        // if(i<5){
+        //   console.log(enemy)
+        // }
         if (eneCurHP <= 0) {
           winloseCnt[0]++;
           break;
