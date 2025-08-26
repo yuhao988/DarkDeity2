@@ -167,8 +167,7 @@ function adjustStats(i, self, enemy) {
     selfHit = 100;
     eneHit = 100;
   }
-  // if(i<10){console.log(`${enemy.Acc}-${self.Ddg}`)}
-
+  
   //Self and opponent critical chance calculation
   let selfCrit = 0,
     eneCrit = 0;
@@ -243,21 +242,24 @@ function adjustStats(i, self, enemy) {
 
 //Applies a rotating buff to unit if it is Ascendant
 function ascendantBuffUp(unit, buffNum) {
+  // Create a copy to avoid modifying the original
+  const buffedUnit = { ...unit };
+  
   switch (buffNum) {
     case 1:
-      unit.Ddg += 25;
+      buffedUnit.Ddg += 25;
       break;
     case 2:
-      unit.Acc += 25;
+      buffedUnit.Acc += 25;
       break;
     case 0:
-      unit.Crit += 25;
+      buffedUnit.Crit += 25;
       break;
     default:
       break;
   }
-
-  return unit;
+  
+  return buffedUnit;
 }
 //Remove the buff Ascendant received after battle
 function ascendantBuffDown(unit, buffNum) {
@@ -279,10 +281,23 @@ function ascendantBuffDown(unit, buffNum) {
 }
 
 function adjustHemomancer(unit, currHP, dmg, crit) {
-  let newUnitDmg = dmg + Math.floor((unit.HP - currHP) / 5);
-  let newUnitCrit = crit + Math.floor((unit.HP - currHP) / 5);
+  let unitHP=unit.HP  
+  let newUnitDmg = dmg + Math.floor((unitHP - currHP) / 5);
+  let newUnitCrit = crit + Math.floor((unitHP - currHP) / 5);
 
   return [newUnitDmg, newUnitCrit];
+}
+
+function adjustFrigillan(check, power, hitrate) {
+  let newPwr = power;
+  let newHit = hitrate;
+
+  if (check) {
+    newPwr += 5;
+    newHit += 25;
+  }
+
+  return [newPwr, newHit];
 }
 
 export function scoreCalc1(unitName, isUnit) {
@@ -498,24 +513,24 @@ export function simulateBattle(unit, enemy) {
   let [unitW, enemyW] = determineDoubleAttack(unit.TSpd, enemy.TSpd);
 
   // switch (unit.Class) {
-  //   case "Seeker":
+  //   case "Seeker":(status)
   //     return "+4 Vulnerable to opponent from Exposing Light";
   //   case "Gallant":(done)
   //     return "+5 Dmg from Honorclad";
-  //   case "Ranger":
+  //   case "Ranger":(status)
   //     return "+8 Heavy Block from Shield Stance";
   //   case "Aegis":
   //     return "+20% Dmg from Reflection";
-  //   case "Frigillan":
+  //   case "Frigillan":(done)
   //     return "+5 Pwr and 25 Acc from Defensive Fighter";
-  //   case "Monk":
+  //   case "Monk":(status)
   //     return "+4 Weak to opponent from Nerve Strike";
 
-  //   case "Ellisant":
+  //   case "Ellisant":(status)
   //     return "+25 Blind to opponent from Blinding Light";
   //   case "Slayer":(done)
   //     return "20% chance for extra attack from Ricochet";
-  //   case "Relic Knight":
+  //   case "Relic Knight":(done)
   //     return "+6 Def and Frt from Unstoppable";
   //   case "Hemomancer":(done)
   //     return "+1 Pwr and Crit for every 5 missing HP from Dark Magic";
@@ -525,285 +540,79 @@ export function simulateBattle(unit, enemy) {
   //     return "+25 Ddg, Acc or Crit from Elemental Fist";
   // }
 
-  // Initialize win/lose counters [unitWinsFirst, unitLosesFirst, unitWinsSecond, unitLosesSecond]
-  let winloseCnt = [0, 0, 0, 0];
+  // Initialize win/lose counters
+  let [unitWin1, unitLose1, unitWin2, unitLose2] = [0, 0, 0, 0];
 
-  let [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
+  const [unitDmg, unitHit, unitCrit, opDmg, opHit] = adjustStats(
     5,
     unit,
     enemy
   );
+  let unitCurHP = unit.HP;
+  let eneCurHP = enemy.HP;
+  let unitStats = {
+    unit: unit,
+    currHP: unitCurHP,
+    Dmg: unitDmg,
+    Double: unitW,
+    Hit: unitHit,
+    Crit: unitCrit,
+  };
+  let eneStats = {
+    unit: enemy,
+    currHP: eneCurHP,
+    Dmg: opDmg,
+    Double: enemyW,
+    Hit: opHit,
+    Crit: 0,
+  };
 
   // Check for immediate draw conditions
-  if (unitDmg * unitHit === 0 && eneDmg * eneHit === 0) {
+  if (unitDmg * unitHit === 0 && opDmg * opHit === 0) {
     return <p>The battle results in a draw</p>;
   } else {
     //Player unit attacks first
     for (let i = 0; i < 5000; i++) {
-      let unitCurHP = unit.HP;
-      let eneCurHP = enemy.HP;
       let round = 0;
       let turn = 0;
-
-      while (unitCurHP > 0 && eneCurHP > 0) {
-        let rotation = 0;
-        round += 1;
-        rotation = round % 3;
+      unitStats.currHP = unit.HP;
+      eneStats.currHP = enemy.HP;
+      while (unitStats.currHP > 0 && eneStats.currHP > 0) {
         turn += 1;
+        //Player attacks
+        [unitStats.currHP, eneStats.currHP, round] = turnProceeding1(
+          unitStats,
+          eneStats,
+          turn,
+          round,
+          i
+        );
 
-        //Player unit attacks
-        switch (unit.Class) {
-          case "Hemomancer":
-            [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
-            break;
-          case "Ascendant":
-            unit = ascendantBuffUp(unit, rotation);
-            [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
-              i,
-              unit,
-              enemy
-            );
-            break;
-          default:
-            break;
-        }
-        if (check2RN(unitHit)) {
-          if (check1RN(unitCrit)) {
-            if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
-              eneCurHP -= unitDmg * 3;
-            } else if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
-              eneCurHP -= (unitDmg + 5) * 2;
-            } else {
-              eneCurHP -= unitDmg * 2;
-            }
-          } else {
-            if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
-              eneCurHP -= unitDmg + 5;
-            } else {
-              eneCurHP -= unitDmg;
-            }
-          }
-        }
-        if (unit.Class === "Slayer" && check1RN(20)) {
-          if (check2RN(unitHit)) {
-            if (check1RN(unitCrit)) {
-              eneCurHP -= unitDmg * 2;
-            } else {
-              eneCurHP -= unitDmg;
-            }
-          }
-        }
-
-        //Enemy counters
-        if (check2RN(eneHit)) {
-          if (turn === 1 && unit.Class === "Relic Knight") {
-            unitCurHP -= eneDmg - 6;
-          } else {
-            unitCurHP -= eneDmg;
-          }
-        }
-        if (unit.Class === "Ascendant") {
-          unit = ascendantBuffDown(unit, rotation);
-        }
-        if (eneCurHP <= 0) {
-          winloseCnt[0]++;
+        if (eneStats.currHP <= 0) {
+          unitWin1++;
           break;
         }
-        if (unitCurHP <= 0) {
-          winloseCnt[1]++;
-          break;
-        }
-
-        //If player unit doubles
-        if (unitW || enemyW) {
-          round += 1;
-          switch (unit.Class) {
-            case "Hemomancer":
-              [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
-              break;
-            case "Ascendant":
-              unit = ascendantBuffUp(unit, rotation);
-              [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
-                i,
-                unit,
-                enemy
-              );
-              break;
-            default:
-              break;
-          }
-        }
-        if (unitW) {
-          if (check2RN(unitHit)) {
-            if (check1RN(unitCrit)) {
-              if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
-                eneCurHP -= unitDmg * 3;
-              } else if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
-                eneCurHP -= (unitDmg + 5) * 2;
-              } else {
-                eneCurHP -= unitDmg * 2;
-              }
-            } else {
-              if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
-                eneCurHP -= unitDmg + 5;
-              } else {
-                eneCurHP -= unitDmg;
-              }
-            }
-          }
-          if (unit.Class === "Slayer" && check1RN(20)) {
-            if (check2RN(unitHit)) {
-              if (check1RN(unitCrit)) {
-                eneCurHP -= unitDmg * 2;
-              } else {
-                eneCurHP -= unitDmg;
-              }
-            }
-          }
-        }
-
-        //If enemy doubles
-        if (enemyW && check2RN(eneHit)) {
-          if (turn === 1 && unit.Class === "Relic Knight") {
-            unitCurHP -= eneDmg - 6;
-          } else {
-            unitCurHP -= eneDmg;
-          }
-        }
-        if (unitW || enemyW) {
-          if (unit.Class === "Ascedant") {
-            unit = ascendantBuffDown(unit, rotation);
-          }
-        }
-
-        if (eneCurHP <= 0) {
-          winloseCnt[0]++;
-          break;
-        }
-        if (unitCurHP <= 0) {
-          winloseCnt[1]++;
+        if (unitStats.currHP <= 0) {
+          unitLose1++;
           break;
         }
 
         //Enemy attacks
-        round += 1;
         turn += 1;
-        if (unit.Class === "Ascendant") {
-          rotation = round % 3;
-          unit = ascendantBuffUp(unit, rotation);
-        }
-        [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
-          i,
-          unit,
-          enemy
+        [eneStats.currHP, unitStats.currHP, round] = turnProceeding1X(
+          eneStats,
+          unitStats,
+          turn,
+          round,
+          i
         );
-        if (check2RN(eneHit)) {
-          unitCurHP -= eneDmg;
-        }
 
-        //Player unit counters
-
-        if (unit.Class === "Hemomancer") {
-          [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
-        }
-        if (check2RN(unitHit)) {
-          if (check1RN(unitCrit)) {
-            if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
-              eneCurHP -= unitDmg * 3;
-            } else if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
-              eneCurHP -= (unitDmg + 5) * 2;
-            } else {
-              eneCurHP -= unitDmg * 2;
-            }
-          } else {
-            if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
-              eneCurHP -= unitDmg + 5;
-            } else {
-              eneCurHP -= unitDmg;
-            }
-          }
-        }
-        if (unit.Class === "Slayer" && check1RN(20)) {
-          if (check2RN(unitHit)) {
-            if (check1RN(unitCrit)) {
-              eneCurHP -= unitDmg * 2;
-            } else {
-              eneCurHP -= unitDmg;
-            }
-          }
-        }
-        if (unit.Class === "Ascendant") {
-          unit = ascendantBuffDown(unit, rotation);
-        }
-
-        if (unitCurHP <= 0) {
-          winloseCnt[1]++;
+        if (unitStats.currHP <= 0) {
+          unitLose1++;
           break;
         }
-        if (eneCurHP <= 0) {
-          winloseCnt[0]++;
-          break;
-        }
-        //If enemy doubles
-
-        if (unitW || enemyW) {
-          round += 1;
-          rotation = round % 3;
-          if (unit.Class === "Ascendant") {
-            unit = ascendantBuffUp(unit, rotation);
-            [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
-              i,
-              unit,
-              enemy
-            );
-          }
-        }
-        if (enemyW && check2RN(eneHit)) {
-          unitCurHP -= eneDmg;
-        }
-
-        //If player unit doubles
-        if (unit.Class === "Hemomancer") {
-          [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
-        }
-        if (unitW) {
-          if (check2RN(unitHit)) {
-            if (check1RN(unitCrit)) {
-              if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
-                eneCurHP -= unitDmg * 3;
-              } else if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
-                eneCurHP -= (unitDmg + 5) * 2;
-              } else {
-                eneCurHP -= unitDmg * 2;
-              }
-            } else {
-              if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
-                eneCurHP -= unitDmg + 5;
-              } else {
-                eneCurHP -= unitDmg;
-              }
-            }
-            if (unit.Class === "Slayer" && check1RN(20)) {
-              if (check2RN(unitHit)) {
-                if (check1RN(unitCrit)) {
-                  eneCurHP -= unitDmg * 2;
-                } else {
-                  eneCurHP -= unitDmg;
-                }
-              }
-            }
-          }
-        }
-
-        if ((unitW || enemyW) && unit.Class === "Ascendant") {
-          unit = ascendantBuffDown(unit, rotation);
-        }
-        if (unitCurHP <= 0) {
-          winloseCnt[1]++;
-          break;
-        }
-        if (eneCurHP <= 0) {
-          winloseCnt[0]++;
+        if (eneStats.currHP <= 0) {
+          unitWin1++;
           break;
         }
       }
@@ -811,262 +620,45 @@ export function simulateBattle(unit, enemy) {
 
     //Enemy strikes first
     for (let j = 0; j < 5000; j++) {
-      let unitCurHP = unit.HP;
-      let eneCurHP = enemy.HP;
+      unitStats.currHP = unit.HP;
+      eneStats.currHP = enemy.HP;
       let round = 0;
       let turn = 0;
       while (unitCurHP > 0 && eneCurHP > 0) {
-        round += 1;
         turn += 1;
-        let rotation = round % 3;
-        if (unit.Class === "Ascendant") {
-          unit = ascendantBuffUp(unit, rotation);
-          [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
-            j,
-            unit,
-            enemy
-          );
-        }
+        [eneStats.currHP, unitStats.currHP, round] = turnProceeding1X(
+          eneStats,
+          unitStats,
+          turn,
+          round,
+          j
+        );
 
-        //Enemy attacks
-        if (check2RN(eneHit)) {
-          if (turn === 1 && unit.Class === "Relic Knight") {
-            unitCurHP -= eneDmg - 6;
-          } else {
-            unitCurHP -= eneDmg;
-          }
-        }
-
-        //Player unit counters
-        if (unit.Class === "Hemomancer") {
-          [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
-        }
-        if (check2RN(unitHit)) {
-          if (check1RN(unitCrit)) {
-            if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
-              eneCurHP -= unitDmg * 3;
-            } else if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
-              eneCurHP -= (unitDmg + 5) * 2;
-            } else {
-              eneCurHP -= unitDmg * 2;
-            }
-          } else {
-            if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
-              eneCurHP -= unitDmg + 5;
-            } else {
-              eneCurHP -= unitDmg;
-            }
-          }
-        }
-        if (unit.Class === "Slayer" && check1RN(20)) {
-          if (check2RN(unitHit)) {
-            if (Math.floor(Math.random() * 100) < unitCrit) {
-              eneCurHP -= unitDmg * 2;
-            } else {
-              eneCurHP -= unitDmg;
-            }
-          }
-        }
-
-        if (unit.Class === "Ascendant") {
-          unit = ascendantBuffDown(unit, rotation);
-        }
-        if (unitCurHP <= 0) {
-          winloseCnt[3]++;
+        if (unitStats.currHP <= 0) {
+          unitLose2++;
           break;
         }
-        if (eneCurHP <= 0) {
-          winloseCnt[2]++;
-          break;
-        }
-
-        //If enemy doubles
-        if ((unitW || enemyW) && unit.Class === "Ascendant") {
-          round += 1;
-          rotation = round % 3;
-          unit = ascendantBuffUp(unit, rotation);
-          [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
-            j,
-            unit,
-            enemy
-          );
-        }
-
-        if (enemyW && check2RN(eneHit)) {
-          if (turn === 1 && unit.Class === "Relic Knight") {
-            unitCurHP -= eneDmg - 6;
-          }
-          unitCurHP -= eneDmg;
-        }
-
-        //If player unit doubles
-        if (unit.Class === "Hemomancer") {
-          [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
-        }
-        if (unitW) {
-          if (check2RN(unitHit)) {
-            if (check1RN(unitCrit)) {
-              if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
-                eneCurHP -= unitDmg * 3;
-              } else if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
-                eneCurHP -= (unitDmg + 5) * 2;
-              } else {
-                eneCurHP -= unitDmg * 2;
-              }
-            } else {
-              if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
-                eneCurHP -= unitDmg + 5;
-              } else {
-                eneCurHP -= unitDmg;
-              }
-            }
-            if (unit.Class === "Slayer" && check1RN(20)) {
-              if (check2RN(unitHit)) {
-                if (check1RN(unitCrit)) {
-                  eneCurHP -= unitDmg * 2;
-                } else {
-                  eneCurHP -= unitDmg;
-                }
-              }
-            }
-          }
-        }
-
-        if ((unitW || enemyW) && unit.Class === "Ascendant") {
-          unit = ascendantBuffDown(unit, rotation);
-        }
-        if (unitCurHP <= 0) {
-          winloseCnt[3]++;
-          break;
-        }
-        if (eneCurHP <= 0) {
-          winloseCnt[2]++;
+        if (eneStats.currHP <= 0) {
+          unitWin2++;
           break;
         }
 
         //Player unit attacks
-        round += 1;
         turn += 1;
-        rotation = round % 3;
-        switch (unit.Class) {
-          case "Hemomancer":
-            [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
-            break;
-          case "Ascendant":
-            unit = ascendantBuffUp(unit, rotation);
-            [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
-              j,
-              unit,
-              enemy
-            );
-            break;
-          default:
-            break;
-        }
-        if (check2RN(unitHit)) {
-          if (check1RN(unitCrit)) {
-            if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
-              eneCurHP -= unitDmg * 3;
-            } else if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
-              eneCurHP -= (unitDmg + 5) * 2;
-            } else {
-              eneCurHP -= unitDmg * 2;
-            }
-          } else {
-            if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
-              eneCurHP -= unitDmg + 5;
-            } else {
-              eneCurHP -= unitDmg;
-            }
-          }
-        }
-        if (unit.Class === "Slayer" && check1RN(20)) {
-          if (check2RN(unitHit)) {
-            if (check1RN(unitCrit)) {
-              eneCurHP -= unitDmg * 2;
-            } else {
-              eneCurHP -= unitDmg;
-            }
-          }
-        }
-        //Enemy counters
-        if (check2RN(eneHit)) {
-          unitCurHP -= eneDmg;
-        }
+        [unitStats.currHP, eneStats.currHP, round] = turnProceeding1(
+          unitStats,
+          eneStats,
+          turn,
+          round,
+          j
+        );
 
-        if (unit.Class === "Ascendant") {
-          unit = ascendantBuffDown(unit, rotation);
-        }
-        if (eneCurHP <= 0) {
-          winloseCnt[2]++;
+        if (eneStats.currHP <= 0) {
+          unitWin2++;
           break;
         }
-        if (unitCurHP <= 0) {
-          winloseCnt[3]++;
-          break;
-        }
-
-        //If player unit doubles
-        if (unitW || enemyW) {
-          switch (unit.Class) {
-            case "Hemomancer":
-              [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, enemy);
-              break;
-            case "Ascendant":
-              unit = ascendantBuffUp(unit, rotation);
-              [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
-                j,
-                unit,
-                enemy
-              );
-              break;
-            default:
-              break;
-          }
-        }
-
-        if (unitW) {
-          if (check2RN(unitHit)) {
-            if (check1RN(unitCrit)) {
-              if (unit.Class === "Reaper" && eneCurHP === enemy.HP) {
-                eneCurHP -= unitDmg * 3;
-              } else if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
-                eneCurHP -= (unitDmg + 5) * 2;
-              } else {
-                eneCurHP -= unitDmg * 2;
-              }
-            } else {
-              if (unit.Class === "Gallant" && eneCurHP * 2 > enemy.HP) {
-                eneCurHP -= unitDmg + 5;
-              } else {
-                eneCurHP -= unitDmg;
-              }
-            }
-          }
-          if (unit.Class === "Slayer" && check1RN(20)) {
-            if (check2RN(unitHit)) {
-              if (check1RN(unitCrit)) {
-                eneCurHP -= unitDmg * 2;
-              } else {
-                eneCurHP -= unitDmg;
-              }
-            }
-          }
-        }
-
-        //If enemy doubles
-        if (enemyW && check2RN(eneHit)) {
-          unitCurHP -= eneDmg;
-        }
-        if ((unitW || enemyW) && unit.Class === "Ascendant") {
-          unit = ascendantBuffDown(unit, rotation);
-        }
-        if (eneCurHP <= 0) {
-          winloseCnt[2]++;
-          break;
-        }
-        if (unitCurHP <= 0) {
-          winloseCnt[3]++;
+        if (unitStats.currHP <= 0) {
+          unitLose2++;
           break;
         }
       }
@@ -1074,17 +666,16 @@ export function simulateBattle(unit, enemy) {
     return (
       <div>
         <p>
-          {unit.Class} defeats {enemy.Class} {winloseCnt[0]} times and loses{" "}
-          {winloseCnt[1]} times when attacking first.
+          {unit.Class} defeats {enemy.Class} {unitWin1} times and loses{" "}
+          {unitLose1} times when attacking first.
         </p>
         <p>
-          {unit.Class} defeats {enemy.Class} {winloseCnt[2]} times and loses{" "}
-          {winloseCnt[3]} times when {enemy.Class} attacks first.
+          {unit.Class} defeats {enemy.Class} {unitWin2} times and loses{" "}
+          {unitLose2} times when {enemy.Class} attacks first.
         </p>
         <p>
-          Win count: {winloseCnt[0] + winloseCnt[2]} Lose count:{" "}
-          {winloseCnt[1] + winloseCnt[3]} Nett:{" "}
-          {winloseCnt[0] + winloseCnt[2] - winloseCnt[1] - winloseCnt[3]}
+          Win count: {unitWin1 + unitWin2} Lose count: {unitLose1 + unitLose2}{" "}
+          Nett: {unitWin1 + unitWin2 - unitLose1 - unitLose2}
         </p>
       </div>
     );
@@ -1096,8 +687,7 @@ export function simulateBattle2(unit, oppo) {
   let [unitW, enemyW] = determineDoubleAttack(unit.TSpd, oppo.TSpd);
 
   // Initialize win/lose counters [unitWinsFirst, unitLosesFirst, unitWinsSecond, unitLosesSecond]
-  let [unitWin1, unitLose1, unitWin2, unitlose2] = [0, 0, 0, 0];
-  let winloseCnt = [unitWin1, unitLose1, unitWin2, unitlose2];
+  let [unitWin1, unitLose1, unitWin2, unitLose2] = [0, 0, 0, 0];
 
   const [unitDmg, unitHit, unitCrit, opDmg, opHit, opCrit] = adjustStats(
     5,
@@ -1110,6 +700,7 @@ export function simulateBattle2(unit, oppo) {
     unit: unit,
     currHP: unitCurHP,
     Dmg: unitDmg,
+    Double: unitW,
     Hit: unitHit,
     Crit: unitCrit,
   };
@@ -1117,6 +708,7 @@ export function simulateBattle2(unit, oppo) {
     unit: oppo,
     currHP: opCurHP,
     Dmg: opDmg,
+    Double: enemyW,
     Hit: opHit,
     Crit: opCrit,
   };
@@ -1129,9 +721,11 @@ export function simulateBattle2(unit, oppo) {
       let roundU = 0;
       let roundO = 0;
       let turn = 0;
-      while (unitCurHP > 0 && opCurHP > 0) {
+      unitStats.currHP = unit.HP;
+      oppoStats.currHP = oppo.HP;
+      while (unitStats.currHP > 0 && oppoStats.currHP > 0) {
         turn += 1;
-        [unitCurHP, opCurHP, roundU, roundO] = roundProceeding(
+        [unitStats.currHP, oppoStats.currHP, roundU, roundO] = turnProceeding2(
           unitStats,
           oppoStats,
           turn,
@@ -1140,662 +734,157 @@ export function simulateBattle2(unit, oppo) {
           i
         );
 
+        if (oppoStats.currHP <= 0) {
+          unitWin1++;
+          break;
+        }
+        if (unitStats.currHP <= 0) {
+          unitLose1++;
+          break;
+        }
+
         //Enemy attacks
-        roundU += 1;
-        roundO += 1;
-        rotationU = roundU % 3;
-        rotationO = roundO % 3;
-
-        if (unit.Class === "Ascendant") {
-          unit = ascendantBuffUp(unit, rotationU);
-        }
-        if (oppo.Class === "Ascendant") {
-          oppo = ascendantBuffUp(oppo, rotationO);
-        }
-        [unitDmg, unitHit, unitCrit, eneDmg, eneHit, opCrit] = adjustStats(
-          i,
-          unit,
-          oppo
+        turn += 1;
+        [oppoStats.currHP, unitStats.currHP, roundO, roundU] = turnProceeding2(
+          oppoStats,
+          unitStats,
+          turn,
+          roundO,
+          roundU,
+          i
         );
-        if (oppo.Class === "Hemomancer") {
-          [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
-        }
 
-        if (check2RN(eneHit)) {
-          if (check1RN(opCrit)) {
-            if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
-              unitCurHP -= eneDmg * 3;
-            } else if (oppo.Class === "Gallant" && unitCurHP * 2 > unit.HP) {
-              unitCurHP -= (eneDmg + 5) * 2;
-            } else {
-              unitCurHP -= eneDmg * 2;
-            }
-          } else {
-            if (oppo.Class === "Gallant" && unitCurHP * 2 > unit.HP) {
-              unitCurHP -= eneDmg + 5;
-            } else {
-              unitCurHP -= eneDmg;
-            }
-          }
-        }
-        if (unit.Class === "Slayer" && check1RN(20)) {
-          if (check2RN(unitHit)) {
-            if (check1RN(unitCrit)) {
-              eneCurHP -= unitDmg * 2;
-            } else {
-              eneCurHP -= unitDmg;
-            }
-          }
-        }
-
-        //Player unit counters
-        if (unit.Class === "Hemomancer") {
-          [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
-        }
-        if (check2RN(unitHit)) {
-          if (check1RN(unitCrit)) {
-            if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
-              eneCurHP -= unitDmg * 3;
-            } else if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
-              eneCurHP -= (unitDmg + 5) * 2;
-            } else {
-              eneCurHP -= unitDmg * 2;
-            }
-          } else {
-            if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
-              eneCurHP -= unitDmg + 5;
-            } else {
-              eneCurHP -= unitDmg;
-            }
-          }
-        }
-        if (oppo.Class === "Slayer" && check1RN(20)) {
-          if (check2RN(eneHit)) {
-            if (check1RN(opCrit)) {
-              unitCurHP -= eneDmg * 2;
-            } else {
-              unitCurHP -= eneDmg;
-            }
-          }
-        }
-        if (unit.Class === "Ascendant") {
-          unit = ascendantBuffDown(unit, rotationU);
-        }
-        if (oppo.Class === "Ascendant") {
-          oppo = ascendantBuffDown(oppo, rotationO);
-        }
-        if (unitCurHP <= 0) {
-          winloseCnt[1]++;
+        if (unitStats.currHP <= 0) {
+          unitLose1++;
           break;
         }
-        if (eneCurHP <= 0) {
-          winloseCnt[0]++;
+        if (oppoStats.currHP <= 0) {
+          unitWin1++;
           break;
         }
 
-        //If enemy doubles
-        if (unitW || enemyW) {
-          if (unit.Class === "Ascendant") {
-            roundU += 1;
-            rotationU = roundU % 3;
-            unit = ascendantBuffUp(unit, rotationU);
-          }
-          if (oppo.Class === "Ascendant") {
-            roundO += 1;
-            rotationO = roundO % 3;
-            oppo = ascendantBuffUp(oppo, rotationO);
-          }
-          [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
-            i,
-            unit,
-            oppo
-          );
-        }
-        if (oppo.Class === "Hemomancer") {
-          [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
-        }
-        if (enemyW) {
-          if (check2RN(eneHit)) {
-            if (check1RN(opCrit)) {
-              if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
-                unitCurHP -= eneDmg * 3;
-              } else if (oppo.Class === "Gallant" && unitCurHP * 2 > unit.HP) {
-                unitCurHP -= (eneDmg + 5) * 2;
-              } else {
-                unitCurHP -= eneDmg * 2;
-              }
-            } else {
-              if (oppo.Class === "Gallant" && unitCurHP * 2 > unit.HP) {
-                unitCurHP -= eneDmg + 5;
-              } else {
-                unitCurHP -= eneDmg;
-              }
-            }
-          }
-          if (oppo.Class === "Slayer" && check1RN(20)) {
-            if (check2RN(eneHit)) {
-              if (check1RN(opCrit)) {
-                unitCurHP -= eneDmg * 2;
-              } else {
-                unitCurHP -= eneDmg;
-              }
-            }
-          }
-        }
-
-        //If player unit doubles
-        if (unitW) {
-          if (check2RN(unitHit)) {
-            if (unit.Class === "Hemomancer") {
-              [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
-            }
-            if (check1RN(unitCrit)) {
-              if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
-                eneCurHP -= unitDmg * 3;
-              } else if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
-                eneCurHP -= (unitDmg + 5) * 2;
-              } else {
-                eneCurHP -= unitDmg * 2;
-              }
-            } else {
-              if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
-                eneCurHP -= unitDmg + 5;
-              } else {
-                eneCurHP -= unitDmg;
-              }
-            }
-          }
-          if (unit.Class === "Slayer" && check1RN(20)) {
-            if (check2RN(unitHit)) {
-              if (check1RN(unitCrit)) {
-                eneCurHP -= unitDmg * 2;
-              } else {
-                eneCurHP -= unitDmg;
-              }
-            }
-          }
-        }
-
-        if (unitW || enemyW) {
-          if (unit.Class === "Ascendant") {
-            unit = ascendantBuffDown(unit, rotationU);
-          }
-          if (oppo.Class === "Ascendant") {
-            oppo = ascendantBuffDown(oppo, rotationO);
-          }
-        }
-        if (unitCurHP <= 0) {
-          winloseCnt[1]++;
-          break;
-        }
-        if (eneCurHP <= 0) {
-          winloseCnt[0]++;
-          break;
-        }
+        // if (turn>=10){
+        //   break;
+        // }
       }
     }
 
     //Enemy strikes first
     for (let j = 0; j < 5000; j++) {
-      let unitCurHP = unit.HP;
-      let eneCurHP = oppo.HP;
+      let turn = 0;
       let roundU = 0;
       let roundO = 0;
-      while (unitCurHP > 0 && eneCurHP > 0) {
-        roundU += 1;
-        roundO += 1;
-        let rotationU = roundU % 3;
-        let rotationO = roundO % 3;
-
-        if (unit.Class === "Ascendant") {
-          unit = ascendantBuffUp(unit, rotationU);
-        }
-        if (oppo.Class === "Ascendant") {
-          oppo = ascendantBuffUp(oppo, rotationO);
-        }
-        [unitDmg, unitHit, unitCrit, eneDmg, eneHit, opCrit] = adjustStats(
-          j,
-          unit,
-          oppo
+      unitStats.currHP = unit.HP;
+      oppoStats.currHP = oppo.HP;
+      while (unitStats.currHP > 0 && oppoStats.currHP > 0) {
+        turn++;
+        [oppoStats.currHP, unitStats.currHP, roundO, roundU] = turnProceeding2(
+          oppoStats,
+          unitStats,
+          turn,
+          roundO,
+          roundU,
+          j
         );
-        if (oppo.Class === "Hemomancer") {
-          [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
-        }
-        //Enemy attacks
-        if (check2RN(eneHit)) {
-          if (check1RN(opCrit)) {
-            if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
-              unitCurHP -= eneDmg * 3;
-            } else if (oppo.Class === "Gallant" && unitCurHP * 2 > unit.HP) {
-              unitCurHP -= (eneDmg + 5) * 2;
-            } else {
-              unitCurHP -= eneDmg * 2;
-            }
-          } else {
-            if (oppo.Class === "Gallant" && unitCurHP * 2 > unit.HP) {
-              unitCurHP -= eneDmg + 5;
-            } else {
-              unitCurHP -= eneDmg;
-            }
-          }
-        }
-        if (oppo.Class === "Slayer" && check1RN(20)) {
-          if (check2RN(eneHit)) {
-            if (check1RN(opCrit)) {
-              unitCurHP -= eneDmg * 2;
-            } else {
-              unitCurHP -= eneDmg;
-            }
-          }
-        }
 
-        //Player unit counters
-        if (unit.Class === "Hemomancer") {
-          [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
-        }
-        if (check2RN(unitHit)) {
-          if (check1RN(unitCrit)) {
-            if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
-              eneCurHP -= unitDmg * 3;
-            } else if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
-              eneCurHP -= (unitDmg + 5) * 2;
-            } else {
-              eneCurHP -= unitDmg * 2;
-            }
-          } else {
-            if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
-              eneCurHP -= unitDmg + 5;
-            } else {
-              eneCurHP -= unitDmg;
-            }
-          }
-        }
-        if (unit.Class === "Slayer" && check1RN(20)) {
-          if (check2RN(unitHit)) {
-            if (check1RN(unitCrit)) {
-              eneCurHP -= unitDmg * 2;
-            } else {
-              eneCurHP -= unitDmg;
-            }
-          }
-        }
-
-        if (unit.Class === "Ascendant") {
-          unit = ascendantBuffDown(unit, rotationU);
-        }
-        if (oppo.Class === "Ascendant") {
-          oppo = ascendantBuffDown(oppo, rotationO);
-        }
-
-        if (unitCurHP <= 0) {
-          winloseCnt[3]++;
+        if (unitStats.currHP <= 0) {
+          unitLose2++;
           break;
         }
-        if (eneCurHP <= 0) {
-          winloseCnt[2]++;
+        if (oppoStats.currHP <= 0) {
+          unitWin2++;
           break;
         }
 
-        //If enemy doubles
-        if (unitW || enemyW) {
-          roundU += 1;
-          roundO += 1;
-          //Add Ascendant buff for the battle
-          if (unit.Class === "Ascendant") {
-            rotationU = roundU % 3;
-            unit = ascendantBuffUp(unit, rotationU);
-          }
-          if (oppo.Class === "Ascendant") {
-            rotationO = roundO % 3;
-            oppo = ascendantBuffUp(oppo, rotationO);
-          }
-          [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
-            j,
-            unit,
-            oppo
-          );
+        //Player unit attacks
+        turn += 1;
+        [unitStats.currHP, oppoStats.currHP, roundU, roundO] = turnProceeding2(
+          unitStats,
+          oppoStats,
+          turn,
+          roundU,
+          roundO,
+          j
+        );
+
+        if (oppoStats.currHP <= 0) {
+          unitWin2++;
+          break;
         }
-        if (oppo.Class === "Hemomancer") {
-          [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
-        }
-        if (enemyW) {
-          if (check2RN(eneHit)) {
-            if (check1RN(opCrit)) {
-              if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
-                unitCurHP -= eneDmg * 3;
-              } else if (oppo.Class === "Gallant" && unitCurHP * 2 > unit.HP) {
-                unitCurHP -= (eneDmg + 5) * 2;
-              } else {
-                unitCurHP -= eneDmg * 2;
-              }
-            } else {
-              if (oppo.Class === "Gallant" && unitCurHP * 2 > unit.HP) {
-                unitCurHP -= eneDmg + 5;
-              } else {
-                unitCurHP -= eneDmg;
-              }
-            }
-          }
-          if (oppo.Class === "Slayer" && check1RN(20)) {
-            if (check2RN(eneHit)) {
-              if (check1RN(opCrit)) {
-                unitCurHP -= eneDmg * 2;
-              } else {
-                unitCurHP -= eneDmg;
-              }
-            }
-          }
+        if (unitStats.currHP <= 0) {
+          unitLose2++;
+          break;
         }
 
-        //If player unit doubles
-        if (unit.Class === "Hemomancer") {
-          [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
-        }
-        if (unitW) {
-          if (check2RN(unitHit)) {
-            if (check1RN(unitCrit)) {
-              if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
-                eneCurHP -= unitDmg * 3;
-              } else if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
-                eneCurHP -= (unitDmg + 5) * 2;
-              } else {
-                eneCurHP -= unitDmg * 2;
-              }
-            } else {
-              if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
-                eneCurHP -= unitDmg + 5;
-              } else {
-                eneCurHP -= unitDmg;
-              }
-            }
-          }
-          if (unit.Class === "Slayer" && check1RN(20)) {
-            if (check2RN(unitHit)) {
-              if (check1RN(unitCrit)) {
-                eneCurHP -= unitDmg * 2;
-              } else {
-                eneCurHP -= unitDmg;
-              }
-            }
-          }
-        }
-        if (unitW || enemyW) {
-          //Remove Ascendant buff after the battle
-          if (unit.Class === "Ascendant") {
-            unit = ascendantBuffDown(unit, rotationU);
-          }
-          if (oppo.Class === "Ascendant") {
-            oppo = ascendantBuffDown(oppo, rotationO);
-          }
-          if (unitCurHP <= 0) {
-            winloseCnt[3]++;
-            break;
-          }
-          if (eneCurHP <= 0) {
-            winloseCnt[2]++;
-            break;
-          }
-
-          //Player unit attacks
-          roundO += 1;
-          roundU += 1;
-          rotationU = roundU % 3;
-          rotationO = roundO % 3;
-          if (unit.Class === "Ascendant") {
-            unit = ascendantBuffUp(unit, rotationU);
-          }
-
-          if (oppo.Class === "Ascendant") {
-            oppo = ascendantBuffUp(oppo, rotationO);
-          }
-          [unitDmg, unitHit, unitCrit, eneDmg, eneHit, opCrit] = adjustStats(
-            j,
-            unit,
-            oppo
-          );
-          if (unit.Class === "Hemomancer") {
-            [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
-          }
-          if (check2RN(unitHit)) {
-            if (check1RN(unitCrit)) {
-              if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
-                eneCurHP -= unitDmg * 3;
-              } else if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
-                eneCurHP -= (unitDmg + 5) * 2;
-              } else {
-                eneCurHP -= unitDmg * 2;
-              }
-            } else {
-              if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
-                eneCurHP -= unitDmg + 5;
-              } else {
-                eneCurHP -= unitDmg;
-              }
-            }
-          }
-          if (unit.Class === "Slayer" && check1RN(20)) {
-            if (check2RN(unitHit)) {
-              if (check1RN(unitCrit)) {
-                eneCurHP -= unitDmg * 2;
-              } else {
-                eneCurHP -= unitDmg;
-              }
-            }
-          }
-
-          //Enemy counters
-          if (oppo.Class === "Hemomancer") {
-            [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
-          }
-          if (check2RN(eneHit)) {
-            if (check1RN(opCrit)) {
-              if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
-                unitCurHP -= eneDmg * 3;
-              } else if (oppo.Class === "Gallant" && unitCurHP * 2 > unit.HP) {
-                unitCurHP -= (eneDmg + 5) * 2;
-              } else {
-                unitCurHP -= eneDmg * 2;
-              }
-            } else {
-              if (oppo.Class === "Gallant" && unitCurHP * 2 > unit.HP) {
-                unitCurHP -= eneDmg + 5;
-              } else {
-                unitCurHP -= eneDmg;
-              }
-            }
-          }
-          if (oppo.Class === "Slayer" && check1RN(20)) {
-            if (check2RN(eneHit)) {
-              if (check1RN(opCrit)) {
-                unitCurHP -= eneDmg * 2;
-              } else {
-                unitCurHP -= eneDmg;
-              }
-            }
-          }
-          if (unit.Class === "Ascendant") {
-            unit = ascendantBuffDown(unit, rotationU);
-          }
-          if (oppo.Class === "Ascendant") {
-            oppo = ascendantBuffDown(oppo, rotationO);
-          }
-
-          if (eneCurHP <= 0) {
-            winloseCnt[2]++;
-            break;
-          }
-          if (unitCurHP <= 0) {
-            winloseCnt[3]++;
-            break;
-          }
-
-          //If player unit doubles
-          if (unitW || enemyW) {
-            roundU += 1;
-            roundO += 1;
-            //Add Ascendant buff for the battle
-            if (unit.Class === "Ascendant") {
-              rotationU = roundU % 3;
-              unit = ascendantBuffUp(unit, rotationU);
-            }
-            if (oppo.Class === "Ascendant") {
-              rotationO = roundO % 3;
-              oppo = ascendantBuffUp(oppo, rotationO);
-            }
-            [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
-              j,
-              unit,
-              oppo
-            );
-          }
-          if (unit.Class === "Hemomancer") {
-            [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
-          }
-          if (unitW) {
-            if (check2RN(unitHit)) {
-              if (check1RN(unitCrit)) {
-                if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
-                  eneCurHP -= unitDmg * 3;
-                } else if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
-                  eneCurHP -= (unitDmg + 5) * 2;
-                } else {
-                  eneCurHP -= unitDmg * 2;
-                }
-              } else {
-                if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
-                  eneCurHP -= unitDmg + 5;
-                } else {
-                  eneCurHP -= unitDmg;
-                }
-              }
-            }
-            if (unit.Class === "Slayer" && check1RN(20)) {
-              if (check2RN(unitHit)) {
-                if (check1RN(unitCrit)) {
-                  eneCurHP -= unitDmg * 2;
-                } else {
-                  eneCurHP -= unitDmg;
-                }
-              }
-            }
-          }
-
-          //If enemy doubles
-          if (oppo.Class === "Hemomancer") {
-            [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
-          }
-          if (enemyW) {
-            if (check2RN(eneHit)) {
-              if (check1RN(opCrit)) {
-                if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
-                  unitCurHP -= eneDmg * 3;
-                } else if (
-                  oppo.Class === "Gallant" &&
-                  unitCurHP * 2 > unit.HP
-                ) {
-                  unitCurHP -= (eneDmg + 5) * 2;
-                } else {
-                  unitCurHP -= eneDmg * 2;
-                }
-              } else {
-                if (oppo.Class === "Gallant" && unitCurHP * 2 > unit.HP) {
-                  unitCurHP -= eneDmg + 5;
-                } else {
-                  unitCurHP -= eneDmg;
-                }
-              }
-            }
-            if (oppo.Class === "Slayer" && check1RN(20)) {
-              if (check2RN(eneHit)) {
-                if (check1RN(opCrit)) {
-                  unitCurHP -= eneDmg * 2;
-                } else {
-                  unitCurHP -= eneDmg;
-                }
-              }
-            }
-          }
-          if (unitW || enemyW) {
-            //Remove Ascendant buff after the battle
-            if (unit.Class === "Ascendant") {
-              unit = ascendantBuffDown(unit, rotationU);
-            }
-            if (oppo.Class === "Ascendant") {
-              oppo = ascendantBuffDown(oppo, rotationO);
-            }
-          }
-          if (eneCurHP <= 0) {
-            winloseCnt[2]++;
-            break;
-          }
-          if (unitCurHP <= 0) {
-            winloseCnt[3]++;
-            break;
-          }
-        }
+        // if (turn>=10){
+        //   break;
+        // }
       }
     }
-    return (
-      <div>
-        <p>
-          {unit.Class} defeats {oppo.Class} {unitWin1} times and loses{" "}
-          {unitLose1} times when attacking first.
-        </p>
-        <p>
-          {unit.Class} defeats {oppo.Class} {unitWin2} times and loses{" "}
-          {unitlose2} times when {oppo.Class} attacks first.
-        </p>
-        <p>
-          Win count: {unitWin1 + unitWin2} Lose count: {unitLose1 + unitlose2}{" "}
-          Nett: {unitWin1 + unitWin2 - unitLose1 - unitlose2}
-        </p>
-      </div>
-    );
   }
+  return (
+    <div>
+      <p>
+        {unit.Class} defeats {oppo.Class} {unitWin1} times and loses {unitLose1}{" "}
+        times when attacking first.
+      </p>
+      <p>
+        {unit.Class} defeats {oppo.Class} {unitWin2} times and loses {unitLose2}{" "}
+        times when {oppo.Class} attacks first.
+      </p>
+      <p>
+        Win count: {unitWin1 + unitWin2} Lose count: {unitLose1 + unitLose2}{" "}
+        Nett: {unitWin1 + unitWin2 - unitLose1 - unitLose2}
+      </p>
+    </div>
+  );
 }
 
-function roundProceeding(unitStats, oppoStats, turnNum, roundU, roundO, i) {
-  roundU += 1;
-  roundO += 1;
-  let rotationU = roundU % 3;
-  let rotationO = roundO % 3;
+function turnProceeding1(unitStats, oppoStats, turnNum, round, i) {
+  round += 1;
+  let rotation = round % 3;
+
   let newUnit = unitStats.unit;
   let newOppo = oppoStats.unit;
   let unitClass = unitStats.unit.Class;
   let unitCurrHP = unitStats.currHP;
   let unitDmg = unitStats.Dmg;
+  let unitW = unitStats.Double;
   let unitHit = unitStats.Hit;
   let unitCrit = unitStats.Crit;
-  let opClass = oppoStats.unt.Class;
+  //let opClass = oppoStats.unit.Class;
   let opCurrHP = oppoStats.currHP;
   let opDmg = oppoStats.Dmg;
+  let enemyW = oppoStats.Double;
   let opHit = oppoStats.Hit;
-  let opCrit = oppoStats.Crit;
+  // let opCrit = oppoStats.Crit;
+
+  let checkFrigillan = false;
 
   if (unitClass === "Ascendant") {
-    newUnit = ascendantBuffUp(unitStats.unit, rotationU);
+    newUnit = ascendantBuffUp(unitStats.unit, rotation);
   }
-  if (opClass === "Ascendant") {
-    newOppo = ascendantBuffUp(oppoStats.unit, rotationO);
-  }
-  [unitDmg, unitHit, unitCrit, opDmg, opHit, opCrit] = adjustStats(
-    i,
-    newUnit,
-    newOppo
-  );
+
+  [unitDmg, unitHit, unitCrit, opDmg, opHit] = adjustStats(i, newUnit, newOppo);
 
   //Player unit attacks
   if (unitClass === "Hemomancer") {
     [unitDmg, unitCrit] = adjustHemomancer(
-      unitStats,
+      unitStats.unit,
       unitCurrHP,
-      unitStats.Dmg,
-      unitStats.Crit
+      unitDmg,
+      unitCrit
     );
   }
-  if ((turnNum === 1) & (opClass === "Relic Knight")) {
-    unitDmg -= 6;
+  if (unitClass === "Frigillan") {
+    if (turnNum === 1) {
+      checkFrigillan = true;
+    }
+    [unitDmg, unitHit] = adjustFrigillan(checkFrigillan, unitDmg, unitHit);
   }
+  // if (i < 20) {
+  //   console.log(unitHit,unitCrit,opHit);
+  // }
   if (check2RN(unitHit)) {
     if (check1RN(unitCrit)) {
       if (unitClass === "Reaper" && opCurrHP === oppoStats.unit.HP) {
@@ -1822,19 +911,157 @@ function roundProceeding(unitStats, oppoStats, turnNum, roundU, roundO, i) {
       }
     }
   }
+  if (unitCurrHP <= 0 || opCurrHP <= 0) {
+    return [unitCurrHP, opCurrHP, round];
+  }
 
   //Enemy counters
-  if (opClass === "Hemomancer") {
-    [opDmg, opCrit] = adjustHemomancer(
-      oppoStats.unit,
-      opCurrHP,
-      oppoStats.Dmg,
-      oppoStats.Crit
+  if (check2RN(opHit)) {
+    checkFrigillan = false;
+    if (turnNum === 1 && unitClass === "Relic Knight") {
+      unitCurrHP -= opDmg - 6;
+    } else {
+      unitCurrHP -= opDmg;
+    }
+  }
+
+  if (unitClass === "Ascendant") {
+    newUnit = ascendantBuffDown(newUnit, rotation);
+  }
+ 
+  //Terminates function if any currHP reaches 0
+  if (unitCurrHP <= 0 || opCurrHP <= 0) {
+    return [unitCurrHP, opCurrHP, round];
+  }
+
+  //If player unit doubles
+  if (unitW || enemyW) {
+    round += 1;
+
+    if (unitClass === "Ascendant") {
+      rotation = round % 3;
+      newUnit = ascendantBuffUp(unitStats.unit, rotation);
+    }
+
+    [unitDmg, unitHit, unitCrit, opDmg, opHit] = adjustStats(
+      i,
+      newUnit,
+      newOppo
     );
+    if (unitClass === "Frigillan") {
+      [unitDmg, unitHit] = adjustFrigillan(checkFrigillan, unitDmg, unitHit);
+    }
+    if (unitClass === "Hemomancer") {
+      [unitDmg, unitCrit] = adjustHemomancer(
+        unitStats.unit,
+        unitCurrHP,
+        unitDmg,
+        unitCrit
+      );
+    }
+
+    if ((turnNum === 1) & (unitClass === "Relic Knight")) {
+      opDmg -= 6;
+    }
   }
-  if (turnNum === 1 && unitClass === "Relic Knight") {
-    opDmg -= 6;
+
+  if (unitW) {
+    if (check2RN(unitHit)) {
+      if (check1RN(unitCrit)) {
+        if (unitClass === "Reaper" && opCurrHP === oppoStats.unit.HP) {
+          opCurrHP -= unitDmg * 3;
+        } else if (
+          unitClass === "Gallant" &&
+          opCurrHP * 2 > oppoStats.unit.HP
+        ) {
+          opCurrHP -= (unitDmg + 5) * 2;
+        } else {
+          opCurrHP -= unitDmg * 2;
+        }
+      } else {
+        if (unitClass === "Gallant" && opCurrHP * 2 > oppoStats.unit.HP) {
+          opCurrHP -= unitDmg + 5;
+        } else {
+          opCurrHP -= unitDmg;
+        }
+      }
+    }
+    if (unitClass === "Slayer" && check1RN(20)) {
+      if (check2RN(unitHit)) {
+        if (check1RN(unitCrit)) {
+          opCurrHP -= unitDmg * 2;
+        } else {
+          opCurrHP -= unitDmg;
+        }
+      }
+    }
   }
+
+  //If enemy doubles
+  if (enemyW) {
+    if (check2RN(opHit)) {
+      unitCurrHP -= opDmg;
+    }
+  }
+  if(unitW||enemyW){
+    if (unitClass === "Ascendant") {
+    newUnit = ascendantBuffDown(newUnit, rotation);
+  }
+  }
+
+  return [unitCurrHP, opCurrHP, round];
+}
+
+function turnProceeding1X(unitStats, oppoStats, turnNum, round, i) {
+  round += 1;
+  let rotation = round % 3;
+
+  let newUnit = unitStats.unit;
+  let newOppo = oppoStats.unit;
+  //let unitClass = unitStats.unit.Class;
+  let unitCurrHP = unitStats.currHP;
+  let unitDmg = unitStats.Dmg;
+  let unitW = unitStats.Double;
+  let unitHit = unitStats.Hit;
+  //let unitCrit = unitStats.Crit;
+  let opClass = oppoStats.unit.Class;
+  let opCurrHP = oppoStats.currHP;
+  let opDmg = oppoStats.Dmg;
+  let enemyW = oppoStats.Double;
+  let opHit = oppoStats.Hit;
+  let opCrit = oppoStats.Crit;
+
+  let checkFrigillan = false;
+
+  if (opClass === "Ascendant") {    
+    newOppo = ascendantBuffUp(oppoStats.unit, rotation);
+  }
+
+  [opDmg, opHit, opCrit, unitDmg, unitHit] = adjustStats(i, newOppo, newUnit);
+  if (opClass === "Frigillan") {
+    if (turnNum === 1) {
+      checkFrigillan = true;
+    }
+  }
+
+  //Enemy unit attacks
+  if (check2RN(unitHit)) {
+    checkFrigillan = false;
+    if (turnNum === 1 && opClass === "Relic Knight") {
+      opCurrHP -= unitDmg - 6;
+    } else {
+      opCurrHP -= unitDmg;
+    }
+  }
+
+  //Player counters
+  if (opClass === "Hemomancer") {
+    [opDmg, opCrit] = adjustHemomancer(oppoStats.unit, opCurrHP, opDmg, opCrit);
+  }
+  if (opClass === "Frigillan") {
+    [opDmg, opHit] = adjustFrigillan(checkFrigillan, opDmg, opHit);
+  }
+
   if (check2RN(opHit)) {
     if (check1RN(opCrit)) {
       if (opClass === "Reaper" && unitCurrHP === unitStats.unit.HP) {
@@ -1855,9 +1082,229 @@ function roundProceeding(unitStats, oppoStats, turnNum, roundU, roundO, i) {
   if (opClass === "Slayer" && check1RN(20)) {
     if (check2RN(opHit)) {
       if (check1RN(opCrit)) {
-        unitCurrHP -= eneDmg * 2;
+        unitCurrHP -= opDmg * 2;
       } else {
-        unitCurrHP -= eneDmg;
+        unitCurrHP -= opDmg;
+      }
+    }
+  }
+
+   if (opClass === "Ascendant") {
+    newOppo = ascendantBuffDown(newOppo, rotation);
+  }
+
+  //Terminates function if any currHP reaches 0
+  if (unitCurrHP <= 0 || opCurrHP <= 0) {
+    return [unitCurrHP, opCurrHP, round];
+  }
+
+  //If enemy unit doubles
+  if (unitW || enemyW) {
+    round += 1;
+
+    if (opClass === "Ascendant") {
+      rotation = round % 3;
+      newOppo = ascendantBuffUp(oppoStats.unit, rotation);
+    }
+
+    [opDmg, opHit, opCrit, unitDmg, unitHit] = adjustStats(i, newOppo, newUnit);
+    if (opClass === "Hemomancer") {
+      [opDmg, opCrit] = adjustHemomancer(
+        oppoStats.unit,
+        opCurrHP,
+        opDmg,
+        opCrit
+      );
+    }
+
+    if ((turnNum === 1) & (opClass === "Relic Knight")) {
+      unitDmg -= 6;
+    }
+  }
+
+  if (unitW) {
+    if (check2RN(opHit)) {
+      checkFrigillan = false;
+      unitCurrHP -= opDmg;
+    }
+  }
+
+  //If player doubles
+  if (opClass === "Frigillan") {
+    [opDmg, opHit] = adjustFrigillan(checkFrigillan, opDmg, opHit);
+  }
+  if (enemyW) {
+    if (check2RN(opHit)) {
+      if (check1RN(opCrit)) {
+        if (opClass === "Reaper" && unitCurrHP === unitStats.unit.HP) {
+          unitCurrHP -= opDmg * 3;
+        } else if (
+          opClass === "Gallant" &&
+          unitCurrHP * 2 > oppoStats.unit.HP
+        ) {
+          unitCurrHP -= (opDmg + 5) * 2;
+        } else {
+          unitCurrHP -= opDmg * 2;
+        }
+      } else {
+        if (opClass === "Gallant" && unitCurrHP * 2 > unitStats.unit.HP) {
+          unitCurrHP -= opDmg + 5;
+        } else {
+          unitCurrHP -= opDmg;
+        }
+      }
+
+      if (opClass === "Slayer" && check1RN(20)) {
+        if (check2RN(opHit)) {
+          if (check1RN(opCrit)) {
+            unitCurrHP -= opDmg * 2;
+          } else {
+            unitCurrHP -= opDmg;
+          }
+        }
+      }
+    }
+  }
+  if(unitW||enemyW){
+    if (opClass === "Ascendant") {
+    newOppo = ascendantBuffDown(newOppo, rotation);
+  }
+  }
+
+  return [unitCurrHP, opCurrHP, round];
+}
+
+function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, i) {
+  roundU += 1;
+  roundO += 1;
+  let rotationU = roundU % 3;
+  let rotationO = roundO % 3;
+  let newUnit = unitStats.unit;
+  let newOppo = oppoStats.unit;
+  let unitClass = unitStats.unit.Class;
+  let unitCurrHP = unitStats.currHP;
+  let unitDmg = unitStats.Dmg;
+  let unitW = unitStats.Double;
+  let unitHit = unitStats.Hit;
+  let unitCrit = unitStats.Crit;
+  let opClass = oppoStats.unit.Class;
+  let opCurrHP = oppoStats.currHP;
+  let opDmg = oppoStats.Dmg;
+  let enemyW = oppoStats.Double;
+  let opHit = oppoStats.Hit;
+  let opCrit = oppoStats.Crit;
+
+  let checkFrigillanU = false;
+  let checkFrigillanO = false;
+
+  if (unitClass === "Ascendant") {
+    newUnit = ascendantBuffUp(unitStats.unit, rotationU);
+  }
+  if (opClass === "Ascendant") {
+    newOppo = ascendantBuffUp(oppoStats.unit, rotationO);
+  }
+  [unitDmg, unitHit, unitCrit, opDmg, opHit, opCrit] = adjustStats(
+    i,
+    newUnit,
+    newOppo
+  );
+
+  //Player unit attacks
+  if (unitClass === "Hemomancer") {
+    [unitDmg, unitCrit] = adjustHemomancer(
+      unitStats.unit,
+      unitCurrHP,
+      unitStats.Dmg,
+      unitStats.Crit
+    );
+  }
+  if ((turnNum === 1) & (opClass === "Relic Knight")) {
+    unitDmg -= 6;
+  }
+  if (unitClass === "Frigillan") {
+    if (turnNum === 1) {
+      checkFrigillanU = true;
+    }
+    [unitDmg, unitHit] = adjustFrigillan(checkFrigillanU, unitDmg, unitHit);
+  }
+  if (opClass === "Frigillan") {
+    if (turnNum === 1) {
+      checkFrigillanO = true;
+    }
+  }
+
+  if (check2RN(unitHit)) {
+    checkFrigillanO = false;
+    if (check1RN(unitCrit)) {
+      if (unitClass === "Reaper" && opCurrHP === oppoStats.unit.HP) {
+        opCurrHP -= unitDmg * 3;
+      } else if (unitClass === "Gallant" && opCurrHP * 2 > oppoStats.unit.HP) {
+        opCurrHP -= (unitDmg + 5) * 2;
+      } else {
+        opCurrHP -= unitDmg * 2;
+      }
+    } else {
+      if (unitClass === "Gallant" && opCurrHP * 2 > oppoStats.unit.HP) {
+        opCurrHP -= unitDmg + 5;
+      } else {
+        opCurrHP -= unitDmg;
+      }
+    }
+  }
+  if (unitClass === "Slayer" && check1RN(20)) {
+    if (check2RN(unitHit)) {
+      checkFrigillanO = false;
+      if (check1RN(unitCrit)) {
+        opCurrHP -= unitDmg * 2;
+      } else {
+        opCurrHP -= unitDmg;
+      }
+    }
+  }
+  if (unitCurrHP <= 0 || opCurrHP <= 0) {
+    return [unitCurrHP, opCurrHP, roundU, roundO];
+  }
+
+  //Enemy counters
+  if (opClass === "Hemomancer") {
+    [opDmg, opCrit] = adjustHemomancer(
+      oppoStats.unit,
+      opCurrHP,
+      oppoStats.Dmg,
+      oppoStats.Crit
+    );
+  }
+  if (turnNum === 1 && unitClass === "Relic Knight") {
+    opDmg -= 6;
+  }
+  if (opClass === "Frigillan") {
+    [opDmg, opHit] = adjustFrigillan(checkFrigillanO, opDmg, opHit);
+  }
+  if (check2RN(opHit)) {
+    checkFrigillanU = false;
+    if (check1RN(opCrit)) {
+      if (opClass === "Reaper" && unitCurrHP === unitStats.unit.HP) {
+        unitCurrHP -= opDmg * 3;
+      } else if (opClass === "Gallant" && unitCurrHP * 2 > unitStats.unit.HP) {
+        unitCurrHP -= (opDmg + 5) * 2;
+      } else {
+        unitCurrHP -= opDmg * 2;
+      }
+    } else {
+      if (opClass === "Gallant" && unitCurrHP * 2 > unitStats.unit.HP) {
+        unitCurrHP -= opDmg + 5;
+      } else {
+        unitCurrHP -= opDmg;
+      }
+    }
+  }
+  if (opClass === "Slayer" && check1RN(20)) {
+    if (check2RN(opHit)) {
+      checkFrigillanU = false;
+      if (check1RN(opCrit)) {
+        unitCurrHP -= opDmg * 2;
+      } else {
+        unitCurrHP -= opDmg;
       }
     }
   }
@@ -1868,8 +1315,10 @@ function roundProceeding(unitStats, oppoStats, turnNum, roundU, roundO, i) {
   if (opClass === "Ascendant") {
     newOppo = ascendantBuffDown(newOppo, rotationO);
   }
-  if (unitCurHP <= 0 || opCurrHP <= 0) {
-    return unitCurrHP, opCurrHP, roundU, roundO;
+
+  //Terminates function if any currHP reaches 0
+  if (unitCurrHP <= 0 || opCurrHP <= 0) {
+    return [unitCurrHP, opCurrHP, roundU, roundO];
   }
 
   //If player unit doubles
@@ -1884,38 +1333,70 @@ function roundProceeding(unitStats, oppoStats, turnNum, roundU, roundO, i) {
       rotationO = roundO % 3;
       newOppo = ascendantBuffUp(oppoStats.unit, rotationO);
     }
-    [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(i, newUnit, newOppo);
+    [unitDmg, unitHit, unitCrit, opDmg, opHit, opCrit] = adjustStats(
+      i,
+      newUnit,
+      newOppo
+    );
+    if (unitClass === "Hemomancer") {
+      [unitDmg, unitCrit] = adjustHemomancer(
+        unitStats.unit,
+        unitCurrHP,
+        unitStats.Dmg,
+        unitStats.Crit
+      );
+    }
+    if (opClass === "Hemomancer") {
+      [opDmg, opCrit] = adjustHemomancer(
+        oppoStats.unit,
+        opCurrHP,
+        oppoStats.Dmg,
+        oppoStats.Crit
+      );
+    }
+    if ((turnNum === 1) & (opClass === "Relic Knight")) {
+      unitDmg -= 6;
+    }
+    if ((turnNum === 1) & (unitClass === "Relic Knight")) {
+      opDmg -= 6;
+    }
+    if (unitClass === "Frigillan") {
+      [unitDmg, unitHit] = adjustFrigillan(checkFrigillanU, unitDmg, unitHit);
+    }
+    if (opClass === "Frigillan") {
+      [opDmg, opHit] = adjustFrigillan(checkFrigillanO, opDmg, opHit);
+    }
   }
-  if (unit.Class === "Hemomancer") {
-    [unitDmg, unitCrit] = adjustHemomancer(unit, unitCurHP, oppo);
-  }
+
   if (unitW) {
     if (check2RN(unitHit)) {
-      if ((turn === 1) & (oppo.Class === "Relic Knight")) {
-        unitDmg -= 6;
-      }
+      checkFrigillanO = false;
       if (check1RN(unitCrit)) {
-        if (unit.Class === "Reaper" && eneCurHP === oppo.HP) {
-          eneCurHP -= unitDmg * 3;
-        } else if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
-          eneCurHP -= (unitDmg + 5) * 2;
+        if (unitClass === "Reaper" && opCurrHP === oppoStats.unit.HP) {
+          opCurrHP -= unitDmg * 3;
+        } else if (
+          unitClass === "Gallant" &&
+          opCurrHP * 2 > oppoStats.unit.HP
+        ) {
+          opCurrHP -= (unitDmg + 5) * 2;
         } else {
-          eneCurHP -= unitDmg * 2;
+          opCurrHP -= unitDmg * 2;
         }
       } else {
-        if (unit.Class === "Gallant" && eneCurHP * 2 > oppo.HP) {
-          eneCurHP -= unitDmg + 5;
+        if (unitClass === "Gallant" && opCurrHP * 2 > oppoStats.unit.HP) {
+          opCurrHP -= unitDmg + 5;
         } else {
-          eneCurHP -= unitDmg;
+          opCurrHP -= unitDmg;
         }
       }
     }
-    if (unit.Class === "Slayer" && check1RN(20)) {
+    if (unitClass === "Slayer" && check1RN(20)) {
       if (check2RN(unitHit)) {
+        checkFrigillanO = false;
         if (check1RN(unitCrit)) {
-          eneCurHP -= unitDmg * 2;
+          opCurrHP -= unitDmg * 2;
         } else {
-          eneCurHP -= unitDmg;
+          opCurrHP -= unitDmg;
         }
       }
     }
@@ -1923,52 +1404,46 @@ function roundProceeding(unitStats, oppoStats, turnNum, roundU, roundO, i) {
 
   //If enemy doubles
   if (enemyW) {
-    if (check2RN(eneHit)) {
-      if (oppo.Class === "Hemomancer") {
-        [eneDmg, opCrit] = adjustHemomancer(oppo, eneCurHP, unit);
-      }
-      if ((turn === 1) & (unit.Class === "Relic Knight")) {
-        eneDmg -= 6;
-      }
+    if (check2RN(opHit)) {
+      checkFrigillanU = false;
       if (check1RN(opCrit)) {
-        if (oppo.Class === "Reaper" && unitCurHP === unit.HP) {
-          unitCurHP -= eneDmg * 3;
-        } else if (oppo.Class === "Gallant" && unitCurHP * 2 > unit.HP) {
-          unitCurHP -= (eneDmg + 5) * 2;
+        if (opClass === "Reaper" && unitCurrHP === unitStats.unit.HP) {
+          unitCurrHP -= opDmg * 3;
+        } else if (
+          opClass === "Gallant" &&
+          unitCurrHP * 2 > unitStats.unit.HP
+        ) {
+          unitCurrHP -= (opDmg + 5) * 2;
         } else {
-          unitCurHP -= eneDmg * 2;
+          unitCurrHP -= opDmg * 2;
         }
       } else {
-        if (oppo.Class === "Gallant" && unitCurHP * 2 > unit.HP) {
-          unitCurHP -= eneDmg + 5;
+        if (opClass === "Gallant" && unitCurrHP * 2 > unitStats.unit.HP) {
+          unitCurrHP -= opDmg + 5;
         } else {
-          unitCurHP -= eneDmg;
+          unitCurrHP -= opDmg;
         }
       }
     }
-    if (oppo.Class === "Slayer" && check1RN(20)) {
-      if (check2RN(eneHit)) {
+    if (opClass === "Slayer" && check1RN(20)) {
+      if (check2RN(opHit)) {
+        checkFrigillanU = false;
         if (check1RN(opCrit)) {
-          unitCurHP -= eneDmg * 2;
+          unitCurrHP -= opDmg * 2;
         } else {
-          unitCurHP -= eneDmg;
+          unitCurrHP -= opDmg;
         }
       }
     }
   }
-  if (unitW || enemyW) {
-    if (unit.Class === "Ascendant") {
-      unit = ascendantBuffDown(unit, rotationU);
-    }
-    if (oppo.Class === "Ascendant") {
-      oppo = ascendantBuffDown(oppo, rotationO);
-    }
+  if(unitW||enemyW){
+    if (unitClass === "Ascendant") {
+    newUnit = ascendantBuffDown(newUnit, rotationU);
   }
-  if (oppo.Class === "Relick Knight" && turn === 1) {
-    unitDmg += 6;
+  if (opClass === "Ascendant") {
+    newOppo = ascendantBuffDown(newOppo, rotationO);
   }
-  if (unit.Class === "Relick Knight" && turn === 1) {
-    eneDmg += 6;
   }
-  return unitCurrHP, opCurrHP, roundU, roundO;
+
+  return [unitCurrHP, opCurrHP, roundU, roundO];
 }
