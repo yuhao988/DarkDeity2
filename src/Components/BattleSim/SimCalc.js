@@ -878,28 +878,42 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, i) {
   }
 
   if (check2RN(unitHit)) {
+    let newUDmg = unitDmg;
+    switch (unitClass) {
+      case "Gallant":
+        if (opCurrHP * 2 > oppoStats.unit.HP) {
+          newUDmg = unitDmg + 5;
+        }
+        break;
+      default:
+        break;
+    }
     if (check1RN(unitCrit)) {
       if (unitClass === "Reaper" && opCurrHP === oppoStats.unit.HP) {
-        opCurrHP -= unitDmg * 3;
-      } else if (unitClass === "Gallant" && opCurrHP * 2 > oppoStats.unit.HP) {
-        opCurrHP -= (unitDmg + 5) * 2;
+        opCurrHP -= newUDmg * 3;
       } else {
-        opCurrHP -= unitDmg * 2;
+        opCurrHP -= newUDmg * 2;
       }
     } else {
-      if (unitClass === "Gallant" && opCurrHP * 2 > oppoStats.unit.HP) {
-        opCurrHP -= unitDmg + 5;
-      } else {
-        opCurrHP -= unitDmg;
-      }
+      opCurrHP -= newUDmg;
     }
   }
   if (unitClass === "Slayer" && check1RN(20)) {
     if (check2RN(unitHit)) {
+      let newUDmg = unitDmg;
+      switch (unitClass) {
+        case "Gallant":
+          if (opCurrHP * 2 > oppoStats.unit.HP) {
+            newUDmg = unitDmg + 5;
+          }
+          break;
+        default:
+          break;
+      }
       if (check1RN(unitCrit)) {
-        opCurrHP -= unitDmg * 2;
+        opCurrHP -= newUDmg * 2;
       } else {
-        opCurrHP -= unitDmg;
+        opCurrHP -= newUDmg;
       }
     }
   }
@@ -1021,12 +1035,14 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, i) {
   let newUnit = unitStats.unit;
   let unitCurrHP = unitStats.currHP;
   let unitDmg = unitStats.Dmg;
+  let unitSpd = unitStats.unit.TSpd;
   let unitHit = unitStats.Hit;
 
   let newOppo = oppoStats.unit;
   let opClass = oppoStats.unit.Class;
   let opCurrHP = oppoStats.currHP;
   let opDmg = oppoStats.Dmg;
+  let opSpd = oppoStats.unit.TSpd;
   let opHit = oppoStats.Hit;
   let opCrit = oppoStats.Crit;
 
@@ -1062,20 +1078,24 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, i) {
   }
 
   if (check2RN(opHit)) {
+    let newODmg = opDmg;
+    switch (opClass) {
+      case "Gallant":
+        if (unitCurrHP * 2 > unitStats.unit.HP) {
+          newODmg = opDmg + 5;
+        }
+        break;
+      default:
+        break;
+    }
     if (check1RN(opCrit)) {
-      if (opClass === "Reaper" && unitCurrHP === unitStats.unit.HP) {
-        unitCurrHP -= opDmg * 3;
-      } else if (opClass === "Gallant" && unitCurrHP * 2 > unitStats.unit.HP) {
-        unitCurrHP -= (opDmg + 5) * 2;
+      if (opClass === "Reaper" && unitCurrHP === unitCurrHP.unit.HP) {
+        unitCurrHP -= newODmg * 3;
       } else {
-        unitCurrHP -= opDmg * 2;
+        unitCurrHP -= newODmg * 2;
       }
     } else {
-      if (opClass === "Gallant" && unitCurrHP * 2 > unitStats.unit.HP) {
-        unitCurrHP -= opDmg + 5;
-      } else {
-        unitCurrHP -= opDmg;
-      }
+      unitCurrHP -= newODmg;
     }
   }
   if (opClass === "Slayer" && check1RN(20)) {
@@ -1134,23 +1154,28 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, i) {
   }
   if (enemyW) {
     if (check2RN(opHit)) {
+      let newODmg = opDmg;
+      switch (opClass) {
+        case "Gallant":
+          if (unitCurrHP * 2 > unitStats.unit.HP) {
+            newODmg = opDmg + 5;
+          }
+          break;
+        case "Tempest":
+          const excessSpd = Math.floor(Math.max(opSpd - unitSpd - 5, 0));
+          newODmg = opDmg + excessSpd;
+          break;
+        default:
+          break;
+      }
       if (check1RN(opCrit)) {
         if (opClass === "Reaper" && unitCurrHP === unitStats.unit.HP) {
-          unitCurrHP -= opDmg * 3;
-        } else if (
-          opClass === "Gallant" &&
-          unitCurrHP * 2 > oppoStats.unit.HP
-        ) {
-          unitCurrHP -= (opDmg + 5) * 2;
+          unitCurrHP -= newODmg * 3;
         } else {
-          unitCurrHP -= opDmg * 2;
+          unitCurrHP -= newODmg * 2;
         }
       } else {
-        if (opClass === "Gallant" && unitCurrHP * 2 > unitStats.unit.HP) {
-          unitCurrHP -= opDmg + 5;
-        } else {
-          unitCurrHP -= opDmg;
-        }
+        unitCurrHP -= newODmg;
       }
 
       if (opClass === "Slayer" && check1RN(20)) {
@@ -1188,6 +1213,7 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, i) {
   let unitClass = unitStats.unit.Class;
   let unitCurrHP = unitStats.currHP;
   let unitDmg = unitStats.Dmg;
+  let unitSpd = unitStats.unit.TSpd;
   let unitHit = unitStats.Hit;
   let unitCrit = unitStats.Crit;
 
@@ -1195,6 +1221,7 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, i) {
   let opClass = oppoStats.unit.Class;
   let opCurrHP = oppoStats.currHP;
   let opDmg = oppoStats.Dmg;
+  let opSpd = oppoStats.unit.TSpd;
   let opHit = oppoStats.Hit;
   let opCrit = oppoStats.Crit;
 
@@ -1239,20 +1266,24 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, i) {
 
   if (check2RN(unitHit)) {
     checkFrigillanO = false;
+    let newUDmg = unitDmg;
+    switch (unitClass) {
+      case "Gallant":
+        if (opCurrHP * 2 > oppoStats.unit.HP) {
+          newUDmg = unitDmg + 5;
+        }
+        break;
+      default:
+        break;
+    }
     if (check1RN(unitCrit)) {
       if (unitClass === "Reaper" && opCurrHP === oppoStats.unit.HP) {
-        opCurrHP -= unitDmg * 3;
-      } else if (unitClass === "Gallant" && opCurrHP * 2 > oppoStats.unit.HP) {
-        opCurrHP -= (unitDmg + 5) * 2;
+        opCurrHP -= newUDmg * 3;
       } else {
-        opCurrHP -= unitDmg * 2;
+        opCurrHP -= newUDmg * 2;
       }
     } else {
-      if (unitClass === "Gallant" && opCurrHP * 2 > oppoStats.unit.HP) {
-        opCurrHP -= unitDmg + 5;
-      } else {
-        opCurrHP -= unitDmg;
-      }
+      opCurrHP -= newUDmg;
     }
   }
   if (unitClass === "Slayer" && check1RN(20)) {
@@ -1375,23 +1406,28 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, i) {
   if (unitW) {
     if (check2RN(unitHit)) {
       checkFrigillanO = false;
+      let newUDmg = unitDmg;
+      switch (unitClass) {
+        case "Gallant":
+          if (opCurrHP * 2 > oppoStats.unit.HP) {
+            newUDmg = unitDmg + 5;
+          }
+          break;
+        case "Tempest":
+          const excessSpd = Math.floor(Math.max(unitSpd - opSpd - 5, 0));
+          newUDmg = unitDmg + excessSpd;
+          break;
+        default:
+          break;
+      }
       if (check1RN(unitCrit)) {
         if (unitClass === "Reaper" && opCurrHP === oppoStats.unit.HP) {
-          opCurrHP -= unitDmg * 3;
-        } else if (
-          unitClass === "Gallant" &&
-          opCurrHP * 2 > oppoStats.unit.HP
-        ) {
-          opCurrHP -= (unitDmg + 5) * 2;
+          opCurrHP -= newUDmg * 3;
         } else {
-          opCurrHP -= unitDmg * 2;
+          opCurrHP -= newUDmg * 2;
         }
       } else {
-        if (unitClass === "Gallant" && opCurrHP * 2 > oppoStats.unit.HP) {
-          opCurrHP -= unitDmg + 5;
-        } else {
-          opCurrHP -= unitDmg;
-        }
+        opCurrHP -= newUDmg;
       }
     }
     if (unitClass === "Slayer" && check1RN(20)) {
@@ -1410,23 +1446,28 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, i) {
   if (enemyW) {
     if (check2RN(opHit)) {
       checkFrigillanU = false;
+      let newODmg = opDmg;
+      switch (opClass) {
+        case "Gallant":
+          if (unitCurrHP * 2 > unitStats.unit.HP) {
+            newODmg = opDmg + 5;
+          }
+          break;
+        case "Tempest":
+          const excessSpd = Math.floor(Math.max(opSpd - unitSpd - 5, 0));
+          newODmg = opDmg + excessSpd;
+          break;
+        default:
+          break;
+      }
       if (check1RN(opCrit)) {
         if (opClass === "Reaper" && unitCurrHP === unitStats.unit.HP) {
-          unitCurrHP -= opDmg * 3;
-        } else if (
-          opClass === "Gallant" &&
-          unitCurrHP * 2 > unitStats.unit.HP
-        ) {
-          unitCurrHP -= (opDmg + 5) * 2;
+          unitCurrHP -= newODmg * 3;
         } else {
-          unitCurrHP -= opDmg * 2;
+          unitCurrHP -= newODmg * 2;
         }
       } else {
-        if (opClass === "Gallant" && unitCurrHP * 2 > unitStats.unit.HP) {
-          unitCurrHP -= opDmg + 5;
-        } else {
-          unitCurrHP -= opDmg;
-        }
+        unitCurrHP -= newODmg;
       }
     }
     if (opClass === "Slayer" && check1RN(20)) {
