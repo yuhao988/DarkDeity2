@@ -167,7 +167,7 @@ function adjustStats(i, self, enemy) {
     selfHit = 100;
     eneHit = 100;
   }
-  
+
   //Self and opponent critical chance calculation
   let selfCrit = 0,
     eneCrit = 0;
@@ -244,7 +244,7 @@ function adjustStats(i, self, enemy) {
 function ascendantBuffUp(unit, buffNum) {
   // Create a copy to avoid modifying the original
   const buffedUnit = { ...unit };
-  
+
   switch (buffNum) {
     case 1:
       buffedUnit.Ddg += 25;
@@ -258,7 +258,7 @@ function ascendantBuffUp(unit, buffNum) {
     default:
       break;
   }
-  
+
   return buffedUnit;
 }
 //Remove the buff Ascendant received after battle
@@ -281,7 +281,7 @@ function ascendantBuffDown(unit, buffNum) {
 }
 
 function adjustHemomancer(unit, currHP, dmg, crit) {
-  let unitHP=unit.HP  
+  let unitHP = unit.HP;
   let newUnitDmg = dmg + Math.floor((unitHP - currHP) / 5);
   let newUnitCrit = crit + Math.floor((unitHP - currHP) / 5);
 
@@ -509,9 +509,6 @@ function check1RN(num) {
 }
 
 export function simulateBattle(unit, enemy) {
-  // Determine if either unit gets a double attack based on speed difference
-  let [unitW, enemyW] = determineDoubleAttack(unit.TSpd, enemy.TSpd);
-
   // switch (unit.Class) {
   //   case "Seeker":(status)
   //     return "+4 Vulnerable to opponent from Exposing Light";
@@ -554,7 +551,6 @@ export function simulateBattle(unit, enemy) {
     unit: unit,
     currHP: unitCurHP,
     Dmg: unitDmg,
-    Double: unitW,
     Hit: unitHit,
     Crit: unitCrit,
   };
@@ -562,7 +558,6 @@ export function simulateBattle(unit, enemy) {
     unit: enemy,
     currHP: eneCurHP,
     Dmg: opDmg,
-    Double: enemyW,
     Hit: opHit,
     Crit: 0,
   };
@@ -683,9 +678,6 @@ export function simulateBattle(unit, enemy) {
 }
 
 export function simulateBattle2(unit, oppo) {
-  // Determine if either unit gets a double attack based on speed difference
-  let [unitW, enemyW] = determineDoubleAttack(unit.TSpd, oppo.TSpd);
-
   // Initialize win/lose counters [unitWinsFirst, unitLosesFirst, unitWinsSecond, unitLosesSecond]
   let [unitWin1, unitLose1, unitWin2, unitLose2] = [0, 0, 0, 0];
 
@@ -700,7 +692,6 @@ export function simulateBattle2(unit, oppo) {
     unit: unit,
     currHP: unitCurHP,
     Dmg: unitDmg,
-    Double: unitW,
     Hit: unitHit,
     Crit: unitCrit,
   };
@@ -708,7 +699,6 @@ export function simulateBattle2(unit, oppo) {
     unit: oppo,
     currHP: opCurHP,
     Dmg: opDmg,
-    Double: enemyW,
     Hit: opHit,
     Crit: opCrit,
   };
@@ -841,23 +831,27 @@ export function simulateBattle2(unit, oppo) {
 }
 
 function turnProceeding1(unitStats, oppoStats, turnNum, round, i) {
+  // Determine if either unit gets a double attack based on speed difference
+  let [unitW, enemyW] = determineDoubleAttack(
+    unitStats.unit.TSpd,
+    oppoStats.unit.TSpd
+  );
   round += 1;
   let rotation = round % 3;
 
   let newUnit = unitStats.unit;
-  let newOppo = oppoStats.unit;
   let unitClass = unitStats.unit.Class;
   let unitCurrHP = unitStats.currHP;
   let unitDmg = unitStats.Dmg;
-  let unitW = unitStats.Double;
+  let unitSpd = unitStats.unit.TSpd;
   let unitHit = unitStats.Hit;
   let unitCrit = unitStats.Crit;
-  //let opClass = oppoStats.unit.Class;
+
+  let newOppo = oppoStats.unit;
   let opCurrHP = oppoStats.currHP;
   let opDmg = oppoStats.Dmg;
-  let enemyW = oppoStats.Double;
+  let opSpd = oppoStats.unit.TSpd;
   let opHit = oppoStats.Hit;
-  // let opCrit = oppoStats.Crit;
 
   let checkFrigillan = false;
 
@@ -882,9 +876,7 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, i) {
     }
     [unitDmg, unitHit] = adjustFrigillan(checkFrigillan, unitDmg, unitHit);
   }
-  // if (i < 20) {
-  //   console.log(unitHit,unitCrit,opHit);
-  // }
+
   if (check2RN(unitHit)) {
     if (check1RN(unitCrit)) {
       if (unitClass === "Reaper" && opCurrHP === oppoStats.unit.HP) {
@@ -928,7 +920,7 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, i) {
   if (unitClass === "Ascendant") {
     newUnit = ascendantBuffDown(newUnit, rotation);
   }
- 
+
   //Terminates function if any currHP reaches 0
   if (unitCurrHP <= 0 || opCurrHP <= 0) {
     return [unitCurrHP, opCurrHP, round];
@@ -967,23 +959,28 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, i) {
 
   if (unitW) {
     if (check2RN(unitHit)) {
+      let newUDmg = unitDmg;
+      switch (unitClass) {
+        case "Gallant":
+          if (opCurrHP * 2 > oppoStats.unit.HP) {
+            newUDmg = unitDmg + 5;
+          }
+          break;
+        case "Tempest":
+          const excessSpd = Math.floor(Math.max(unitSpd - opSpd - 5, 0));
+          newUDmg = unitDmg + excessSpd;
+          break;
+        default:
+          break;
+      }
       if (check1RN(unitCrit)) {
         if (unitClass === "Reaper" && opCurrHP === oppoStats.unit.HP) {
-          opCurrHP -= unitDmg * 3;
-        } else if (
-          unitClass === "Gallant" &&
-          opCurrHP * 2 > oppoStats.unit.HP
-        ) {
-          opCurrHP -= (unitDmg + 5) * 2;
+          opCurrHP -= newUDmg * 3;
         } else {
-          opCurrHP -= unitDmg * 2;
+          opCurrHP -= newUDmg * 2;
         }
       } else {
-        if (unitClass === "Gallant" && opCurrHP * 2 > oppoStats.unit.HP) {
-          opCurrHP -= unitDmg + 5;
-        } else {
-          opCurrHP -= unitDmg;
-        }
+        opCurrHP -= newUDmg;
       }
     }
     if (unitClass === "Slayer" && check1RN(20)) {
@@ -1003,37 +1000,39 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, i) {
       unitCurrHP -= opDmg;
     }
   }
-  if(unitW||enemyW){
+  if (unitW || enemyW) {
     if (unitClass === "Ascendant") {
-    newUnit = ascendantBuffDown(newUnit, rotation);
-  }
+      newUnit = ascendantBuffDown(newUnit, rotation);
+    }
   }
 
   return [unitCurrHP, opCurrHP, round];
 }
 
 function turnProceeding1X(unitStats, oppoStats, turnNum, round, i) {
+  // Determine if either unit gets a double attack based on speed difference
+  let [unitW, enemyW] = determineDoubleAttack(
+    unitStats.unit.TSpd,
+    oppoStats.unit.TSpd
+  );
   round += 1;
   let rotation = round % 3;
 
   let newUnit = unitStats.unit;
-  let newOppo = oppoStats.unit;
-  //let unitClass = unitStats.unit.Class;
   let unitCurrHP = unitStats.currHP;
   let unitDmg = unitStats.Dmg;
-  let unitW = unitStats.Double;
   let unitHit = unitStats.Hit;
-  //let unitCrit = unitStats.Crit;
+
+  let newOppo = oppoStats.unit;
   let opClass = oppoStats.unit.Class;
   let opCurrHP = oppoStats.currHP;
   let opDmg = oppoStats.Dmg;
-  let enemyW = oppoStats.Double;
   let opHit = oppoStats.Hit;
   let opCrit = oppoStats.Crit;
 
   let checkFrigillan = false;
 
-  if (opClass === "Ascendant") {    
+  if (opClass === "Ascendant") {
     newOppo = ascendantBuffUp(oppoStats.unit, rotation);
   }
 
@@ -1089,7 +1088,7 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, i) {
     }
   }
 
-   if (opClass === "Ascendant") {
+  if (opClass === "Ascendant") {
     newOppo = ascendantBuffDown(newOppo, rotation);
   }
 
@@ -1165,32 +1164,37 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, i) {
       }
     }
   }
-  if(unitW||enemyW){
+  if (unitW || enemyW) {
     if (opClass === "Ascendant") {
-    newOppo = ascendantBuffDown(newOppo, rotation);
-  }
+      newOppo = ascendantBuffDown(newOppo, rotation);
+    }
   }
 
   return [unitCurrHP, opCurrHP, round];
 }
 
 function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, i) {
+  // Determine if either unit gets a double attack based on speed difference
+  let [unitW, enemyW] = determineDoubleAttack(
+    unitStats.unit.TSpd,
+    oppoStats.unit.TSpd
+  );
   roundU += 1;
   roundO += 1;
   let rotationU = roundU % 3;
   let rotationO = roundO % 3;
+
   let newUnit = unitStats.unit;
-  let newOppo = oppoStats.unit;
   let unitClass = unitStats.unit.Class;
   let unitCurrHP = unitStats.currHP;
   let unitDmg = unitStats.Dmg;
-  let unitW = unitStats.Double;
   let unitHit = unitStats.Hit;
   let unitCrit = unitStats.Crit;
+
+  let newOppo = oppoStats.unit;
   let opClass = oppoStats.unit.Class;
   let opCurrHP = oppoStats.currHP;
   let opDmg = oppoStats.Dmg;
-  let enemyW = oppoStats.Double;
   let opHit = oppoStats.Hit;
   let opCrit = oppoStats.Crit;
 
@@ -1436,13 +1440,13 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, i) {
       }
     }
   }
-  if(unitW||enemyW){
+  if (unitW || enemyW) {
     if (unitClass === "Ascendant") {
-    newUnit = ascendantBuffDown(newUnit, rotationU);
-  }
-  if (opClass === "Ascendant") {
-    newOppo = ascendantBuffDown(newOppo, rotationO);
-  }
+      newUnit = ascendantBuffDown(newUnit, rotationU);
+    }
+    if (opClass === "Ascendant") {
+      newOppo = ascendantBuffDown(newOppo, rotationO);
+    }
   }
 
   return [unitCurrHP, opCurrHP, roundU, roundO];
