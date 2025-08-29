@@ -300,6 +300,47 @@ function adjustFrigillan(check, power, hitrate) {
   return [newPwr, newHit];
 }
 
+function attachStatus(unit, status) {
+  let newUnitStatus = unit;
+  let newStatus = [status[0], 0, status[2]];
+  switch (status[1]) {
+    case "Light":
+      newStatus[1] = 1;
+      break;
+    case "Heavy":
+      newStatus[1] = 2;
+      break;
+    case "Severe":
+      newStatus[1] = 3;
+      break;
+    default:
+      newStatus[1] = 0;
+      break;
+  }
+  newUnitStatus.push(newStatus);
+  return newUnitStatus;
+}
+
+function removeStatus(unit, cond) {
+  let newUnitStatus = unit;
+  switch (cond) {
+    case "turn":
+      break;
+    case "attack":
+      break;
+    case "hit":
+      break;
+    default:
+      break;
+  }
+  for (let i = newUnitStatus.length - 1; i >= 0; i--) {
+    if (newUnitStatus[i][1] === 0) {
+      newUnitStatus.splice(i, 1);
+    }
+  }
+  return newUnitStatus;
+}
+
 export function scoreCalc1(unitName, isUnit) {
   let unit;
   if (isUnit) {
@@ -516,7 +557,7 @@ export function simulateBattle(unit, enemy) {
   //     return "+5 Dmg from Honorclad";
   //   case "Ranger":(status)
   //     return "+8 Heavy Block from Shield Stance";
-  //   case "Aegis":
+  //   case "Aegis":(done)
   //     return "+20% Dmg from Reflection";
   //   case "Frigillan":(done)
   //     return "+5 Pwr and 25 Acc from Defensive Fighter";
@@ -549,6 +590,7 @@ export function simulateBattle(unit, enemy) {
   let eneCurHP = enemy.HP;
   let unitStats = {
     unit: unit,
+    status: {},
     currHP: unitCurHP,
     Dmg: unitDmg,
     Hit: unitHit,
@@ -556,6 +598,7 @@ export function simulateBattle(unit, enemy) {
   };
   let eneStats = {
     unit: enemy,
+    status: {},
     currHP: eneCurHP,
     Dmg: opDmg,
     Hit: opHit,
@@ -720,14 +763,16 @@ export function simulateBattle2(unit, oppo) {
 
         //Enemy attacks
         turn += 1;
-        [oppoStats.currHP, unitStats.currHP, roundO, roundU] = turnProceeding2(
-          oppoStats,
-          unitStats,
-          turn,
-          roundO,
-          roundU,
-          i
-        );
+        [oppoStats.currHP, unitStats.currHP, roundO, roundU, boostAegis] =
+          turnProceeding2(
+            oppoStats,
+            unitStats,
+            turn,
+            roundO,
+            roundU,
+            boostAegis,
+            i
+          );
 
         if (unitStats.currHP <= 0) {
           unitLose1++;
@@ -749,18 +794,21 @@ export function simulateBattle2(unit, oppo) {
       let turn = 0;
       let roundU = 0;
       let roundO = 0;
+      let boostAegis = [0, 0];
       unitStats.currHP = unit.HP;
       oppoStats.currHP = oppo.HP;
       while (unitStats.currHP > 0 && oppoStats.currHP > 0) {
         turn++;
-        [oppoStats.currHP, unitStats.currHP, roundO, roundU] = turnProceeding2(
-          oppoStats,
-          unitStats,
-          turn,
-          roundO,
-          roundU,
-          j
-        );
+        [oppoStats.currHP, unitStats.currHP, roundO, roundU, boostAegis] =
+          turnProceeding2(
+            oppoStats,
+            unitStats,
+            turn,
+            roundO,
+            roundU,
+            boostAegis,
+            j
+          );
 
         if (unitStats.currHP <= 0) {
           unitLose2++;
@@ -773,14 +821,16 @@ export function simulateBattle2(unit, oppo) {
 
         //Player unit attacks
         turn += 1;
-        [unitStats.currHP, oppoStats.currHP, roundU, roundO] = turnProceeding2(
-          unitStats,
-          oppoStats,
-          turn,
-          roundU,
-          roundO,
-          j
-        );
+        [unitStats.currHP, oppoStats.currHP, roundU, roundO, boostAegis] =
+          turnProceeding2(
+            unitStats,
+            oppoStats,
+            turn,
+            roundU,
+            roundO,
+            boostAegis,
+            j
+          );
 
         if (oppoStats.currHP <= 0) {
           unitWin2++;
@@ -1233,6 +1283,7 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
   let newUnit = unitStats.unit;
   let unitClass = unitStats.unit.Class;
   let unitCurrHP = unitStats.currHP;
+  let unitStatus = unitStats.status;
   let unitDmg = unitStats.Dmg;
   let unitSpd = unitStats.unit.TSpd;
   let unitHit = unitStats.Hit;
@@ -1241,6 +1292,7 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
   let newOppo = oppoStats.unit;
   let opClass = oppoStats.unit.Class;
   let opCurrHP = oppoStats.currHP;
+  let opStatus = oppoStats.status;
   let opDmg = oppoStats.Dmg;
   let opSpd = oppoStats.unit.TSpd;
   let opHit = oppoStats.Hit;
@@ -1291,6 +1343,9 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
     checkFrigillanO = false;
     let newUDmg = unitDmg;
     switch (unitClass) {
+      case "Seeker":
+        opStatus = attachStatus(opStatus, [4, "Light", "Vulnerable"]);
+        break;
       case "Gallant":
         if (opCurrHP * 2 > oppoStats.unit.HP) {
           newUDmg = unitDmg + 5;
@@ -1545,5 +1600,5 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
     }
   }
 
-  return [unitCurrHP, opCurrHP, roundU, roundO,[boostAegisU, boostAegisO]];
+  return [unitCurrHP, opCurrHP, roundU, roundO, [boostAegisU, boostAegisO]];
 }
