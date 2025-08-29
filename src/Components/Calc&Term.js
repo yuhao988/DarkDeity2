@@ -179,14 +179,14 @@ export default function CalcTerm() {
                     <td style={{ textAlign: "left" }}>
                       Debuff: Loses 1 HP after combat
                     </td>
-                    <td>1 round of combat</td>
+                    <td>1 turn</td>
                   </tr>
                   <tr>
                     <td>Blind</td>
                     <td style={{ textAlign: "left" }}>
                       Debuff: Loses 1 point of Accuracy
                     </td>
-                    <td>1 round of combat</td>
+                    <td>1 attack</td>
                   </tr>
                   <tr>
                     <td>Exhaust</td>
@@ -200,7 +200,7 @@ export default function CalcTerm() {
                     <td style={{ textAlign: "left" }}>
                       Debuff: Removes 1 point of primary stat from target
                     </td>
-                    <td>1 round of combat</td>
+                    <td>1 turn</td>
                   </tr>
                   <tr>
                     <td>Snare</td>
@@ -228,7 +228,7 @@ export default function CalcTerm() {
                     <td style={{ textAlign: "left" }}>
                       Debuff: Loses 1 point of Power
                     </td>
-                    <td>1 round of combat</td>
+                    <td>1 attack</td>
                   </tr>
                 </tbody>
               </table>

@@ -12,7 +12,7 @@ const [unitList, enemyList] = Array.isArray(sample)
     )
   : [[], []];
 
-function adjustStats(i, self, enemy) {
+function adjustStats(i, self, enemy, selfStatus, enemyStatus) {
   let selfDmg = 0;
   let eneDmg = 0;
 
@@ -66,6 +66,7 @@ function adjustStats(i, self, enemy) {
       }
       break;
   }
+
   //Opponent damage calculation
   switch (enemy.Class) {
     case "Elementalist":
@@ -163,11 +164,6 @@ function adjustStats(i, self, enemy) {
       break;
   }
 
-  if (self.Class === "Dreadnought" || enemy.Class === "Dreadnought") {
-    selfHit = 100;
-    eneHit = 100;
-  }
-
   //Self and opponent critical chance calculation
   let selfCrit = 0,
     eneCrit = 0;
@@ -237,6 +233,65 @@ function adjustStats(i, self, enemy) {
     eneCrit = 0;
   }
 
+  //Adjust stats according to status effects
+  for (let i in selfStatus) {
+    switch (selfStatus[i][2]) {
+      case "Blind":
+        selfHit -= selfStatus[i][0];
+        break;
+      case "Weaken":
+        selfDmg -= selfStatus[i][0];
+        break;
+      case "Vulnerable":
+        eneDmg += selfStatus[i][0];
+        break;
+      case "Poison": //To be modified for later
+        eneDmg += selfStatus[i][0];
+        selfDmg -= selfStatus[i][0];
+        break;
+      case "Exhaust":
+        eneHit += selfStatus[i][0];
+        break;
+      case "Block":
+        eneDmg -= selfStatus[i][0];
+        break;
+      default:
+        break;
+    }
+  }
+  for (let j in enemyStatus) {
+    switch (enemyStatus[i][2]) {
+      case "Blind":
+        eneHit -= enemyStatus[j][0];
+        break;
+      case "Weaken":
+        eneDmg -= enemyStatus[j][0];
+        break;
+      case "Vulnerable":
+        selfDmg += enemyStatus[j][0];
+        break;
+      case "Poison": //To be modified for later
+        selfDmg += enemyStatus[j][0];
+        eneDmg -= enemyStatus[j][0];
+        break;
+      case "Exhaust":
+        selfHit += enemyStatus[j][0];
+        break;
+      case "Block":
+        selfDmg -= enemyStatus[j][0];
+        break;
+      default:
+        break;
+    }
+  }
+
+  if (self.Class === "Dreadnought" || enemy.Class === "Dreadnought") {
+    selfHit = 100;
+    eneHit = 100;
+  }
+  // if(i<5){
+  //   console.log(selfDmg,eneDmg);
+  // }
   return [selfDmg, selfHit, selfCrit, eneDmg, eneHit, eneCrit];
 }
 
@@ -301,7 +356,7 @@ function adjustFrigillan(check, power, hitrate) {
 }
 
 function attachStatus(unit, status) {
-  let newUnitStatus = unit;
+  let newUnitStatus = [...unit];
   let newStatus = [status[0], 0, status[2]];
   switch (status[1]) {
     case "Light":
@@ -318,17 +373,40 @@ function attachStatus(unit, status) {
       break;
   }
   newUnitStatus.push(newStatus);
+
   return newUnitStatus;
 }
 
 function removeStatus(unit, cond) {
-  let newUnitStatus = unit;
+  let newUnitStatus = [...unit];
   switch (cond) {
     case "turn":
+      for (let i in newUnitStatus) {
+        if (
+          newUnitStatus[i][2] === "Vulnerable" ||
+          newUnitStatus[i][2] === "Poison" ||
+          newUnitStatus[i][2] === "Bleed"
+        ) {
+          newUnitStatus[i][1] -= 1;
+        }
+      }
       break;
     case "attack":
+      for (let i in newUnitStatus) {
+        if (newUnitStatus[i][2] === "Weak" || newUnitStatus[i][2] === "Blind") {
+          newUnitStatus[i][1] -= 1;
+        }
+      }
       break;
     case "hit":
+      for (let i in newUnitStatus) {
+        if (
+          newUnitStatus[i][2] === "Vulnerable" ||
+          newUnitStatus[i][2] === "Block"
+        ) {
+          newUnitStatus[i][1] -= 1;
+        }
+      }
       break;
     default:
       break;
@@ -430,7 +508,9 @@ export function battleForecast(unit, enemy) {
   const [unitDmg, unitHit, unitCrit, eneDmg, eneHit] = adjustStats(
     5,
     unit,
-    enemy
+    enemy,
+    [],
+    []
   );
 
   return (
@@ -491,7 +571,9 @@ export function battleForecast2(unit, oppo) {
   const [unitDmg, unitHit, unitCrit, opDmg, opHit, opCrit] = adjustStats(
     5,
     unit,
-    oppo
+    oppo,
+    [],
+    []
   );
 
   return (
@@ -580,17 +662,21 @@ export function simulateBattle(unit, enemy) {
 
   // Initialize win/lose counters
   let [unitWin1, unitLose1, unitWin2, unitLose2] = [0, 0, 0, 0];
+  let unitStatus = [];
+  let enemyStatus = [];
 
   const [unitDmg, unitHit, unitCrit, opDmg, opHit] = adjustStats(
     5,
     unit,
-    enemy
+    enemy,
+    unitStatus,
+    enemyStatus
   );
   let unitCurHP = unit.HP;
   let eneCurHP = enemy.HP;
   let unitStats = {
     unit: unit,
-    status: {},
+    status: unitStatus,
     currHP: unitCurHP,
     Dmg: unitDmg,
     Hit: unitHit,
@@ -598,7 +684,7 @@ export function simulateBattle(unit, enemy) {
   };
   let eneStats = {
     unit: enemy,
-    status: {},
+    status: enemyStatus,
     currHP: eneCurHP,
     Dmg: opDmg,
     Hit: opHit,
@@ -705,16 +791,21 @@ export function simulateBattle(unit, enemy) {
 export function simulateBattle2(unit, oppo) {
   // Initialize win/lose counters [unitWinsFirst, unitLosesFirst, unitWinsSecond, unitLosesSecond]
   let [unitWin1, unitLose1, unitWin2, unitLose2] = [0, 0, 0, 0];
+  let unitStatus = [];
+  let oppoStatus = [];
 
   const [unitDmg, unitHit, unitCrit, opDmg, opHit, opCrit] = adjustStats(
     5,
     unit,
-    oppo
+    oppo,
+    unitStatus,
+    oppoStatus
   );
   let unitCurHP = unit.HP;
   let opCurHP = oppo.HP;
   let unitStats = {
     unit: unit,
+    status: unitStatus,
     currHP: unitCurHP,
     Dmg: unitDmg,
     Hit: unitHit,
@@ -723,6 +814,7 @@ export function simulateBattle2(unit, oppo) {
   let oppoStats = {
     unit: oppo,
     currHP: opCurHP,
+    status: oppoStatus,
     Dmg: opDmg,
     Hit: opHit,
     Crit: opCrit,
@@ -739,6 +831,8 @@ export function simulateBattle2(unit, oppo) {
       let boostAegis = [0, 0];
       unitStats.currHP = unit.HP;
       oppoStats.currHP = oppo.HP;
+      unitStats.status = [];
+      oppoStats.status = [];
       while (unitStats.currHP > 0 && oppoStats.currHP > 0) {
         turn += 1;
         [unitStats.currHP, oppoStats.currHP, roundU, roundO, boostAegis] =
@@ -797,6 +891,8 @@ export function simulateBattle2(unit, oppo) {
       let boostAegis = [0, 0];
       unitStats.currHP = unit.HP;
       oppoStats.currHP = oppo.HP;
+      unitStats.status = [];
+      oppoStats.status = [];
       while (unitStats.currHP > 0 && oppoStats.currHP > 0) {
         turn++;
         [oppoStats.currHP, unitStats.currHP, roundO, roundU, boostAegis] =
@@ -1312,7 +1408,9 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
   [unitDmg, unitHit, unitCrit, opDmg, opHit, opCrit] = adjustStats(
     i,
     newUnit,
-    newOppo
+    newOppo,
+    unitStatus,
+    opStatus
   );
 
   //Player unit attacks
@@ -1354,6 +1452,12 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
       case "Aegis":
         newUDmg = unitDmg + boostAegisU;
         break;
+      case "Monk":
+        opStatus = attachStatus(opStatus, [4, "Light", "Weak"]);
+        break;
+      case "Ellisant":
+        opStatus = attachStatus(opStatus, [25, "Light", "Blind"]);
+        break;
       default:
         break;
     }
@@ -1370,6 +1474,8 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
       boostAegisO += Math.floor(newUDmg / 5);
     }
     boostAegisU = 0;
+
+    opStatus = removeStatus(opStatus, "hit");
   }
   if (unitClass === "Slayer" && check1RN(20)) {
     if (check2RN(unitHit)) {
@@ -1381,6 +1487,7 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
       }
     }
   }
+  unitStatus = removeStatus(unitStatus, "attack");
   if (unitCurrHP <= 0 || opCurrHP <= 0) {
     return [unitCurrHP, opCurrHP, roundU, roundO, [boostAegisU, boostAegisO]];
   }
@@ -1412,6 +1519,15 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
       case "Aegis":
         newODmg = opDmg + boostAegisO;
         break;
+      case "Seeker":
+        unitStatus = attachStatus(unitStatus, [4, "Light", "Vulnerable"]);
+        break;
+      case "Monk":
+        unitStatus = attachStatus(unitStatus, [4, "Light", "Weak"]);
+        break;
+      case "Ellisant":
+        unitStatus = attachStatus(unitStatus, [25, "Light", "Blind"]);
+        break;
       default:
         break;
     }
@@ -1428,7 +1544,9 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
       boostAegisU += Math.floor(newODmg / 5);
     }
     boostAegisO = 0;
+    unitStatus = removeStatus(unitStatus, "hit");
   }
+
   if (opClass === "Slayer" && check1RN(20)) {
     if (check2RN(opHit)) {
       checkFrigillanU = false;
@@ -1439,6 +1557,7 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
       }
     }
   }
+  opClass = removeStatus(opClass, "attack");
 
   if (unitClass === "Ascendant") {
     newUnit = ascendantBuffDown(newUnit, rotationU);
@@ -1467,7 +1586,9 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
     [unitDmg, unitHit, unitCrit, opDmg, opHit, opCrit] = adjustStats(
       i,
       newUnit,
-      newOppo
+      newOppo,
+      unitStatus,
+      opStatus
     );
     if (unitClass === "Hemomancer") {
       [unitDmg, unitCrit] = adjustHemomancer(
@@ -1516,6 +1637,15 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
           const excessSpd = Math.floor(Math.max(unitSpd - opSpd - 5, 0));
           newUDmg = unitDmg + excessSpd;
           break;
+        case "Seeker":
+          opStatus = attachStatus(opStatus, [4, "Light", "Vulnerable"]);
+          break;
+        case "Monk":
+          opStatus = attachStatus(opStatus, [4, "Light", "Weak"]);
+          break;
+        case "Ellisant":
+          opStatus = attachStatus(opStatus, [25, "Light", "Blind"]);
+          break;
         default:
           break;
       }
@@ -1532,6 +1662,7 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
         boostAegisO += Math.floor(newUDmg / 5);
       }
       boostAegisU = 0;
+      opStatus = removeStatus(opStatus, "hit");
     }
     if (unitClass === "Slayer" && check1RN(20)) {
       if (check2RN(unitHit)) {
@@ -1543,8 +1674,11 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
         }
       }
     }
+    unitStatus = removeStatus(unitStatus, "attack");
   }
-
+ if (i < 5) {
+    console.log(opStatus);
+  }
   //If enemy doubles
   if (enemyW) {
     if (check2RN(opHit)) {
@@ -1563,6 +1697,15 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
           const excessSpd = Math.floor(Math.max(opSpd - unitSpd - 5, 0));
           newODmg = opDmg + excessSpd;
           break;
+        case "Seeker":
+          unitStatus = attachStatus(unitStatus, [4, "Light", "Vulnerable"]);
+          break;
+        case "Monk":
+          unitStatus = attachStatus(unitStatus, [4, "Light", "Weak"]);
+          break;
+        case "Ellisant":
+          unitStatus = attachStatus(unitStatus, [25, "Light", "Blind"]);
+          break;
         default:
           break;
       }
@@ -1579,6 +1722,7 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
         boostAegisU += Math.floor(newODmg / 5);
       }
       boostAegisO = 0;
+      unitStatus = removeStatus(unitStatus, "hit");
     }
     if (opClass === "Slayer" && check1RN(20)) {
       if (check2RN(opHit)) {
@@ -1590,6 +1734,7 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
         }
       }
     }
+    opStatus = removeStatus(opStatus, "attack");
   }
   if (unitW || enemyW) {
     if (unitClass === "Ascendant") {
@@ -1599,6 +1744,10 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
       newOppo = ascendantBuffDown(newOppo, rotationO);
     }
   }
+ 
+
+  unitStatus = removeStatus(unitStatus, "turn");
+  opStatus = removeStatus(opStatus, "turn");
 
   return [unitCurrHP, opCurrHP, roundU, roundO, [boostAegisU, boostAegisO]];
 }
