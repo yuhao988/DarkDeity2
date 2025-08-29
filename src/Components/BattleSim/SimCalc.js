@@ -531,7 +531,7 @@ export function simulateBattle(unit, enemy) {
   //     return "+6 Def and Frt from Unstoppable";
   //   case "Hemomancer":(done)
   //     return "+1 Pwr and Crit for every 5 missing HP from Dark Magic";
-  //   case "Tempest":
+  //   case "Tempest":(done)
   //     return "+1 Dmg for every excess TSpd on follow-up attacks from Swift Strike";
   //   case "Ascendant":(done)
   //     return "+25 Ddg, Acc or Crit from Elemental Fist";
@@ -570,18 +570,14 @@ export function simulateBattle(unit, enemy) {
     for (let i = 0; i < 5000; i++) {
       let round = 0;
       let turn = 0;
+      let boostAegis = 0;
       unitStats.currHP = unit.HP;
       eneStats.currHP = enemy.HP;
       while (unitStats.currHP > 0 && eneStats.currHP > 0) {
         turn += 1;
         //Player attacks
-        [unitStats.currHP, eneStats.currHP, round] = turnProceeding1(
-          unitStats,
-          eneStats,
-          turn,
-          round,
-          i
-        );
+        [unitStats.currHP, eneStats.currHP, round, boostAegis] =
+          turnProceeding1(unitStats, eneStats, turn, round, boostAegis, i);
 
         if (eneStats.currHP <= 0) {
           unitWin1++;
@@ -594,13 +590,8 @@ export function simulateBattle(unit, enemy) {
 
         //Enemy attacks
         turn += 1;
-        [eneStats.currHP, unitStats.currHP, round] = turnProceeding1X(
-          eneStats,
-          unitStats,
-          turn,
-          round,
-          i
-        );
+        [eneStats.currHP, unitStats.currHP, round, boostAegis] =
+          turnProceeding1X(eneStats, unitStats, turn, round, boostAegis, i);
 
         if (unitStats.currHP <= 0) {
           unitLose1++;
@@ -619,15 +610,11 @@ export function simulateBattle(unit, enemy) {
       eneStats.currHP = enemy.HP;
       let round = 0;
       let turn = 0;
+      let boostAegis = 0;
       while (unitCurHP > 0 && eneCurHP > 0) {
         turn += 1;
-        [eneStats.currHP, unitStats.currHP, round] = turnProceeding1X(
-          eneStats,
-          unitStats,
-          turn,
-          round,
-          j
-        );
+        [eneStats.currHP, unitStats.currHP, round, boostAegis] =
+          turnProceeding1X(eneStats, unitStats, turn, round, boostAegis, j);
 
         if (unitStats.currHP <= 0) {
           unitLose2++;
@@ -640,13 +627,8 @@ export function simulateBattle(unit, enemy) {
 
         //Player unit attacks
         turn += 1;
-        [unitStats.currHP, eneStats.currHP, round] = turnProceeding1(
-          unitStats,
-          eneStats,
-          turn,
-          round,
-          j
-        );
+        [unitStats.currHP, eneStats.currHP, round, boostAegis] =
+          turnProceeding1(unitStats, eneStats, turn, round, boostAegis, j);
 
         if (eneStats.currHP <= 0) {
           unitWin2++;
@@ -711,18 +693,21 @@ export function simulateBattle2(unit, oppo) {
       let roundU = 0;
       let roundO = 0;
       let turn = 0;
+      let boostAegis = [0, 0];
       unitStats.currHP = unit.HP;
       oppoStats.currHP = oppo.HP;
       while (unitStats.currHP > 0 && oppoStats.currHP > 0) {
         turn += 1;
-        [unitStats.currHP, oppoStats.currHP, roundU, roundO] = turnProceeding2(
-          unitStats,
-          oppoStats,
-          turn,
-          roundU,
-          roundO,
-          i
-        );
+        [unitStats.currHP, oppoStats.currHP, roundU, roundO, boostAegis] =
+          turnProceeding2(
+            unitStats,
+            oppoStats,
+            turn,
+            roundU,
+            roundO,
+            boostAegis,
+            i
+          );
 
         if (oppoStats.currHP <= 0) {
           unitWin1++;
@@ -830,7 +815,7 @@ export function simulateBattle2(unit, oppo) {
   );
 }
 
-function turnProceeding1(unitStats, oppoStats, turnNum, round, i) {
+function turnProceeding1(unitStats, oppoStats, turnNum, round, ag, i) {
   // Determine if either unit gets a double attack based on speed difference
   let [unitW, enemyW] = determineDoubleAttack(
     unitStats.unit.TSpd,
@@ -854,6 +839,7 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, i) {
   let opHit = oppoStats.Hit;
 
   let checkFrigillan = false;
+  let boostAegis = ag;
 
   if (unitClass === "Ascendant") {
     newUnit = ascendantBuffUp(unitStats.unit, rotation);
@@ -885,6 +871,9 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, i) {
           newUDmg = unitDmg + 5;
         }
         break;
+      case "Aegis":
+        newUDmg = unitDmg + boostAegis;
+        break;
       default:
         break;
     }
@@ -897,6 +886,7 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, i) {
     } else {
       opCurrHP -= newUDmg;
     }
+    boostAegis = 0;
   }
   if (unitClass === "Slayer" && check1RN(20)) {
     if (check2RN(unitHit)) {
@@ -917,8 +907,9 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, i) {
       }
     }
   }
+
   if (unitCurrHP <= 0 || opCurrHP <= 0) {
-    return [unitCurrHP, opCurrHP, round];
+    return [unitCurrHP, opCurrHP, round, boostAegis];
   }
 
   //Enemy counters
@@ -926,8 +917,10 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, i) {
     checkFrigillan = false;
     if (turnNum === 1 && unitClass === "Relic Knight") {
       unitCurrHP -= opDmg - 6;
+      boostAegis += Math.floor((opDmg - 6) / 5);
     } else {
       unitCurrHP -= opDmg;
+      boostAegis += Math.floor(opDmg / 5);
     }
   }
 
@@ -980,6 +973,9 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, i) {
             newUDmg = unitDmg + 5;
           }
           break;
+        case "Aegis":
+          newUDmg = unitDmg + boostAegis;
+          break;
         case "Tempest":
           const excessSpd = Math.floor(Math.max(unitSpd - opSpd - 5, 0));
           newUDmg = unitDmg + excessSpd;
@@ -996,6 +992,7 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, i) {
       } else {
         opCurrHP -= newUDmg;
       }
+      boostAegis = 0;
     }
     if (unitClass === "Slayer" && check1RN(20)) {
       if (check2RN(unitHit)) {
@@ -1011,7 +1008,14 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, i) {
   //If enemy doubles
   if (enemyW) {
     if (check2RN(opHit)) {
-      unitCurrHP -= opDmg;
+      checkFrigillan = false;
+      if (turnNum === 1 && unitClass === "Relic Knight") {
+        unitCurrHP -= opDmg - 6;
+        boostAegis += Math.floor((opDmg - 6) / 5);
+      } else {
+        unitCurrHP -= opDmg;
+        boostAegis += Math.floor(opDmg / 5);
+      }
     }
   }
   if (unitW || enemyW) {
@@ -1020,10 +1024,10 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, i) {
     }
   }
 
-  return [unitCurrHP, opCurrHP, round];
+  return [unitCurrHP, opCurrHP, round, boostAegis];
 }
 
-function turnProceeding1X(unitStats, oppoStats, turnNum, round, i) {
+function turnProceeding1X(unitStats, oppoStats, turnNum, round, ag, i) {
   // Determine if either unit gets a double attack based on speed difference
   let [unitW, enemyW] = determineDoubleAttack(
     unitStats.unit.TSpd,
@@ -1047,6 +1051,7 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, i) {
   let opCrit = oppoStats.Crit;
 
   let checkFrigillan = false;
+  let boostAegis = ag;
 
   if (opClass === "Ascendant") {
     newOppo = ascendantBuffUp(oppoStats.unit, rotation);
@@ -1064,8 +1069,10 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, i) {
     checkFrigillan = false;
     if (turnNum === 1 && opClass === "Relic Knight") {
       opCurrHP -= unitDmg - 6;
+      boostAegis += Math.floor((unitDmg - 6) / 5);
     } else {
       opCurrHP -= unitDmg;
+      boostAegis += Math.floor(unitDmg / 5);
     }
   }
 
@@ -1085,6 +1092,9 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, i) {
           newODmg = opDmg + 5;
         }
         break;
+      case "Aegis":
+        newODmg = opDmg + boostAegis;
+        break;
       default:
         break;
     }
@@ -1097,7 +1107,9 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, i) {
     } else {
       unitCurrHP -= newODmg;
     }
+    boostAegis = 0;
   }
+
   if (opClass === "Slayer" && check1RN(20)) {
     if (check2RN(opHit)) {
       if (check1RN(opCrit)) {
@@ -1114,7 +1126,7 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, i) {
 
   //Terminates function if any currHP reaches 0
   if (unitCurrHP <= 0 || opCurrHP <= 0) {
-    return [unitCurrHP, opCurrHP, round];
+    return [unitCurrHP, opCurrHP, round, boostAegis];
   }
 
   //If enemy unit doubles
@@ -1142,9 +1154,15 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, i) {
   }
 
   if (unitW) {
-    if (check2RN(opHit)) {
+    if (check2RN(unitHit)) {
       checkFrigillan = false;
-      unitCurrHP -= opDmg;
+      if (turnNum === 1 && opClass === "Relic Knight") {
+        opCurrHP -= unitDmg - 6;
+        boostAegis += Math.floor((unitDmg - 6) / 5);
+      } else {
+        opCurrHP -= unitDmg;
+        boostAegis += Math.floor(unitDmg / 5);
+      }
     }
   }
 
@@ -1165,6 +1183,9 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, i) {
           const excessSpd = Math.floor(Math.max(opSpd - unitSpd - 5, 0));
           newODmg = opDmg + excessSpd;
           break;
+        case "Aegis":
+          newODmg = opDmg + boostAegis;
+          break;
         default:
           break;
       }
@@ -1177,14 +1198,14 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, i) {
       } else {
         unitCurrHP -= newODmg;
       }
-
-      if (opClass === "Slayer" && check1RN(20)) {
-        if (check2RN(opHit)) {
-          if (check1RN(opCrit)) {
-            unitCurrHP -= opDmg * 2;
-          } else {
-            unitCurrHP -= opDmg;
-          }
+      boostAegis = 0;
+    }
+    if (opClass === "Slayer" && check1RN(20)) {
+      if (check2RN(opHit)) {
+        if (check1RN(opCrit)) {
+          unitCurrHP -= opDmg * 2;
+        } else {
+          unitCurrHP -= opDmg;
         }
       }
     }
@@ -1195,10 +1216,10 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, i) {
     }
   }
 
-  return [unitCurrHP, opCurrHP, round];
+  return [unitCurrHP, opCurrHP, round, boostAegis];
 }
 
-function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, i) {
+function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
   // Determine if either unit gets a double attack based on speed difference
   let [unitW, enemyW] = determineDoubleAttack(
     unitStats.unit.TSpd,
@@ -1227,6 +1248,8 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, i) {
 
   let checkFrigillanU = false;
   let checkFrigillanO = false;
+  let boostAegisU = ag[0];
+  let boostAegisO = ag[1];
 
   if (unitClass === "Ascendant") {
     newUnit = ascendantBuffUp(unitStats.unit, rotationU);
@@ -1273,18 +1296,25 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, i) {
           newUDmg = unitDmg + 5;
         }
         break;
+      case "Aegis":
+        newUDmg = unitDmg + boostAegisU;
+        break;
       default:
         break;
     }
     if (check1RN(unitCrit)) {
       if (unitClass === "Reaper" && opCurrHP === oppoStats.unit.HP) {
         opCurrHP -= newUDmg * 3;
+        boostAegisO += Math.floor((newUDmg * 3) / 5);
       } else {
         opCurrHP -= newUDmg * 2;
+        boostAegisO += Math.floor((newUDmg * 2) / 5);
       }
     } else {
       opCurrHP -= newUDmg;
+      boostAegisO += Math.floor(newUDmg / 5);
     }
+    boostAegisU = 0;
   }
   if (unitClass === "Slayer" && check1RN(20)) {
     if (check2RN(unitHit)) {
@@ -1297,7 +1327,7 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, i) {
     }
   }
   if (unitCurrHP <= 0 || opCurrHP <= 0) {
-    return [unitCurrHP, opCurrHP, roundU, roundO];
+    return [unitCurrHP, opCurrHP, roundU, roundO, [boostAegisU, boostAegisO]];
   }
 
   //Enemy counters
@@ -1317,21 +1347,32 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, i) {
   }
   if (check2RN(opHit)) {
     checkFrigillanU = false;
+    let newODmg = unitDmg;
+    switch (opClass) {
+      case "Gallant":
+        if (unitCurrHP * 2 > unitStats.unit.HP) {
+          newODmg = opDmg + 5;
+        }
+        break;
+      case "Aegis":
+        newODmg = opDmg + boostAegisO;
+        break;
+      default:
+        break;
+    }
     if (check1RN(opCrit)) {
       if (opClass === "Reaper" && unitCurrHP === unitStats.unit.HP) {
-        unitCurrHP -= opDmg * 3;
-      } else if (opClass === "Gallant" && unitCurrHP * 2 > unitStats.unit.HP) {
-        unitCurrHP -= (opDmg + 5) * 2;
+        unitCurrHP -= newODmg * 3;
+        boostAegisU += Math.floor((newODmg * 3) / 5);
       } else {
-        unitCurrHP -= opDmg * 2;
+        unitCurrHP -= newODmg * 2;
+        boostAegisU += Math.floor((newODmg * 2) / 5);
       }
     } else {
-      if (opClass === "Gallant" && unitCurrHP * 2 > unitStats.unit.HP) {
-        unitCurrHP -= opDmg + 5;
-      } else {
-        unitCurrHP -= opDmg;
-      }
+      unitCurrHP -= newODmg;
+      boostAegisU += Math.floor(newODmg / 5);
     }
+    boostAegisO = 0;
   }
   if (opClass === "Slayer" && check1RN(20)) {
     if (check2RN(opHit)) {
@@ -1353,7 +1394,7 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, i) {
 
   //Terminates function if any currHP reaches 0
   if (unitCurrHP <= 0 || opCurrHP <= 0) {
-    return [unitCurrHP, opCurrHP, roundU, roundO];
+    return [unitCurrHP, opCurrHP, roundU, roundO, [boostAegisU, boostAegisO]];
   }
 
   //If player unit doubles
@@ -1413,6 +1454,9 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, i) {
             newUDmg = unitDmg + 5;
           }
           break;
+        case "Aegis":
+          newUDmg = unitDmg + boostAegisU;
+          break;
         case "Tempest":
           const excessSpd = Math.floor(Math.max(unitSpd - opSpd - 5, 0));
           newUDmg = unitDmg + excessSpd;
@@ -1423,12 +1467,16 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, i) {
       if (check1RN(unitCrit)) {
         if (unitClass === "Reaper" && opCurrHP === oppoStats.unit.HP) {
           opCurrHP -= newUDmg * 3;
+          boostAegisO += Math.floor((newUDmg * 3) / 5);
         } else {
           opCurrHP -= newUDmg * 2;
+          boostAegisO += Math.floor((newUDmg * 2) / 5);
         }
       } else {
         opCurrHP -= newUDmg;
+        boostAegisO += Math.floor(newUDmg / 5);
       }
+      boostAegisU = 0;
     }
     if (unitClass === "Slayer" && check1RN(20)) {
       if (check2RN(unitHit)) {
@@ -1453,6 +1501,9 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, i) {
             newODmg = opDmg + 5;
           }
           break;
+        case "Aegis":
+          newODmg = opDmg + boostAegisO;
+          break;
         case "Tempest":
           const excessSpd = Math.floor(Math.max(opSpd - unitSpd - 5, 0));
           newODmg = opDmg + excessSpd;
@@ -1463,12 +1514,16 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, i) {
       if (check1RN(opCrit)) {
         if (opClass === "Reaper" && unitCurrHP === unitStats.unit.HP) {
           unitCurrHP -= newODmg * 3;
+          boostAegisU += Math.floor((newODmg * 3) / 5);
         } else {
           unitCurrHP -= newODmg * 2;
+          boostAegisU += Math.floor((newODmg * 2) / 5);
         }
       } else {
         unitCurrHP -= newODmg;
+        boostAegisU += Math.floor(newODmg / 5);
       }
+      boostAegisO = 0;
     }
     if (opClass === "Slayer" && check1RN(20)) {
       if (check2RN(opHit)) {
@@ -1490,5 +1545,5 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, i) {
     }
   }
 
-  return [unitCurrHP, opCurrHP, roundU, roundO];
+  return [unitCurrHP, opCurrHP, roundU, roundO,[boostAegisU, boostAegisO]];
 }
