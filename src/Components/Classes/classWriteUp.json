@@ -486,7 +486,7 @@
     "Name": "Relic Knight",
     "Rating": [7.8, 3.7, 3.4, 3.7],
     "Stats": "Relic Knight is a class focusing on Def and HP. It has very little stat modifier elsewhere. In terms of growth, the class focuses on HP, Def and Frt. It has ok Mgt growth but low growth everywhere else.<br/>Relic Knight is a class focusing on Bulk, more so oh physical side but not bad on magical side too. It is not a good combat class or skill class.",
-    "Character": "",
+    "Character": "Relic Knight is not a great combat class, and none of the characters will do especially well in combat if classed into a Relic Knight. Alden will have very good bulk as a Relic Knight, with very high growth in HP, Def and Frt. He will have ok Mgt and Mas, letting him have ok Skill num for his skills, and can deal some damage when forced into combat, but his poor Spd, Dex and Lck will make his combat performance terrible.<br/>Arthur has great HP and Frt, making him a decent Magic tank. He has decent Mas for better Skill num, and he will perform better than Alden in combat. However, Arthur is still not a combat unit and should only focus on Skills.<br/>Aya has best Mgt, Spd and Lck, making her the best in terms of combat. However, Aya also has the worst bulk amongst the four, severely limiting her combat performance.<br/>Calith has decent bulk and ok Mgt, good Dex and Lck, making her a decent choice for combat if needed. However, her abysmal Mas held her back as her skills are going to be very low in numbers.",
     "Upgrade1": ["Low", "Low", "Low", "Low"],
     "Upgrade2": ["Low", "Low", "Low", "Low"],
     "Skills": "",
