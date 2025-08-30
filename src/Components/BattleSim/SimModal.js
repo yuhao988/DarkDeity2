@@ -7,8 +7,10 @@ import {
   simulateBattle2,
 } from "./SimCalc";
 import classSample from "../Datas/simClassSmp.json";
+import eneMortal from "../Datas/eneMortal.json";
 import eneHeroic from "../Datas/eneHeroic.json";
 import eneDeity from "../Datas/eneDeity.json";
+import eneDemonic from "../Datas/eneDemonic.json";
 import "./Sim.css";
 import "../../App.css";
 
@@ -73,16 +75,23 @@ export default function SimModal(prop) {
   const { isOpen, onClose, unit, isEnemy } = prop;
   const [unitActive, setUnitActive] = useState(
     unit
-      ? eneHeroic.find((item) => item.Class === unit.Class && item.Boss === "")
+      ? eneMortal.find((item) => item.Class === unit.Class && item.Boss === "")
       : null
   );
   const [enemyActive, setEnemyActive] = useState("");
-  const [enmDiff, setEnmDiff] = useState("Heroic");
+  const [enmDiff, setEnmDiff] = useState("Mortal");
   //const [isBoss, setIsBoss]=useState("");
   const [oppoClass, setOppoClass] = useState("");
 
   // Get enemies based on current difficulty
-  const currentEnemies = enmDiff === "Heroic" ? eneHeroic : eneDeity;
+ const enemyMap = {
+  "Mortal": eneMortal,
+  "Heroic": eneHeroic,
+  "Deity": eneDeity,
+  "Demonic": eneDemonic
+};
+
+const currentEnemies = enemyMap[enmDiff] || eneMortal;
 
   const handleCloseModal = () => {
     onClose();
@@ -100,7 +109,8 @@ export default function SimModal(prop) {
   const handleDiffChange = (e) => {
     const diff = e.target.value;
     setEnmDiff(diff);
-    const currentDiff = diff === "Heroic" ? eneHeroic : eneDeity;
+    //const currentDiff = diff === "Heroic" ? eneHeroic : eneDeity;
+    const currentDiff = enemyMap[diff] || eneMortal;
     const selectUnitActive = currentDiff.find(
       (item) => item.Class === unit.Class && item.Boss === ""
     );
@@ -170,8 +180,10 @@ export default function SimModal(prop) {
               className="enemy-select"
               style={{ width: "20vw" }}
             >
+              <option value="Mortal">Mortal</option>
               <option value="Heroic">Heroic</option>
-              <option value="Deity">Deity</option>
+              <option value="Deity">Deity</option>              
+              <option value="Demonic">Demonic</option>
             </select>
             <h4>Enemy Class:</h4>
             <select
@@ -222,8 +234,10 @@ export default function SimModal(prop) {
               className="enemy-select"
               style={{ width: "20vw" }}
             >
+              <option value="Mortal">Mortal</option>
               <option value="Heroic">Heroic</option>
-              <option value="Deity">Deity</option>
+              <option value="Deity">Deity</option>              
+              <option value="Demonic">Demonic</option>
             </select>
 
             {/* Enemy Selector - Now uses currentEnemies */}
