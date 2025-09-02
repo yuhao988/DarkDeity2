@@ -12,7 +12,7 @@ const [unitList, enemyList] = Array.isArray(sample)
     )
   : [[], []];
 
-function adjustStats(i, self, enemy, selfStatus, enemyStatus) {
+function adjustStats(num, self, enemy, selfStatus, enemyStatus) {
   let selfDmg = 0;
   let eneDmg = 0;
 
@@ -237,6 +237,7 @@ function adjustStats(i, self, enemy, selfStatus, enemyStatus) {
   for (let i in selfStatus) {
     switch (selfStatus[i][2]) {
       case "Blind":
+        
         selfHit -= selfStatus[i][0];
         break;
       case "Weaken":
@@ -259,9 +260,10 @@ function adjustStats(i, self, enemy, selfStatus, enemyStatus) {
         break;
     }
   }
-  for (let j in enemyStatus) {
-    switch (enemyStatus[i][2]) {
+  for (let j in enemyStatus) {    
+    switch (enemyStatus[j][2]) {
       case "Blind":
+        
         eneHit -= enemyStatus[j][0];
         break;
       case "Weaken":
@@ -289,9 +291,7 @@ function adjustStats(i, self, enemy, selfStatus, enemyStatus) {
     selfHit = 100;
     eneHit = 100;
   }
-  // if(i<5){
-  //   console.log(selfDmg,eneDmg);
-  // }
+ 
   return [selfDmg, selfHit, selfCrit, eneDmg, eneHit, eneCrit];
 }
 
@@ -358,6 +358,7 @@ function adjustFrigillan(check, power, hitrate) {
 function attachStatus(unit, status) {
   let newUnitStatus = [...unit];
   let newStatus = [status[0], 0, status[2]];
+
   switch (status[1]) {
     case "Light":
       newStatus[1] = 1;
@@ -972,6 +973,7 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, ag, i) {
 
   let newUnit = unitStats.unit;
   let unitClass = unitStats.unit.Class;
+  let unitStatus = unitStats.status;
   let unitCurrHP = unitStats.currHP;
   let unitDmg = unitStats.Dmg;
   let unitSpd = unitStats.unit.TSpd;
@@ -979,6 +981,7 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, ag, i) {
   let unitCrit = unitStats.Crit;
 
   let newOppo = oppoStats.unit;
+  let opStatus = oppoStats.status;
   let opCurrHP = oppoStats.currHP;
   let opDmg = oppoStats.Dmg;
   let opSpd = oppoStats.unit.TSpd;
@@ -991,7 +994,13 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, ag, i) {
     newUnit = ascendantBuffUp(unitStats.unit, rotation);
   }
 
-  [unitDmg, unitHit, unitCrit, opDmg, opHit] = adjustStats(i, newUnit, newOppo);
+  [unitDmg, unitHit, unitCrit, opDmg, opHit] = adjustStats(
+    i,
+    newUnit,
+    newOppo,
+    unitStatus,
+    opStatus
+  );
 
   //Player unit attacks
   if (unitClass === "Hemomancer") {
@@ -1033,6 +1042,21 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, ag, i) {
       opCurrHP -= newUDmg;
     }
     boostAegis = 0;
+    unitStatus = removeStatus(unitStatus, "attack");
+    opStatus = removeStatus(opStatus, "hit");
+    switch (unitClass) {
+      case "Seeker":
+        opStatus = attachStatus(opStatus, [4, "Light", "Vulnerable"]);
+        break;
+      case "Monk":
+        opStatus = attachStatus(opStatus, [4, "Light", "Weak"]);
+        break;
+      case "Ellisant":
+        opStatus = attachStatus(opStatus, [25, "Light", "Blind"]);
+        break;
+      default:
+        break;
+    }
   }
   if (unitClass === "Slayer" && check1RN(20)) {
     if (check2RN(unitHit)) {
@@ -1052,6 +1076,21 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, ag, i) {
         opCurrHP -= newUDmg;
       }
     }
+    unitStatus = removeStatus(unitStatus, "attack");
+    opStatus = removeStatus(opStatus, "hit");
+    switch (unitClass) {
+      case "Seeker":
+        opStatus = attachStatus(opStatus, [4, "Light", "Vulnerable"]);
+        break;
+      case "Monk":
+        opStatus = attachStatus(opStatus, [4, "Light", "Weak"]);
+        break;
+      case "Ellisant":
+        opStatus = attachStatus(opStatus, [25, "Light", "Blind"]);
+        break;
+      default:
+        break;
+    }
   }
 
   if (unitCurrHP <= 0 || opCurrHP <= 0) {
@@ -1059,6 +1098,13 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, ag, i) {
   }
 
   //Enemy counters
+  [unitDmg, unitHit, unitCrit, opDmg, opHit] = adjustStats(
+    i,
+    newUnit,
+    newOppo,
+    unitStatus,
+    opStatus
+  );
   if (check2RN(opHit)) {
     checkFrigillan = false;
     if (turnNum === 1 && unitClass === "Relic Knight") {
@@ -1068,6 +1114,8 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, ag, i) {
       unitCurrHP -= opDmg;
       boostAegis += Math.floor(opDmg / 5);
     }
+    unitStatus = removeStatus(unitStatus, "hit");
+    opStatus = removeStatus(opStatus, "attack");
   }
 
   if (unitClass === "Ascendant") {
@@ -1091,8 +1139,11 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, ag, i) {
     [unitDmg, unitHit, unitCrit, opDmg, opHit] = adjustStats(
       i,
       newUnit,
-      newOppo
+      newOppo,
+      unitStatus,
+      opStatus
     );
+
     if (unitClass === "Frigillan") {
       [unitDmg, unitHit] = adjustFrigillan(checkFrigillan, unitDmg, unitHit);
     }
@@ -1139,6 +1190,21 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, ag, i) {
         opCurrHP -= newUDmg;
       }
       boostAegis = 0;
+      unitStatus = removeStatus(unitStatus, "attack");
+      opStatus = removeStatus(opStatus, "hit");
+      switch (unitClass) {
+        case "Seeker":
+          opStatus = attachStatus(opStatus, [4, "Light", "Vulnerable"]);
+          break;
+        case "Monk":
+          opStatus = attachStatus(opStatus, [4, "Light", "Weak"]);
+          break;
+        case "Ellisant":
+          opStatus = attachStatus(opStatus, [25, "Light", "Blind"]);
+          break;
+        default:
+          break;
+      }
     }
     if (unitClass === "Slayer" && check1RN(20)) {
       if (check2RN(unitHit)) {
@@ -1147,12 +1213,35 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, ag, i) {
         } else {
           opCurrHP -= unitDmg;
         }
+        unitStatus = removeStatus(unitStatus, "attack");
+        opStatus = removeStatus(opStatus, "hit");
+        switch (unitClass) {
+          case "Seeker":
+            opStatus = attachStatus(opStatus, [4, "Light", "Vulnerable"]);
+            break;
+          case "Monk":
+            opStatus = attachStatus(opStatus, [4, "Light", "Weak"]);
+            break;
+          case "Ellisant":
+            opStatus = attachStatus(opStatus, [25, "Light", "Blind"]);
+            break;
+          default:
+            break;
+        }
       }
     }
   }
 
   //If enemy doubles
   if (enemyW) {
+    [unitDmg, unitHit, unitCrit, opDmg, opHit] = adjustStats(
+      i,
+      newUnit,
+      newOppo,
+      unitStatus,
+      opStatus
+    );
+
     if (check2RN(opHit)) {
       checkFrigillan = false;
       if (turnNum === 1 && unitClass === "Relic Knight") {
@@ -1163,6 +1252,8 @@ function turnProceeding1(unitStats, oppoStats, turnNum, round, ag, i) {
         boostAegis += Math.floor(opDmg / 5);
       }
     }
+    unitStatus = removeStatus(unitStatus, "hit");
+    opStatus = removeStatus(opStatus, "attack");
   }
   if (unitW || enemyW) {
     if (unitClass === "Ascendant") {
@@ -1184,12 +1275,14 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, ag, i) {
 
   let newUnit = unitStats.unit;
   let unitCurrHP = unitStats.currHP;
+  let unitStatus = unitStats.status;
   let unitDmg = unitStats.Dmg;
   let unitSpd = unitStats.unit.TSpd;
   let unitHit = unitStats.Hit;
 
   let newOppo = oppoStats.unit;
   let opClass = oppoStats.unit.Class;
+  let opStatus = oppoStats.status;
   let opCurrHP = oppoStats.currHP;
   let opDmg = oppoStats.Dmg;
   let opSpd = oppoStats.unit.TSpd;
@@ -1203,7 +1296,13 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, ag, i) {
     newOppo = ascendantBuffUp(oppoStats.unit, rotation);
   }
 
-  [opDmg, opHit, opCrit, unitDmg, unitHit] = adjustStats(i, newOppo, newUnit);
+  [opDmg, opHit, opCrit, unitDmg, unitHit] = adjustStats(
+    i,
+    newOppo,
+    newUnit,
+    opStatus,
+    unitStatus
+  );
   if (opClass === "Frigillan") {
     if (turnNum === 1) {
       checkFrigillan = true;
@@ -1220,6 +1319,8 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, ag, i) {
       opCurrHP -= unitDmg;
       boostAegis += Math.floor(unitDmg / 5);
     }
+    unitStatus = removeStatus(unitStatus, "attack");
+    opStatus = removeStatus(opStatus, "hit");
   }
 
   //Player counters
@@ -1254,6 +1355,21 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, ag, i) {
       unitCurrHP -= newODmg;
     }
     boostAegis = 0;
+    unitStatus = removeStatus(unitStatus, "hit");
+    opStatus = removeStatus(opStatus, "attack");
+    switch (opClass) {
+      case "Seeker":
+        unitStatus = attachStatus(unitStatus, [4, "Light", "Vulnerable"]);
+        break;
+      case "Monk":
+        unitStatus = attachStatus(unitStatus, [4, "Light", "Weak"]);
+        break;
+      case "Ellisant":
+        unitStatus = attachStatus(unitStatus, [25, "Light", "Blind"]);
+        break;
+      default:
+        break;
+    }
   }
 
   if (opClass === "Slayer" && check1RN(20)) {
@@ -1263,6 +1379,21 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, ag, i) {
       } else {
         unitCurrHP -= opDmg;
       }
+    }
+    unitStatus = removeStatus(unitStatus, "hit");
+    opStatus = removeStatus(opStatus, "attack");
+    switch (opClass) {
+      case "Seeker":
+        unitStatus = attachStatus(unitStatus, [4, "Light", "Vulnerable"]);
+        break;
+      case "Monk":
+        unitStatus = attachStatus(unitStatus, [4, "Light", "Weak"]);
+        break;
+      case "Ellisant":
+        unitStatus = attachStatus(unitStatus, [25, "Light", "Blind"]);
+        break;
+      default:
+        break;
     }
   }
 
@@ -1284,7 +1415,13 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, ag, i) {
       newOppo = ascendantBuffUp(oppoStats.unit, rotation);
     }
 
-    [opDmg, opHit, opCrit, unitDmg, unitHit] = adjustStats(i, newOppo, newUnit);
+    [opDmg, opHit, opCrit, unitDmg, unitHit] = adjustStats(
+      i,
+      newOppo,
+      newUnit,
+      opStatus,
+      unitStatus
+    );
     if (opClass === "Hemomancer") {
       [opDmg, opCrit] = adjustHemomancer(
         oppoStats.unit,
@@ -1309,6 +1446,8 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, ag, i) {
         opCurrHP -= unitDmg;
         boostAegis += Math.floor(unitDmg / 5);
       }
+      unitStatus = removeStatus(unitStatus, "attack");
+      opStatus = removeStatus(opStatus, "hit");
     }
   }
 
@@ -1345,6 +1484,21 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, ag, i) {
         unitCurrHP -= newODmg;
       }
       boostAegis = 0;
+      unitStatus = removeStatus(unitStatus, "hit");
+      opStatus = removeStatus(opStatus, "attack");
+      switch (opClass) {
+        case "Seeker":
+          unitStatus = attachStatus(unitStatus, [4, "Light", "Vulnerable"]);
+          break;
+        case "Monk":
+          unitStatus = attachStatus(unitStatus, [4, "Light", "Weak"]);
+          break;
+        case "Ellisant":
+          unitStatus = attachStatus(unitStatus, [25, "Light", "Blind"]);
+          break;
+        default:
+          break;
+      }
     }
     if (opClass === "Slayer" && check1RN(20)) {
       if (check2RN(opHit)) {
@@ -1352,6 +1506,21 @@ function turnProceeding1X(unitStats, oppoStats, turnNum, round, ag, i) {
           unitCurrHP -= opDmg * 2;
         } else {
           unitCurrHP -= opDmg;
+        }
+        unitStatus = removeStatus(unitStatus, "hit");
+        opStatus = removeStatus(opStatus, "attack");
+        switch (opClass) {
+          case "Seeker":
+            unitStatus = attachStatus(unitStatus, [4, "Light", "Vulnerable"]);
+            break;
+          case "Monk":
+            unitStatus = attachStatus(unitStatus, [4, "Light", "Weak"]);
+            break;
+          case "Ellisant":
+            unitStatus = attachStatus(unitStatus, [25, "Light", "Blind"]);
+            break;
+          default:
+            break;
         }
       }
     }
@@ -1441,9 +1610,6 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
     checkFrigillanO = false;
     let newUDmg = unitDmg;
     switch (unitClass) {
-      case "Seeker":
-        opStatus = attachStatus(opStatus, [4, "Light", "Vulnerable"]);
-        break;
       case "Gallant":
         if (opCurrHP * 2 > oppoStats.unit.HP) {
           newUDmg = unitDmg + 5;
@@ -1451,12 +1617,6 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
         break;
       case "Aegis":
         newUDmg = unitDmg + boostAegisU;
-        break;
-      case "Monk":
-        opStatus = attachStatus(opStatus, [4, "Light", "Weak"]);
-        break;
-      case "Ellisant":
-        opStatus = attachStatus(opStatus, [25, "Light", "Blind"]);
         break;
       default:
         break;
@@ -1474,8 +1634,21 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
       boostAegisO += Math.floor(newUDmg / 5);
     }
     boostAegisU = 0;
-
+    unitStatus = removeStatus(unitStatus, "attack");
     opStatus = removeStatus(opStatus, "hit");
+    switch (unitClass) {
+      case "Seeker":
+        opStatus = attachStatus(opStatus, [4, "Light", "Vulnerable"]);
+        break;
+      case "Monk":
+        opStatus = attachStatus(opStatus, [4, "Light", "Weak"]);
+        break;
+      case "Ellisant":
+        opStatus = attachStatus(opStatus, [25, "Light", "Blind"]);
+        break;
+      default:
+        break;
+    }
   }
   if (unitClass === "Slayer" && check1RN(20)) {
     if (check2RN(unitHit)) {
@@ -1485,13 +1658,30 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
       } else {
         opCurrHP -= unitDmg;
       }
+      unitStatus = removeStatus(unitStatus, "attack");
+      opStatus = removeStatus(opStatus, "hit");
+      switch (unitClass) {
+        case "Seeker":
+          opStatus = attachStatus(opStatus, [4, "Light", "Vulnerable"]);
+          break;
+        case "Monk":
+          opStatus = attachStatus(opStatus, [4, "Light", "Weak"]);
+          break;
+        case "Ellisant":
+          opStatus = attachStatus(opStatus, [25, "Light", "Blind"]);
+          break;
+        default:
+          break;
+      }
     }
   }
-  unitStatus = removeStatus(unitStatus, "attack");
+
   if (unitCurrHP <= 0 || opCurrHP <= 0) {
     return [unitCurrHP, opCurrHP, roundU, roundO, [boostAegisU, boostAegisO]];
   }
-
+// if(i<10){
+//   console.log(unitStatus, opStatus);
+// }
   //Enemy counters
   if (opClass === "Hemomancer") {
     [opDmg, opCrit] = adjustHemomancer(
@@ -1519,15 +1709,6 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
       case "Aegis":
         newODmg = opDmg + boostAegisO;
         break;
-      case "Seeker":
-        unitStatus = attachStatus(unitStatus, [4, "Light", "Vulnerable"]);
-        break;
-      case "Monk":
-        unitStatus = attachStatus(unitStatus, [4, "Light", "Weak"]);
-        break;
-      case "Ellisant":
-        unitStatus = attachStatus(unitStatus, [25, "Light", "Blind"]);
-        break;
       default:
         break;
     }
@@ -1545,6 +1726,20 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
     }
     boostAegisO = 0;
     unitStatus = removeStatus(unitStatus, "hit");
+    opStatus = removeStatus(opStatus, "attack");
+    switch (opClass) {
+      case "Seeker":
+        unitStatus = attachStatus(unitStatus, [4, "Light", "Vulnerable"]);
+        break;
+      case "Monk":
+        unitStatus = attachStatus(unitStatus, [4, "Light", "Weak"]);
+        break;
+      case "Ellisant":
+        unitStatus = attachStatus(unitStatus, [25, "Light", "Blind"]);
+        break;
+      default:
+        break;
+    }
   }
 
   if (opClass === "Slayer" && check1RN(20)) {
@@ -1556,8 +1751,22 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
         unitCurrHP -= opDmg;
       }
     }
+    opClass = removeStatus(opClass, "attack");
+    unitStatus = removeStatus(unitStatus, "hit");
+    switch (opClass) {
+      case "Seeker":
+        unitStatus = attachStatus(unitStatus, [4, "Light", "Vulnerable"]);
+        break;
+      case "Monk":
+        unitStatus = attachStatus(unitStatus, [4, "Light", "Weak"]);
+        break;
+      case "Ellisant":
+        unitStatus = attachStatus(unitStatus, [25, "Light", "Blind"]);
+        break;
+      default:
+        break;
+    }
   }
-  opClass = removeStatus(opClass, "attack");
 
   if (unitClass === "Ascendant") {
     newUnit = ascendantBuffDown(newUnit, rotationU);
@@ -1637,15 +1846,6 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
           const excessSpd = Math.floor(Math.max(unitSpd - opSpd - 5, 0));
           newUDmg = unitDmg + excessSpd;
           break;
-        case "Seeker":
-          opStatus = attachStatus(opStatus, [4, "Light", "Vulnerable"]);
-          break;
-        case "Monk":
-          opStatus = attachStatus(opStatus, [4, "Light", "Weak"]);
-          break;
-        case "Ellisant":
-          opStatus = attachStatus(opStatus, [25, "Light", "Blind"]);
-          break;
         default:
           break;
       }
@@ -1662,7 +1862,21 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
         boostAegisO += Math.floor(newUDmg / 5);
       }
       boostAegisU = 0;
+      unitStatus = removeStatus(unitStatus, "attack");
       opStatus = removeStatus(opStatus, "hit");
+      switch (unitClass) {
+        case "Seeker":
+          opStatus = attachStatus(opStatus, [4, "Light", "Vulnerable"]);
+          break;
+        case "Monk":
+          opStatus = attachStatus(opStatus, [4, "Light", "Weak"]);
+          break;
+        case "Ellisant":
+          opStatus = attachStatus(opStatus, [25, "Light", "Blind"]);
+          break;
+        default:
+          break;
+      }
     }
     if (unitClass === "Slayer" && check1RN(20)) {
       if (check2RN(unitHit)) {
@@ -1672,14 +1886,25 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
         } else {
           opCurrHP -= unitDmg;
         }
+        unitStatus = removeStatus(unitStatus, "attack");
+        opStatus = removeStatus(opStatus, "hit");
+        switch (unitClass) {
+          case "Seeker":
+            opStatus = attachStatus(opStatus, [4, "Light", "Vulnerable"]);
+            break;
+          case "Monk":
+            opStatus = attachStatus(opStatus, [4, "Light", "Weak"]);
+            break;
+          case "Ellisant":
+            opStatus = attachStatus(opStatus, [25, "Light", "Blind"]);
+            break;
+          default:
+            break;
+        }
       }
     }
-    unitStatus = removeStatus(unitStatus, "attack");
   }
- if (i < 5) {
-    console.log(opStatus);
-  }
-  //If enemy doubles
+
   if (enemyW) {
     if (check2RN(opHit)) {
       checkFrigillanU = false;
@@ -1696,15 +1921,6 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
         case "Tempest":
           const excessSpd = Math.floor(Math.max(opSpd - unitSpd - 5, 0));
           newODmg = opDmg + excessSpd;
-          break;
-        case "Seeker":
-          unitStatus = attachStatus(unitStatus, [4, "Light", "Vulnerable"]);
-          break;
-        case "Monk":
-          unitStatus = attachStatus(unitStatus, [4, "Light", "Weak"]);
-          break;
-        case "Ellisant":
-          unitStatus = attachStatus(unitStatus, [25, "Light", "Blind"]);
           break;
         default:
           break;
@@ -1723,6 +1939,20 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
       }
       boostAegisO = 0;
       unitStatus = removeStatus(unitStatus, "hit");
+      opClass = removeStatus(opClass, "attack");
+      switch (opClass) {
+        case "Seeker":
+          unitStatus = attachStatus(unitStatus, [4, "Light", "Vulnerable"]);
+          break;
+        case "Monk":
+          unitStatus = attachStatus(unitStatus, [4, "Light", "Weak"]);
+          break;
+        case "Ellisant":
+          unitStatus = attachStatus(unitStatus, [25, "Light", "Blind"]);
+          break;
+        default:
+          break;
+      }
     }
     if (opClass === "Slayer" && check1RN(20)) {
       if (check2RN(opHit)) {
@@ -1733,8 +1963,22 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
           unitCurrHP -= opDmg;
         }
       }
+      opClass = removeStatus(opClass, "attack");
+      unitStatus = removeStatus(unitStatus, "hit");
+      switch (opClass) {
+        case "Seeker":
+          unitStatus = attachStatus(unitStatus, [4, "Light", "Vulnerable"]);
+          break;
+        case "Monk":
+          unitStatus = attachStatus(unitStatus, [4, "Light", "Weak"]);
+          break;
+        case "Ellisant":
+          unitStatus = attachStatus(unitStatus, [25, "Light", "Blind"]);
+          break;
+        default:
+          break;
+      }
     }
-    opStatus = removeStatus(opStatus, "attack");
   }
   if (unitW || enemyW) {
     if (unitClass === "Ascendant") {
@@ -1744,7 +1988,6 @@ function turnProceeding2(unitStats, oppoStats, turnNum, roundU, roundO, ag, i) {
       newOppo = ascendantBuffDown(newOppo, rotationO);
     }
   }
- 
 
   unitStatus = removeStatus(unitStatus, "turn");
   opStatus = removeStatus(opStatus, "turn");
