@@ -522,10 +522,10 @@
     "Upgrade1": ["Mid", "High", "Mid", "Low"],
     "Upgrade2": ["Mid", "Low", "High", "High"],
     "Skills": "Dreadnought's passive Relentless makes the unit unable to dodge enemy attacks, but also ensures all attacks will hit. It is a synergetic skill for Dreadnought as Dreadnought uses Axes, the least accurate weapon type in game, with a very low Dex growth to help. Unable to dodge is also an interesting downside, which usually does not matter due to Dreadnought's inherent low dodge, and can actually be a good thing when you pair Dreadnought with Aegis's Repulsor Shield to damage enemies hitting Dreadnought.<br/>Dread Blessing is a good defensive buff Dreadnought can apply to allies and possibly himself. At base it is a Light Block buff, but can be upgraded to be a multi-purpose utility buff, capable of cleansing ally of debuff as well as giving ally some emergency Mana boost to  cast skills. Player can also make this skill cstable on self, further increasing self bulk. The mana granted upgrade would then change into a pseudo cost reduction upgrade, allowing for more instances of skill usage per battle.<br/> Bloodstroke is a attack buffing skill that gets more powerful as the user loses more HP. As Dreadnought is a tank class that should be constantly taking damage on the front line, the unit can comfortably engage enemies even with a significant chunk of HP missing. The skill has two buff to its number, one from Mas scaling, another from mssing HP, thus when coupled with the class's good Mgt growth, can esult in a very powerful strike that enemy cannot dodge. Increasing Mas scaling is not very effective due to the class's low Mas growth, it is more effective to increase number by reducing the missing HP threshold. Note that while the 2 threshold reduction upgrades are identical, the second one will be more powerful than the first one.",
-    "Tips": "Dreadnought is a tank class and should be played as such. It can fight on the frontline, attracting multiple enemy attacks during enemy phase, and damaging enemies with skills such as Juggernaut's Wreathed in Flame or Aegis's Repulsor Shield",
-    "Rings": "",
+    "Tips": "Dreadnought is a tank class and should be played as such. It can fight on the frontline, attracting multiple enemy attacks during enemy phase, and damaging enemies with skills such as Juggernaut's Wreathed in Flame or Aegis's Repulsor Shield, or just outright kill using its unmissable normal attack. Dreadnought is also one of the few classes that has both good Def and good Frt, and is thus not afraid to face a mixture of enemies.",
+    "Rings": "Dreadnought would need bulk increasing rings. Two of them gets a special mention: Indomitable gives 4 extra Def and Frt at the cost of 2 Spd and Dex. The losses are barely an issue with Dreadnought as the class has little TSpd and no Dodge in he first place, making the loss in Spd irrelevant. The class also has perfect Acc, making the loss of Dex irrelevant.<br/> Dimming ring is also a great choice as Dreadnought's skills are not Mas dependent: Dread Blessing already has 15 stacks at base, and has the utility to cleanse debuff and add mana without needing any Mas scaling; Bloodstroke scales off missing HP as well, thus is still quite powerful and can scale from max HP without Mas.",
     "Weapons": "",
-    "Class": ""
+    "Class": "The most obvious tier 2 choice is Dreadnought's precessor Juggernaut, a class with a lot of HP and defenses growth, and skills that matches well with Dreadnought's tank playstyle.<br/>Waveseer has a good passive that is useful for any class. If player is not keen on Juggernaut's Wreathed in Flame skill, they can choose to switch into Waveseer at lv. 25 just before promoting."
   },
   {
     "ID": 34,
@@ -533,7 +533,7 @@
     "Tier": 3,
     "Name": "Tidecaller",
     "Rating": [5.2, 5.9, 4.8, 3.7],
-    "Stats": "",
+    "Stats": "Tidecaller is a class with stat modifiers focusing on",
     "Character": "",
     "Upgrade1": ["Low", "Low", "Low", "Low"],
     "Upgrade2": ["Low", "Low", "Low", "Low"],
