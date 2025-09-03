@@ -463,7 +463,7 @@
     "S1Buff2": "Mana cost -10",
     "S1Buff3": "Range +1",
     "S1Buff4": "Mana cost -10",
-    "Skill2": "Apply 3+20% Sever Block stacks to self",
+    "Skill2": "Apply 3+20% Severe Block stacks to self",
     "S2Base": [3],
     "S2Scale": [20],
     "S2Type": "Green",
