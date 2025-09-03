@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/DarkDeity2/static/css/main.fcde9c51.css",
-    "main.js": "/DarkDeity2/static/js/main.bb307f8b.js",
+    "main.js": "/DarkDeity2/static/js/main.e1631b24.js",
     "static/js/453.fdc6e82d.chunk.js": "/DarkDeity2/static/js/453.fdc6e82d.chunk.js",
     "static/media/tal'dera.png": "/DarkDeity2/static/media/tal'dera.15b8d65bf553f010e968.png",
     "static/media/cassandra.png": "/DarkDeity2/static/media/cassandra.2689a68668965e8fe758.png",
@@ -26,11 +26,11 @@
     "static/media/MainLogo.jpg": "/DarkDeity2/static/media/MainLogo.d274a1938eba98bbe37f.jpg",
     "index.html": "/DarkDeity2/index.html",
     "main.fcde9c51.css.map": "/DarkDeity2/static/css/main.fcde9c51.css.map",
-    "main.bb307f8b.js.map": "/DarkDeity2/static/js/main.bb307f8b.js.map",
+    "main.e1631b24.js.map": "/DarkDeity2/static/js/main.e1631b24.js.map",
     "453.fdc6e82d.chunk.js.map": "/DarkDeity2/static/js/453.fdc6e82d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fcde9c51.css",
-    "static/js/main.bb307f8b.js"
+    "static/js/main.e1631b24.js"
   ]
 }
