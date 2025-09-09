@@ -565,7 +565,7 @@
     "Tier": 3,
     "Name": "Hemomancer",
     "Rating": [5.7, 6.1, 4.7, 5.0],
-    "Stats": "",
+    "Stats": "Hemomancer stats focuses on HP and Lck, with very negative modifier on both defenses. In terms of growth, the class focuses on HP, Mas and Lck, with good Mgt and Spd growth too, but no growth bonuses on both defenses.<br/>Hemomancer is a class with great HP but low defenses, coupled with its passive Dark Magic, makes it a class focusing on fighting with a lot of lost HP. The class has great Crit potential both from its passive and its high Lck. It is a decent combat class with good Mgt and decent Spd, but its low Dex may posse an issue.",
     "Character": "",
     "Upgrade1": ["Low", "Low", "Low", "Low"],
     "Upgrade2": ["Low", "Low", "Low", "Low"],
