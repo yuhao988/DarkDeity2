@@ -16,11 +16,18 @@
   text-align: center;
 }
 
-.character-image {
+.character-image-full {
+  border: 5px yellow solid;
   padding: 10px;
-  width: 30vw;
+  width: 25vw;
   height: 400px; /* Maintains aspect ratio */
   /*aspect-ratio: 1; /* Optional: Force square (1:1) or set like 16/9 */
+}
+.character-image {
+  padding: 10px;
+  width: 10vw;
+  height: auto; /* Maintains aspect ratio */
+  aspect-ratio: 1; /* Optional: Force square (1:1) or set like 16/9 */
 }
 
 .character-detail{
@@ -145,5 +152,5 @@
   justify-content: space-between;
   width: 70vw;
   gap: 50px; /* Adds spacing between text and image */
-  margin-bottom: 50px;
+  /*margin-bottom: 50px;*/
 }

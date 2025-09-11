@@ -109,7 +109,7 @@ function CharDetail() {
           <div className="sub-divider1">
             
             <div>{charIntro(nameNoMark, "intro")}</div>
-            <img src={images[name]} alt={name} className="character-image" />
+            <img src={images[name]} alt={name} className="character-image-full" />
           </div>
 
           <h3>Base stats:</h3>
