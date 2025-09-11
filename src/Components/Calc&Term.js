@@ -198,9 +198,9 @@ export default function CalcTerm() {
                   <tr>
                     <td>Poison</td>
                     <td style={{ textAlign: "left" }}>
-                      Debuff: Removes 1 point of primary stat from target
+                      Debuff: Removes 1 point of every primary stat from target
                     </td>
-                    <td>1 turn</td>
+                    <td>1 round of combat</td>
                   </tr>
                   <tr>
                     <td>Snare</td>
