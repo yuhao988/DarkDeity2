@@ -17,7 +17,8 @@
 }
 
 .character-image-full {
-  border: 5px yellow solid;
+  border: 5px rgb(94, 94, 2) solid;
+  background: #a7d6ec;
   padding: 10px;
   width: 25vw;
   height: 400px; /* Maintains aspect ratio */
