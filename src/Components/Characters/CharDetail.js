@@ -60,11 +60,11 @@ function CharDetail() {
   const imageContext = require.context(
     "../../../public/Images/Characters/Pictures", // Folder path
     false, // Don't look in subdirectories
-    /\.(png)$/ // File extensions to match
+    /.*_full\.webp$/ // File extensions to match
   );
 
   const images = imageContext.keys().reduce((acc, key) => {
-    const name1 = key.replace("./", "").replace(/\..+$/, "");
+    const name1 = key.replace("./", "").replace(/_full\.webp$/, "");
     acc[name1] = imageContext(key);
     return acc;
   }, {});
@@ -105,9 +105,12 @@ function CharDetail() {
         <h1>{character1.Name}</h1>
       </header>
       <div className="page-body">
-        <img src={images[name]} alt={name} className="character-image" />
         <div className="character-detail">
-          <div>{charIntro(nameNoMark, "intro")}</div>
+          <div className="sub-divider1">
+            
+            <div>{charIntro(nameNoMark, "intro")}</div>
+            <img src={images[name]} alt={name} className="character-image" />
+          </div>
 
           <h3>Base stats:</h3>
           <table className="stat-table">
@@ -333,7 +336,17 @@ function CharDetail() {
                           let numValue;
 
                           if (key === "Name") {
-                            return <td key={key}><Link to={`${process.env.PUBLIC_URL}/classes/${value.toLowerCase()}`}>{value}</Link></td>;
+                            return (
+                              <td key={key}>
+                                <Link
+                                  to={`${
+                                    process.env.PUBLIC_URL
+                                  }/classes/${value.toLowerCase()}`}
+                                >
+                                  {value}
+                                </Link>
+                              </td>
+                            );
                           } else {
                             const charGrow = parseFloat(growths[i]);
 
@@ -398,7 +411,17 @@ function CharDetail() {
                           let numValue;
 
                           if (key === "Name") {
-                            return <td key={key}><Link to={`${process.env.PUBLIC_URL}/classes/${value.toLowerCase()}`}>{value}</Link></td>;
+                            return (
+                              <td key={key}>
+                                <Link
+                                  to={`${
+                                    process.env.PUBLIC_URL
+                                  }/classes/${value.toLowerCase()}`}
+                                >
+                                  {value}
+                                </Link>
+                              </td>
+                            );
                           } else {
                             const charGrow = parseFloat(growths[i]);
 
@@ -547,7 +570,9 @@ function CharDetail() {
           <h3>Ring Suggestions:</h3>
           <div>{charIntro(nameNoMark, "ring")}</div>
         </div>
-        <Link to={`${process.env.PUBLIC_URL}/characters`} className="home-link">Back</Link>{" "}
+        <Link to={`${process.env.PUBLIC_URL}/characters`} className="home-link">
+          Back
+        </Link>{" "}
       </div>
     </div>
   );

@@ -18,9 +18,9 @@
 
 .character-image {
   padding: 10px;
-  width: 10vw;
-  height: auto; /* Maintains aspect ratio */
-  aspect-ratio: 1; /* Optional: Force square (1:1) or set like 16/9 */
+  width: 30vw;
+  height: 400px; /* Maintains aspect ratio */
+  /*aspect-ratio: 1; /* Optional: Force square (1:1) or set like 16/9 */
 }
 
 .character-detail{
@@ -137,4 +137,13 @@
 /* Row styling */
 .stat-table tr {
   border: 3px solid rgb(65, 2, 2);
+}
+
+.sub-divider1 {
+  display: flex;
+  align-items: stretch; /* Makes both items same height */
+  justify-content: space-between;
+  width: 70vw;
+  gap: 50px; /* Adds spacing between text and image */
+  margin-bottom: 50px;
 }
