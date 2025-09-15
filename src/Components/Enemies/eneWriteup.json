@@ -1,0 +1,104 @@
+[
+  { "Class": "Archer", "Description": "" },
+  {
+    
+    "Class": "Javelinier",
+    "Description": ""
+  },
+  {
+    
+    "Class": "Lancer",
+    "Description": ""
+  },
+  {
+    
+    "Class": "Magi",
+    "Description": ""
+  },
+  {
+    
+    "Class": "Outlaw",
+    "Description": ""
+  },
+  {
+    
+    "Class": "Overseer",
+    "Description": ""
+  },
+  {
+    
+    "Class": "Paladin",
+    "Description": ""
+  },
+  {
+    
+    "Class": "Priest",
+    "Description": ""
+  },
+  {
+    
+    "Class": "Rogue",
+    "Description": ""
+  },
+  {
+    
+    "Class": "Sellsword",
+    "Description": ""
+  },
+  {
+    
+    "Class": "Soldier",
+    "Description": ""
+  },
+  {
+    
+    "Class": "Sorcerer",
+    "Description": ""
+  },
+  {
+    
+    "Class": "Surge",
+    "Description": ""
+  },
+  {
+    
+    "Class": "Warrior",
+    "Description": ""
+  },
+  {
+    
+    "Class": "Witch",
+    "Description": ""
+  },
+  {
+    
+    "Class": "Zealot",
+    "Description": ""
+  },
+{
+    
+    "Class": "Bear",
+    "Description": ""
+  },
+{
+    
+    "Class": "Wolf",
+    "Description": ""
+  },
+{
+    
+    "Class": "Treant",
+    "Description": ""
+  },
+{
+    
+    "Class": "Oak Treant",
+    "Description": ""
+  },
+{
+    
+    "Class": "Hellhound",
+    "Description": ""
+  }
+
+]
