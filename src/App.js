@@ -18,6 +18,7 @@ import WeaponDetail from "./Components/Weapons/WeaponsDetail";
 import RuneDetail from "./Components/Weapons/Runes/RunesList"; // Import the RuneDetail component
 import CalcTerm from "./Components/Calc&Term";
 import EnemyMain from "./Components/Enemies/EnemyMain";
+import EneClassDetail from "./Components/Enemies/EneClassDetail";
 
 function App() {
   // Set the app element when the component mounts
@@ -44,7 +45,7 @@ function App() {
           <Route path={`${process.env.PUBLIC_URL}/weapons/runes/:name`} element={<RuneDetail />} />
           <Route path={`${process.env.PUBLIC_URL}/calc`} element={<CalcTerm />} />
           <Route path={`${process.env.PUBLIC_URL}/enemies`} element={<EnemyMain />} />
-          {/*<Route path={`${process.env.PUBLIC_URL}/enemies/:name`} element={<WeaponDetail />} />*/}
+          <Route path={`${process.env.PUBLIC_URL}/enemies/:name`} element={<EneClassDetail />} />
 
           <Route path={`${process.env.PUBLIC_URL}/secret`} element={<SimSample1 />} />
           <Route path={`${process.env.PUBLIC_URL}/*`} element={<Error />} />
